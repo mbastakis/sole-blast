@@ -7,6 +7,16 @@ const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshBasicMaterial( {color: 0xff0000} );
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
+// Position
+mesh.position.set(0.8, -0.6, 1);
+// Scale
+mesh.scale.set(2.1, 1, 1);
+// Axes helper
+const axesHelper = new THREE.AxesHelper(1, 1, 1);
+scene.add(axesHelper);
+// Rotation
+mesh.rotation.z = 0.1;
+mesh.rotation.x = Math.PI;
 // Camera
 const sizes = {
     width: 800,
@@ -16,6 +26,8 @@ const sizes = {
 const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height);
 camera.position.z = 5;
 scene.add(camera);
+
+camera.lookAt(mesh.position);
 // Renderer
 const canvas = document.querySelector('#webgl');
 const renderer = new THREE.WebGLRenderer({
