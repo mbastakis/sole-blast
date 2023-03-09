@@ -16,6 +16,7 @@ import {
   Geometry,
   Vector3,
   Line,
+  GLTFLoader,
   BoxGeometry,
   MeshBasicMaterial
 } from "three-full";
@@ -26,9 +27,12 @@ export default new Vuex.Store({
   state: {
     width: 0,
     height: 0,
+    shoe_size: 150,
     camera: null,
     scene: null,
     renderer: null,
+    ambientLight: null,
+    model: null,
   },
   getters: {
     CAMERA_POSITION: state => {
@@ -41,7 +45,7 @@ export default new Vuex.Store({
       state.height = height;
     },
     INITIALIZE_RENDERER(state, el) {
-      state.renderer = new WebGLRenderer({ antialias: true, alpha: true });
+      state.renderer = new WebGLRenderer({ antialias: true});
       state.renderer.setPixelRatio(window.devicePixelRatio);
       state.renderer.setSize(state.width, state.height);
       el.appendChild(state.renderer.domElement);
@@ -49,7 +53,7 @@ export default new Vuex.Store({
     INITIALIZE_CAMERA(state) {
       state.camera = new PerspectiveCamera(
         // 1. Field of View (degrees)
-        1,
+        45,
         // 2. Aspect ratio
         state.width / state.height
       );
@@ -58,11 +62,28 @@ export default new Vuex.Store({
     INITIALIZE_SCENE(state) {
       // Scene
       state.scene = new Scene();
-      // Create mesh = geometry + material
-      const geometry = new BoxGeometry(1, 1, 1);
-      const material = new MeshBasicMaterial( {color: 0xff0000} );
-      const mesh = new Mesh(geometry, material);
-      state.scene.add(mesh);
+      // Light
+      state.ambientLight = new AmbientLight(0xffffff, 1);
+      state.ambientLight.position.set(-10, 15, 0);
+      state.scene.add(state.ambientLight);
+      // GLFT
+      const loader = new GLTFLoader();
+      loader.load('/poly.glb', (gltf) => {
+        state.model = gltf.scene;
+        state.model.position.set(-10, 15, 0);
+        state.model.rotation.y = Math.PI / 7;
+
+        gltf.scene.scale.set(state.shoe_size, state.shoe_size, state.shoe_size);
+        state.scene.add(state.model);
+        state.camera.lookAt(state.model.position.x, state.model.position.y, state.model.position.z);
+
+        state.renderer.render(state.scene, state.camera);
+      }, undefined, (error) => {
+        console.error(error);
+      });
+
+      // Fix camera
+      state.camera.position.set(30, 40, -45);
     },
     RESIZE(state, { width, height }) {
       state.width = width;
@@ -94,7 +115,7 @@ export default new Vuex.Store({
         commit("INITIALIZE_SCENE");
 
         // Initial scene rendering
-        state.renderer.render(state.scene, state.camera);
+        // state.renderer.render(state.scene, state.camera);
 
         resolve();
       });

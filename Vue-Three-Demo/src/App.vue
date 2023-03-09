@@ -29,5 +29,6 @@ canvas {
 }
 #app {
   height: 100%;
+  background-color: gray;
 }
 </style>
