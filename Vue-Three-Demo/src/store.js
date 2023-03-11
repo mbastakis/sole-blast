@@ -18,7 +18,8 @@ import {
   Line,
   GLTFLoader,
   BoxGeometry,
-  MeshBasicMaterial
+  MeshBasicMaterial,
+  Clock,
 } from "three-full";
 
 Vue.use(Vuex);
@@ -33,6 +34,7 @@ export default new Vuex.Store({
     renderer: null,
     ambientLight: null,
     model: null,
+    clock: null,
   },
   getters: {
     CAMERA_POSITION: state => {
@@ -70,7 +72,7 @@ export default new Vuex.Store({
       const loader = new GLTFLoader();
       loader.load('/poly.glb', (gltf) => {
         state.model = gltf.scene;
-        state.model.position.set(-10, 15, 0);
+        state.model.position.set(-10, 5, 0);
         state.model.rotation.y = Math.PI / 7;
 
         gltf.scene.scale.set(state.shoe_size, state.shoe_size, state.shoe_size);
@@ -84,6 +86,8 @@ export default new Vuex.Store({
 
       // Fix camera
       state.camera.position.set(30, 40, -45);
+      // Clock
+      state.clock = new Clock();
     },
     RESIZE(state, { width, height }) {
       state.width = width;
@@ -122,6 +126,13 @@ export default new Vuex.Store({
     },
     ANIMATE({ state, dispatch }) {
       window.requestAnimationFrame(() => {
+        if( state.model != null) {
+          let elapsedTime = state.clock.getElapsedTime();
+          state.model.position.y = Math.sin(elapsedTime) * Math.PI;
+          state.model.position.x = Math.cos(elapsedTime);
+          state.model.position.z = Math.sin(elapsedTime) * Math.PI / 4;
+          state.renderer.render(state.scene, state.camera);
+        }
         dispatch("ANIMATE");
       });
     }
