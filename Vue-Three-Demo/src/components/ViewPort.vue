@@ -39,7 +39,8 @@ export default {
 
 <style>
 .viewport {
-  height: 300px;
-  width: 100%;
+  height: 400px;
+  width: 500px;
+  margin: 0 auto;
 }
 </style>

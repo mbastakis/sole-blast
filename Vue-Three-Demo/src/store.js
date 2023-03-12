@@ -28,7 +28,7 @@ export default new Vuex.Store({
   state: {
     width: 0,
     height: 0,
-    shoe_size: 150,
+    shoe_size: 200,
     camera: null,
     scene: null,
     renderer: null,
@@ -47,7 +47,7 @@ export default new Vuex.Store({
       state.height = height;
     },
     INITIALIZE_RENDERER(state, el) {
-      state.renderer = new WebGLRenderer({ antialias: true});
+      state.renderer = new WebGLRenderer({ antialias: true, alpha: true});
       state.renderer.setPixelRatio(window.devicePixelRatio);
       state.renderer.setSize(state.width, state.height);
       el.appendChild(state.renderer.domElement);
@@ -78,6 +78,7 @@ export default new Vuex.Store({
         gltf.scene.scale.set(state.shoe_size, state.shoe_size, state.shoe_size);
         state.scene.add(state.model);
         state.camera.lookAt(state.model.position.x, state.model.position.y, state.model.position.z);
+        state.camera.position.x += 10;
 
         state.renderer.render(state.scene, state.camera);
       }, undefined, (error) => {
