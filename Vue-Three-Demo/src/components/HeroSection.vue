@@ -20,8 +20,8 @@
 
 <script>
 import ViewPort from "./ViewPort.vue";
-import Navbar from './Navbar.vue'
-import anime from 'animejs'
+import Navbar from './Navbar.vue';
+import anime from 'animejs';
 
 
 
@@ -30,7 +30,7 @@ export default {
         viewport: ViewPort,
         navbar: Navbar
     },mounted() {
-        let elt = document.querySelectorAll('#hero-slider > *')
+        let elt = document.querySelectorAll('#hero-slider > *');
         anime({
           targets: elt,
           translateX: '-100%',
