@@ -2,23 +2,10 @@ import Vue from "vue";
 import Vuex from "vuex";
 import {
   Scene,
-  TrackballControls,
   PerspectiveCamera,
   WebGLRenderer,
-  Color,
-  FogExp2,
-  CylinderBufferGeometry,
-  MeshPhongMaterial,
-  Mesh,
-  DirectionalLight,
   AmbientLight,
-  LineBasicMaterial,
-  Geometry,
-  Vector3,
-  Line,
   GLTFLoader,
-  BoxGeometry,
-  MeshBasicMaterial,
   Clock
 } from "three-full";
 
@@ -125,7 +112,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    INIT({ state, commit }, { width, height, el }) {
+    INIT({ /*state,*/ commit }, { width, height, el }) {
       return new Promise(resolve => {
         commit("SET_VIEWPORT_SIZE", { width, height });
         commit("INITIALIZE_RENDERER", el);

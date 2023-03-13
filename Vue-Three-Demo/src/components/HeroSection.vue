@@ -15,11 +15,11 @@
         <span class="slider-color">Soles</span>.</span
       >
       <h1>
-        &nbsp Express your <span class="slider-color">Soul</span> with your
+        &nbsp; Express your <span class="slider-color">Soul</span> with your
         <span class="slider-color">Soles</span>.
       </h1>
       <span
-        >&nbsp Express your <span class="slider-color">Soul</span> with your
+        >&nbsp; Express your <span class="slider-color">Soul</span> with your
         <span class="slider-color">Soles</span>.</span
       >
     </div>
