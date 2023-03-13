@@ -78,7 +78,7 @@ export default {
     flex-direction: row;
     white-space: nowrap;
     color: var(--primary);
-    overflow-x: hidden;
+    overflow: hidden;
 }
 h1, span {
     display: inline-block;
