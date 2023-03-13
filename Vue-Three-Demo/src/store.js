@@ -19,7 +19,7 @@ import {
   GLTFLoader,
   BoxGeometry,
   MeshBasicMaterial,
-  Clock,
+  Clock
 } from "three-full";
 
 Vue.use(Vuex);
@@ -34,7 +34,7 @@ export default new Vuex.Store({
     renderer: null,
     ambientLight: null,
     model: null,
-    clock: null,
+    clock: null
   },
   getters: {
     CAMERA_POSITION: state => {
@@ -47,7 +47,7 @@ export default new Vuex.Store({
       state.height = height;
     },
     INITIALIZE_RENDERER(state, el) {
-      state.renderer = new WebGLRenderer({ antialias: true, alpha: true});
+      state.renderer = new WebGLRenderer({ antialias: true, alpha: true });
       state.renderer.setPixelRatio(window.devicePixelRatio);
       state.renderer.setSize(state.width, state.height);
       el.appendChild(state.renderer.domElement);
@@ -70,20 +70,33 @@ export default new Vuex.Store({
       state.scene.add(state.ambientLight);
       // GLFT
       const loader = new GLTFLoader();
-      loader.load('/poly.glb', (gltf) => {
-        state.model = gltf.scene;
-        state.model.position.set(-10, 5, 0);
-        state.model.rotation.y = Math.PI / 7;
+      loader.load(
+        "/poly.glb",
+        gltf => {
+          state.model = gltf.scene;
+          state.model.position.set(-10, 5, 0);
+          state.model.rotation.y = Math.PI / 7;
 
-        gltf.scene.scale.set(state.shoe_size, state.shoe_size, state.shoe_size);
-        state.scene.add(state.model);
-        state.camera.lookAt(state.model.position.x, state.model.position.y, state.model.position.z);
-        state.camera.position.x += 10;
+          gltf.scene.scale.set(
+            state.shoe_size,
+            state.shoe_size,
+            state.shoe_size
+          );
+          state.scene.add(state.model);
+          state.camera.lookAt(
+            state.model.position.x,
+            state.model.position.y,
+            state.model.position.z
+          );
+          state.camera.position.x += 10;
 
-        state.renderer.render(state.scene, state.camera);
-      }, undefined, (error) => {
-        console.error(error);
-      });
+          state.renderer.render(state.scene, state.camera);
+        },
+        undefined,
+        error => {
+          console.error(error);
+        }
+      );
 
       // Fix camera
       state.camera.position.set(30, 40, -45);
@@ -127,11 +140,11 @@ export default new Vuex.Store({
     },
     ANIMATE({ state, dispatch }) {
       window.requestAnimationFrame(() => {
-        if( state.model != null) {
+        if (state.model != null) {
           let elapsedTime = state.clock.getElapsedTime();
           state.model.position.y = Math.sin(elapsedTime) * Math.PI;
           state.model.position.x = Math.cos(elapsedTime);
-          state.model.position.z = Math.sin(elapsedTime) * Math.PI / 4;
+          state.model.position.z = (Math.sin(elapsedTime) * Math.PI) / 4;
           state.renderer.render(state.scene, state.camera);
         }
         dispatch("ANIMATE");

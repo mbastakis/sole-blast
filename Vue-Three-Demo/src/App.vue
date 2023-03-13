@@ -8,17 +8,17 @@
 </template>
 
 <script>
-import HeroSection from './components/HeroSection.vue'
-import MiniGallery from './components/MiniGallery.vue'
-import ProcessSection from './components/ProcessSection.vue'
-import ContactUs from './components/ContactUs.vue'
+import HeroSection from "./components/HeroSection.vue";
+import MiniGallery from "./components/MiniGallery.vue";
+import ProcessSection from "./components/ProcessSection.vue";
+import ContactUs from "./components/ContactUs.vue";
 
 export default {
   components: {
     herosection: HeroSection,
     minigallery: MiniGallery,
     processsection: ProcessSection,
-    contactus: ContactUs,
+    contactus: ContactUs
   }
 };
 </script>
@@ -26,7 +26,7 @@ export default {
 <style>
 :root {
   --primary: white;
-  --secondary: #282E5C;
+  --secondary: #282e5c;
   --select: ;
 }
 
@@ -35,7 +35,7 @@ body {
   width: 100%;
   height: 100%;
   margin: 0px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 #app {
   height: 100%;
