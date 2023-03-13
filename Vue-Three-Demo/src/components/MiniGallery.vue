@@ -52,12 +52,12 @@ props: {},
       "Picture-4 Picture-4 Picture-5 Picture-3"
       "Picture-4 Picture-4 Picture-5 Picture-6";
 }
-img {
+.mini-gallery-container img {
     object-fit: cover;
     width: 100%;
     height: 100%;
 }
-img:hover {
+.mini-gallery-container img:hover {
     object-fit:scale-down;
 }
 .img:hover {
