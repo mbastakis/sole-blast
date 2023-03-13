@@ -2,17 +2,23 @@
   <div id="app">
     <herosection></herosection>
     <minigallery></minigallery>
+    <processsection></processsection>
+    <contactus></contactus>
   </div>
 </template>
 
 <script>
 import HeroSection from './components/HeroSection.vue'
 import MiniGallery from './components/MiniGallery.vue'
+import ProcessSection from './components/ProcessSection.vue'
+import ContactUs from './components/ContactUs.vue'
 
 export default {
   components: {
     herosection: HeroSection,
     minigallery: MiniGallery,
+    processsection: ProcessSection,
+    contactus: ContactUs,
   }
 };
 </script>

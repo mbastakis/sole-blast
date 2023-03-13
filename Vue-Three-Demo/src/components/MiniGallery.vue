@@ -1,6 +1,7 @@
 <template>
     <div class="mini-gallery">
-        <div id="header"><h1>Choose between multiple styles</h1></div>
+        <div id="header"><h1>A Gallery of Sole-ful Creations</h1></div>
+        <!-- <div id="header"><h1>Step into Our Shoe-tique: A Gallery of Hand-Painted Masterpieces</h1></div> -->
         <div class="mini-gallery-container">
             <div class="Picture-1 img"><img class="img-1" src="../assets/harry-potter.jpg"></div>
             <div class="Picture-2 img"><img class="img-2" src="../assets/floral.jpg"></div>
@@ -26,7 +27,6 @@ props: {},
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 120px;
 }
 #header {
     width: 85vw;
@@ -35,7 +35,7 @@ props: {},
     font-size: 5rem;
     margin-bottom: 60px;
     margin-top: 20px;
-    width: 600px;
+    width: 750px;
     color: var(--secondary);
 }
 .mini-gallery-container {

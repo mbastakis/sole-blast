@@ -3,8 +3,8 @@
         <navbar id="navbar"></navbar>
         <div id="floating-section">
             <div id="floating-quote">
-                <p>ΤΗΕΜΕ</p>
-                <h2>Alien Invasion</h2>
+                <p>Nike Air Force Supreme</p>
+                <h2>The Alien Invasion</h2>
                 <p>Handdrawn</p>
             </div>
             <viewport></viewport>
@@ -78,6 +78,7 @@ export default {
     flex-direction: row;
     white-space: nowrap;
     color: var(--primary);
+    overflow-x: hidden;
 }
 h1, span {
     display: inline-block;

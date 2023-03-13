@@ -8,6 +8,7 @@
             uniqueSole
         </div>
         <ul id="right-list" class="list">
+            <li>F.A.Q</li>
             <li>About Us</li>
         </ul>
     </div>
