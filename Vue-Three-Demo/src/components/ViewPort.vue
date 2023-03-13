@@ -22,16 +22,6 @@ export default {
       el: this.$el
     }).then(() => {
       this.ANIMATE();
-      window.addEventListener(
-        "resize",
-        () => {
-          this.RESIZE({
-            width: this.$el.offsetWidth,
-            height: this.$el.offsetHeight
-          });
-        },
-        true
-      );
     });
   }
 };

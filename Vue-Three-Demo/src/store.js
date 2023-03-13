@@ -23,11 +23,6 @@ export default new Vuex.Store({
     model: null,
     clock: null
   },
-  getters: {
-    CAMERA_POSITION: state => {
-      return state.camera ? state.camera.position : null;
-    }
-  },
   mutations: {
     SET_VIEWPORT_SIZE(state, { width, height }) {
       state.width = width;
@@ -90,26 +85,6 @@ export default new Vuex.Store({
       // Clock
       state.clock = new Clock();
     },
-    RESIZE(state, { width, height }) {
-      state.width = width;
-      state.height = height;
-      state.camera.aspect = width / height;
-      state.camera.updateProjectionMatrix();
-      state.renderer.setSize(width, height);
-      state.renderer.render(state.scene, state.camera);
-    },
-    SET_CAMERA_POSITION(state, { x, y, z }) {
-      if (state.camera) {
-        state.camera.position.set(x, y, z);
-      }
-    },
-    RESET_CAMERA_ROTATION(state) {
-      if (state.camera) {
-        state.camera.rotation.set(0, 0, 0);
-        state.camera.quaternion.set(0, 0, 0, 1);
-        state.camera.up.set(0, 1, 0);
-      }
-    }
   },
   actions: {
     INIT({ /*state,*/ commit }, { width, height, el }) {
