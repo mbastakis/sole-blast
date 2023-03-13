@@ -1,6 +1,6 @@
 <template>
   <div id="hero-section">
-    <navbar id="navbar"></navbar>
+    <navbar></navbar>
     <div id="floating-section">
       <div id="floating-quote">
         <p>Nike Air Force Supreme</p>
