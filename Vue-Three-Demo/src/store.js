@@ -6,7 +6,14 @@ import {
   WebGLRenderer,
   AmbientLight,
   GLTFLoader,
-  Clock
+  Clock,
+  ACESFilmicToneMapping,
+  sRGBEncoding,
+  HemisphereLight,
+  HemisphereLightHelper,
+  DirectionalLight,
+  DirectionalLightHelper,
+  OrbitControls,
 } from "three-full";
 
 Vue.use(Vuex);
@@ -21,7 +28,8 @@ export default new Vuex.Store({
     renderer: null,
     ambientLight: null,
     model: null,
-    clock: null
+    clock: null,
+    controls: null,
   },
   mutations: {
     SET_VIEWPORT_SIZE(state, { width, height }) {
@@ -32,6 +40,9 @@ export default new Vuex.Store({
       state.renderer = new WebGLRenderer({ antialias: true, alpha: true });
       state.renderer.setPixelRatio(window.devicePixelRatio);
       state.renderer.setSize(state.width, state.height);
+      state.renderer.toneMapping = ACESFilmicToneMapping;
+			state.renderer.toneMappingExposure = 1;
+			state.renderer.outputEncoding = sRGBEncoding;
       el.appendChild(state.renderer.domElement);
     },
     INITIALIZE_CAMERA(state) {
@@ -47,28 +58,59 @@ export default new Vuex.Store({
       // Scene
       state.scene = new Scene();
       // Light
-      state.ambientLight = new AmbientLight(0xffffff, 1);
-      state.ambientLight.position.set(-10, 15, 0);
-      state.scene.add(state.ambientLight);
+      // LIGHTS
+
+				const hemiLight = new HemisphereLight( 0xffffff, 0xffffff, 0.6 );
+				hemiLight.color.setHSL( 0.6, 1, 0.6 );
+				hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
+				hemiLight.position.set(25, 25, 0);
+				state.scene.add( hemiLight );
+
+				// const hemiLightHelper = new HemisphereLightHelper( hemiLight, 10 );
+				// state.scene.add( hemiLightHelper );
+
+				//
+
+				const dirLight = new DirectionalLight( 0xffffff, 1 );
+				dirLight.color.setHSL( 0.1, 1, 0.95 );
+				dirLight.position.set(30, 40, -45);
+				dirLight.position.multiplyScalar( 30 );
+				state.scene.add( dirLight );
+				
+
+      // const dirLightHelper = new DirectionalLightHelper( dirLight, 10 );
+      // state.scene.add( dirLightHelper );
       // Calculate shoe size
       let currentWidth = window.innerWidth;
       if (currentWidth <= 430) {
-        state.shoe_size = 80;
+        state.shoe_size = 75;
       } else if (currentWidth <= 641) {
-        state.shoe_size = 120;
+        state.shoe_size = 115;
       } else if (currentWidth <= 961) {
-        state.shoe_size = 140;
+        state.shoe_size = 135;
       } else if (currentWidth >= 1281) {
-        state.shoe_size = 180;
+        state.shoe_size = 175;
       }
+      // Controller
+      // function render() {
+
+			// 	state.renderer.render( state.scene, state.camera );
+
+			// }
+      // state.controls = new OrbitControls( state.camera, state.renderer.domElement );
+      // state.controls.addEventListener( 'change', render ); // use if there is no animation loop
+      // state.controls.minDistance = 20;
+      // state.controls.maxDistance = 100;
+      // state.controls.target.set( 0, 0, - 0.2 );
+      // state.controls.update();
       // GLFT
       const loader = new GLTFLoader();
       loader.load(
-        "/poly.glb",
+        "/optimized_2.glb",
         gltf => {
           state.model = gltf.scene;
           state.model.position.set(-10, 5, 0);
-          state.model.rotation.y = Math.PI / 7;
+          state.model.rotation.y = Math.PI / 7 ;
 
           gltf.scene.scale.set(
             state.shoe_size,
