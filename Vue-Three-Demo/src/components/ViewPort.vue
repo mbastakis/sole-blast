@@ -29,8 +29,8 @@ export default {
 
 <style>
 .viewport {
-  height: 400px;
-  width: 500px;
+  height: 700px;
+  width: 100%;
   margin: 0 auto;
 }
 </style>
