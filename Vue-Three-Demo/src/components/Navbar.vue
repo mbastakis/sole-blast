@@ -6,12 +6,12 @@
       <svg @click="close_ham_menu" style="color: rgb(40, 46, 92); --darkreader-inline-color:#f4dc41; --darkreader-inline-fill:currentColor;" width="16" id="X-icon" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16" data-darkreader-inline-color="" data-darkreader-inline-fill=""> <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" fill="#282e5c" data-darkreader-inline-fill="" style="--darkreader-inline-fill:#f4dc41;"></path> </svg>
 
       <div id="ham-top-list">
-        <div>Gallery</div>
-        <div>Your Sole</div>
+        <div class="ham-item">Gallery</div>
+        <div class="ham-item">Your Sole</div>
       </div>
       <div id="ham-bottom-list">
-        <div>F.A.Q</div>
-        <div>About Us</div>
+        <div class="ham-item">F.A.Q</div>
+        <div class="ham-item">About Us</div>
       </div>
     </div>
 
@@ -158,8 +158,6 @@ export default {
     background-color: var(--secondary);
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
-  }
-  .nav-list li:after {
     transform: scaleX(0);
   }
   .nav-list li:hover::after {

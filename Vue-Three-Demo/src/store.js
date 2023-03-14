@@ -15,7 +15,7 @@ export default new Vuex.Store({
   state: {
     width: 0,
     height: 0,
-    shoe_size: 200,
+    shoe_size: 160,
     camera: null,
     scene: null,
     renderer: null,
@@ -50,6 +50,17 @@ export default new Vuex.Store({
       state.ambientLight = new AmbientLight(0xffffff, 1);
       state.ambientLight.position.set(-10, 15, 0);
       state.scene.add(state.ambientLight);
+      // Calculate shoe size
+      let currentWidth = window.innerWidth;
+      if (currentWidth <= 430) {
+        state.shoe_size = 80;
+      } else if (currentWidth <= 641) {
+        state.shoe_size = 120;
+      } else if (currentWidth <= 961) {
+        state.shoe_size = 140;
+      } else if (currentWidth >= 1281) {
+        state.shoe_size = 180;
+      }
       // GLFT
       const loader = new GLTFLoader();
       loader.load(
