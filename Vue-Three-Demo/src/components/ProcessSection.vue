@@ -4,7 +4,7 @@
     <section id="first-section">
       <div>
         <h1>Our Design Process</h1>
-        <p>
+        <p class="left-text-allign">
           At our business, we believe that shoes are more than just a pair of
           functional items to wear. That's why we take each customer's unique
           idea and turn it into a beautiful and wholly unique shoe design.
@@ -18,7 +18,7 @@
           Share Your<br />
           Vision
         </h2>
-        <p>
+        <p class="left-text-allign">
           Simply provide us with your unique prompt and any details you want us
           to include in the design. We'll then suggest the perfect shoe or work
           with you to find the ideal canvas for your creation.
@@ -45,7 +45,7 @@
     <section id="forth-section">
       <div>
         <h2>From sketch to reality</h2>
-        <p>
+        <p class="left-text-allign">
           Our artists get to work, painting every detail onto your shoe. It's a
           mini masterpiece on your feet! We ship straight to your doorstep. Get
           ready to turn heads with your one-of-a-kind creation.
@@ -233,6 +233,9 @@ article {
     font-style: italic;
     font-size: calc(1.5vmin + 1.75vmax);
     margin-bottom: 5%;
+  }
+  .left-text-allign {
+    text-align: left;
   }
 }
 </style>
