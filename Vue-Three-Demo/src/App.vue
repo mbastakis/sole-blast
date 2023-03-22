@@ -2,8 +2,8 @@
   <div id="app">
     <herosection></herosection>
     <minigallery></minigallery>
-    <!-- <processsection></processsection> -->
-    <!-- <contactus></contactus> -->
+    <processsection></processsection>
+    <contactus></contactus>
   </div>
 </template>
 

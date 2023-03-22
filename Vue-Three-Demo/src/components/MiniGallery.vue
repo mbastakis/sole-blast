@@ -71,7 +71,6 @@ export default {
 <style scoped>
 .mini-gallery {
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -169,6 +168,7 @@ export default {
     -moz-transition: -moz-transform 0.25s;
     -ms-transition: -ms-transform 0.25s;
     transition: transform 0.75s;
+    z-index: 2;
   }
   .Picture-11 {
     grid-area: Picture-11;
