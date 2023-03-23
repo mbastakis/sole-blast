@@ -179,6 +179,7 @@ article {
   display: block;
 }
 .chat-photo {
+  margin-top: -15px;
   margin-bottom: 20px;
 }
 #gallery-transition-layer {
