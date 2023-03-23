@@ -77,7 +77,7 @@ export default {
 }
 #header {
   width: 90vw;
-  margin: 5% 0px;
+  margin-bottom: 25px;
 }
 #header h1 {
   font-size: 2em;

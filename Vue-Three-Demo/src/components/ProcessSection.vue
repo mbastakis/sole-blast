@@ -38,7 +38,7 @@
     <section id="third-section" class="left-chat">
       <div>
         <h2>Sketch & Approval</h2>
-        <img src="../assets/shoes_card.jpg" alt class="mobile"/>
+        <img src="../assets/shoes_card.jpg" alt class="mobile chat-photo"/>
         <p>
           We create a basic sketch of your design and send it your way. Now you
           only have to give us the green light to start painting.
@@ -49,7 +49,7 @@
     <section id="forth-section" class="left-chat">
       <div>
         <h2>From sketch to reality</h2>
-        <img src="../assets/alien_shoe_showcase_phone.jpg" alt class="mobile"/>
+        <img src="../assets/alien_shoe_showcase_phone.jpg" alt class="mobile chat-photo"/>
         <p class="left-text-allign">
           Our artists get to work, painting every detail onto your shoe. It's a
           mini masterpiece on your feet! We ship straight to your doorstep. Get
@@ -60,6 +60,9 @@
     <figure id="third-figure" class="desktop">
       <img src="../assets/alien_shoe_showcase.jpg" alt />
     </figure>
+    <div id="process-section-transition" class="mobile">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,128L21.8,149.3C43.6,171,87,213,131,218.7C174.5,224,218,192,262,197.3C305.5,203,349,245,393,234.7C436.4,224,480,160,524,149.3C567.3,139,611,181,655,202.7C698.2,224,742,224,785,234.7C829.1,245,873,267,916,234.7C960,203,1004,117,1047,112C1090.9,107,1135,181,1178,218.7C1221.8,256,1265,256,1309,234.7C1352.7,213,1396,171,1418,149.3L1440,128L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path></svg>
+    </div>
   </article>
 </template>
 
@@ -78,7 +81,7 @@ export default {
     this.thirdSection = document.getElementById('third-section');
     this.forthSection = document.getElementById('forth-section');
 
-    if (this.width < 641) {
+    if (this.width < 777) {
       this.mobileView = true;
     } else {
       this.mobileView = false;
@@ -158,13 +161,16 @@ article {
   align-items: center;
   align-content: center;
   color: var(--secondary);
-  padding-bottom: 30px;
+  
 }
 .desktop {
   display: none;
 }
 .mobile {
   display: block;
+}
+.chat-photo {
+  margin-bottom: 20px;
 }
 #gallery-transition-layer {
   height: 30px;
@@ -184,6 +190,14 @@ h2 {
   line-height: 1;
   margin-bottom: 30px;
 }
+p {
+  text-align: left;
+  width: 100%;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.15rem;
+  margin-bottom: 5%;
+}
 .thought {
   display:flex;
   background-color:#fff;
@@ -198,6 +212,9 @@ h2 {
   z-index: 2;
   margin-bottom: -25px;
   /*box-shadow: 10px 10px 5px;*/
+}
+.thought p {
+  text-align: center;
 }
 .thought:before,
 .thought:after {
@@ -293,6 +310,10 @@ h2 {
 }
 #forth-section {
   margin-top: 15px;
+}
+#process-section-transition {
+  width: 100%;
+  margin-bottom: -4px;
 }
 @keyframes float2 {
   0% {
