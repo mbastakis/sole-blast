@@ -1,6 +1,12 @@
 <template>
   <div id="contact-us">
-    <svg class="transition-contact" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,320L21.8,282.7C43.6,245,87,171,131,170.7C174.5,171,218,245,262,256C305.5,267,349,213,393,176C436.4,139,480,117,524,106.7C567.3,96,611,96,655,112C698.2,128,742,160,785,149.3C829.1,139,873,85,916,90.7C960,96,1004,160,1047,165.3C1090.9,171,1135,117,1178,80C1221.8,43,1265,21,1309,53.3C1352.7,85,1396,171,1418,213.3L1440,256L1440,0L1418.2,0C1396.4,0,1353,0,1309,0C1265.5,0,1222,0,1178,0C1134.5,0,1091,0,1047,0C1003.6,0,960,0,916,0C872.7,0,829,0,785,0C741.8,0,698,0,655,0C610.9,0,567,0,524,0C480,0,436,0,393,0C349.1,0,305,0,262,0C218.2,0,175,0,131,0C87.3,0,44,0,22,0L0,0Z"></path></svg>
+    <svg class="transition-contact" viewBox="0 0 1440 320">
+      <path
+        fill="#ffffff"
+        fill-opacity="1"
+        d="M0,320L21.8,282.7C43.6,245,87,171,131,170.7C174.5,171,218,245,262,256C305.5,267,349,213,393,176C436.4,139,480,117,524,106.7C567.3,96,611,96,655,112C698.2,128,742,160,785,149.3C829.1,139,873,85,916,90.7C960,96,1004,160,1047,165.3C1090.9,171,1135,117,1178,80C1221.8,43,1265,21,1309,53.3C1352.7,85,1396,171,1418,213.3L1440,256L1440,0L1418.2,0C1396.4,0,1353,0,1309,0C1265.5,0,1222,0,1178,0C1134.5,0,1091,0,1047,0C1003.6,0,960,0,916,0C872.7,0,829,0,785,0C741.8,0,698,0,655,0C610.9,0,567,0,524,0C480,0,436,0,393,0C349.1,0,305,0,262,0C218.2,0,175,0,131,0C87.3,0,44,0,22,0L0,0Z"
+      ></path>
+    </svg>
 
     <div id="last-section-container">
       <div id="contact-section">
@@ -34,8 +40,12 @@
         </div>
       </div>
       <div class="blob">
-        <svg viewBox="0 0 200 200" >
-          <path fill="#282e5c" d="M53.7,-58.8C61.2,-46.2,53.2,-23.1,51.9,-1.2C50.7,20.6,56.3,41.2,48.8,51.9C41.2,62.5,20.6,63.2,0.1,63.1C-20.4,63,-40.8,62.1,-56.5,51.4C-72.3,40.8,-83.4,20.4,-78.9,4.5C-74.5,-11.5,-54.4,-22.9,-38.7,-35.6C-22.9,-48.2,-11.5,-62,5.8,-67.8C23.1,-73.6,46.2,-71.5,53.7,-58.8Z" transform="translate(100 100)" />
+        <svg viewBox="0 0 200 200">
+          <path
+            fill="#282e5c"
+            d="M53.7,-58.8C61.2,-46.2,53.2,-23.1,51.9,-1.2C50.7,20.6,56.3,41.2,48.8,51.9C41.2,62.5,20.6,63.2,0.1,63.1C-20.4,63,-40.8,62.1,-56.5,51.4C-72.3,40.8,-83.4,20.4,-78.9,4.5C-74.5,-11.5,-54.4,-22.9,-38.7,-35.6C-22.9,-48.2,-11.5,-62,5.8,-67.8C23.1,-73.6,46.2,-71.5,53.7,-58.8Z"
+            transform="translate(100 100)"
+          />
         </svg>
       </div>
     </div>
@@ -212,52 +222,13 @@
   color: #282e5c;
 }
 </style>
-.contact-container {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 3fr 3fr;
-  grid-template-rows: 5fr 5fr 5fr;
-  grid-auto-columns: 1fr;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "img-1 img-2"
-    "text text"
-    "img-3 img-4";
-}
-.contact-img {
-  width: 100%;
-  height: 100%;
-}
-.contact-img img {
-  border-radius: 2.5rem;
-}
-.contact-img-1 {
-  grid-area: img-1;
-  transform: translateY(35%);
-}
-.contact-img-1 img {
-  margin-left: 8vw;
-}
-.contact-img-2 {
-  grid-area: img-2;
-  transform: translateY(40%);
-}
-.contact-img-2 img {
-  margin-left: 25vw;
-}
-.contact-img-3 {
-  grid-area: img-3;
-  transform: translateY(-20%);
-  width: 50%;
-}
-.contact-img-3 img {
-  margin-left: 14vw;
-}
-.contact-img-4 {
-  grid-area: img-4;
-  width: 30%;
-}
-.contact-img-4 img {
-  transform: translateY(-35%);
-  margin-left: 20vw;
-}
+.contact-container { width: 100%; display: grid; grid-template-columns: 3fr 3fr;
+grid-template-rows: 5fr 5fr 5fr; grid-auto-columns: 1fr; grid-auto-flow: row;
+grid-template-areas: "img-1 img-2" "text text" "img-3 img-4"; } .contact-img {
+width: 100%; height: 100%; } .contact-img img { border-radius: 2.5rem; }
+.contact-img-1 { grid-area: img-1; transform: translateY(35%); } .contact-img-1
+img { margin-left: 8vw; } .contact-img-2 { grid-area: img-2; transform:
+translateY(40%); } .contact-img-2 img { margin-left: 25vw; } .contact-img-3 {
+grid-area: img-3; transform: translateY(-20%); width: 50%; } .contact-img-3 img
+{ margin-left: 14vw; } .contact-img-4 { grid-area: img-4; width: 30%; }
+.contact-img-4 img { transform: translateY(-35%); margin-left: 20vw; }

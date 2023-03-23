@@ -1,9 +1,40 @@
 <template>
   <div id="navbar">
-    <svg @click="open_ham_menu" id="ham-icon" fill="none" viewBox="0 0 40 40"><path stroke="#fff" stroke-linecap="round" stroke-width="1.5" d="M8.75 11.25h22.5M8.75 19.25h22.5M8.75 27.25h22.5" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:#e8e6e3;"></path></svg>
+    <svg @click="open_ham_menu" id="ham-icon" fill="none" viewBox="0 0 40 40">
+      <path
+        stroke="#fff"
+        stroke-linecap="round"
+        stroke-width="1.5"
+        d="M8.75 11.25h22.5M8.75 19.25h22.5M8.75 27.25h22.5"
+        data-darkreader-inline-stroke=""
+        style="--darkreader-inline-stroke: #e8e6e3"
+      ></path>
+    </svg>
 
     <div id="ham-list">
-      <svg @click="close_ham_menu" style="color: rgb(40, 46, 92); --darkreader-inline-color:#f4dc41; --darkreader-inline-fill:currentColor;" width="16" id="X-icon" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16" data-darkreader-inline-color="" data-darkreader-inline-fill=""> <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" fill="#282e5c" data-darkreader-inline-fill="" style="--darkreader-inline-fill:#f4dc41;"></path> </svg>
+      <svg
+        @click="close_ham_menu"
+        style="
+          color: rgb(40, 46, 92);
+          --darkreader-inline-color: #f4dc41;
+          --darkreader-inline-fill: currentColor;
+        "
+        width="16"
+        id="X-icon"
+        height="16"
+        fill="currentColor"
+        class="bi bi-x"
+        viewBox="0 0 16 16"
+        data-darkreader-inline-color=""
+        data-darkreader-inline-fill=""
+      >
+        <path
+          d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+          fill="#282e5c"
+          data-darkreader-inline-fill=""
+          style="--darkreader-inline-fill: #f4dc41"
+        ></path>
+      </svg>
 
       <div id="ham-top-list">
         <div class="ham-item">Gallery</div>
@@ -19,9 +50,7 @@
       <li>Gallery</li>
       <li>Your Sole</li>
     </ul>
-    <div id="logo">
-      uniqueSole
-    </div>
+    <div id="logo">uniqueSole</div>
     <ul id="right-list" class="nav-list">
       <li>F.A.Q</li>
       <li>About Us</li>
@@ -34,12 +63,12 @@ export default {
   methods: {
     open_ham_menu() {
       const ham_list = document.querySelector("#ham-list");
-      ham_list.style.left = '0';
+      ham_list.style.left = "0";
     },
     close_ham_menu() {
       const ham_list = document.querySelector("#ham-list");
-      ham_list.style.left = '-50%';
-    }
+      ham_list.style.left = "-50%";
+    },
   },
 };
 </script>
@@ -108,16 +137,16 @@ export default {
   margin-bottom: 20px;
 }
 
-@media (min-width:641px) { 
+@media (min-width: 641px) {
   #logo {
     font-size: 7vw;
     margin-top: 30px;
   }
 }
 
-@media (min-width:961px) { 
+@media (min-width: 961px) {
   #ham-list,
-  #ham-icon{
+  #ham-icon {
     display: none;
   }
 
@@ -167,7 +196,7 @@ export default {
   .nav-list li:hover {
     color: var(--secondary);
   }
-  
+
   #right-list {
     padding-right: 40px;
   }

@@ -4,16 +4,12 @@ import {
   Scene,
   PerspectiveCamera,
   WebGLRenderer,
-  AmbientLight,
   GLTFLoader,
   Clock,
   ACESFilmicToneMapping,
   sRGBEncoding,
   HemisphereLight,
-  HemisphereLightHelper,
   DirectionalLight,
-  DirectionalLightHelper,
-  OrbitControls,
 } from "three-full";
 
 Vue.use(Vuex);
@@ -41,8 +37,8 @@ export default new Vuex.Store({
       state.renderer.setPixelRatio(window.devicePixelRatio);
       state.renderer.setSize(state.width, state.height);
       state.renderer.toneMapping = ACESFilmicToneMapping;
-			state.renderer.toneMappingExposure = 1;
-			state.renderer.outputEncoding = sRGBEncoding;
+      state.renderer.toneMappingExposure = 1;
+      state.renderer.outputEncoding = sRGBEncoding;
       el.appendChild(state.renderer.domElement);
     },
     INITIALIZE_CAMERA(state) {
@@ -60,23 +56,22 @@ export default new Vuex.Store({
       // Light
       // LIGHTS
 
-				const hemiLight = new HemisphereLight( 0xffffff, 0xffffff, 0.6 );
-				hemiLight.color.setHSL( 0.6, 1, 0.6 );
-				hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
-				hemiLight.position.set(25, 25, 0);
-				state.scene.add( hemiLight );
+      const hemiLight = new HemisphereLight(0xffffff, 0xffffff, 0.6);
+      hemiLight.color.setHSL(0.6, 1, 0.6);
+      hemiLight.groundColor.setHSL(0.095, 1, 0.75);
+      hemiLight.position.set(25, 25, 0);
+      state.scene.add(hemiLight);
 
-				// const hemiLightHelper = new HemisphereLightHelper( hemiLight, 10 );
-				// state.scene.add( hemiLightHelper );
+      // const hemiLightHelper = new HemisphereLightHelper( hemiLight, 10 );
+      // state.scene.add( hemiLightHelper );
 
-				//
+      //
 
-				const dirLight = new DirectionalLight( 0xffffff, 1 );
-				dirLight.color.setHSL( 0.1, 1, 0.95 );
-				dirLight.position.set(30, 40, -45);
-				dirLight.position.multiplyScalar( 30 );
-				state.scene.add( dirLight );
-				
+      const dirLight = new DirectionalLight(0xffffff, 1);
+      dirLight.color.setHSL(0.1, 1, 0.95);
+      dirLight.position.set(30, 40, -45);
+      dirLight.position.multiplyScalar(30);
+      state.scene.add(dirLight);
 
       // const dirLightHelper = new DirectionalLightHelper( dirLight, 10 );
       // state.scene.add( dirLightHelper );
@@ -94,9 +89,9 @@ export default new Vuex.Store({
       // Controller
       // function render() {
 
-			// 	state.renderer.render( state.scene, state.camera );
+      // 	state.renderer.render( state.scene, state.camera );
 
-			// }
+      // }
       // state.controls = new OrbitControls( state.camera, state.renderer.domElement );
       // state.controls.addEventListener( 'change', render ); // use if there is no animation loop
       // state.controls.minDistance = 20;
@@ -107,10 +102,10 @@ export default new Vuex.Store({
       const loader = new GLTFLoader();
       loader.load(
         "/optimized_2.glb",
-        gltf => {
+        (gltf) => {
           state.model = gltf.scene;
           state.model.position.set(-10, 5, 0);
-          state.model.rotation.y = Math.PI / 7 ;
+          state.model.rotation.y = Math.PI / 7;
 
           gltf.scene.scale.set(
             state.shoe_size,
@@ -128,7 +123,7 @@ export default new Vuex.Store({
           state.renderer.render(state.scene, state.camera);
         },
         undefined,
-        error => {
+        (error) => {
           console.error(error);
         }
       );
@@ -141,7 +136,7 @@ export default new Vuex.Store({
   },
   actions: {
     INIT({ /*state,*/ commit }, { width, height, el }) {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         commit("SET_VIEWPORT_SIZE", { width, height });
         commit("INITIALIZE_RENDERER", el);
         commit("INITIALIZE_CAMERA");
@@ -164,6 +159,6 @@ export default new Vuex.Store({
         }
         dispatch("ANIMATE");
       });
-    }
-  }
+    },
+  },
 });

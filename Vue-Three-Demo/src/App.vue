@@ -18,8 +18,8 @@ export default {
     herosection: HeroSection,
     minigallery: MiniGallery,
     processsection: ProcessSection,
-    contactus: ContactUs
-  }
+    contactus: ContactUs,
+  },
 };
 </script>
 

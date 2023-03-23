@@ -1,6 +1,5 @@
 <template>
   <div id="hero-section">
-    
     <navbar></navbar>
 
     <div id="floating-section">
@@ -28,7 +27,6 @@
     </div>
 
     <div id="transition-layer"></div>
-
   </div>
 </template>
 
@@ -40,7 +38,7 @@ import anime from "animejs";
 export default {
   components: {
     viewport: ViewPort,
-    navbar: Navbar
+    navbar: Navbar,
   },
   mounted() {
     let elt = document.querySelectorAll("#hero-slider > *");
@@ -49,9 +47,9 @@ export default {
       translateX: "-100%",
       duration: 12000,
       easing: "linear",
-      loop: true
+      loop: true,
     });
-  }
+  },
 };
 </script>
 
@@ -84,7 +82,7 @@ export default {
 
 #floating-section {
   display: flex;
-  flex-direction:column-reverse;
+  flex-direction: column-reverse;
   align-items: center;
   margin-top: -100px;
 }
@@ -133,12 +131,12 @@ span {
   border-top-left-radius: 1.5rem;
 }
 
-@media (min-width:481px)  {
+@media (min-width: 481px) {
   #floating-section {
     margin-top: -80px;
   }
 }
-@media (min-width:641px)  {
+@media (min-width: 641px) {
   #floating-section {
     margin-top: -30px;
   }
@@ -154,7 +152,7 @@ span {
     border-top-left-radius: 3.5rem;
   }
 }
-@media (min-width:961px)  {
+@media (min-width: 961px) {
   #floating-section {
     margin-top: 40px;
   }
@@ -167,7 +165,7 @@ span {
     font-size: 7.5em;
   }
 }
-@media (min-width:1281px)  {
+@media (min-width: 1281px) {
   #floating-section {
     flex-direction: row;
     justify-content: center;

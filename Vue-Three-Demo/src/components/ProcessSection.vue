@@ -26,19 +26,19 @@
       </div>
     </section>
     <div class="right-chat mobile">
-      <img src="../assets/email-card-phone.png" alt="">
+      <img src="../assets/email-card-phone.png" alt="" />
     </div>
     <figure id="first-figure" class="desktop">
-      <img src="../assets/email-card.jpg" alt />
+      <img src="../assets/email-card.jpg" alt="" />
     </figure>
 
     <figure id="second-figure" class="desktop">
-      <img src="../assets/shoes_card.jpg" alt />
+      <img src="../assets/shoes_card.jpg" alt="" />
     </figure>
     <section id="third-section" class="left-chat">
       <div>
         <h2>Sketch & Approval</h2>
-        <img src="../assets/shoes_card.jpg" alt class="mobile chat-photo"/>
+        <img src="../assets/shoes_card.jpg" alt="" class="mobile chat-photo" />
         <p>
           We create a basic sketch of your design and send it your way. Now you
           only have to give us the green light to start painting.
@@ -49,7 +49,11 @@
     <section id="forth-section" class="left-chat">
       <div>
         <h2>From sketch to reality</h2>
-        <img src="../assets/alien_shoe_showcase_phone.jpg" alt class="mobile chat-photo"/>
+        <img
+          src="../assets/alien_shoe_showcase_phone.jpg"
+          alt=""
+          class="mobile chat-photo"
+        />
         <p class="left-text-allign">
           Our artists get to work, painting every detail onto your shoe. It's a
           mini masterpiece on your feet! We ship straight to your doorstep. Get
@@ -61,7 +65,13 @@
       <img src="../assets/alien_shoe_showcase.jpg" alt />
     </figure>
     <div id="process-section-transition" class="mobile">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,128L21.8,149.3C43.6,171,87,213,131,218.7C174.5,224,218,192,262,197.3C305.5,203,349,245,393,234.7C436.4,224,480,160,524,149.3C567.3,139,611,181,655,202.7C698.2,224,742,224,785,234.7C829.1,245,873,267,916,234.7C960,203,1004,117,1047,112C1090.9,107,1135,181,1178,218.7C1221.8,256,1265,256,1309,234.7C1352.7,213,1396,171,1418,149.3L1440,128L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#ffffff"
+          fill-opacity="1"
+          d="M0,128L21.8,149.3C43.6,171,87,213,131,218.7C174.5,224,218,192,262,197.3C305.5,203,349,245,393,234.7C436.4,224,480,160,524,149.3C567.3,139,611,181,655,202.7C698.2,224,742,224,785,234.7C829.1,245,873,267,916,234.7C960,203,1004,117,1047,112C1090.9,107,1135,181,1178,218.7C1221.8,256,1265,256,1309,234.7C1352.7,213,1396,171,1418,149.3L1440,128L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"
+        ></path>
+      </svg>
     </div>
   </article>
 </template>
@@ -75,11 +85,11 @@ export default {
     mobileView: null,
   }),
   mounted() {
-    window.addEventListener('resize', this.changeDimensions);
-    this.firstSection = document.getElementById('first-section');
-    this.secondSection = document.getElementById('second-section');
-    this.thirdSection = document.getElementById('third-section');
-    this.forthSection = document.getElementById('forth-section');
+    window.addEventListener("resize", this.changeDimensions);
+    this.firstSection = document.getElementById("first-section");
+    this.secondSection = document.getElementById("second-section");
+    this.thirdSection = document.getElementById("third-section");
+    this.forthSection = document.getElementById("forth-section");
 
     if (this.width < 777) {
       this.mobileView = true;
@@ -89,36 +99,36 @@ export default {
     }
   },
   unmounted() {
-    window.removeEventListener('resize', this.changeDimensions);
+    window.removeEventListener("resize", this.changeDimensions);
   },
   methods: {
     changeDimensions() {
       this.width = document.documentElement.clientWidth;
-      
+
       if (this.mobileView == true && this.width >= 777) {
-        console.log('desk check');
+        console.log("desk check");
         this.mobileView = false;
         this.switchToDesktop();
       } else if (this.mobileView == false && this.width < 777) {
-        console.log('mobile check');
+        console.log("mobile check");
         this.mobileView = true;
         this.switchToMobile();
       }
     },
     switchToDesktop() {
-      this.firstSection.classList.remove('thought');
-      this.secondSection.classList.remove('left-chat');
-      this.thirdSection.classList.remove('left-chat');
-      this.forthSection.classList.remove('left-chat');
+      this.firstSection.classList.remove("thought");
+      this.secondSection.classList.remove("left-chat");
+      this.thirdSection.classList.remove("left-chat");
+      this.forthSection.classList.remove("left-chat");
     },
     switchToMobile() {
-      this.firstSection.classList.add('thought');
-      this.secondSection.classList.add('left-chat');
-      this.thirdSection.classList.add('left-chat');
-      this.forthSection.classList.add('left-chat');
-    }
-  }
-}
+      this.firstSection.classList.add("thought");
+      this.secondSection.classList.add("left-chat");
+      this.thirdSection.classList.add("left-chat");
+      this.forthSection.classList.add("left-chat");
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -161,7 +171,6 @@ article {
   align-items: center;
   align-content: center;
   color: var(--secondary);
-  
 }
 .desktop {
   display: none;
@@ -199,16 +208,16 @@ p {
   margin-bottom: 5%;
 }
 .thought {
-  display:flex;
-  background-color:#fff;
-  padding:20px;
+  display: flex;
+  background-color: #fff;
+  padding: 20px;
   border-radius: 1.5rem;
   width: 90vw;
   margin-top: 80px;
-  position:relative;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   z-index: 2;
   margin-bottom: -25px;
   /*box-shadow: 10px 10px 5px;*/
@@ -218,30 +227,27 @@ p {
 }
 .thought:before,
 .thought:after {
-  content:"";
-  background-color:#fff;
-  border-radius:50%;
-  display:block;
-  position:absolute;
-  z-index:-1;
+  content: "";
+  background-color: #fff;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  z-index: -1;
 }
 .thought:before {
-  width:44px;
-  height:44px;
-  top:-12px;
-  left:28px;
-  box-shadow:-50px 30px 0 -12px #fff;
+  width: 44px;
+  height: 44px;
+  top: -12px;
+  left: 28px;
+  box-shadow: -50px 30px 0 -12px #fff;
 }
 .thought:after {
-  bottom:-10px;
-  right:26px;
-  width:30px;
-  height:30px;
-  box-shadow:40px -34px 0 0 #fff,
-             -28px -6px 0 -2px #fff,
-             -24px 17px 0 -6px #fff,
-             -5px 25px 0 -10px #fff;
-  
+  bottom: -10px;
+  right: 26px;
+  width: 30px;
+  height: 30px;
+  box-shadow: 40px -34px 0 0 #fff, -28px -6px 0 -2px #fff,
+    -24px 17px 0 -6px #fff, -5px 25px 0 -10px #fff;
 }
 .left-chat {
   transform: translatey(0px);

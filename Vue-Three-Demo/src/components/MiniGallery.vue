@@ -1,6 +1,11 @@
 <template>
   <div class="mini-gallery">
-    <div id="header"><h1>A Gallery of Sole-ful <br> Creations</h1></div>
+    <div id="header">
+      <h1>
+        A Gallery of Sole-ful <br />
+        Creations
+      </h1>
+    </div>
     <div class="mini-gallery-container-phone">
       <div class="Picture-1 img">
         <img src="../assets/adv_6.png" />
@@ -64,7 +69,7 @@
 
 <script>
 export default {
-  props: {}
+  props: {},
 };
 </script>
 
@@ -92,19 +97,19 @@ export default {
 }
 .mini-gallery img {
   border-radius: 1em;
-  width: 100%
+  width: 100%;
 }
 .mini-gallery-container-tablet,
 .mini-gallery-container-desktop {
   display: none;
 }
 
-@media (min-width:641px)  {
+@media (min-width: 641px) {
   #header h1 {
     font-size: 3em;
     color: var(--secondary);
   }
-  .mini-gallery-container-phone  {
+  .mini-gallery-container-phone {
     display: none;
   }
   .mini-gallery-container-desktop {
@@ -122,15 +127,17 @@ export default {
     display: flex;
     gap: 10px;
   }
-  .Picture-8, .Picture-9 {
+  .Picture-8,
+  .Picture-9 {
     width: 50%;
   }
-  .Picture-8 img, .Picture-9 img{
+  .Picture-8 img,
+  .Picture-9 img {
     height: 100%;
   }
 }
 
-@media (min-width:961px)  {
+@media (min-width: 961px) {
   #header h1 {
     font-size: 5em;
     color: var(--secondary);
@@ -144,8 +151,8 @@ export default {
     width: 90vw;
   }
   .vertical-photos-1 {
-    display: grid; 
-    grid-template-columns: 0.9fr 0.9fr 1.2fr; 
+    display: grid;
+    grid-template-columns: 0.9fr 0.9fr 1.2fr;
     grid-template-rows: 0.3fr 0.58fr 0.26fr 0.36fr 0.3fr;
     gap: 10px 10px;
     grid-template-areas:
@@ -153,9 +160,9 @@ export default {
       "Picture-13 Picture-13 Picture-12"
       "Picture-13 Picture-13 Picture-14"
       "Picture-15 Picture-15 Picture-14"
-      "Picture-15 Picture-15 Picture-16"
+      "Picture-15 Picture-15 Picture-16";
   }
-  .img img{
+  .img img {
     max-width: 100%;
     max-height: 100%;
   }
@@ -192,5 +199,4 @@ export default {
     grid-area: Picture-17;
   }
 }
-
 </style>
