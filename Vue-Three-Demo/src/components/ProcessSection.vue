@@ -37,7 +37,10 @@
     </figure>
     <section id="third-section" class="left-chat">
       <div>
-        <h2>Sketch & Approval</h2>
+        <h2>
+          Sketch &<br />
+          Approval
+        </h2>
         <img src="../assets/shoes_card.jpg" alt="" class="mobile chat-photo" />
         <p>
           We create a basic sketch of your design and send it your way. Now you
@@ -338,6 +341,26 @@ p {
     transform: translatey(0px);
   }
 }
+@media screen and (min-width: 481px) {
+  p {
+    font-size: 1.3rem;
+  }
+  .left-chat {
+    padding: 30px;
+  }
+}
+@media screen and (min-width: 641px) {
+  h1,
+  h2 {
+    font-size: 4.25rem;
+  }
+  .left-chat {
+    padding: 35px;
+  }
+  p {
+    font-size: 1.65rem;
+  }
+}
 @media screen and (min-width: 777px) {
   .desktop {
     display: block;
@@ -380,23 +403,11 @@ p {
     padding: 5vmin;
     box-shadow: -4px -4px 8px rgba(0, 0, 0, 0.4);
   }
-  .thought {
-    border-radius: 0px;
-  }
-  .thought::after {
-    display: none;
-  }
-  .left-chat {
-    border-radius: 0;
-  }
-  .left-chat::after {
-    display: none;
-  }
   #first-section {
     box-shadow: none;
   }
   #first-section h1 {
-    margin-top: 30px;
+    margin-top: 30%;
   }
   #second-section {
     z-index: 2;
@@ -424,7 +435,6 @@ p {
     margin: 0 auto 10vh 0;
     position: sticky;
     top: 0;
-    overflow: hidden;
     box-shadow: 4px -4px 8px rgba(0, 0, 0, 0.4);
   }
   figure:nth-of-type(1),
@@ -479,12 +489,11 @@ p {
     flex-direction: column;
     align-items: center;
     height: 100%;
-    padding: 1rem;
   }
   h1,
   h2 {
-    margin: 15% 0 auto;
-    font-size: calc(5vmin + 3vmax);
+    margin: 30% 0 auto;
+    font-size: 3.7em;
     text-align: center;
     font-weight: 700;
     line-height: 1;
@@ -495,11 +504,27 @@ p {
     width: 100%;
     font-weight: 400;
     font-style: italic;
-    font-size: calc(1.5vmin + 1.75vmax);
+    font-size: 2.3rem;
     margin-bottom: 5%;
   }
   .left-text-allign {
     text-align: left;
+  }
+}
+@media (min-width: 961px) {
+  h1,
+  h2,
+  #first-section h1 {
+    font-size: 4.29em;
+    margin-top: 20%;
+  }
+}
+@media (min-width: 1025px) {
+  h1,
+  h2,
+  #first-section h1 {
+    font-size: 5.18em;
+    margin-top: 20%;
   }
 }
 </style>

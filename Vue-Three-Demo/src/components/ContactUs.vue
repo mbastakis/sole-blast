@@ -85,6 +85,7 @@
     #898acb 99%
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dabed3', endColorstr='#898acb',GradientType=0 );
+  overflow: hidden;
 }
 .desktop {
   display: none;
@@ -96,7 +97,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  overflow: hidden;
+  z-index: 2;
 }
 #contact-section {
   width: min(95%, 1600px);
@@ -132,10 +133,10 @@
   left: 0;
   fill: var(--secondary);
   width: 30vmax;
-  z-index: 1;
   animation: move 15s ease-in-out infinite;
   transform-origin: 50% 50%;
   overflow: hidden;
+  z-index: 2;
 }
 @keyframes move {
   0% {
@@ -168,7 +169,7 @@
   cursor: pointer;
 }
 .email-container {
-  width: 80vw;
+  width: min(80vw, 1200px);
 }
 .btn--primary {
   background: #7f8ff4;
@@ -221,14 +222,48 @@
 :-ms-input-placeholder {
   color: #282e5c;
 }
+.transition-contact {
+  z-index: 0;
+  position: relative;
+}
+.transition-contact path {
+  z-index: 4;
+}
+@media (min-width: 481px) {
+  .btn--inside {
+    margin-left: -20%;
+  }
+}
+@media (min-width: 641px) {
+  .btn--inside {
+    margin-left: -15%;
+  }
+  @keyframes move {
+    0% {
+      transform: scale(1) translate(-60px, 30%);
+    }
+    20% {
+      transform: scale(0.8, 1) translate(90vw, -13%) rotate(160deg);
+    }
+    40% {
+      transform: scale(0.9, 1) translate(-160px, -75%) rotate(1deg);
+    }
+    60% {
+      transform: scale(1.1) translate(80vw, -30%) rotate(80deg);
+    }
+    80% {
+      transform: scale(1.5) translate(20vw, -40%) rotate(-90deg);
+    }
+    100% {
+      transform: scale(1) translate(-60px, 30%);
+    }
+  }
+}
+@media (min-width: 961px) {
+  .btn--inside {
+    margin-left: -10%;
+  }
+}
+@media (min-width: 481px) {
+}
 </style>
-.contact-container { width: 100%; display: grid; grid-template-columns: 3fr 3fr;
-grid-template-rows: 5fr 5fr 5fr; grid-auto-columns: 1fr; grid-auto-flow: row;
-grid-template-areas: "img-1 img-2" "text text" "img-3 img-4"; } .contact-img {
-width: 100%; height: 100%; } .contact-img img { border-radius: 2.5rem; }
-.contact-img-1 { grid-area: img-1; transform: translateY(35%); } .contact-img-1
-img { margin-left: 8vw; } .contact-img-2 { grid-area: img-2; transform:
-translateY(40%); } .contact-img-2 img { margin-left: 25vw; } .contact-img-3 {
-grid-area: img-3; transform: translateY(-20%); width: 50%; } .contact-img-3 img
-{ margin-left: 14vw; } .contact-img-4 { grid-area: img-4; width: 30%; }
-.contact-img-4 img { transform: translateY(-35%); margin-left: 20vw; }

@@ -103,10 +103,17 @@ export default {
 .mini-gallery-container-desktop {
   display: none;
 }
-
-@media (min-width: 641px) {
+@media (min-width: 481px) {
+  #header {
+    margin-bottom: 35px;
+  }
   #header h1 {
     font-size: 3em;
+  }
+}
+@media (min-width: 641px) {
+  #header h1 {
+    font-size: 3.4em;
     color: var(--secondary);
   }
   .mini-gallery-container-phone {
@@ -141,6 +148,7 @@ export default {
   #header h1 {
     font-size: 5em;
     color: var(--secondary);
+    margin: 10px 0;
   }
   .mini-gallery-container-tablet {
     display: none;

@@ -41,7 +41,7 @@
         <div class="ham-item">Your Sole</div>
       </div>
       <div id="ham-bottom-list">
-        <div class="ham-item">F.A.Q</div>
+        <div class="ham-item">F.A.Q.</div>
         <div class="ham-item">About Us</div>
       </div>
     </div>
@@ -52,7 +52,7 @@
     </ul>
     <div id="logo">uniqueSole</div>
     <ul id="right-list" class="nav-list">
-      <li>F.A.Q</li>
+      <li>F.A.Q.</li>
       <li>About Us</li>
     </ul>
   </div>

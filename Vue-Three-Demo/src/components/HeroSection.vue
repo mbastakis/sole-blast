@@ -154,7 +154,7 @@ span {
 }
 @media (min-width: 961px) {
   #floating-section {
-    margin-top: 40px;
+    margin-top: 50px;
   }
   #floating-quote {
     transform: translateY(-150px);
@@ -163,6 +163,11 @@ span {
   h1,
   span {
     font-size: 7.5em;
+  }
+}
+@media (min-width: 1025px) {
+  #floating-section {
+    margin-top: 100px;
   }
 }
 @media (min-width: 1281px) {
