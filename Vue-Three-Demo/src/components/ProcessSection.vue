@@ -2,7 +2,7 @@
   <article>
     <div id="gallery-transition-layer"></div>
     <section id="first-section" class="thought">
-      <div>
+      <div class="section-text">
         <h1>Our Design Process</h1>
         <p class="left-text-allign">
           At our business, we believe that shoes are more than just a pair of
@@ -10,9 +10,12 @@
           idea and turn it into a beautiful and wholly unique shoe design.
         </p>
       </div>
+      <div id="design_process" class="desktop">
+        <img src="../assets/design_process.png" alt="">
+      </div>
     </section>
 
-    <section id="second-section" class="left-chat">
+    <section id="second-section" class="left-chat reveal">
       <div>
         <h2 id="communication-header">
           Share Your<br />
@@ -28,14 +31,14 @@
     <div class="right-chat mobile">
       <img src="../assets/email-card-phone.png" alt="" />
     </div>
-    <figure id="first-figure" class="desktop">
+    <figure id="first-figure" class="desktop reveal">
       <img src="../assets/email-card.jpg" alt="" />
     </figure>
 
-    <figure id="second-figure" class="desktop">
+    <figure id="second-figure" class="desktop reveal">
       <img src="../assets/shoes_card.jpg" alt="" />
     </figure>
-    <section id="third-section" class="left-chat">
+    <section id="third-section" class="left-chat reveal">
       <div>
         <h2>
           Sketch &<br />
@@ -49,7 +52,7 @@
       </div>
     </section>
 
-    <section id="forth-section" class="left-chat">
+    <section id="forth-section" class="left-chat reveal">
       <div>
         <h2>From sketch to reality</h2>
         <img
@@ -64,7 +67,7 @@
         </p>
       </div>
     </section>
-    <figure id="third-figure" class="desktop">
+    <figure id="third-figure" class="desktop reveal">
       <img src="../assets/alien_shoe_showcase.jpg" alt />
     </figure>
     <div id="process-section-transition" class="mobile">
@@ -86,8 +89,22 @@ export default {
     leftChat: [],
     thought: null,
     mobileView: null,
+    sections: [],
+    figures: [],
+    revealChecks: [false, false, false],
+    currentReveal: 0,
   }),
   mounted() {
+    this.sections = [
+      document.getElementById('second-section'),
+      document.getElementById('second-figure'),
+      document.getElementById('forth-section'),
+    ];
+    this.figures = [
+      document.getElementById('first-figure'),
+      document.getElementById('third-section'),
+      document.getElementById('third-figure'),
+    ];
     window.addEventListener("resize", this.changeDimensions);
     this.firstSection = document.getElementById("first-section");
     this.secondSection = document.getElementById("second-section");
@@ -109,11 +126,9 @@ export default {
       this.width = document.documentElement.clientWidth;
 
       if (this.mobileView == true && this.width >= 777) {
-        console.log("desk check");
         this.mobileView = false;
         this.switchToDesktop();
       } else if (this.mobileView == false && this.width < 777) {
-        console.log("mobile check");
         this.mobileView = true;
         this.switchToMobile();
       }
@@ -123,12 +138,53 @@ export default {
       this.secondSection.classList.remove("left-chat");
       this.thirdSection.classList.remove("left-chat");
       this.forthSection.classList.remove("left-chat");
+      window.addEventListener("scroll", this.reveal);
+      window.addEventListener("scroll", this.resetReveal);
     },
     switchToMobile() {
       this.firstSection.classList.add("thought");
       this.secondSection.classList.add("left-chat");
       this.thirdSection.classList.add("left-chat");
       this.forthSection.classList.add("left-chat");
+      window.removeEventListener("scroll", this.reveal);
+      window.removeEventListener("scroll", this.resetReveal);
+    },
+    resetReveal() {
+      var elementTop = document.getElementById("first-section").getBoundingClientRect().top;
+      if (elementTop > 0) {
+        this.revealChecks = [false, false, false];
+        if (this.currentReveal === 3) {
+          window.addEventListener("scroll", this.reveal);
+        }
+        this.sections[0].classList.remove("active");
+        this.sections[1].classList.remove("active");
+        this.sections[2].classList.remove("active");
+        this.figures[0].classList.remove("active");
+        this.figures[1].classList.remove("active");
+        this.figures[2].classList.remove("active");
+        this.currentReveal = 0;
+      };
+    },
+    reveal() {
+      var windowHeight = window.innerHeight;
+      var elementTop = this.sections[this.currentReveal].getBoundingClientRect().top;
+      var elementVisible = 0;
+      if (elementTop < windowHeight - elementVisible) {
+        this.sections[this.currentReveal].scrollIntoView({ behavior: "instant", block: "start", inline: "start" });
+        this.figures[this.currentReveal].scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
+        this.sections[this.currentReveal].classList.add("active");
+        this.figures[this.currentReveal].classList.add("active");
+        if(!this.revealChecks[this.currentReveal]){
+          this.revealChecks = [false, false, false];
+          this.revealChecks[this.currentReveal] = true;
+          setTimeout(() => {
+            this.currentReveal += 1;
+            if(this.currentReveal === 3) {
+              window.removeEventListener("scroll", this.reveal);
+            }
+          }, 500);
+        }
+      }
     },
   },
 };
@@ -379,18 +435,9 @@ p {
     height: 120px;
     width: 100%;
     border-bottom-right-radius: 3.5rem;
-    border-bottom-left-radius: 0;
+    border-bottom-left-radius: 3.5rem;
     background-color: var(--primary);
-  }
-  #gallery-transition-layer::after {
-    content: "";
-    width: 100px;
-    height: 100px;
-    float: right;
-    margin-right: calc(100% - (50%) - 100px);
-    margin-top: 120px;
-    background-color: white;
-    border-bottom-right-radius: 10rem;
+    z-index: 1;
   }
   section {
     background: var(--primary);
@@ -405,6 +452,16 @@ p {
   }
   #first-section {
     box-shadow: none;
+    width: 100%;
+    display: flex;
+    padding: 0;
+    border-top-right-radius: 3.5rem;
+    border-top-left-radius: 3.5rem;
+    margin-top: 100px;
+  }
+  #first-section .section-text {
+    width: calc(50% + 1px);
+    padding: 5vmin 5vmin 10vh 5vmin;
   }
   #first-section h1 {
     margin-top: 30%;
@@ -435,7 +492,23 @@ p {
     margin: 0 auto 10vh 0;
     position: sticky;
     top: 0;
+    overflow: hidden;
     box-shadow: 4px -4px 8px rgba(0, 0, 0, 0.4);
+  }
+  #design_process {
+    z-index: 0;
+    width: calc(50% + 1px);
+    margin: 0 0 10vh auto;
+    position: sticky;
+    top: 0;
+  }
+  #design_process img{
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+    border-top-left-radius: 3.5rem;
+    border-top-right-radius: 3.5rem;
+    border-bottom-left-radius: 3.5rem;
   }
   figure:nth-of-type(1),
   section:nth-of-type(1) {
@@ -509,6 +582,13 @@ p {
   }
   .left-text-allign {
     text-align: left;
+  }
+  .reveal {
+    opacity: 0;
+    transition: 1s all ease;
+  }
+  .reveal.active {
+    opacity: 1;
   }
 }
 @media (min-width: 961px) {
