@@ -75,6 +75,7 @@ export default new Vuex.Store({
 
         // Calculate shoe size
         state.shoe_size = 100;
+        state.camera_offset = 0;
 
         // GLFT
         state.loader = new GLTFLoader();
@@ -84,9 +85,25 @@ export default new Vuex.Store({
             state.model = gltf.scene;
 
             let currentWidth = window.innerWidth;
-            if (currentWidth >= 481) {
-              // state.model.position.y += 2;
-              // state.model.position.z += 83;
+            if (currentWidth >= 1281) {
+              state.shoe_size = 110;
+              state.camera_offset = 3.5;
+            }
+            else if (currentWidth >= 961) {
+              state.shoe_size = 100;
+              state.camera_offset = 2.9;
+            }
+            else if (currentWidth >= 641) {
+              state.shoe_size = 83;
+              state.camera_offset = 2.2;
+            }
+            else if (currentWidth >= 481) {
+              state.shoe_size = 65;
+              state.camera_offset = 2;
+            }
+            else if (currentWidth >= 320) {
+              state.shoe_size = 55;
+              state.camera_offset = 1.7;
             }
 
             gltf.scene.scale.set(
@@ -98,7 +115,7 @@ export default new Vuex.Store({
             state.camera.lookAt(
               state.model.position.x,
               state.model.position.y,
-              state.model.position.z
+              state.model.position.z - state.camera_offset
             );
           },
           undefined,
@@ -122,10 +139,12 @@ export default new Vuex.Store({
       window.requestAnimationFrame(() => {
         if (state.model != null) {
           let elapsedTime = state.clock.getElapsedTime();
+          
           if ( elapsedTime < 3) {
             // Load Animation
             state.model.rotation.y = -easeInOutBack(elapsedTime / 3) *  (Math.PI * 2.1);
-          } else {
+          }
+          else {
             // Idle Animation
             if (state.flag == true) {
               state.flag = false;

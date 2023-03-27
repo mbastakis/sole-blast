@@ -38,4 +38,9 @@ export default {
     height: 672px;
   }
 }
+@media (min-width:1281px)  { 
+  .viewport {
+    height: 772px;
+  }
+}
 </style>
