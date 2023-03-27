@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { mapMutations, mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   data() {
@@ -12,7 +12,6 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["RESIZE"]),
     ...mapActions(["INIT", "ANIMATE"]),
   },
   mounted() {

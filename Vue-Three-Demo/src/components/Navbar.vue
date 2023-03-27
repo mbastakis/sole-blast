@@ -37,23 +37,29 @@
       </svg>
 
       <div id="ham-top-list">
-        <div class="ham-item">Gallery</div>
-        <div class="ham-item">Your Sole</div>
+        <div class="ham-item">
+          <a href="./gallery.html" class="ham-item">Gallery</a>
+        </div>
+        <div class="ham-item">
+          <a href="./yoursole.html" class="ham-item">Your Sole</a>
+        </div>
       </div>
       <div id="ham-bottom-list">
-        <div class="ham-item">F.A.Q.</div>
-        <div class="ham-item">About Us</div>
+        <div class="ham-item">
+          <a href="./faq.html" class="ham-item">F.A.Q.</a>
+        </div>
+        <a href="./aboutus.html" class="ham-item">About Us</a>
       </div>
     </div>
 
     <ul id="left-list" class="nav-list">
-      <li>Gallery</li>
-      <li>Your Sole</li>
+      <li><a href="/gallery.html">Gallery</a></li>
+      <li><a href="/yoursole.html">Your Sole</a></li>
     </ul>
     <div id="logo">uniqueSole</div>
     <ul id="right-list" class="nav-list">
-      <li>F.A.Q.</li>
-      <li>About Us</li>
+      <li><a href="/faq.html">F.A.Q.</a></li>
+      <li><a href="/aboutus.html">About Us</a></li>
     </ul>
   </div>
 </template>
@@ -136,7 +142,10 @@ export default {
   justify-content: center;
   margin-bottom: 20px;
 }
-
+.ham-item {
+  text-decoration: none;
+  color: var(--secondary);
+}
 @media (min-width: 641px) {
   #logo {
     font-size: 7vw;
@@ -176,6 +185,13 @@ export default {
     text-decoration: none;
     padding-bottom: 2px;
     margin-top: 40px;
+  }
+  .nav-list li a {
+    text-decoration: none;
+    color: var(--primary);
+  }
+  .nav-list li a:hover {
+    color: var(--secondary);
   }
   .nav-list li::after {
     content: "";
