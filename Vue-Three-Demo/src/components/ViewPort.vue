@@ -29,8 +29,13 @@ export default {
 
 <style>
 .viewport {
-  height: 700px;
+  height: 572px;
   width: 100%;
   margin: 0 auto;
+}
+@media (min-width:481px)  { 
+  .viewport {
+    height: 672px;
+  }
 }
 </style>

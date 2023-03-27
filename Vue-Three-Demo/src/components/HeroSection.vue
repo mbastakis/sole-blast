@@ -168,6 +168,7 @@ span {
 @media (min-width: 1025px) {
   #floating-section {
     margin-top: 100px;
+    margin-bottom: 100px;
   }
 }
 @media (min-width: 1281px) {
