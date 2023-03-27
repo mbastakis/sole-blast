@@ -11,7 +11,7 @@
         </p>
       </div>
       <div id="design_process" class="desktop">
-        <img src="../assets/design_process.png" alt="">
+        <img src="../assets/design_process.png" alt="" />
       </div>
     </section>
 
@@ -96,14 +96,14 @@ export default {
   }),
   mounted() {
     this.sections = [
-      document.getElementById('second-section'),
-      document.getElementById('second-figure'),
-      document.getElementById('forth-section'),
+      document.getElementById("second-section"),
+      document.getElementById("second-figure"),
+      document.getElementById("forth-section"),
     ];
     this.figures = [
-      document.getElementById('first-figure'),
-      document.getElementById('third-section'),
-      document.getElementById('third-figure'),
+      document.getElementById("first-figure"),
+      document.getElementById("third-section"),
+      document.getElementById("third-figure"),
     ];
     window.addEventListener("resize", this.changeDimensions);
     this.firstSection = document.getElementById("first-section");
@@ -150,7 +150,9 @@ export default {
       window.removeEventListener("scroll", this.resetReveal);
     },
     resetReveal() {
-      var elementTop = document.getElementById("first-section").getBoundingClientRect().top;
+      var elementTop = document
+        .getElementById("first-section")
+        .getBoundingClientRect().top;
       if (elementTop > 0) {
         this.revealChecks = [false, false, false];
         if (this.currentReveal === 3) {
@@ -163,23 +165,32 @@ export default {
         this.figures[1].classList.remove("active");
         this.figures[2].classList.remove("active");
         this.currentReveal = 0;
-      };
+      }
     },
     reveal() {
       var windowHeight = window.innerHeight;
-      var elementTop = this.sections[this.currentReveal].getBoundingClientRect().top;
+      var elementTop =
+        this.sections[this.currentReveal].getBoundingClientRect().top;
       var elementVisible = 0;
       if (elementTop < windowHeight - elementVisible) {
-        this.sections[this.currentReveal].scrollIntoView({ behavior: "instant", block: "start", inline: "start" });
-        this.figures[this.currentReveal].scrollIntoView({ behavior: "smooth", block: "start", inline: "start" });
+        this.sections[this.currentReveal].scrollIntoView({
+          behavior: "instant",
+          block: "start",
+          inline: "start",
+        });
+        this.figures[this.currentReveal].scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "start",
+        });
         this.sections[this.currentReveal].classList.add("active");
         this.figures[this.currentReveal].classList.add("active");
-        if(!this.revealChecks[this.currentReveal]){
+        if (!this.revealChecks[this.currentReveal]) {
           this.revealChecks = [false, false, false];
           this.revealChecks[this.currentReveal] = true;
           setTimeout(() => {
             this.currentReveal += 1;
-            if(this.currentReveal === 3) {
+            if (this.currentReveal === 3) {
               window.removeEventListener("scroll", this.reveal);
             }
           }, 500);
@@ -502,7 +513,7 @@ p {
     position: sticky;
     top: 0;
   }
-  #design_process img{
+  #design_process img {
     object-fit: cover;
     width: 100%;
     height: 100vh;

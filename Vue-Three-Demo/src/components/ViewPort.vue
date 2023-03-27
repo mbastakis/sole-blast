@@ -33,12 +33,12 @@ export default {
   width: 100%;
   margin: 0 auto;
 }
-@media (min-width:481px)  { 
+@media (min-width: 481px) {
   .viewport {
     height: 672px;
   }
 }
-@media (min-width:1281px)  { 
+@media (min-width: 1281px) {
   .viewport {
     height: 772px;
   }
