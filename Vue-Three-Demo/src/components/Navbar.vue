@@ -1,50 +1,17 @@
 <template>
   <div id="navbar">
-    <svg @click="open_ham_menu" id="ham-icon" fill="none" viewBox="0 0 40 40">
-      <path
-        stroke="#fff"
-        stroke-linecap="round"
-        stroke-width="1.5"
-        d="M8.75 11.25h22.5M8.75 19.25h22.5M8.75 27.25h22.5"
-        data-darkreader-inline-stroke=""
-        style="--darkreader-inline-stroke: #e8e6e3"
-      ></path>
-    </svg>
-
-    <div id="ham-list">
-      <svg
-        @click="close_ham_menu"
-        style="
-          color: rgb(40, 46, 92);
-          --darkreader-inline-color: #f4dc41;
-          --darkreader-inline-fill: currentColor;
-        "
-        width="16"
-        id="X-icon"
-        height="16"
-        fill="currentColor"
-        class="bi bi-x"
-        viewBox="0 0 16 16"
-        data-darkreader-inline-color=""
-        data-darkreader-inline-fill=""
-      >
-        <path
-          d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
-          fill="#282e5c"
-          data-darkreader-inline-fill=""
-          style="--darkreader-inline-fill: #f4dc41"
-        ></path>
-      </svg>
-
-      <div id="ham-top-list">
+    <div id="mobile-nav" tabindex="0">
+      <div id="ham-top-list" class="ham-list">
+        <!--TODO: Add a Logo -->
         <div class="ham-item">
+          <font-awesome-icon :icon="['fas', 'gallery-thumbnails']" />
           <a href="./gallery.html" class="ham-item">Gallery</a>
         </div>
         <div class="ham-item">
           <a href="./yoursole.html" class="ham-item">Your Sole</a>
         </div>
       </div>
-      <div id="ham-bottom-list">
+      <div id="ham-bottom-list" class="ham-list">
         <div class="ham-item">
           <a href="./faq.html" class="ham-item">F.A.Q.</a>
         </div>
@@ -52,15 +19,28 @@
       </div>
     </div>
 
-    <ul id="left-list" class="nav-list">
-      <li><a href="/gallery.html">Gallery</a></li>
-      <li><a href="/yoursole.html">Your Sole</a></li>
-    </ul>
-    <div id="logo">uniqueSole</div>
-    <ul id="right-list" class="nav-list">
-      <li><a href="/faq.html">F.A.Q.</a></li>
-      <li><a href="/aboutus.html">About Us</a></li>
-    </ul>
+    <div class="desktop-nav">
+      <svg @click="open_ham_menu" id="ham-icon" fill="none" viewBox="0 0 40 40">
+        <path
+          stroke="#fff"
+          stroke-linecap="round"
+          stroke-width="1.5"
+          d="M8.75 11.25h22.5M8.75 19.25h22.5M8.75 27.25h22.5"
+          data-darkreader-inline-stroke=""
+          style="--darkreader-inline-stroke: #e8e6e3"
+        ></path>
+      </svg>
+
+      <ul id="left-list" class="nav-list">
+        <li><a href="/gallery.html">Gallery</a></li>
+        <li><a href="/yoursole.html">Your Sole</a></li>
+      </ul>
+      <div id="logo">Sole-Blast</div>
+      <ul id="right-list" class="nav-list">
+        <li><a href="/faq.html">F.A.Q.</a></li>
+        <li><a href="/aboutus.html">About Us</a></li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -68,93 +48,93 @@
 export default {
   methods: {
     open_ham_menu() {
-      const ham_list = document.querySelector("#ham-list");
+      const ham_list = document.getElementById("mobile-nav");
+      ham_list.focus();
       ham_list.style.left = "0";
+      ham_list.addEventListener("focusout", this.focusout_ham);
     },
     close_ham_menu() {
-      const ham_list = document.querySelector("#ham-list");
+      const ham_list = document.getElementById("mobile-nav");
       ham_list.style.left = "-50%";
+      ham_list.removeEventListener("focusout", this.focusout_ham);
     },
+    focusout_ham() {
+      console.log("focusout");
+      this.close_ham_menu();
+    }
   },
 };
 </script>
 
 <style scoped>
 #navbar {
-  height: 80px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: var(--primary);
   margin: 0px;
   padding: 0px;
 }
-.nav-list {
-  display: none;
+.desktop-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-2xs);
 }
 #logo {
   font-family: "Ubuntu", sans-serif;
-  letter-spacing: -1.4px;
-  font-size: 8vw;
-  transform: rotate(-5deg);
+  font-size: var(--step-4);
   cursor: pointer;
   user-select: none;
+  margin: 0 auto 0 0;
 }
 #ham-icon {
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  left: 20px;
-  top: 30px;
-}
-#X-icon {
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  right: 10px;
-  top: 10px;
-}
-#ham-list {
-  position: absolute;
-  height: 100vh;
-  width: 50%;
-  background-color: var(--primary);
-  color: var(--secondary);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 13vh 0 5vh 0;
+  cursor: pointer;
+  width: 3rem;
+  margin-right: auto;
   z-index: 2;
-  font-weight: 600;
-  filter: drop-shadow(10px 0px 10px var(--secondary));
+}
+.nav-list {
+  display: none;
+}
+#mobile-nav {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.2px);
+  -webkit-backdrop-filter: blur(8.2px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-top-right-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
-  font-size: 6vw;
-  left: -50%;
-  top: 0;
-  transition: left 200ms ease-in;
-}
-#ham-top-list div,
-#ham-bottom-list div {
+
+  position: absolute;
+  /*left: -50%;
+  top: 0;*/
+  height: 100vh;
+  height: 100svh;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+
+  transition: left 300ms ease-in;
+}
+#mobile-nav:focus {
+  outline: none;
+}
+.ham-list {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-bottom: 20px;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-m) var(--space-s);
 }
 .ham-item {
-  text-decoration: none;
   color: var(--secondary);
+  font-weight: 800;
+  font-size: var(--step-2);
+  text-decoration: none;
 }
-@media (min-width: 641px) {
-  #logo {
-    font-size: 7vw;
-    margin-top: 30px;
-  }
-}
-
 @media (min-width: 961px) {
-  #ham-list,
+  #mobile-nav,
   #ham-icon {
     display: none;
   }
@@ -167,7 +147,7 @@ export default {
   #logo {
     font-family: "Ubuntu", sans-serif;
     letter-spacing: -1.4px;
-    font-size: 4rem;
+    /*font-size: 4rem;*/
     transform: rotate(-5deg);
     cursor: pointer;
     user-select: none;
