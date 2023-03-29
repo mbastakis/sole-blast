@@ -13,8 +13,6 @@ import {
   AmbientLight,
   Box3,
   Vector3,
-  HemisphereLightHelper,
-  DirectionalLightHelper,
 } from "three-full";
 
 Vue.use(Vuex);
@@ -69,7 +67,7 @@ export default new Vuex.Store({
         state.hemiLight.position.set(0, 3, 6);
         state.scene.add(state.hemiLight);
         
-        state.dirLight = new DirectionalLight(0xffffff, 0.8);
+        state.dirLight = new DirectionalLight(0xffffff, 1);
         state.dirLight.position.set(200, 200, 500);
         state.dirLight.castShadow = true;
         state.dirLight.shadow.camera.top = 180;
@@ -124,10 +122,6 @@ export default new Vuex.Store({
             console.error(error);
           }
         );
-        
-        
-        
-
         resolve();
       });
     },
@@ -144,6 +138,11 @@ export default new Vuex.Store({
       function specialAnimation(t) {
         const scaleFactor = 0.1;
         state.model.scale.set(1 + scaleFactor * Math.sin(Math.PI * t), 1, 1 + scaleFactor * Math.sin(Math.PI * t));
+      }
+
+      // Smooth interpolation function for blending rotations
+      function lerp(a, b, t) {
+        return a + (b - a) * t;
       }
     
       window.requestAnimationFrame(() => {
@@ -167,16 +166,28 @@ export default new Vuex.Store({
             if (state.flag == true) {
               state.flag = false;
               state.idleElapsed = elapsedTime;
+              state.initialZRotation = null; // Reset initial z-axis rotation
             }
-            if (elapsedTime - state.idleElapsed <= 3) {
+            const timeSinceIdle = elapsedTime - state.idleElapsed;
+            if (timeSinceIdle <= 3) {
               state.model.rotation.x =
                 easeInOutBack((elapsedTime % state.idleElapsed) / 3) *
                 (Math.PI / 12);
               state.model.rotation.z =
                 (Math.cos(elapsedTime - state.idleElapsed) - 1) * (Math.PI / 22);
               state.zRot = state.model.rotation.z;
+            } else {
+              // Save the initial z-axis rotation at the end of the first 3 seconds of idle animation
+              if (state.initialZRotation === null) {
+                state.initialZRotation = state.model.rotation.z;
+              }
+
+              // Add small up and down rotation on z-axis after the first 3 seconds of idle animation
+              const zRotationAmplitude = 0.03; // Adjust this value to change the amplitude of z-axis rotation
+              const targetZRotation = state.initialZRotation + zRotationAmplitude * Math.sin((timeSinceIdle - 3) * Math.PI / 2);
+              state.model.rotation.z = lerp(state.model.rotation.z, targetZRotation, 0.1);
             }
-            state.model.position.y = initialHeight + Math.sin(elapsedTime - state.idleElapsed) * Math.PI / 80;
+            state.model.position.y = initialHeight + Math.sin(timeSinceIdle) * Math.PI / 80;
           }
           state.renderer.render(state.scene, state.camera);
         }
