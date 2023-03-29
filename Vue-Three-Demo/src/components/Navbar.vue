@@ -30,7 +30,7 @@
     </div>
 
     <div class="desktop-nav">
-      <svg @click="open_ham_menu" id="ham-icon" fill="none" viewBox="0 0 40 40">
+      <svg @click="open_ham_menu($event)" id="ham-icon" fill="none" viewBox="0 0 40 40">
         <path
           stroke="#fff"
           stroke-linecap="round"
@@ -73,7 +73,9 @@
 <script>
 export default {
   methods: {
-    open_ham_menu() {
+    open_ham_menu(event) {
+      event.stopPropagation();
+      
       const ham_list = document.getElementById("mobile-nav");
       ham_list.focus();
       ham_list.style.left = "0";
