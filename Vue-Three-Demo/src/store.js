@@ -110,7 +110,7 @@ export default new Vuex.Store({
             state.scene.add(state.model);
             state.camera.lookAt(
               state.model.position.x,
-              state.model.position.y,
+              state.model.position.y - 2,
               state.model.position.z - state.camera_offset
             );
           },
