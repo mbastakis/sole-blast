@@ -74,26 +74,27 @@ export default {
 </script>
 
 <style scoped>
+#header {
+  width: 90vw;
+  align-content: start;
+  padding: var(--space-s) 0;
+
+  font-size: var(--step--1);
+  color: var(--secondary);
+  font-weight: 900;
+}
 .mini-gallery {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#header {
-  width: 90vw;
-  margin-bottom: 25px;
-}
-#header h1 {
-  font-size: 2em;
-  color: var(--secondary);
-}
 .mini-gallery-container-phone {
   height: 100%;
   width: 90vw;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: var(--space-xs);
 }
 .mini-gallery img {
   border-radius: 1em;
@@ -103,18 +104,9 @@ export default {
 .mini-gallery-container-desktop {
   display: none;
 }
-@media (min-width: 481px) {
-  #header {
-    margin-bottom: 35px;
-  }
-  #header h1 {
-    font-size: 3em;
-  }
-}
 @media (min-width: 641px) {
-  #header h1 {
-    font-size: 3.4em;
-    color: var(--secondary);
+  #header {
+    font-size: var(--step-2);
   }
   .mini-gallery-container-phone {
     display: none;
@@ -128,11 +120,11 @@ export default {
     width: 90vw;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--space-xs)
   }
   .horizontal-photos {
     display: flex;
-    gap: 10px;
+    gap: var(--space-xs)
   }
   .Picture-8,
   .Picture-9 {
@@ -145,11 +137,6 @@ export default {
 }
 
 @media (min-width: 961px) {
-  #header h1 {
-    font-size: 5em;
-    color: var(--secondary);
-    margin: 10px 0;
-  }
   .mini-gallery-container-tablet {
     display: none;
   }
@@ -162,7 +149,7 @@ export default {
     display: grid;
     grid-template-columns: 0.9fr 0.9fr 1.2fr;
     grid-template-rows: 0.3fr 0.58fr 0.26fr 0.36fr 0.3fr;
-    gap: 10px 10px;
+    gap: var(--space-2xs) var(--space-2xs);
     grid-template-areas:
       "Picture-11 Picture-11 Picture-12"
       "Picture-13 Picture-13 Picture-12"
