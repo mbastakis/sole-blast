@@ -11,6 +11,10 @@ import {
   HemisphereLight,
   DirectionalLight,
   AmbientLight,
+  Box3,
+  Vector3,
+  HemisphereLightHelper,
+  DirectionalLightHelper,
 } from "three-full";
 
 Vue.use(Vuex);
@@ -41,11 +45,10 @@ export default new Vuex.Store({
         state.clock = new Clock();
 
         // Renderer
-        state.renderer = new WebGLRenderer({ antialias: true, alpha: true });
+        state.renderer = new WebGLRenderer({ antialias: true/*, alpha: true */});
         state.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         state.renderer.setSize(state.width, state.height);
         state.renderer.toneMapping = ACESFilmicToneMapping;
-        // state.renderer.toneMappingExposure = 1;
         state.renderer.outputEncoding = sRGBEncoding;
         el.appendChild(state.renderer.domElement);
 
@@ -54,24 +57,27 @@ export default new Vuex.Store({
 
         // Camera
         state.camera = new PerspectiveCamera(
-          45,
+          75,
           state.width / state.height,
           1,
-          100
+          1000
         );
-        state.camera.position.x = 40;
 
         // Light
-        state.hemiLight = new HemisphereLight(0xffffff, 0xffffff, 0.2);
-        state.hemiLight.position.set(0, 43, 0);
+        state.hemiLight = new HemisphereLight(0xffffff, 0x444444, 0.6);
+        state.hemiLight.position.set(100, 200, 100);
         state.scene.add(state.hemiLight);
-
+        
         state.dirLight = new DirectionalLight(0xffffff, 0.8);
-        state.dirLight.color.setHSL(0.1, 1, 0.95);
-        state.dirLight.position.set(40, 1, 0);
+        state.dirLight.position.set(400, 200, -200);
+        state.dirLight.castShadow = true;
+        state.dirLight.shadow.camera.top = 180;
+        state.dirLight.shadow.camera.bottom = -100;
+        state.dirLight.shadow.camera.left = -120;
+        state.dirLight.shadow.camera.right = 120;
         state.scene.add(state.dirLight);
 
-        state.scene.add(new AmbientLight(0x404040));
+        state.scene.add(new AmbientLight(0x404040, 0.5));
 
         // Calculate shoe size
         state.shoe_size = 100;
@@ -83,42 +89,39 @@ export default new Vuex.Store({
           "/shoe.glb",
           (gltf) => {
             state.model = gltf.scene;
-
-            let currentWidth = window.innerWidth;
-            if (currentWidth >= 1281) {
-              state.shoe_size = 110;
-              state.camera_offset = 3.5;
-            } else if (currentWidth >= 961) {
-              state.shoe_size = 100;
-              state.camera_offset = 2.9;
-            } else if (currentWidth >= 641) {
-              state.shoe_size = 83;
-              state.camera_offset = 2.2;
-            } else if (currentWidth >= 481) {
-              state.shoe_size = 65;
-              state.camera_offset = 2;
-            } else if (currentWidth >= 320) {
-              state.shoe_size = 55;
-              state.camera_offset = 1.7;
-            }
-
-            gltf.scene.scale.set(
-              state.shoe_size,
-              state.shoe_size,
-              state.shoe_size
-            );
             state.scene.add(state.model);
-            state.camera.lookAt(
-              state.model.position.x,
-              state.model.position.y - 2,
-              state.model.position.z - state.camera_offset
-            );
+            
+            const box = new Box3().setFromObject(state.model);
+            const boxCenter = box.getCenter(new Vector3());
+
+            const boxSize = box.getSize(new Vector3());
+            const maxDimension = Math.max(boxSize.x, boxSize.y, boxSize.z);
+            const scaleFactor = 2 / maxDimension;
+            state.model.scale.set(scaleFactor, scaleFactor, scaleFactor);
+
+            const boxSizeAfterScaling = boxSize.multiplyScalar(scaleFactor);
+            const distance = boxSizeAfterScaling.y / 2 / Math.tan((state.camera.fov * Math.PI / 180) / 2);
+
+            // Update the camera's position to fit the state.model within the viewport
+            const cameraOffset = Math.max(boxSizeAfterScaling.x, boxSizeAfterScaling.y, boxSizeAfterScaling.z);
+            // state.camera.position.set(boxCenter.x, boxCenter.y, boxCenter.z + cameraOffset);
+            state.camera.position.set(0,0, 2);
+
+            // Set the camera to look at the center of the bounding box
+            state.camera.lookAt(boxCenter);
+            console.log(state.camera.position);
+
+            state.camera.near = distance / 10;
+            state.camera.far = distance * 10;
+            state.camera.updateProjectionMatrix();
           },
           undefined,
           (error) => {
             console.error(error);
           }
         );
+        
+        
 
         resolve();
       });
@@ -136,26 +139,26 @@ export default new Vuex.Store({
         if (state.model != null) {
           let elapsedTime = state.clock.getElapsedTime();
 
-          if (elapsedTime < 3) {
-            // Load Animation
-            state.model.rotation.y =
-              -easeInOutBack(elapsedTime / 3) * (Math.PI * 2.1);
-          } else {
-            // Idle Animation
-            if (state.flag == true) {
-              state.flag = false;
-              state.idleElapsed = elapsedTime;
-            }
-            if (elapsedTime - state.idleElapsed <= 3) {
-              state.model.rotation.z =
-                easeInOutBack((elapsedTime % state.idleElapsed) / 3) *
-                (-Math.PI / 7);
-            }
-            state.model.position.y =
-              Math.sin(elapsedTime - state.idleElapsed) * Math.PI;
-            state.model.rotation.x =
-              (Math.cos(elapsedTime - state.idleElapsed) - 1) * (Math.PI / 22);
-          }
+          // if (elapsedTime < 3) {
+          //   // Load Animation
+          //   state.model.rotation.y =
+          //     -easeInOutBack(elapsedTime / 3) * (Math.PI * 2.1);
+          // } else {
+          //   // Idle Animation
+          //   if (state.flag == true) {
+          //     state.flag = false;
+          //     state.idleElapsed = elapsedTime;
+          //   }
+          //   if (elapsedTime - state.idleElapsed <= 3) {
+          //     state.model.rotation.z =
+          //       easeInOutBack((elapsedTime % state.idleElapsed) / 3) *
+          //       (-Math.PI / 7);
+          //   }
+          //   state.model.position.y =
+          //     Math.sin(elapsedTime - state.idleElapsed) * Math.PI;
+          //   state.model.rotation.x =
+          //     (Math.cos(elapsedTime - state.idleElapsed) - 1) * (Math.PI / 22);
+          // }
           state.renderer.render(state.scene, state.camera);
         }
         dispatch("ANIMATE");
