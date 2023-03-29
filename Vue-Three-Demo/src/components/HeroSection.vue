@@ -3,30 +3,32 @@
     <navbar></navbar>
 
     <div id="floating-section">
+      <viewport></viewport>
       <div id="floating-quote">
         <p>Nike Air Force Supreme</p>
         <h2>The Alien Invasion</h2>
         <p>Handdrawn</p>
       </div>
-      <viewport></viewport>
     </div>
+    
+    <div>
+      <div id="hero-slider">
+        <span
+          >Express your <span class="slider-color">Soul</span> with your
+          <span class="slider-color">Soles</span>.
+        </span>
+        <h1>
+          &nbsp; Express your <span class="slider-color">Soul</span> with your
+          <span class="slider-color">Soles</span>.
+        </h1>
+        <span
+          >&nbsp; Express your <span class="slider-color">Soul</span> with your
+          <span class="slider-color">Soles</span>.
+        </span>
+      </div>
 
-    <div id="hero-slider">
-      <span
-        >Express your <span class="slider-color">Soul</span> with your
-        <span class="slider-color">Soles</span>.
-      </span>
-      <h1>
-        &nbsp; Express your <span class="slider-color">Soul</span> with your
-        <span class="slider-color">Soles</span>.
-      </h1>
-      <span
-        >&nbsp; Express your <span class="slider-color">Soul</span> with your
-        <span class="slider-color">Soles</span>.
-      </span>
-    </div>
-
-    <div id="transition-layer"></div>
+      <div id="transition-layer"></div>
+  </div>
   </div>
 </template>
 
@@ -45,7 +47,7 @@ export default {
     anime({
       targets: elt,
       translateX: "-100%",
-      duration: 12000,
+      duration: 8000,
       easing: "linear",
       loop: true,
     });
@@ -78,31 +80,19 @@ export default {
     #898acb 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dabed3', endColorstr='#898acb',GradientType=1 );
-}
-
-#floating-section {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  margin-top: -100px;
-}
-#floating-quote {
-  position: absolute;
+  height: 100vh;
+  height: 100svh;
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  padding-left: 20px;
-  transform: translateY(-70px);
-  color: var(--primary);
+  justify-content: space-between;
+}
+
+#transition-layer {
+  background-color: white;
+  height: var(--space-m);
   width: 100%;
-  overflow-x: hidden;
-}
-#floating-quote p {
-  font-weight: 600;
-  font-size: 0.9em;
-}
-#floating-quote h2 {
-  font-size: 2em;
+  border-top-right-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
 }
 #hero-slider {
   user-select: none;
@@ -112,77 +102,34 @@ export default {
   white-space: nowrap;
   color: var(--primary);
   overflow: hidden;
+  margin-top: auto;
 }
-h1,
-span {
-  display: inline-block;
+#floating-section {
+  height: 100%;
+  position: relative;
+}
+#floating-quote {
+  position: absolute;
+  bottom: clamp(8%, 10%, 50%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+  padding: 0 var(--space-l);
+  color: var(--primary);
+}
+#floating-quote p {
+  font-weight: 600;
+  font-size: var(--step--1);
+}
+#floating-quote h2 {
+  font-size: var(--step-2);
+}
+#hero-slider > * {
   font-weight: 900;
-  font-size: 4.8em;
+  font-size: 4.5rem;
+  font-size: clamp(4.5rem, 3.4rem + 5.5vw, 10rem);
 }
 .slider-color {
-  font-size: 1em;
   color: var(--secondary);
-}
-#transition-layer {
-  background-color: white;
-  height: 40px;
-  width: 100%;
-  border-top-right-radius: 1.5rem;
-  border-top-left-radius: 1.5rem;
-}
-
-@media (min-width: 481px) {
-  #floating-section {
-    margin-top: -80px;
-  }
-}
-@media (min-width: 641px) {
-  #floating-section {
-    margin-top: -30px;
-  }
-  #floating-quote {
-    transform: translateY(-110px);
-  }
-  h1,
-  span {
-    font-size: 6.5em;
-  }
-  #transition-layer {
-    border-top-right-radius: 3.5rem;
-    border-top-left-radius: 3.5rem;
-  }
-}
-@media (min-width: 961px) {
-  #floating-section {
-    margin-top: 50px;
-  }
-  #floating-quote {
-    transform: translateY(-150px);
-    padding-left: 50px;
-  }
-  h1,
-  span {
-    font-size: 7.5em;
-  }
-}
-@media (min-width: 1025px) {
-  #floating-section {
-    margin-top: 100px;
-    margin-bottom: 100px;
-  }
-}
-@media (min-width: 1281px) {
-  #floating-section {
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 150px;
-  }
-  #floating-quote {
-    transform: translateY(0);
-  }
-  h1,
-  span {
-    font-size: 9em;
-  }
 }
 </style>
