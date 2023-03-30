@@ -248,53 +248,24 @@ article {
 .mobile {
   display: block;
 }
-.chat-photo {
-  margin-top: -15px;
-  margin-bottom: 20px;
-}
 #gallery-transition-layer {
-  height: 30px;
+  height: var(--space-m);
   width: 100%;
-  border-bottom-right-radius: 3.5rem;
-  border-bottom-left-radius: 3.5rem;
+  border-bottom-right-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
   background-color: var(--primary);
-}
-section {
-  width: 90vw;
-  margin: 20px 0;
-}
-h1,
-h2 {
-  font-size: 3em;
-  font-weight: 700;
-  line-height: 1;
-  margin-bottom: 30px;
-}
-p {
-  text-align: left;
-  width: 100%;
-  font-weight: 400;
-  font-style: italic;
-  font-size: 1.15rem;
-  margin-bottom: 5%;
 }
 .thought {
   display: flex;
   background-color: #fff;
-  padding: 20px;
   border-radius: 1.5rem;
-  width: 90vw;
-  margin-top: 80px;
   position: relative;
   align-items: center;
   justify-content: center;
   text-align: center;
   z-index: 2;
-  margin-bottom: -25px;
-  /*box-shadow: 10px 10px 5px;*/
-}
-.thought p {
-  text-align: center;
+  margin: var(--space-l);
+  padding: var(--space-m);
 }
 .thought:before,
 .thought:after {
@@ -326,17 +297,15 @@ p {
   background-color: var(--primary);
   border-radius: 1.5rem;
   position: relative;
-  /*box-shadow: 10px 10px 5px;*/
-  padding: 20px;
-  margin: 100px 0 50px 0;
+  margin: var(--space-m);
+  padding: var(--space-m);
 }
 .left-chat::after {
   transform: translatey(0px);
-  animation: float2 5s ease-in-out infinite;
+  animation: float 5s ease-in-out infinite;
   content: ".";
   font-weight: bold;
   -webkit-text-fill-color: var(--primary);
-  /*text-shadow: 11px 11px 5px var(--secondary);*/
   text-align: left;
   font-size: 55px;
   width: 55px;
@@ -348,9 +317,53 @@ p {
   display: block;
   bottom: -35px;
   left: 5px;
-  /*box-shadow: 11px 11px 5px var(--secondary);*/
   z-index: -2;
 }
+@keyframes float {
+  0% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+  55% {
+    transform: translatey(-20px);
+  }
+  60% {
+    line-height: 10px;
+  }
+  100% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+}
+</style>
+.chat-photo {
+  margin-top: -15px;
+  margin-bottom: 20px;
+}
+section {
+  width: 90vw;
+}
+h1,
+h2 {
+  font-size: var(--step-5);
+  padding: 0 var(--space-3xs) var(--space-s) var(--space-3xs);
+  font-weight: 800;
+  line-height: 1;
+}
+p {
+  text-align: left;
+  width: 100%;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.15rem;
+}
+
+.thought p {
+  text-align: center;
+}
+
+
+
 .right-chat {
   display: flex;
   justify-content: center;
@@ -392,22 +405,7 @@ p {
   width: 100%;
   margin-bottom: -4px;
 }
-@keyframes float2 {
-  0% {
-    line-height: 30px;
-    transform: translatey(0px);
-  }
-  55% {
-    transform: translatey(-20px);
-  }
-  60% {
-    line-height: 10px;
-  }
-  100% {
-    line-height: 30px;
-    transform: translatey(0px);
-  }
-}
+
 @media screen and (min-width: 481px) {
   p {
     font-size: 1.3rem;
@@ -618,4 +616,3 @@ p {
     margin-top: 20%;
   }
 }
-</style>
