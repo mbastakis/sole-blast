@@ -30,7 +30,7 @@
     </div>
 
     <div class="desktop-nav">
-      <svg @click="open_ham_menu" id="ham-icon" fill="none" viewBox="0 0 40 40">
+      <svg @click="open_ham_menu($event)" id="ham-icon" fill="none" viewBox="0 0 40 40">
         <path
           stroke="#fff"
           stroke-linecap="round"
@@ -73,21 +73,30 @@
 <script>
 export default {
   methods: {
-    open_ham_menu() {
+    open_ham_menu(event) {
+      event.stopPropagation();
+      
       const ham_list = document.getElementById("mobile-nav");
       ham_list.focus();
       ham_list.style.left = "0";
       ham_list.addEventListener("focusout", this.focusout_ham);
+      document.addEventListener("click", this.click_ham);
     },
     close_ham_menu() {
       const ham_list = document.getElementById("mobile-nav");
       ham_list.style.left = "-100%";
       ham_list.removeEventListener("focusout", this.focusout_ham);
+      document.removeEventListener("click", this.click_ham);
     },
     focusout_ham() {
-      console.log("focusout");
       this.close_ham_menu();
-    }
+    },
+    click_ham(event) {
+      const ham_list = document.getElementById("mobile-nav");
+      if (!ham_list.contains(event.target)) {
+        this.close_ham_menu();
+      } 
+    },
   },
 };
 </script>
