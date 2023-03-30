@@ -120,11 +120,11 @@ export default {
     width: 90vw;
     display: flex;
     flex-direction: column;
-    gap: var(--space-xs)
+    gap: var(--space-xs);
   }
   .horizontal-photos {
     display: flex;
-    gap: var(--space-xs)
+    gap: var(--space-xs);
   }
   .Picture-8,
   .Picture-9 {
