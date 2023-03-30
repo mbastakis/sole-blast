@@ -161,7 +161,7 @@ export default {
   align-items: center;
   z-index: 3;
 
-  transition: left 300ms ease-in;
+  transition: left 350ms ease-in-out;
 }
 #mobile-nav:focus {
   outline: none;
