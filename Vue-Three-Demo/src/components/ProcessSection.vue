@@ -447,38 +447,26 @@ p {
   #second-section {
     z-index: 2;
   }
-  #third-section {
-    z-index: 4;
-  }
-  #forth-section {
-    box-shadow: 0 -19px 19px 2px rgba(0, 0, 0, 0.1);
-    z-index: 6;
-  }
   #first-figure {
     z-index: 1;
+    margin: 0 0 10vh auto;
+  }
+  #third-section {
+    z-index: 4;
+    margin: 0 0 10vh auto;
+    box-shadow: -4px -4px 8px rgba(0, 0, 0, 0.4);
+  }
+  #forth-section {
+    margin: 0 auto 0 0;
+    box-shadow: 4px -10px 8px rgba(0, 0, 0, 0.4);
+    z-index: 6;
   }
   #second-figure {
     z-index: 3;
   }
   #third-figure {
     z-index: 5;
-  }
-
-  figure:nth-of-type(1n) {
-    margin: 0 0 10vh auto;
-    box-shadow: -4px -4px 8px rgba(0, 0, 0, 0.4);
-  }
-  figure:nth-of-type(2n) {
-    margin: 0 auto 10vh 0;
-    box-shadow: -4px -4px 8px rgba(0, 0, 0, 0.4);
-  }
-  section:nth-of-type(2n) {
-    margin: 0 auto 10vh 0;
-    box-shadow: 4px -4px 8px rgba(0, 0, 0, 0.4);
-  }
-  figure:last-of-type,
-  section:last-of-type {
-    margin-bottom: 0;
+    margin: 0 0 0 auto;
   }
   section::before {
     background: inherit;
@@ -524,6 +512,3 @@ p {
   }
 }
 </style>
-@media (min-width: 961px) { h1, h2, #first-section h1 { font-size: 4.29em;
-margin-top: 20%; } } @media (min-width: 1025px) { h1, h2, #first-section h1 {
-font-size: 5.18em; margin-top: 20%; } }
