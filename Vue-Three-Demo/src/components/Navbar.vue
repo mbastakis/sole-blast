@@ -6,31 +6,51 @@
         <div>
           <!-- I want to import an svg asset I added -->
           <a href="./gallery.html" class="ham-item">
-            <img class="ham-icon" src="../assets/Gallery.svg" alt="Gallery icon">Gallery
+            <img
+              class="ham-icon"
+              src="../assets/Gallery.svg"
+              alt="Gallery icon"
+            />Gallery
           </a>
         </div>
         <div>
           <a href="./yoursole.html" class="ham-item">
-            <img class="ham-icon" src="../assets/Your Sole.svg" alt="Shoe svg"> Your Sole
+            <img
+              class="ham-icon"
+              src="../assets/Your Sole.svg"
+              alt="Shoe svg"
+            />
+            Your Sole
           </a>
         </div>
       </div>
       <div id="ham-bottom-list" class="ham-list">
         <div>
           <a href="./faq.html" class="ham-item">
-            <img class="ham-icon" src="../assets/Oustion.svg" alt="FAQ icon"> F.A.Q.
+            <img class="ham-icon" src="../assets/Oustion.svg" alt="FAQ icon" />
+            F.A.Q.
           </a>
         </div>
         <div>
           <a href="./aboutus.html" class="ham-item">
-            <img class="ham-icon" src="../assets/About Us.svg" alt="About Us icon"> About Us
+            <img
+              class="ham-icon"
+              src="../assets/About Us.svg"
+              alt="About Us icon"
+            />
+            About Us
           </a>
         </div>
       </div>
     </div>
 
     <div class="desktop-nav">
-      <svg @click="open_ham_menu($event)" id="ham-icon" fill="none" viewBox="0 0 40 40">
+      <svg
+        @click="open_ham_menu($event)"
+        id="ham-icon"
+        fill="none"
+        viewBox="0 0 40 40"
+      >
         <path
           stroke="#fff"
           stroke-linecap="round"
@@ -43,27 +63,19 @@
 
       <ul id="left-list" class="nav-list">
         <li>
-          <a href="./gallery.html">
-            Gallery
-          </a>
+          <a href="./gallery.html"> Gallery </a>
         </li>
         <li>
-          <a href="./yoursole.html">
-            Your Sole
-          </a>
+          <a href="./yoursole.html"> Your Sole </a>
         </li>
       </ul>
       <div id="logo">Sole-Blast</div>
       <ul id="right-list" class="nav-list">
         <li>
-            <a href="./faq.html">
-              F.A.Q.
-            </a>
+          <a href="./faq.html"> F.A.Q. </a>
         </li>
         <li>
-          <a href="./aboutus.html">
-            About Us
-          </a>
+          <a href="./aboutus.html"> About Us </a>
         </li>
       </ul>
     </div>
@@ -75,7 +87,7 @@ export default {
   methods: {
     open_ham_menu(event) {
       event.stopPropagation();
-      
+
       const ham_list = document.getElementById("mobile-nav");
       ham_list.focus();
       ham_list.style.left = "0";
@@ -95,7 +107,7 @@ export default {
       const ham_list = document.getElementById("mobile-nav");
       if (!ham_list.contains(event.target)) {
         this.close_ham_menu();
-      } 
+      }
     },
   },
 };
@@ -149,7 +161,7 @@ export default {
   align-items: center;
   z-index: 3;
 
-  transition: left 300ms ease-in;
+  transition: left 350ms ease-in-out;
 }
 #mobile-nav:focus {
   outline: none;
@@ -235,4 +247,5 @@ export default {
     color: var(--secondary);
   }
 }
-</style>c
+</style>
+c

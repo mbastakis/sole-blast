@@ -19,8 +19,7 @@ export default {
       width: this.$el.offsetWidth,
       height: this.$el.offsetHeight,
       el: this.$el,
-    })
-    .then(() => {
+    }).then(() => {
       this.ANIMATE();
     });
   },

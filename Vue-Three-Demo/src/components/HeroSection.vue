@@ -10,7 +10,7 @@
         <p>Handdrawn</p>
       </div>
     </div>
-    
+
     <div>
       <div id="hero-slider">
         <span
@@ -28,7 +28,7 @@
       </div>
 
       <div id="transition-layer"></div>
-  </div>
+    </div>
   </div>
 </template>
 
