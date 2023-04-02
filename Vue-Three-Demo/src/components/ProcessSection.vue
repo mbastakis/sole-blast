@@ -4,11 +4,14 @@
 
     <section id="first-section" class="thought">
       <div class="section-text">
-        <h1>Our Design Process</h1>
+        <h1>The Creation Process</h1>
         <p>
-          At our business, we believe that shoes are more than just a pair of
-          functional items to wear. That's why we take each customer's unique
-          idea and turn it into a beautiful and wholly unique shoe design.
+          We believe that shoes offer a unique opportunity to unleash your inner creativity, 
+          elevate your style and make a lasting impression. That's why we're dedicated to 
+          transforming each customer's distinct vision into an awesome one-of-a-kind shoe design.<br /><br />
+          Our imagination knows no bounds, so we also create our own captivating custom designs 
+          for you to explore. Browse our gallery, and if one of our soles speaks to your soul, 
+          don't hesitate to make it yours!
         </p>
       </div>
       <div id="design_process" class="desktop">
@@ -23,9 +26,12 @@
           Vision
         </h2>
         <p class="left-text-allign">
-          Simply provide us with your unique prompt and any details you want us
-          to include in the design. We'll then suggest the perfect shoe or work
-          with you to find the ideal canvas for your creation.
+          Simply share your shoe design idea with us, and we will bring it to life in the form
+          of a stunning pair of shoes that expresses your imagination. <br /><br />
+
+          Your idea can range from highly specific to delightfully vague, and your design can
+          span from minimalistic and elegant, to vibrant and impressive. With Sole-Blast, the
+          possibilities are endless. Experience the fusion of self-expression and exceptional style.
         </p>
       </div>
     </section>
@@ -47,8 +53,10 @@
         </h2>
         <img src="../assets/shoes_card.jpg" alt="" class="mobile chat-photo" />
         <p>
-          We create a basic sketch of your design and send it your way. Now you
-          only have to give us the green light to start painting.
+          We're committed to bringing your vision to life just as you imagined. That's 
+          why we start by creating a preliminary sketch of your design and sharing it with 
+          you for feedback and adjustments. Now, you only have to give us the green light to 
+          capture your creativity in a real pair of shoes. 
         </p>
       </div>
     </section>
@@ -62,9 +70,10 @@
           class="mobile chat-photo"
         />
         <p class="left-text-allign">
-          Our artists get to work, painting every detail onto your shoe. It's a
-          mini masterpiece on your feet! We ship straight to your doorstep. Get
-          ready to turn heads with your one-of-a-kind creation.
+          This is our specialty, creating a mini masterpiece for your feet. We'll keep you
+          updated throughout the process and then ship straight to your doorstep. <br /><br />
+
+          Get ready to pursue new adventures wearing a head-turning unique pair of shoes. 
         </p>
       </div>
     </section>
