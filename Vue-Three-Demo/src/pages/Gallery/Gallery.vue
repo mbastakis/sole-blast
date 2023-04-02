@@ -4,7 +4,12 @@
     <div class="gallery">
       <div class="gallery-container">
         <div class="gallery-item" v-for="item in items" :key="item.title">
-          <img :src="item.src" :alt="item.alt" />
+          <img
+            :src="item.src"
+            @mouseenter="mouseEnter(item)"
+            @mouseleave="mouseLeave(item)"
+            :alt="item.alt"
+          />
           <div class="gallery-item-info">
             <h3>{{ item.title }}</h3>
             <p>{{ item.description }}</p>
@@ -13,17 +18,30 @@
         </div>
       </div>
     </div>
+    <galleryItem id="galleryItemView"></galleryItem>
   </div>
 </template>
 
 <script>
 import navbar from "@/components/Navbar.vue";
+import galleryItem from "@/components/GalleryItem.vue";
+
 export default {
   data() {
     return {
+      onGalleryItemBool: false,
       items: [
         {
           src: require("@/assets/img1.png"),
+          images: [
+            require("@/assets/img2.png"),
+            require("@/assets/img3.png"),
+            require("@/assets/img4.png"),
+            require("@/assets/img5.png"),
+            require("@/assets/img6.png"),
+            require("@/assets/img7.png"),
+            require("@/assets/img8.png"),
+          ],
           alt: "Nike Shoe 1",
           title: "Design Name 1",
           description: "Nike Dunk Low Next Nature",
@@ -31,6 +49,15 @@ export default {
         },
         {
           src: require("@/assets/img1.png"),
+          images: [
+            require("@/assets/img2.png"),
+            require("@/assets/img3.png"),
+            require("@/assets/img4.png"),
+            require("@/assets/img5.png"),
+            require("@/assets/img6.png"),
+            require("@/assets/img7.png"),
+            require("@/assets/img8.png"),
+          ],
           alt: "Nike Shoe 1",
           title: "Design Name 2",
           description: "Nike Dunk Low Next Nature",
@@ -38,6 +65,15 @@ export default {
         },
         {
           src: require("@/assets/img1.png"),
+          images: [
+            require("@/assets/img2.png"),
+            require("@/assets/img3.png"),
+            require("@/assets/img4.png"),
+            require("@/assets/img5.png"),
+            require("@/assets/img6.png"),
+            require("@/assets/img7.png"),
+            require("@/assets/img8.png"),
+          ],
           alt: "Nike Shoe 1",
           title: "Design Name 3",
           description: "Nike Dunk Low Next Nature",
@@ -45,6 +81,15 @@ export default {
         },
         {
           src: require("@/assets/img1.png"),
+          images: [
+            require("@/assets/img2.png"),
+            require("@/assets/img3.png"),
+            require("@/assets/img4.png"),
+            require("@/assets/img5.png"),
+            require("@/assets/img6.png"),
+            require("@/assets/img7.png"),
+            require("@/assets/img8.png"),
+          ],
           alt: "Nike Shoe 1",
           title: "Design Name 4",
           description: "Nike Dunk Low Next Nature",
@@ -52,6 +97,15 @@ export default {
         },
         {
           src: require("@/assets/img1.png"),
+          images: [
+            require("@/assets/img2.png"),
+            require("@/assets/img3.png"),
+            require("@/assets/img4.png"),
+            require("@/assets/img5.png"),
+            require("@/assets/img6.png"),
+            require("@/assets/img7.png"),
+            require("@/assets/img8.png"),
+          ],
           alt: "Nike Shoe 1",
           title: "Design Name 5",
           description: "Nike Dunk Low Next Nature",
@@ -59,6 +113,15 @@ export default {
         },
         {
           src: require("@/assets/img1.png"),
+          images: [
+            require("@/assets/img2.png"),
+            require("@/assets/img3.png"),
+            require("@/assets/img4.png"),
+            require("@/assets/img5.png"),
+            require("@/assets/img6.png"),
+            require("@/assets/img7.png"),
+            require("@/assets/img8.png"),
+          ],
           alt: "Nike Shoe 1",
           title: "Design Name 6",
           description: "Nike Dunk Low Next Nature",
@@ -66,6 +129,15 @@ export default {
         },
         {
           src: require("@/assets/img1.png"),
+          images: [
+            require("@/assets/img2.png"),
+            require("@/assets/img3.png"),
+            require("@/assets/img4.png"),
+            require("@/assets/img5.png"),
+            require("@/assets/img6.png"),
+            require("@/assets/img7.png"),
+            require("@/assets/img8.png"),
+          ],
           alt: "Nike Shoe 1",
           title: "Design Name 7",
           description: "Nike Dunk Low Next Nature",
@@ -73,6 +145,15 @@ export default {
         },
         {
           src: require("@/assets/img1.png"),
+          images: [
+            require("@/assets/img2.png"),
+            require("@/assets/img3.png"),
+            require("@/assets/img4.png"),
+            require("@/assets/img5.png"),
+            require("@/assets/img6.png"),
+            require("@/assets/img7.png"),
+            require("@/assets/img8.png"),
+          ],
           alt: "Nike Shoe 1",
           title: "Design Name 8",
           description: "Nike Dunk Low Next Nature",
@@ -80,6 +161,15 @@ export default {
         },
         {
           src: require("@/assets/img1.png"),
+          images: [
+            require("@/assets/img2.png"),
+            require("@/assets/img3.png"),
+            require("@/assets/img4.png"),
+            require("@/assets/img5.png"),
+            require("@/assets/img6.png"),
+            require("@/assets/img7.png"),
+            require("@/assets/img8.png"),
+          ],
           alt: "Nike Shoe 1",
           title: "Design Name 9",
           description: "Nike Dunk Low Next Nature",
@@ -87,6 +177,15 @@ export default {
         },
         {
           src: require("@/assets/img1.png"),
+          images: [
+            require("@/assets/img2.png"),
+            require("@/assets/img3.png"),
+            require("@/assets/img4.png"),
+            require("@/assets/img5.png"),
+            require("@/assets/img6.png"),
+            require("@/assets/img7.png"),
+            require("@/assets/img8.png"),
+          ],
           alt: "Nike Shoe 1",
           title: "Design Name 10",
           description: "Nike Dunk Low Next Nature",
@@ -94,6 +193,15 @@ export default {
         },
         {
           src: require("@/assets/img1.png"),
+          images: [
+            require("@/assets/img2.png"),
+            require("@/assets/img3.png"),
+            require("@/assets/img4.png"),
+            require("@/assets/img5.png"),
+            require("@/assets/img6.png"),
+            require("@/assets/img7.png"),
+            require("@/assets/img8.png"),
+          ],
           alt: "Nike Shoe 1",
           title: "Design Name 11",
           description: "Nike Dunk Low Next Nature",
@@ -101,6 +209,15 @@ export default {
         },
         {
           src: require("@/assets/img1.png"),
+          images: [
+            require("@/assets/img2.png"),
+            require("@/assets/img3.png"),
+            require("@/assets/img4.png"),
+            require("@/assets/img5.png"),
+            require("@/assets/img6.png"),
+            require("@/assets/img7.png"),
+            require("@/assets/img8.png"),
+          ],
           alt: "Nike Shoe 1",
           title: "Design Name 12",
           description: "Nike Dunk Low Next Nature",
@@ -109,8 +226,22 @@ export default {
       ],
     };
   },
+  computed: {
+    onGalleryItem() {
+      return !this.onGalleryItemBool;
+    },
+  },
   components: {
     navbar,
+    galleryItem,
+  },
+  methods: {
+    mouseEnter(item) {
+      item.src = item.images[Math.floor(Math.random() * 7)];
+    },
+    mouseLeave(item) {
+      item.src = require("@/assets/img1.png");
+    },
   },
 };
 </script>
@@ -199,6 +330,23 @@ body {
   background: var(--primary);
   border-radius: 1.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.gallery-item:hover {
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+.gallery-item img:hover {
+  --transition-property: transform;
+  --transision-duration: 500ms;
+
+  transition: var(--transition-property) var(--transision-duration) ease-in-out;
+  transform: translateY(-5%);
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
 }
 .gallery-item-info {
   display: flex;
