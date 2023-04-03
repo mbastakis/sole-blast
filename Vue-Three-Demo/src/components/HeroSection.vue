@@ -14,19 +14,18 @@
     <div>
       <div id="hero-slider">
         <span
-          >Express your <span class="slider-color">Soul</span> with your
-          <span class="slider-color">Soles</span>.
-        </span>
+          >&nbsp;<span class="slider-color">Stand</span> Out,
+          <span class="slider-color">Step</span> Up.</span
+        >
         <h1>
-          &nbsp; Express your <span class="slider-color">Soul</span> with your
-          <span class="slider-color">Soles</span>.
+          &nbsp;<span class="slider-color">Stand</span> Out,
+          <span class="slider-color">Step</span> Up.
         </h1>
         <span
-          >&nbsp; Express your <span class="slider-color">Soul</span> with your
-          <span class="slider-color">Soles</span>.
-        </span>
+          >&nbsp;<span class="slider-color">Stand</span> Out,
+          <span class="slider-color">Step</span> Up.</span
+        >
       </div>
-
       <div id="transition-layer"></div>
     </div>
   </div>
@@ -47,7 +46,7 @@ export default {
     anime({
       targets: elt,
       translateX: "-100%",
-      duration: 8000,
+      duration: 5000,
       easing: "linear",
       loop: true,
     });
@@ -127,7 +126,7 @@ export default {
 #hero-slider > * {
   font-weight: 900;
   font-size: 4.5rem;
-  font-size: clamp(4.5rem, 3.4rem + 5.5vw, 10rem);
+  font-size: clamp(4.5rem, 3.4rem + 9.5vw, 13rem);
 }
 .slider-color {
   color: var(--secondary);

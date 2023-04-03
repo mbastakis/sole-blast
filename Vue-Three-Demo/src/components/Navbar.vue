@@ -69,7 +69,11 @@
           <a href="./yoursole.html"> Your Sole </a>
         </li>
       </ul>
-      <div id="logo">Sole-Blast</div>
+      <div id="logo">
+        <a href="./index.html">
+          <img src="../assets/header_logo.png" alt="" />
+        </a>
+      </div>
       <ul id="right-list" class="nav-list">
         <li>
           <a href="./faq.html"> F.A.Q. </a>
@@ -126,11 +130,12 @@ export default {
   padding: var(--space-s) var(--space-s);
 }
 #logo {
-  font-family: "Ubuntu", sans-serif;
-  font-size: var(--step-4);
   cursor: pointer;
   user-select: none;
   margin: 0 auto 0 0;
+}
+#logo img {
+  height: clamp(4rem, 3rem + 7vw, 8rem);
 }
 #ham-icon {
   cursor: pointer;
@@ -196,13 +201,6 @@ export default {
   }
   #logo {
     margin: 0 auto;
-    font-family: "Ubuntu", sans-serif;
-    letter-spacing: -1.4px;
-    /*font-size: 4rem;*/
-    transform: rotate(-5deg);
-    cursor: pointer;
-    user-select: none;
-    color: var(--primary);
   }
   .nav-list {
     display: flex;
