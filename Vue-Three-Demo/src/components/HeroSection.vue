@@ -46,7 +46,7 @@ export default {
     anime({
       targets: elt,
       translateX: "-100%",
-      duration: 5000,
+      duration: 8000,
       easing: "linear",
       loop: true,
     });

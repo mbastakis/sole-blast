@@ -5,41 +5,41 @@
         <!--TODO: Add a Logo -->
         <div>
           <!-- I want to import an svg asset I added -->
-          <a href="./gallery.html" class="ham-item">
+          <router-link to="/gallery" class="ham-item">
             <img
               class="ham-icon"
               src="../assets/Gallery.svg"
               alt="Gallery icon"
             />Gallery
-          </a>
+          </router-link>
         </div>
         <div>
-          <a href="./yoursole.html" class="ham-item">
+          <router-link to="/yoursole" class="ham-item">
             <img
               class="ham-icon"
               src="../assets/Your Sole.svg"
               alt="Shoe svg"
             />
             Your Sole
-          </a>
+          </router-link>
         </div>
       </div>
       <div id="ham-bottom-list" class="ham-list">
         <div>
-          <a href="./faq.html" class="ham-item">
+          <router-link to="/faq" class="ham-item">
             <img class="ham-icon" src="../assets/Oustion.svg" alt="FAQ icon" />
             F.A.Q.
-          </a>
+          </router-link>
         </div>
         <div>
-          <a href="./aboutus.html" class="ham-item">
+          <router-link to="/about" class="ham-item">
             <img
               class="ham-icon"
               src="../assets/About Us.svg"
               alt="About Us icon"
             />
             About Us
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
@@ -63,23 +63,23 @@
 
       <ul id="left-list" class="nav-list">
         <li>
-          <a href="./gallery.html"> Gallery </a>
+          <router-link to="/gallery"> Gallery </router-link>
         </li>
         <li>
-          <a href="./yoursole.html"> Your Sole </a>
+          <router-link to="/yoursole"> Your Sole </router-link>
         </li>
       </ul>
       <div id="logo">
-        <a href="./index.html">
+        <router-link to="/">
           <img src="../assets/header_logo.png" alt="" />
-        </a>
+        </router-link>
       </div>
       <ul id="right-list" class="nav-list">
         <li>
-          <a href="./faq.html"> F.A.Q. </a>
+          <router-link to="/faq"> F.A.Q. </router-link>
         </li>
         <li>
-          <a href="./aboutus.html"> About Us </a>
+          <router-link to="/about"> About Us </router-link>
         </li>
       </ul>
     </div>
@@ -245,4 +245,3 @@ export default {
   }
 }
 </style>
-c
