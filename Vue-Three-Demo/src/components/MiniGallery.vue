@@ -88,6 +88,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--primary);
 }
 .mini-gallery-container-phone {
   height: 100%;

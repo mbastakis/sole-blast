@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="faq">
+  <div id="faq">
     <navbar></navbar>
     <div class="header">
       <h2>Frequently Asked Questions</h2>
@@ -120,7 +120,7 @@ body {
   font-family: "Source Sans Pro", sans-serif;
 }
 
-#app {
+#faq {
   height: 100%;
   overflow: scroll;
   background: #dabed3;

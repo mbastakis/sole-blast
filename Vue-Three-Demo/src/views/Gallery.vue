@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="gallery">
     <navbar></navbar>
     <div class="gallery">
       <div class="gallery-container">
@@ -18,13 +18,11 @@
         </div>
       </div>
     </div>
-    <galleryItem id="galleryItemView"></galleryItem>
   </div>
 </template>
 
 <script>
 import navbar from "@/components/Navbar.vue";
-import galleryItem from "@/components/GalleryItem.vue";
 
 export default {
   data() {
@@ -233,7 +231,6 @@ export default {
   },
   components: {
     navbar,
-    galleryItem,
   },
   methods: {
     mouseEnter(item) {
@@ -279,7 +276,7 @@ body {
   padding: 0px;
   font-family: "Source Sans Pro", sans-serif;
 }
-#app {
+#gallery {
   display: flex;
   flex-direction: column;
   background: #dabed3;
