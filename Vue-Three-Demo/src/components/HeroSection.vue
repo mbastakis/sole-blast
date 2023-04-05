@@ -5,25 +5,25 @@
     <div id="floating-section">
       <viewport></viewport>
       <div id="floating-quote">
-        <p>Nike Air Force Supreme</p>
+        <p>Nike Air Force 1 Supreme</p>
         <h2>The Alien Invasion</h2>
-        <p>Handdrawn</p>
+        <p>Hand-Drawn</p>
       </div>
     </div>
 
     <div>
       <div id="hero-slider">
         <span
-          >&nbsp;<span class="slider-color">Stand</span> Out,
-          <span class="slider-color">Step</span> Up.</span
+          >&nbsp;<span class="slider-color">Color</span> Your Walk.
+          </span
         >
         <h1>
-          &nbsp;<span class="slider-color">Stand</span> Out,
-          <span class="slider-color">Step</span> Up.
+          &nbsp;<span class="slider-color">Color</span> Your Walk.
+          
         </h1>
         <span
-          >&nbsp;<span class="slider-color">Stand</span> Out,
-          <span class="slider-color">Step</span> Up.</span
+          >&nbsp;<span class="slider-color">Color</span> Your Walk.
+          </span
         >
       </div>
       <div id="transition-layer"></div>
