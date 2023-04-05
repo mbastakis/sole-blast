@@ -3,7 +3,12 @@
     <navbar></navbar>
     <div class="gallery">
       <div class="gallery-container">
-        <div class="gallery-item" v-for="item in items" :key="item.title">
+        <div
+          class="gallery-item"
+          v-for="item in items"
+          :key="item.title"
+          ref="galleryItems"
+        >
           <img
             :src="item.src"
             @mouseenter="mouseEnter(item)"
@@ -240,6 +245,13 @@ export default {
       item.src = require("@/assets/img1.png");
     },
   },
+  mounted() {
+    setTimeout(() => {
+      this.$refs.galleryItems.forEach((item) => {
+        item.classList.add("visible");
+      });
+    }, 100);
+  },
 };
 </script>
 
@@ -365,5 +377,15 @@ body {
 .gallery-item-info h4 {
   font-size: var(--step-1);
   font-weight: 700;
+}
+.gallery-item {
+  /* Add these lines */
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1.3s, transform 1.3s;
+}
+.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
