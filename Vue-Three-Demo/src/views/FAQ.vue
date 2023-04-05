@@ -25,52 +25,118 @@ export default {
   name: "FAQ",
   data() {
     return {
-      faqItems: [
+      orderingProcess: [
         {
-          question: "What is Lorem Ipsum?",
-          answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          question: "How can I order a custom pair of shoes?",
+          answer: "To order a custom pair of shoes, follow the instructions listed in your-sole.\n\nGet ready to pursue new adventures wearing a head-turning unique pair of shoes. ",
           showAnswer: false,
         },
         {
-          question: "Why do we use it?",
+          question: "How long will it take to prepare a custom pair?",
           answer:
-            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+            "We strive to complete your order as quickly as possible. It takes approximately 3-4 days to purchase and deliver the shoes to us. Customization takes between 3-7 days, depending on the design's complexity. Shipping takes around 5 days for Europe and 7-15 days for other countries.",
           showAnswer: false,
         },
         {
-          question: "Where does it come from?",
+          question: "Can I send you a pair of shoes?",
           answer:
-            "Contrary to popular belief, Lorem Ipsum is not simply random text.",
+            "While we typically handle the purchase of shoes in your preferred size, if you have a special pair of shoes for customization, you can send them to us.",
           showAnswer: false,
         },
         {
-          question: "How can I get more information?",
+          question: "What payment methods do you accept?",
           answer:
-            "Please contact our customer support team at support@example.com.",
+            "We accept various payment methods, including credit cards, PayPal, and bank transfers.",
           showAnswer: false,
         },
         {
-          question: "How can I get more information?",
+          question: "Can I request a rush order for a specific event or occasion?",
           answer:
-            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
+            "Yes, we can prioritize your order and use the quickest delivery service for your country (additional charges apply). Include a note with your request when submitting the order. We'll respond to your request within 24 hours.",
+          showAnswer: false,
+        },
+      ],
+      pricing:[
+        {
+          question: "What is the cost for a custom pair?",
+          answer:
+            "The total cost depends on the chosen base shoe and the complexity of your design. For example, a pair of Nike Air Force 1's costs around 140€, and a simple artwork would cost around 90€, totaling 230€.",
           showAnswer: false,
         },
         {
-          question: "How can I get more information?",
+          question: "Are there any special offers or discounts for bulk orders or group purchases?",
           answer:
-            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
+            "Please contact us in soleblastofficial@gmail.com to discuss bulk orders or group purchase discounts.",
+          showAnswer: false,
+        },
+      ],
+      productRelatedQuestions:[
+        {
+          question: "Can I select a design that has been painted before?",
+          answer:
+            "Yes, you can choose any design from our gallery but please note that each pair is 100% hand-painted and unique, so we cannot guarantee an exact replica. We'll always aim to make the new pair even better!",
           showAnswer: false,
         },
         {
-          question: "How can I get more information?",
+          question: "What sizes are available?",
           answer:
-            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
+            "We can customize any size available in the market.",
           showAnswer: false,
         },
         {
-          question: "How can I get more information?",
+          question: "What shoe brands can I choose from?",
           answer:
-            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ",
+            "Popular options include Nike Air Force 1 low/high and Vans slip-on due to their large painting surface.\nOther choices include Vans Classic, Vans Old Skool, Dr. Martens, Air Jordan 1 or Retro, Nike Air Max, Nike SB, and Nike Dunk Low.\nYou can also send us your own pair of shoes.",
+          showAnswer: false,
+        },
+        {
+          question: "How durable is the artwork?",
+          answer:
+            "Our artwork is crafted using high-quality materials and best practices to ensure its durability. We guarantee that the artwork is 100% permanent and will not fade over time. Feel free to wear your shoes in any condition!",
+          showAnswer: false,
+        },
+        {
+          question: "Can I wash the shoes?",
+          answer:
+            "Absolutely! You can wash your custom shoes without any issues.",
+          showAnswer: false,
+        },
+      ],
+      shippingAndReturns:[
+        {
+          question: "Do you ship to my country?",
+          answer:
+            "Yes, we ship worldwide using only tracked shipping options to ensure your order arrives safely.",
+          showAnswer: false,
+        },
+        {
+          question: "What shipping services do you use and what is the cost?",
+          answer:
+            "We use a variety of reliable shipping services, such as DHL, UPS, and FedEx, to ensure the safe and timely delivery of your order. Shipping costs vary depending on the destination country and the selected shipping service. We will provide you with the exact shipping cost during the checkout process.",
+          showAnswer: false,
+        },
+        {
+          question: "How do I track my order?",
+          answer:
+            "We'll keep you informed via email about your order's progress. Once we ship the finished product, we'll provide you with the tracking number.",
+          showAnswer: false,
+        },
+        {
+          question: "Where do you ship from?",
+          answer:
+            "We ship from Athens, Greece.",
+          showAnswer: false,
+        },
+        {
+          question: "Will there be any import fees?",
+          answer:
+            "We ship from Europe, so there are no import fees for European Union countries. For the rest of the world, it's the buyer's responsibility to check if import duties apply in their country and pay any import taxes and fees that may be charged upon arrival. Please be aware of your country's shipping fees before purchasing.",
+          showAnswer: false,
+        },
+        {
+          question: "What is the return policy?",
+          answer:
+            "Since each item is custom painted, we cannot accept returns or provide refunds. However, we value customer feedback and will address any issues you may have. Please report any faults or complaints within 3 days of receiving your order. We'll do our best to keep you satisfied.",
           showAnswer: false,
         },
       ],
