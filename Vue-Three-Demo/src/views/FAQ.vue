@@ -17,7 +17,7 @@
             :class="{ down: item.showAnswer, right: !item.showAnswer }"
           ></i>
         </div>
-        <div class="answer" v-show="item.showAnswer">{{ item.answer }}</div>
+        <div class="answer" v-show="item.showAnswer" v-html="item.answer"></div>
       </div>
 
       <div class="header">
@@ -31,7 +31,7 @@
             :class="{ down: item.showAnswer, right: !item.showAnswer }"
           ></i>
         </div>
-        <div class="answer" v-show="item.showAnswer">{{ item.answer }}</div>
+        <div class="answer" v-show="item.showAnswer" v-html="item.answer"></div>
       </div>
 
       <div class="header">
@@ -49,7 +49,7 @@
             :class="{ down: item.showAnswer, right: !item.showAnswer }"
           ></i>
         </div>
-        <div class="answer" v-show="item.showAnswer">{{ item.answer }}</div>
+        <div class="answer" v-show="item.showAnswer" v-html="item.answer"></div>
       </div>
 
       <div class="header">
@@ -83,13 +83,16 @@ export default {
         {
           question: "How can I order a custom pair of shoes?",
           answer:
-            "To order a custom pair of shoes, follow the instructions listed in your-sole.\n\nGet ready to pursue new adventures wearing a head-turning unique pair of shoes. ",
+            "<div>To order a custom pair of shoes, follow the instructions listed in <a href='/yoursole'>Your Design page</a>. \n\nGet ready to pursue new adventures wearing a head-turning unique pair of shoes!</div>",
           showAnswer: false,
         },
         {
           question: "How long will it take to prepare a custom pair?",
           answer:
-            "We strive to complete your order as quickly as possible. It takes approximately 3-4 days to purchase and deliver the shoes to us. Customization takes between 3-7 days, depending on the design's complexity. Shipping takes around 5 days for Europe and 7-15 days for other countries.",
+            "We strive to complete your order as quickly as possible: \n\
+            • It takes approximately 3 days to get the shoes delivered to our workshop. \n\
+            • Customization and painting takes between 3-7 days, depending on the complexity of the design. \n\
+            • Shipping takes around 6 days for Europe and 7-15 days for other countries.",
           showAnswer: false,
         },
         {
@@ -108,7 +111,7 @@ export default {
           question:
             "Can I request a rush order for a specific event or occasion?",
           answer:
-            "Yes, we can prioritize your order and use the quickest delivery service for your country (additional charges apply). Include a note with your request when submitting the order. We'll respond to your request within 24 hours.",
+            "Yes, we will do our best to prioritize your order and use the quickest delivery service for your country (additional charges apply). Just include a note with your request when submitting the order.",
           showAnswer: false,
         },
       ],
@@ -123,7 +126,7 @@ export default {
           question:
             "Are there any special offers or discounts for bulk orders or group purchases?",
           answer:
-            "Please contact us in soleblastofficial@gmail.com to discuss bulk orders or group purchase discounts.",
+            "Please contact us in <a href = 'mailto: soleblastofficial@gmail.com'>soleblastofficial@gmail.com</a> to discuss bulk orders or group purchase discounts.",
           showAnswer: false,
         },
       ],
@@ -131,18 +134,18 @@ export default {
         {
           question: "Can I select a design that has been painted before?",
           answer:
-            "Yes, you can choose any design from our gallery but please note that each pair is 100% hand-painted and unique, so we cannot guarantee an exact replica. We'll always aim to make the new pair even better!",
+            "Yes, you can choose any design from <a href='/gallery'>our store</a> but please note that each pair is 100% hand-painted and unique, so we cannot guarantee an exact replica. We'll always aim to make the new pair even better!",
           showAnswer: false,
         },
         {
           question: "What sizes are available?",
-          answer: "We can customize any size available in the market.",
+          answer: "We can customize any size available on the market. Sizes for kids are also available!",
           showAnswer: false,
         },
         {
-          question: "What shoe brands can I choose from?",
+          question: "What shoe brands and models can I choose from?",
           answer:
-            "Popular options include Nike Air Force 1 low/high and Vans slip-on due to their large painting surface.\nOther choices include Vans Classic, Vans Old Skool, Dr. Martens, Air Jordan 1 or Retro, Nike Air Max, Nike SB, and Nike Dunk Low.\nYou can also send us your own pair of shoes.",
+            "Popular options include Nike Air Force 1's and Vans slip-on's due to their large painting surface.\nOther choices include Vans Classic, Vans Old Skool, Dr. Martens, Nike Air Max, Nike Dunk and Air Jordan 1.\nYou can also send us your own pair of shoes.",
           showAnswer: false,
         },
         {
@@ -314,5 +317,6 @@ export default {
   font-size: var(--step--1);
   font-weight: 400;
   color: var(--secondary);
+  white-space: pre-wrap;
 }
 </style>
