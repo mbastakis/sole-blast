@@ -1,12 +1,66 @@
 <template>
   <div id="faq">
     <navbar></navbar>
-    <div class="header">
-      <h2>Frequently Asked Questions</h2>
-    </div>
     <div class="faq-container">
-      <div class="faq-item" v-for="(item, index) in faqItems" :key="index">
-        <div class="question" @click="toggleAnswer(index)">
+      <div class="header">
+        <h2>Ordering Process</h2>
+      </div>
+      <div
+        class="faq-item"
+        v-for="(item, index) in orderingProcess"
+        :key="index"
+      >
+        <div class="question" @click="toggleOrderingProcess(index)">
+          <span>{{ item.question }}</span>
+          <i
+            class="arrow"
+            :class="{ down: item.showAnswer, right: !item.showAnswer }"
+          ></i>
+        </div>
+        <div class="answer" v-show="item.showAnswer">{{ item.answer }}</div>
+      </div>
+
+      <div class="header">
+        <h2>Pricing</h2>
+      </div>
+      <div class="faq-item" v-for="(item, index) in pricing" :key="index">
+        <div class="question" @click="togglePricing(index)">
+          <span>{{ item.question }}</span>
+          <i
+            class="arrow"
+            :class="{ down: item.showAnswer, right: !item.showAnswer }"
+          ></i>
+        </div>
+        <div class="answer" v-show="item.showAnswer">{{ item.answer }}</div>
+      </div>
+
+      <div class="header">
+        <h2>Product Related Questions</h2>
+      </div>
+      <div
+        class="faq-item"
+        v-for="(item, index) in productRelatedQuestions"
+        :key="index"
+      >
+        <div class="question" @click="toggleProductRelatedQuestions(index)">
+          <span>{{ item.question }}</span>
+          <i
+            class="arrow"
+            :class="{ down: item.showAnswer, right: !item.showAnswer }"
+          ></i>
+        </div>
+        <div class="answer" v-show="item.showAnswer">{{ item.answer }}</div>
+      </div>
+
+      <div class="header">
+        <h2>Shipping & Returns</h2>
+      </div>
+      <div
+        class="faq-item"
+        v-for="(item, index) in shippingAndReturns"
+        :key="index"
+      >
+        <div class="question" @click="toggleShippingAndReturns(index)">
           <span>{{ item.question }}</span>
           <i
             class="arrow"
@@ -28,7 +82,8 @@ export default {
       orderingProcess: [
         {
           question: "How can I order a custom pair of shoes?",
-          answer: "To order a custom pair of shoes, follow the instructions listed in your-sole.\n\nGet ready to pursue new adventures wearing a head-turning unique pair of shoes. ",
+          answer:
+            "To order a custom pair of shoes, follow the instructions listed in your-sole.\n\nGet ready to pursue new adventures wearing a head-turning unique pair of shoes. ",
           showAnswer: false,
         },
         {
@@ -50,13 +105,14 @@ export default {
           showAnswer: false,
         },
         {
-          question: "Can I request a rush order for a specific event or occasion?",
+          question:
+            "Can I request a rush order for a specific event or occasion?",
           answer:
             "Yes, we can prioritize your order and use the quickest delivery service for your country (additional charges apply). Include a note with your request when submitting the order. We'll respond to your request within 24 hours.",
           showAnswer: false,
         },
       ],
-      pricing:[
+      pricing: [
         {
           question: "What is the cost for a custom pair?",
           answer:
@@ -64,13 +120,14 @@ export default {
           showAnswer: false,
         },
         {
-          question: "Are there any special offers or discounts for bulk orders or group purchases?",
+          question:
+            "Are there any special offers or discounts for bulk orders or group purchases?",
           answer:
             "Please contact us in soleblastofficial@gmail.com to discuss bulk orders or group purchase discounts.",
           showAnswer: false,
         },
       ],
-      productRelatedQuestions:[
+      productRelatedQuestions: [
         {
           question: "Can I select a design that has been painted before?",
           answer:
@@ -79,8 +136,7 @@ export default {
         },
         {
           question: "What sizes are available?",
-          answer:
-            "We can customize any size available in the market.",
+          answer: "We can customize any size available in the market.",
           showAnswer: false,
         },
         {
@@ -102,7 +158,7 @@ export default {
           showAnswer: false,
         },
       ],
-      shippingAndReturns:[
+      shippingAndReturns: [
         {
           question: "Do you ship to my country?",
           answer:
@@ -123,8 +179,7 @@ export default {
         },
         {
           question: "Where do you ship from?",
-          answer:
-            "We ship from Athens, Greece.",
+          answer: "We ship from Athens, Greece.",
           showAnswer: false,
         },
         {
@@ -143,8 +198,20 @@ export default {
     };
   },
   methods: {
-    toggleAnswer(index) {
-      this.faqItems[index].showAnswer = !this.faqItems[index].showAnswer;
+    toggleOrderingProcess(index) {
+      this.orderingProcess[index].showAnswer =
+        !this.orderingProcess[index].showAnswer;
+    },
+    togglePricing(index) {
+      this.pricing[index].showAnswer = !this.pricing[index].showAnswer;
+    },
+    toggleProductRelatedQuestions(index) {
+      this.productRelatedQuestions[index].showAnswer =
+        !this.productRelatedQuestions[index].showAnswer;
+    },
+    toggleShippingAndReturns(index) {
+      this.shippingAndReturns[index].showAnswer =
+        !this.shippingAndReturns[index].showAnswer;
     },
   },
   components: {
@@ -153,7 +220,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 :root {
   --primary: white;
   --secondary: #282e5c;
@@ -178,17 +245,9 @@ export default {
   --space-3xl: clamp(6.75rem, calc(5.97rem + 3.91vw), 9rem);
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-  font-family: "Source Sans Pro", sans-serif;
-}
-
 #faq {
   height: 100%;
-  overflow: scroll;
+  overflow: auto;
   background: #dabed3;
   background: -moz-linear-gradient(
     -45deg,
@@ -218,8 +277,8 @@ body {
   font-weight: 800;
   color: var(--secondary);
   text-align: center;
-  padding: var(--space-m);
-  margin-top: var(--space-m);
+  margin-top: var(--space-xl);
+  width: 100%;
 }
 .question {
   display: flex;
