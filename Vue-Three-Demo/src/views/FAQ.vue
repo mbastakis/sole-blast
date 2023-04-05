@@ -3,6 +3,24 @@
     <navbar></navbar>
     <div class="faq-container">
       <div class="header">
+        <h2>General Information</h2>
+      </div>
+      <div
+        class="faq-item"
+        v-for="(item, index) in generalInformation"
+        :key="index"
+      >
+        <div class="question" @click="toggleGeneralInformation(index)">
+          <span>{{ item.question }}</span>
+          <i
+            class="arrow"
+            :class="{ down: item.showAnswer, right: !item.showAnswer }"
+          ></i>
+        </div>
+        <div class="answer" v-show="item.showAnswer" v-html="item.answer"></div>
+      </div>
+
+      <div class="header">
         <h2>Ordering Process</h2>
       </div>
       <div
@@ -79,11 +97,31 @@ export default {
   name: "FAQ",
   data() {
     return {
+      generalInformation: [
+        {
+          question: "What does Sole-Blast stand for?",
+          answer:
+            "In Sole-Blast, we believe that shoes offer a unique opportunity to unleash your inner creativity, elevate your style and make a lasting impression. That's why we're dedicated to transforming each customer's distinct vision into an awesome one-of-a-kind shoe design. <a href='/yoursole'>Order yours now!</a>",
+          showAnswer: false,
+        },
+        {
+          question: "What do we offer?",
+          answer:
+            "\tOur workshop excels in creating custom painted shoes tailored to your individual style. We provide a range of options, including unique designs inspired by your ideas and an exclusive selection of <a href='/yoursole'>Sole-Blast originals</a> to choose from. \n\n\tIn addition to shoes, our expertise extends to customizing a diverse array of items such as bags, wallets, skateboards, snowboards, and more. If you're seeking a special customization, simply fill out <a href='/yoursole'>Your Design form</a>, and let us bring your vision to life!",
+          showAnswer: false,
+        },
+        {
+          question: "What does Sole-Blast stand for?",
+          answer:
+            "In Sole-Blast, we believe that shoes offer a unique opportunity to unleash your inner creativity, elevate your style and make a lasting impression. That's why we're dedicated to transforming each customer's distinct vision into an awesome one-of-a-kind shoe design. <a href='/yoursole'>Order yours now!</a>",
+          showAnswer: false,
+        },
+      ],
       orderingProcess: [
         {
           question: "How can I order a custom pair of shoes?",
           answer:
-            "<div>To order a custom pair of shoes, follow the instructions listed in <a href='/yoursole'>Your Design page</a>. \n\nGet ready to pursue new adventures wearing a head-turning unique pair of shoes!</div>",
+            "<div>To order a custom pair of shoes, follow the instructions listed in <a href='/yoursole'>Your Design page</a>. You can also <a href='/yoursole'>browse our store</a> and select one of our suggested captivating designs. \n\nGet ready to pursue new adventures wearing a head-turning unique pair of shoes!</div>",
           showAnswer: false,
         },
         {
@@ -201,6 +239,10 @@ export default {
     };
   },
   methods: {
+    toggleGeneralInformation(index) {
+        this.generalInformation[index].showAnswer =
+        !this.generalInformation[index].showAnswer;
+    },
     toggleOrderingProcess(index) {
       this.orderingProcess[index].showAnswer =
         !this.orderingProcess[index].showAnswer;
