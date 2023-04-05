@@ -27,6 +27,7 @@ export default {
 :root {
   --primary: white;
   --secondary: #282e5c;
+  --selected: #ffe28b ;
 
   --step--2: clamp(0.78rem, calc(0.72rem + 0.31vw), 0.96rem);
   --step--1: clamp(0.94rem, calc(0.85rem + 0.46vw), 1.2rem);
