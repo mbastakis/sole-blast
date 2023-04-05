@@ -10,7 +10,7 @@
               class="ham-icon"
               src="../assets/Gallery.svg"
               alt="Gallery icon"
-            />Gallery
+            />Shop
           </router-link>
         </div>
         <div>
@@ -20,7 +20,7 @@
               src="../assets/Your Sole.svg"
               alt="Shoe svg"
             />
-            Your Sole
+            Your Design
           </router-link>
         </div>
       </div>
@@ -63,10 +63,10 @@
 
       <ul id="left-list" class="nav-list">
         <li>
-          <router-link to="/gallery"> Gallery </router-link>
+          <router-link to="/gallery"> Shop </router-link>
         </li>
         <li>
-          <router-link to="/yoursole"> Your Sole </router-link>
+          <router-link to="/yoursole"> Your Design </router-link>
         </li>
       </ul>
       <div id="logo">
