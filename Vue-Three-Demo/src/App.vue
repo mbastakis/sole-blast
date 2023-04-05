@@ -12,7 +12,7 @@ export default {
     transitionName() {
       switch (this.$route.name) {
         case "gallery":
-          return "rise-up";
+          return "fade";
         case "faq":
           return "fade";
         default:
@@ -64,24 +64,10 @@ body {
 /* Fade transition */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s ease;
 }
 .fade-enter,
 .fade-leave-to {
-  opacity: 0;
-}
-
-/* Rise-up transition */
-.rise-up-enter-active,
-.rise-up-leave-active {
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-.rise-up-enter {
-  transform: translateY(100%);
-  opacity: 0;
-}
-.rise-up-leave-to {
-  transform: translateY(-100%);
   opacity: 0;
 }
 </style>
