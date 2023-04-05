@@ -1,10 +1,7 @@
 <template>
   <div class="mini-gallery">
     <div id="header">
-      <h1>
-        A Gallery of Sole-ful <br />
-        Creations
-      </h1>
+      <h1>Browse our store</h1>
     </div>
     <div class="mini-gallery-container-phone">
       <div class="Picture-1 img">
@@ -62,6 +59,9 @@
         <div class="Picture-16 img">
           <img src="../assets/Screenshot_12.png" />
         </div>
+      </div>
+      <div id="header">
+        <h1>View more... button</h1>
       </div>
     </div>
   </div>

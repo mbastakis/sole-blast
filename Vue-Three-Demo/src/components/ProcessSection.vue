@@ -2,84 +2,97 @@
   <div id="process-section">
     <div id="gallery-transition-layer"></div>
 
-    <section id="first-section" class="thought">
-      <div class="section-text">
-        <h1>The Creation Process</h1>
-        <p>
-          We believe that shoes offer a unique opportunity to unleash your inner creativity, 
-          elevate your style and make a lasting impression. That's why we're dedicated to 
-          transforming each customer's distinct vision into an awesome one-of-a-kind shoe design.<br /><br />
-          Our imagination knows no bounds, so we also create our own captivating custom designs 
-          for you to explore. Browse our gallery, and if one of our soles speaks to your soul, 
-          don't hesitate to make it yours!
-        </p>
-      </div>
-      <div id="design_process" class="desktop">
-        <img src="../assets/design_process.png" alt="" />
-      </div>
-    </section>
+    <div class="section-container">
+      <section id="first-section" class="thought">
+        <div class="section-text">
+          <h1>The Creation Process</h1>
+          <p>
+            We believe that shoes offer a unique opportunity to unleash your
+            inner creativity, elevate your style and make a lasting impression.
+            That's why we're dedicated to transforming each customer's distinct
+            vision into an awesome one-of-a-kind shoe design.<br /><br />
+            Our imagination knows no bounds, so we also create our own
+            captivating custom designs for you to explore. Browse our gallery,
+            and if one of our soles speaks to your soul, don't hesitate to make
+            it yours!
+          </p>
+        </div>
+        <div id="design_process" class="desktop">
+          <img src="../assets/design_process.png" alt="" />
+        </div>
+      </section>
 
-    <section id="second-section" class="left-chat chat reveal">
-      <div>
-        <h2 id="communication-header">
-          Share Your<br />
-          Vision
-        </h2>
-        <p class="left-text-allign">
-          Simply share your shoe design idea with us, and we will bring it to life in the form
-          of a stunning pair of shoes that expresses your imagination. <br /><br />
+      <section id="second-section" class="left-chat chat reveal">
+        <div>
+          <h2 id="communication-header">
+            Share Your<br />
+            Vision
+          </h2>
+          <p class="left-text-allign">
+            Simply share your shoe design idea with us, and we will bring it to
+            life in the form of a stunning pair of shoes that expresses your
+            imagination. <br /><br />
 
-          Your idea can range from highly specific to delightfully vague, and your design can
-          span from minimalistic and elegant, to vibrant and impressive. With Sole-Blast, the
-          possibilities are endless. Experience the fusion of self-expression and exceptional style.
-        </p>
+            Your idea can range from highly specific to delightfully vague, and
+            your design can span from minimalistic and elegant, to vibrant and
+            impressive. With Sole-Blast, the possibilities are endless.
+            Experience the fusion of self-expression and exceptional style.
+          </p>
+        </div>
+      </section>
+      <div class="right-chat chat mobile">
+        <img src="../assets/email-card-phone.png" alt="" />
       </div>
-    </section>
-    <div class="right-chat chat mobile">
-      <img src="../assets/email-card-phone.png" alt="" />
+      <figure id="first-figure" class="desktop reveal">
+        <img src="../assets/email-card.jpg" alt="" />
+      </figure>
+
+      <figure id="second-figure" class="desktop reveal">
+        <img src="../assets/shoes_card.jpg" alt="" />
+      </figure>
+      <section id="third-section" class="left-chat chat reveal">
+        <div>
+          <h2>
+            Sketch &<br />
+            Approval
+          </h2>
+          <img
+            src="../assets/shoes_card.jpg"
+            alt=""
+            class="mobile chat-photo"
+          />
+          <p>
+            We're committed to bringing your vision to life just as you
+            imagined. That's why we start by creating a preliminary sketch of
+            your design and sharing it with you for feedback and adjustments.
+            Now, you only have to give us the green light to capture your
+            creativity in a real pair of shoes.
+          </p>
+        </div>
+      </section>
+
+      <section id="forth-section" class="left-chat chat reveal">
+        <div>
+          <h2>From sketch to reality</h2>
+          <img
+            src="../assets/alien_shoe_showcase_phone.jpg"
+            alt=""
+            class="mobile chat-photo"
+          />
+          <p class="left-text-allign">
+            This is our specialty, creating a mini masterpiece for your feet.
+            We'll keep you updated throughout the process and then ship straight
+            to your doorstep. <br /><br />
+
+            Get ready to pursue new adventures wearing a head-turning unique
+            pair of shoes.
+          </p>
+        </div>
+      </section>
+      <figure id="third-figure" class="desktop reveal">
+        <img src="../assets/alien_shoe_showcase.jpg" alt />
+      </figure>
     </div>
-    <figure id="first-figure" class="desktop reveal">
-      <img src="../assets/email-card.jpg" alt="" />
-    </figure>
-
-    <figure id="second-figure" class="desktop reveal">
-      <img src="../assets/shoes_card.jpg" alt="" />
-    </figure>
-    <section id="third-section" class="left-chat chat reveal">
-      <div>
-        <h2>
-          Sketch &<br />
-          Approval
-        </h2>
-        <img src="../assets/shoes_card.jpg" alt="" class="mobile chat-photo" />
-        <p>
-          We're committed to bringing your vision to life just as you imagined. That's 
-          why we start by creating a preliminary sketch of your design and sharing it with 
-          you for feedback and adjustments. Now, you only have to give us the green light to 
-          capture your creativity in a real pair of shoes. 
-        </p>
-      </div>
-    </section>
-
-    <section id="forth-section" class="left-chat chat reveal">
-      <div>
-        <h2>From sketch to reality</h2>
-        <img
-          src="../assets/alien_shoe_showcase_phone.jpg"
-          alt=""
-          class="mobile chat-photo"
-        />
-        <p class="left-text-allign">
-          This is our specialty, creating a mini masterpiece for your feet. We'll keep you
-          updated throughout the process and then ship straight to your doorstep. <br /><br />
-
-          Get ready to pursue new adventures wearing a head-turning unique pair of shoes. 
-        </p>
-      </div>
-    </section>
-    <figure id="third-figure" class="desktop reveal">
-      <img src="../assets/alien_shoe_showcase.jpg" alt />
-    </figure>
 
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -154,8 +167,8 @@ export default {
       this.thirdSection.classList.remove("chat");
       this.forthSection.classList.remove("left-chat");
       this.forthSection.classList.remove("chat");
-      window.addEventListener("scroll", this.reveal);
-      window.addEventListener("scroll", this.resetReveal);
+      // window.addEventListener("scroll", this.reveal);
+      // window.addEventListener("scroll", this.resetReveal);
     },
     switchToMobile() {
       this.firstSection.classList.add("thought");
@@ -165,8 +178,8 @@ export default {
       this.thirdSection.classList.add("chat");
       this.forthSection.classList.add("left-chat");
       this.forthSection.classList.add("chat");
-      window.removeEventListener("scroll", this.reveal);
-      window.removeEventListener("scroll", this.resetReveal);
+      // window.removeEventListener("scroll", this.reveal);
+      // window.removeEventListener("scroll", this.resetReveal);
     },
     resetReveal() {
       var elementTop = document
@@ -394,130 +407,36 @@ p {
   }
 }
 @media screen and (min-width: 777px) {
-  #process-section {
-    display: block;
-  }
-  .desktop {
-    display: block;
-  }
-  .mobile {
-    display: none;
-  }
-  #gallery-transition-layer {
-    height: var(--space-2xl);
-  }
-  section {
-    background-color: var(--primary);
-    width: calc(50% + 1px);
-    height: 100vh;
-    margin: 0 auto 10vh 0;
-    position: sticky;
-    top: 0;
-    box-shadow: -4px -4px 8px rgba(0, 0, 0, 0.4);
-  }
-  figure {
-    width: calc(50% - 1px);
-    height: 100vh;
-    margin: 0 auto 10vh 0;
-    position: sticky;
-    top: 0;
-    overflow: hidden;
-    box-shadow: 4px -4px 8px rgba(0, 0, 0, 0.4);
-  }
-  #first-section {
-    width: 100%;
-    margin-top: var(--space-3xl);
-    box-shadow: none;
-    display: flex;
-    border-top-right-radius: 1.5rem;
-    border-top-left-radius: 1.5rem;
-  }
-  #first-section .section-text {
-    width: calc(50% + 1px);
-    padding: var(--space-3xl) var(--space-m);
-    display: flex;
-    justify-content: space-between;
-  }
-  .section-text h1 {
-    text-align: center;
-  }
-  #design_process {
-    z-index: 0;
-    width: calc(50% + 1px);
-  }
-  #design_process img {
-    object-fit: cover;
-    width: 100%;
-    height: 100vh;
-    border-top-left-radius: 1.5rem;
-    border-top-right-radius: 1.5rem;
-    border-bottom-left-radius: 1.5rem;
-  }
-  #second-section {
-    z-index: 2;
-  }
-  #first-figure {
-    z-index: 1;
-    margin: 0 0 10vh auto;
-  }
-  #third-section {
-    z-index: 4;
-    margin: 0 0 10vh auto;
-    box-shadow: -4px -4px 8px rgba(0, 0, 0, 0.4);
-  }
-  #forth-section {
-    margin: 0 auto 0 0;
-    box-shadow: 4px -10px 8px rgba(0, 0, 0, 0.4);
-    z-index: 6;
-  }
-  #second-figure {
-    z-index: 3;
-  }
-  #third-figure {
-    z-index: 5;
-    margin: 0 0 0 auto;
-  }
-  section::before {
-    background: inherit;
-    z-index: 100;
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 7vmin;
-    height: 7vmin;
-    transform: translate(calc(-50% + 1px), -50%) rotate(-45deg);
-    clip-path: polygon(-15% -15%, 110% 0%, 0% 110%);
-    box-shadow: -4px -2px 8px rgba(0, 0, 0, 0.4);
-    border-radius: 1.5vmin 0 0 0;
-  }
-  section:nth-of-type(2n)::before {
-    left: auto;
-    right: 0;
-    transform: translate(calc(50% - 1px), -50%) rotate(-45deg) scale(-1);
-  }
-  figure img {
-    z-index: 1;
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  section > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-  }
-  .left-text-allign {
-    text-align: left;
-  }
-  .reveal {
-    opacity: 0;
-    transition: 1s all ease;
-  }
-  .reveal.active {
-    opacity: 1;
-  }
 }
 </style>
+.section-container { height: 100vh; width: 100%; } #process-section { display:
+block; } .desktop { display: block; } .mobile { display: none; }
+#gallery-transition-layer { height: var(--space-2xl); } section {
+background-color: var(--primary); width: calc(50% + 1px); height: 100vh; margin:
+0 auto 10vh 0; position: sticky; top: 0; box-shadow: -4px -4px 8px rgba(0, 0, 0,
+0.4); } figure { width: calc(50% - 1px); height: 100vh; margin: 0 auto 10vh 0;
+position: sticky; top: 0; overflow: hidden; box-shadow: 4px -4px 8px rgba(0, 0,
+0, 0.4); } #first-section { width: 100%; margin-top: var(--space-3xl);
+box-shadow: none; display: flex; border-top-right-radius: 1.5rem;
+border-top-left-radius: 1.5rem; } #first-section .section-text { width: calc(50%
++ 1px); padding: var(--space-3xl) var(--space-m); display: flex;
+justify-content: space-between; } .section-text h1 { text-align: center; }
+#design_process { z-index: 0; width: calc(50% + 1px); } #design_process img {
+object-fit: cover; width: 100%; height: 100vh; border-top-left-radius: 1.5rem;
+border-top-right-radius: 1.5rem; border-bottom-left-radius: 1.5rem; }
+#second-section { z-index: 2; } #first-figure { z-index: 1; margin: 0 0 10vh
+auto; } #third-section { z-index: 4; margin: 0 0 10vh auto; box-shadow: -4px
+-4px 8px rgba(0, 0, 0, 0.4); } #forth-section { margin: 0 auto 0 0; box-shadow:
+4px -10px 8px rgba(0, 0, 0, 0.4); z-index: 6; } #second-figure { z-index: 3; }
+#third-figure { z-index: 5; margin: 0 0 0 auto; } section::before { background:
+inherit; z-index: 100; content: ""; position: absolute; top: 50%; left: 0;
+width: 7vmin; height: 7vmin; transform: translate(calc(-50% + 1px), -50%)
+rotate(-45deg); clip-path: polygon(-15% -15%, 110% 0%, 0% 110%); box-shadow:
+-4px -2px 8px rgba(0, 0, 0, 0.4); border-radius: 1.5vmin 0 0 0; }
+section:nth-of-type(2n)::before { left: auto; right: 0; transform:
+translate(calc(50% - 1px), -50%) rotate(-45deg) scale(-1); } figure img {
+z-index: 1; min-width: 100%; min-height: 100%; object-fit: cover;
+object-position: center; } section > div { display: flex; flex-direction:
+column; align-items: center; height: 100%; } .left-text-allign { text-align:
+left; } .reveal { opacity: 0; transition: 1s all ease; } .reveal.active {
+opacity: 1; }

@@ -36,11 +36,35 @@ body {
 #app {
   position: relative;
   height: 100%;
+
+  background: #dabed3;
+  background: -moz-linear-gradient(
+    -45deg,
+    #dabed3 1%,
+    #a9b1e0 33%,
+    #a9b1e0 53%,
+    #898acb 100%
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    #dabed3 1%,
+    #a9b1e0 33%,
+    #a9b1e0 53%,
+    #898acb 100%
+  );
+  background: linear-gradient(
+    135deg,
+    #dabed3 1%,
+    #a9b1e0 33%,
+    #a9b1e0 53%,
+    #898acb 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dabed3', endColorstr='#898acb',GradientType=1 );
 }
 /* Fade transition */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.2s ease;
 }
 .fade-enter,
 .fade-leave-to {
@@ -50,7 +74,7 @@ body {
 /* Rise-up transition */
 .rise-up-enter-active,
 .rise-up-leave-active {
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 .rise-up-enter {
   transform: translateY(100%);
