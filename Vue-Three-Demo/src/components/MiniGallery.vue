@@ -1,7 +1,7 @@
 <template>
   <div class="mini-gallery">
     <div id="header">
-      <h1>Browse our Custom Shoes Store</h1>
+      <h1>Browse our Custom Shoe Store</h1>
     </div>
     <div class="mini-gallery-container-phone">
       <div class="Picture-1 img">
