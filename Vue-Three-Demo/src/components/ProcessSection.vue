@@ -4,7 +4,7 @@
 
     <div class="section-container">
       <section id="header-section" class="thought">
-        <div>
+        <div class="section-image">
           <img src="../assets/design_process.png" alt="" />
         </div>
         <div class="section-text">
@@ -20,10 +20,31 @@
 
       <section id="first-section" class="left-chat chat">
         <div>
-          <p>
+          <div>
             <span>1. Share Your Vision</span>
-            with us HERE_BUTTON and we will bring it to life.
-          </p>
+            with us and we will bring it to life.
+            <div class="btn">
+              <div>Here</div>
+              <svg
+                width="10"
+                height="30"
+                viewBox="-5 -5 30 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.65527 17.724C9.8356 17.724 10.8029 16.6639 11.6024 16.6639C12.6626 16.6639 14.2527 18.254 16.1962 17.3706"
+                  stroke="#A1A5C0"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M1.00211 18.0773C0.981086 16.9842 1.11763 15.8886 1.38437 14.8101M1.38437 14.8101C2.23886 6.4162 14.6067 0.0555414 17.2571 1.11562C19.9074 2.1757 14.8627 7.4449 11.6032 9.77318C10.3664 10.6566 6.30261 9.77318 6.65598 10.1265C7.00935 10.4799 8.42283 12.2467 8.42283 12.2467C6.04246 14.1267 4.47297 14.6359 1.38437 14.8101Z"
+                  stroke="white"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -70,7 +91,6 @@ export default {
 };
 </script>
 
-
 <style scoped>
 *,
 *:before,
@@ -88,42 +108,25 @@ export default {
   border-bottom-left-radius: 1.5rem;
   background-color: var(--primary);
 }
+.section-container {
+  padding: var(--space-xl) var(--space-s);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
 #header-section {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap-reverse;
-}
-svg {
-  width: 100%;
-  margin-bottom: -5px;
-}
-@media screen and (min-width: 777px) {
-  #header-section {
-    flex-wrap: nowrap;
-  }
-}
-</style>
-
-#process-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  color: var(--secondary);
+  gap: var(--space-m);
 }
 .thought {
-  display: flex;
   background-color: #fff;
   border-radius: 1.5rem;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  padding: var(--space-xs);
   z-index: 2;
-  margin: var(--space-xl) var(--space-m) 0 var(--space-m);
-  padding: var(--space-m);
 }
 .thought:before,
 .thought:after {
@@ -149,14 +152,29 @@ svg {
   box-shadow: 40px -34px 0 0 #fff, -28px -6px 0 -2px #fff,
     -24px 17px 0 -6px #fff, -5px 25px 0 -10px #fff;
 }
+.section-image {
+  width: 100%;
+}
+.section-image img {
+  border-radius: 1.5rem;
+  object-fit: cover;
+  object-position: 50% 40%;
+  width: 100%;
+  height: clamp(14rem, 65vw, 20rem);
+}
+.section-text {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: var(--space-s);
+}
 .chat {
   transform: translatey(0px);
   color: var(--secondary);
   background-color: var(--primary);
   border-radius: 1.5rem;
   position: relative;
-  margin: var(--space-xl) var(--space-m) 0 var(--space-m);
-  padding: var(--space-m);
+  padding: var(--space-xs);
 }
 .left-chat::after {
   transform: translatey(0px);
@@ -173,12 +191,9 @@ svg {
   background-color: var(--primary);
   position: absolute;
   display: block;
-  bottom: -35px;
+  bottom: -25px;
   left: 5px;
   z-index: -2;
-}
-.right-chat {
-  padding: var(--space-m) 0;
 }
 .right-chat::after {
   transform: translatey(0px);
@@ -195,10 +210,119 @@ svg {
   background-color: var(--primary);
   position: absolute;
   display: block;
-  bottom: -35px;
+  bottom: -25px;
   right: 5px;
   z-index: -2;
 }
+.chat span {
+  font-size: var(--step-0);
+  font-weight: 800;
+}
+
+svg {
+  width: 100%;
+  margin-bottom: -5px;
+}
+@keyframes float {
+  0% {
+    line-height: 20px;
+    transform: translatey(0px);
+  }
+  55% {
+    transform: translatey(-0.6rem);
+  }
+  60% {
+    line-height: 10px;
+  }
+  100% {
+    line-height: 20px;
+    transform: translatey(0px);
+  }
+}
+@keyframes write {
+  0% {
+    transform: rotate(0deg);
+  }
+  12.5% {
+    transform: rotate(5deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-8deg);
+  }
+  87.5% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@media screen and (min-width: 777px) {
+  #header-section {
+    flex-wrap: nowrap;
+  }
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: var(--secondary);
+  width: clamp(6rem, 5rem + 10vw, 8rem);
+  padding: var(--space-2xs) var(--space-xs);
+  margin-top: var(--space-xs);
+  margin-left: auto;
+  font-size: var(--step-0);
+  color: var(--primary);
+  font-weight: 700;
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in;
+  position: relative;
+}
+.btn:hover {
+  transform: scale(1.1);
+  color: var(--selected);
+}
+.btn svg {
+  width: 1.7rem;
+  transition: transform 0.3s ease-in-out;
+}
+.btn svg path {
+  transition: stroke 0.3s ease-in-out;
+}
+.btn:hover svg {
+  transform: translateX(0.2em);
+}
+.btn svg path:nth-child(1) {
+  stroke: var(--selected);
+}
+.btn svg path:nth-child(2) {
+  stroke: var(--primary);
+}
+.btn:hover svg path:nth-child(1) {
+  stroke: var(--primary);
+}
+.btn:hover svg path:nth-child(2) {
+  animation: write 2s ease-in-out;
+  stroke: var(--selected);
+}
+</style>
+
+#process-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  color: var(--secondary);
+}
+
+
+
 .process-section-transition {
   width: 100%;
   margin-top: var(--space-l);
@@ -216,19 +340,4 @@ p {
   font-size: clamp(var(--step-0), 0.5rem + 2.15vw, var(--step-1));
   padding-top: var(--space-s);
 }
-@keyframes float {
-  0% {
-    line-height: 20px;
-    transform: translatey(0px);
-  }
-  55% {
-    transform: translatey(-1.2rem);
-  }
-  60% {
-    line-height: 10px;
-  }
-  100% {
-    line-height: 20px;
-    transform: translatey(0px);
-  }
-}
+
