@@ -1,7 +1,5 @@
 <template>
   <div id="hero-section">
-    <navbar></navbar>
-
     <div id="floating-section">
       <viewport></viewport>
       <div id="floating-quote">
@@ -13,18 +11,9 @@
 
     <div>
       <div id="hero-slider">
-        <span
-          >&nbsp;<span class="slider-color">Color</span> Your Walk.
-          </span
-        >
-        <h1>
-          &nbsp;<span class="slider-color">Color</span> Your Walk.
-          
-        </h1>
-        <span
-          >&nbsp;<span class="slider-color">Color</span> Your Walk.
-          </span
-        >
+        <span>&nbsp;<span class="slider-color">Color</span> Your Walk. </span>
+        <h1>&nbsp;<span class="slider-color">Color</span> Your Walk.</h1>
+        <span>&nbsp;<span class="slider-color">Color</span> Your Walk. </span>
       </div>
       <div id="transition-layer"></div>
     </div>
@@ -33,13 +22,11 @@
 
 <script>
 import ViewPort from "./ViewPort.vue";
-import Navbar from "./Navbar.vue";
 import anime from "animejs";
 
 export default {
   components: {
     viewport: ViewPort,
-    navbar: Navbar,
   },
   mounted() {
     let elt = document.querySelectorAll("#hero-slider > *");
@@ -56,30 +43,7 @@ export default {
 
 <style scoped>
 #hero-section {
-  background: #dabed3;
-  background: -moz-linear-gradient(
-    -45deg,
-    #dabed3 1%,
-    #a9b1e0 33%,
-    #a9b1e0 53%,
-    #898acb 100%
-  );
-  background: -webkit-linear-gradient(
-    -45deg,
-    #dabed3 1%,
-    #a9b1e0 33%,
-    #a9b1e0 53%,
-    #898acb 100%
-  );
-  background: linear-gradient(
-    135deg,
-    #dabed3 1%,
-    #a9b1e0 33%,
-    #a9b1e0 53%,
-    #898acb 100%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dabed3', endColorstr='#898acb',GradientType=1 );
-  height: 100vh;
+  height: 50vh;
   height: 100svh;
   display: flex;
   flex-direction: column;

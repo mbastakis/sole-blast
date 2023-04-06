@@ -1,5 +1,7 @@
 <template>
-  <div class="YourSole">
-    <h1>This is an yourSole page</h1>
-  </div>
+  <div class="YourSole"></div>
 </template>
+
+<script>
+export default {};
+</script>
