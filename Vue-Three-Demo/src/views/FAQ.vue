@@ -7,7 +7,7 @@
       <div
         class="faq-item"
         v-for="(item, index) in generalInformation"
-        :key="index"
+        :key="'general-' + index"
       >
         <div class="question" @click="toggleGeneralInformation(index)">
           <span>{{ item.question }}</span>
@@ -25,7 +25,7 @@
       <div
         class="faq-item"
         v-for="(item, index) in orderingProcess"
-        :key="index"
+        :key="'ordering-' + index"
       >
         <div class="question" @click="toggleOrderingProcess(index)">
           <span>{{ item.question }}</span>
@@ -40,7 +40,11 @@
       <div class="header">
         <h2>Pricing</h2>
       </div>
-      <div class="faq-item" v-for="(item, index) in pricing" :key="index">
+      <div
+        class="faq-item"
+        v-for="(item, index) in pricing"
+        :key="'pricing-' + index"
+      >
         <div class="question" @click="togglePricing(index)">
           <span>{{ item.question }}</span>
           <i
@@ -57,7 +61,7 @@
       <div
         class="faq-item"
         v-for="(item, index) in productRelatedQuestions"
-        :key="index"
+        :key="'productRelated' + index"
       >
         <div class="question" @click="toggleProductRelatedQuestions(index)">
           <span>{{ item.question }}</span>
@@ -75,7 +79,7 @@
       <div
         class="faq-item"
         v-for="(item, index) in shippingAndReturns"
-        :key="index"
+        :key="'shipping-' + index"
       >
         <div class="question" @click="toggleShippingAndReturns(index)">
           <span>{{ item.question }}</span>
@@ -106,12 +110,6 @@ export default {
           question: "What do we offer?",
           answer:
             "\tOur workshop excels in creating custom painted shoes tailored to your individual style. We provide a range of options, including unique designs inspired by your ideas and an exclusive selection of <a href='/yoursole'>Sole-Blast originals</a> to choose from. \n\n\tIn addition to shoes, our expertise extends to customizing a diverse array of items such as bags, wallets, skateboards, snowboards, and more. If you're seeking a special customization, simply fill out <a href='/yoursole'>Your Design form</a>, and let us bring your vision to life!",
-          showAnswer: false,
-        },
-        {
-          question: "What does Sole-Blast stand for?",
-          answer:
-            "In Sole-Blast, we believe that shoes offer a unique opportunity to unleash your inner creativity, elevate your style and make a lasting impression. That's why we're dedicated to transforming each customer's distinct vision into an awesome one-of-a-kind shoe design. <a href='/yoursole'>Order yours now!</a>",
           showAnswer: false,
         },
       ],
@@ -263,8 +261,6 @@ export default {
 
 <style scoped>
 #faq {
-  height: 100%;
-  overflow: auto;
 }
 .header {
   font-size: var(--step-1);

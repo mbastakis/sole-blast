@@ -58,38 +58,25 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  min-height: 100%;
 }
 
 #app {
-  position: relative;
-  height: 100%;
-
   background: #dabed3;
-  background: -moz-linear-gradient(
-    -45deg,
-    #dabed3 1%,
-    #a9b1e0 33%,
-    #a9b1e0 53%,
-    #898acb 100%
+  background-image: linear-gradient(
+    to right bottom,
+    #dabed3,
+    #d4bbd5,
+    #cdb8d8,
+    #c5b5da,
+    #bab3dd,
+    #b2afdc,
+    #a9abdc,
+    #a0a7db,
+    #9aa0d7,
+    #9499d3,
+    #8e91cf,
+    #898acb
   );
-  background: -webkit-linear-gradient(
-    -45deg,
-    #dabed3 1%,
-    #a9b1e0 33%,
-    #a9b1e0 53%,
-    #898acb 100%
-  );
-  background: linear-gradient(
-    135deg,
-    #dabed3 1%,
-    #a9b1e0 33%,
-    #a9b1e0 53%,
-    #898acb 100%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dabed3', endColorstr='#898acb',GradientType=1 );
 }
 /* Fade transition */
 .fade-enter-active,

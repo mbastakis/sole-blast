@@ -132,16 +132,18 @@ export default {
 #logo {
   cursor: pointer;
   user-select: none;
-  margin: 0 auto 0 0;
+  margin: 0 auto 0 auto;
 }
 #logo img {
   height: clamp(4rem, 3rem + 7vw, 8rem);
 }
 #ham-icon {
   cursor: pointer;
-  width: 3rem;
-  margin-right: auto;
+  width: calc(3rem + 1vw);
   z-index: 2;
+  position: absolute;
+  left: calc(1rem + 1vw);
+  top: calc(1rem + 1vw);
 }
 .nav-list {
   display: none;

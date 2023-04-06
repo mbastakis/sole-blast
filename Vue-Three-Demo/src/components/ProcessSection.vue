@@ -244,30 +244,6 @@ export default {
   position: relative;
 }
 #process-section {
-  background: #dabed3;
-  background: -moz-linear-gradient(
-    -45deg,
-    #dabed3 1%,
-    #a9b1e0 33%,
-    #a9b1e0 53%,
-    #898acb 100%
-  );
-  background: -webkit-linear-gradient(
-    -45deg,
-    #dabed3 1%,
-    #a9b1e0 33%,
-    #a9b1e0 53%,
-    #898acb 100%
-  );
-  background: linear-gradient(
-    135deg,
-    #dabed3 1%,
-    #a9b1e0 33%,
-    #a9b1e0 53%,
-    #898acb 100%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dabed3', endColorstr='#898acb',GradientType=1 );
-
   display: flex;
   flex-direction: column;
   align-items: center;

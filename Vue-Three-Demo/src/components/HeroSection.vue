@@ -43,8 +43,8 @@ export default {
 
 <style scoped>
 #hero-section {
-  height: 50vh;
-  height: 100svh;
+  height: 85vh;
+  height: 85svh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -90,7 +90,7 @@ export default {
 #hero-slider > * {
   font-weight: 900;
   font-size: 4.5rem;
-  font-size: clamp(4.5rem, 3.4rem + 9.5vw, 13rem);
+  font-size: clamp(4.5rem, 3.4rem + 9.5vw, 10rem);
 }
 .slider-color {
   color: var(--secondary);
