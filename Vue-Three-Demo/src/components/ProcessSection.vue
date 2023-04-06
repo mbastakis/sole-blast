@@ -3,95 +3,51 @@
     <div id="gallery-transition-layer"></div>
 
     <div class="section-container">
-      <section id="first-section" class="thought">
+      <section id="header-section" class="thought">
+        <div>
+          <img src="../assets/design_process.png" alt="" />
+        </div>
         <div class="section-text">
           <h1>The Creation Process</h1>
           <p>
-            We believe that shoes offer a unique opportunity to unleash your
-            inner creativity, elevate your style and make a lasting impression.
-            That's why we're dedicated to transforming each customer's distinct
-            vision into an awesome one-of-a-kind shoe design.<br /><br />
-            Our imagination knows no bounds, so we also create our own
-            captivating custom designs for you to explore. Browse our gallery,
-            and if one of our soles speaks to your soul, don't hesitate to make
-            it yours!
-          </p>
-        </div>
-        <div id="design_process" class="desktop">
-          <img src="../assets/design_process.png" alt="" />
-        </div>
-      </section>
-
-      <section id="second-section" class="left-chat chat reveal">
-        <div>
-          <h2 id="communication-header">
-            Share Your<br />
-            Vision
-          </h2>
-          <p class="left-text-allign">
-            Simply share your shoe design idea with us, and we will bring it to
-            life in the form of a stunning pair of shoes that expresses your
-            imagination. <br /><br />
-
-            Your idea can range from highly specific to delightfully vague, and
-            your design can span from minimalistic and elegant, to vibrant and
-            impressive. With Sole-Blast, the possibilities are endless.
-            Experience the fusion of self-expression and exceptional style.
+            We believe that shoes offer a unique opportunity to unleash your inner
+            creativity, elevate your style and make a lasting impression. We're
+            dedicated to transforming each customer's distinct vision into an
+            awesome one-of-a-kind shoe design.
           </p>
         </div>
       </section>
-      <div class="right-chat chat mobile">
-        <img src="../assets/email-card-phone.png" alt="" />
-      </div>
-      <figure id="first-figure" class="desktop reveal">
-        <img src="../assets/email-card.jpg" alt="" />
-      </figure>
 
-      <figure id="second-figure" class="desktop reveal">
-        <img src="../assets/shoes_card.jpg" alt="" />
-      </figure>
-      <section id="third-section" class="left-chat chat reveal">
+      <section id="first-section" class="left-chat chat">
         <div>
-          <h2>
-            Sketch &<br />
-            Approval
-          </h2>
-          <img
-            src="../assets/shoes_card.jpg"
-            alt=""
-            class="mobile chat-photo"
-          />
           <p>
+            <span>1. Share Your Vision</span>
+            with us HERE_BUTTON and we will bring it to life.
+          </p>
+        </div>
+      </section>
+
+      <section id="second-section" class="right-chat chat">
+        <div>
+          <p>
+            <span> 2. Sketch & Approval </span>
             We're committed to bringing your vision to life just as you
             imagined. That's why we start by creating a preliminary sketch of
-            your design and sharing it with you for feedback and adjustments.
-            Now, you only have to give us the green light to capture your
-            creativity in a real pair of shoes.
+            your design and sharing it with you for feedback and approval.
           </p>
         </div>
       </section>
 
-      <section id="forth-section" class="left-chat chat reveal">
+      <section id="third-section" class="left-chat chat">
         <div>
-          <h2>From sketch to reality</h2>
-          <img
-            src="../assets/alien_shoe_showcase_phone.jpg"
-            alt=""
-            class="mobile chat-photo"
-          />
-          <p class="left-text-allign">
-            This is our specialty, creating a mini masterpiece for your feet.
-            We'll keep you updated throughout the process and then ship straight
-            to your doorstep. <br /><br />
-
-            Get ready to pursue new adventures wearing a head-turning unique
-            pair of shoes.
+          <p>
+            <span>3. From sketch to reality</span>
+            Each Sole-Blast shoe is meticulously hand-painted, ensuring a unique
+            and eye-catching result. Then it's shipped straight to your
+            doorstep. Enjoy!
           </p>
         </div>
       </section>
-      <figure id="third-figure" class="desktop reveal">
-        <img src="../assets/alien_shoe_showcase.jpg" alt />
-      </figure>
     </div>
 
     <svg
@@ -110,128 +66,10 @@
 
 <script>
 export default {
-  data: () => ({
-    width: document.documentElement.clientWidth,
-    leftChat: [],
-    thought: null,
-    mobileView: null,
-    sections: [],
-    figures: [],
-    revealChecks: [false, false, false],
-    currentReveal: 0,
-  }),
-  mounted() {
-    this.sections = [
-      document.getElementById("second-section"),
-      document.getElementById("second-figure"),
-      document.getElementById("forth-section"),
-    ];
-    this.figures = [
-      document.getElementById("first-figure"),
-      document.getElementById("third-section"),
-      document.getElementById("third-figure"),
-    ];
-    window.addEventListener("resize", this.changeDimensions);
-    this.firstSection = document.getElementById("first-section");
-    this.secondSection = document.getElementById("second-section");
-    this.thirdSection = document.getElementById("third-section");
-    this.forthSection = document.getElementById("forth-section");
-
-    if (this.width < 777) {
-      this.mobileView = true;
-    } else {
-      this.mobileView = false;
-      this.switchToDesktop();
-    }
-  },
-  unmounted() {
-    window.removeEventListener("resize", this.changeDimensions);
-  },
-  methods: {
-    changeDimensions() {
-      this.width = document.documentElement.clientWidth;
-
-      if (this.mobileView == true && this.width >= 777) {
-        this.mobileView = false;
-        this.switchToDesktop();
-      } else if (this.mobileView == false && this.width < 777) {
-        this.mobileView = true;
-        this.switchToMobile();
-      }
-    },
-    switchToDesktop() {
-      this.firstSection.classList.remove("thought");
-      this.secondSection.classList.remove("left-chat");
-      this.secondSection.classList.remove("chat");
-      this.thirdSection.classList.remove("left-chat");
-      this.thirdSection.classList.remove("chat");
-      this.forthSection.classList.remove("left-chat");
-      this.forthSection.classList.remove("chat");
-      // window.addEventListener("scroll", this.reveal);
-      // window.addEventListener("scroll", this.resetReveal);
-    },
-    switchToMobile() {
-      this.firstSection.classList.add("thought");
-      this.secondSection.classList.add("left-chat");
-      this.secondSection.classList.add("chat");
-      this.thirdSection.classList.add("left-chat");
-      this.thirdSection.classList.add("chat");
-      this.forthSection.classList.add("left-chat");
-      this.forthSection.classList.add("chat");
-      // window.removeEventListener("scroll", this.reveal);
-      // window.removeEventListener("scroll", this.resetReveal);
-    },
-    resetReveal() {
-      var elementTop = document
-        .getElementById("first-section")
-        .getBoundingClientRect().top;
-      if (elementTop > 0) {
-        this.revealChecks = [false, false, false];
-        if (this.currentReveal === 3) {
-          window.addEventListener("scroll", this.reveal);
-        }
-        this.sections[0].classList.remove("active");
-        this.sections[1].classList.remove("active");
-        this.sections[2].classList.remove("active");
-        this.figures[0].classList.remove("active");
-        this.figures[1].classList.remove("active");
-        this.figures[2].classList.remove("active");
-        this.currentReveal = 0;
-      }
-    },
-    reveal() {
-      var windowHeight = window.innerHeight;
-      var elementTop =
-        this.sections[this.currentReveal].getBoundingClientRect().top;
-      var elementVisible = 0;
-      if (elementTop < windowHeight - elementVisible) {
-        this.sections[this.currentReveal].scrollIntoView({
-          behavior: "instant",
-          block: "start",
-          inline: "start",
-        });
-        this.figures[this.currentReveal].scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "start",
-        });
-        this.sections[this.currentReveal].classList.add("active");
-        this.figures[this.currentReveal].classList.add("active");
-        if (!this.revealChecks[this.currentReveal]) {
-          this.revealChecks = [false, false, false];
-          this.revealChecks[this.currentReveal] = true;
-          setTimeout(() => {
-            this.currentReveal += 1;
-            if (this.currentReveal === 3) {
-              window.removeEventListener("scroll", this.reveal);
-            }
-          }, 500);
-        }
-      }
-    },
-  },
+  name: "ProcessSection",
 };
 </script>
+
 
 <style scoped>
 *,
@@ -243,25 +81,37 @@ export default {
   border: 0 none;
   position: relative;
 }
-#process-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  color: var(--secondary);
-}
-.desktop {
-  display: none;
-}
-.mobile {
-  display: block;
-}
 #gallery-transition-layer {
   height: var(--space-l);
   width: 100%;
   border-bottom-right-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
   background-color: var(--primary);
+}
+#header-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+}
+svg {
+  width: 100%;
+  margin-bottom: -5px;
+}
+@media screen and (min-width: 777px) {
+  #header-section {
+    flex-wrap: nowrap;
+  }
+}
+</style>
+
+#process-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  color: var(--secondary);
 }
 .thought {
   display: flex;
@@ -382,37 +232,3 @@ p {
     transform: translatey(0px);
   }
 }
-@media screen and (min-width: 777px) {
-}
-</style>
-.section-container { height: 100vh; width: 100%; } #process-section { display:
-block; } .desktop { display: block; } .mobile { display: none; }
-#gallery-transition-layer { height: var(--space-2xl); } section {
-background-color: var(--primary); width: calc(50% + 1px); height: 100vh; margin:
-0 auto 10vh 0; position: sticky; top: 0; box-shadow: -4px -4px 8px rgba(0, 0, 0,
-0.4); } figure { width: calc(50% - 1px); height: 100vh; margin: 0 auto 10vh 0;
-position: sticky; top: 0; overflow: hidden; box-shadow: 4px -4px 8px rgba(0, 0,
-0, 0.4); } #first-section { width: 100%; margin-top: var(--space-3xl);
-box-shadow: none; display: flex; border-top-right-radius: 1.5rem;
-border-top-left-radius: 1.5rem; } #first-section .section-text { width: calc(50%
-+ 1px); padding: var(--space-3xl) var(--space-m); display: flex;
-justify-content: space-between; } .section-text h1 { text-align: center; }
-#design_process { z-index: 0; width: calc(50% + 1px); } #design_process img {
-object-fit: cover; width: 100%; height: 100vh; border-top-left-radius: 1.5rem;
-border-top-right-radius: 1.5rem; border-bottom-left-radius: 1.5rem; }
-#second-section { z-index: 2; } #first-figure { z-index: 1; margin: 0 0 10vh
-auto; } #third-section { z-index: 4; margin: 0 0 10vh auto; box-shadow: -4px
--4px 8px rgba(0, 0, 0, 0.4); } #forth-section { margin: 0 auto 0 0; box-shadow:
-4px -10px 8px rgba(0, 0, 0, 0.4); z-index: 6; } #second-figure { z-index: 3; }
-#third-figure { z-index: 5; margin: 0 0 0 auto; } section::before { background:
-inherit; z-index: 100; content: ""; position: absolute; top: 50%; left: 0;
-width: 7vmin; height: 7vmin; transform: translate(calc(-50% + 1px), -50%)
-rotate(-45deg); clip-path: polygon(-15% -15%, 110% 0%, 0% 110%); box-shadow:
--4px -2px 8px rgba(0, 0, 0, 0.4); border-radius: 1.5vmin 0 0 0; }
-section:nth-of-type(2n)::before { left: auto; right: 0; transform:
-translate(calc(50% - 1px), -50%) rotate(-45deg) scale(-1); } figure img {
-z-index: 1; min-width: 100%; min-height: 100%; object-fit: cover;
-object-position: center; } section > div { display: flex; flex-direction:
-column; align-items: center; height: 100%; } .left-text-allign { text-align:
-left; } .reveal { opacity: 0; transition: 1s all ease; } .reveal.active {
-opacity: 1; }

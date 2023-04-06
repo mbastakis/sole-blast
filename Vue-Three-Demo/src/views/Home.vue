@@ -1,9 +1,9 @@
 <template>
   <div id="home">
-    <herosection></herosection>
-    <minigallery></minigallery>
+    <!-- <herosection></herosection>
+    <minigallery></minigallery> -->
     <processsection></processsection>
-    <contactus></contactus>
+    <!-- <contactus></contactus> -->
   </div>
 </template>
 
