@@ -261,7 +261,7 @@ export default {
 
 <style scoped>
 .header {
-  font-size: var(--step-1);
+  font-size: var(--step-2);
   font-weight: 800;
   color: var(--secondary);
   text-align: center;
@@ -274,7 +274,7 @@ export default {
   justify-content: space-between;
   cursor: pointer;
   padding: var(--space-3xs);
-  font-size: var(--step-0);
+  font-size: var(--step-1);
   font-weight: 600;
   color: var(--secondary);
 }
@@ -299,7 +299,7 @@ export default {
 .answer {
   padding-top: var(--space-s);
   display: block;
-  font-size: var(--step--1);
+  font-size: var(--step-0);
   font-weight: 400;
   color: var(--secondary);
   white-space: pre-wrap;

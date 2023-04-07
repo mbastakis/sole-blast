@@ -238,7 +238,7 @@ export default {
     },
     mouseMove(item) {
       const d = new Date();
-      item.src = item.images[Math.floor(((d.getTime() * 2.5) / 1000) % 7)];
+      item.src = item.images[Math.floor((d.getTime() / 1000) % 7)];
     },
     mouseLeave(item) {
       item.src = require("@/assets/img1.png");
