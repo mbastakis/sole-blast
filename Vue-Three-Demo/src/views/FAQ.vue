@@ -260,8 +260,6 @@ export default {
 </script>
 
 <style scoped>
-#faq {
-}
 .header {
   font-size: var(--step-1);
   font-weight: 800;
