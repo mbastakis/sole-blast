@@ -3,26 +3,28 @@
     <div id="gallery-transition-layer"></div>
 
     <div class="section-container">
-      <section id="header-section" class="thought">
-        <div class="section-image">
+      <section id="header-section" class="thought section">
+        <div class="header-section-image">
           <img src="../assets/design_process.png" alt="" />
         </div>
-        <div class="section-text">
+        <div class="header-section-text">
           <h1>The Creation Process</h1>
           <p>
-            We believe that shoes offer a unique opportunity to unleash your inner
-            creativity, elevate your style and make a lasting impression. We're
-            dedicated to transforming each customer's distinct vision into an
-            awesome one-of-a-kind shoe design.
+            We believe that shoes offer a unique opportunity to unleash your
+            inner creativity, elevate your style and make a lasting impression.
+            We're dedicated to transforming each customer's distinct vision into
+            an awesome one-of-a-kind shoe design.
           </p>
         </div>
       </section>
 
       <section id="first-section" class="left-chat chat">
         <div>
-          <div>
-            <span>1. Share Your Vision</span>
-            with us and we will bring it to life.
+          <div class="first-section-text">
+            <div>
+              <span>1. Share Your Vision</span>
+              with us and we will bring it to life.
+            </div>
             <div class="btn">
               <div>Here</div>
               <svg
@@ -48,25 +50,30 @@
         </div>
       </section>
 
-      <section id="second-section" class="right-chat chat">
-        <div>
-          <p>
-            <span> 2. Sketch & Approval </span>
-            We're committed to bringing your vision to life just as you
-            imagined. That's why we start by creating a preliminary sketch of
-            your design and sharing it with you for feedback and approval.
-          </p>
+      <section
+        id="second-section"
+        class="right-chat chat section right-section"
+      >
+        <div class="section-image">
+          <img src="../assets/sketch_process_section_2.png" alt="" />
+        </div>
+        <div class="section-text">
+          <span> 2. Sketch & Approval </span>
+          We're committed to bringing your vision to life just as you imagined.
+          That's why we start by creating a preliminary sketch of your design
+          and sharing it with you for feedback and approval.
         </div>
       </section>
 
-      <section id="third-section" class="left-chat chat">
-        <div>
-          <p>
-            <span>3. From sketch to reality</span>
-            Each Sole-Blast shoe is meticulously hand-painted, ensuring a unique
-            and eye-catching result. Then it's shipped straight to your
-            doorstep. Enjoy!
-          </p>
+      <section id="third-section" class="left-chat chat section">
+        <div class="last-section-image">
+          <img src="../assets/Group 1 (2).png" alt="" />
+        </div>
+        <div class="section-text">
+          <span>3. From sketch to reality</span>
+          Each Sole-Blast shoe is meticulously hand-painted, ensuring a unique
+          and eye-catching result. Then it's shipped straight to your doorstep.
+          Enjoy!
         </div>
       </section>
     </div>
@@ -114,13 +121,16 @@ export default {
   flex-direction: column;
   gap: var(--space-xl);
 }
-#header-section {
+.section {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap-reverse;
   gap: var(--space-m);
+}
+.right-section {
+  flex-direction: row-reverse;
 }
 .thought {
   background-color: #fff;
@@ -152,21 +162,27 @@ export default {
   box-shadow: 40px -34px 0 0 #fff, -28px -6px 0 -2px #fff,
     -24px 17px 0 -6px #fff, -5px 25px 0 -10px #fff;
 }
-.section-image {
+.header-section-image {
   width: 100%;
 }
-.section-image img {
+.header-section-image img {
   border-radius: 1.5rem;
   object-fit: cover;
-  object-position: 50% 40%;
+  object-position: 40% 56%;
   width: 100%;
   height: clamp(14rem, 65vw, 20rem);
 }
-.section-text {
+.header-section-text {
   display: grid;
   place-items: center;
   text-align: center;
   gap: var(--space-s);
+  font-size: var(--step-0);
+}
+.header-section-text h1 {
+  font-size: var(--step-4);
+  font-weight: 700;
+  color: var(--secondary);
 }
 .chat {
   transform: translatey(0px);
@@ -174,7 +190,7 @@ export default {
   background-color: var(--primary);
   border-radius: 1.5rem;
   position: relative;
-  padding: var(--space-xs);
+  padding: var(--space-s) var(--space-xs);
 }
 .left-chat::after {
   transform: translatey(0px);
@@ -218,11 +234,49 @@ export default {
   font-size: var(--step-0);
   font-weight: 800;
 }
-
 svg {
   width: 100%;
   margin-bottom: -5px;
 }
+.section-image {
+  width: 100%;
+  height: auto;
+}
+.section-image img {
+  border-radius: 1.5rem;
+  object-fit: scale-down;
+  width: 100%;
+  max-height: 25rem;
+}
+.last-section-image {
+  width: 100%;
+  height: auto;
+}
+.last-section-image img {
+  object-fit: cover;
+  width: 100%;
+}
+.first-section-text {
+  display: flex;
+  flex-direction: row;
+  font-size: var(--step-0);
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.first-section-text span {
+  font-weight: 800;
+  font-size: var(--step-1);
+}
+.section-text {
+  text-align: start;
+  font-size: var(--step-0);
+}
+.section-text span {
+  font-weight: 800;
+  font-size: var(--step-1);
+}
+
 @keyframes float {
   0% {
     line-height: 20px;
@@ -263,7 +317,7 @@ svg {
   }
 }
 @media screen and (min-width: 777px) {
-  #header-section {
+  .section {
     flex-wrap: nowrap;
   }
 }
@@ -274,8 +328,6 @@ svg {
   background: var(--secondary);
   width: clamp(6rem, 5rem + 10vw, 8rem);
   padding: var(--space-2xs) var(--space-xs);
-  margin-top: var(--space-xs);
-  margin-left: auto;
   font-size: var(--step-0);
   color: var(--primary);
   font-weight: 700;
@@ -283,6 +335,8 @@ svg {
   cursor: pointer;
   transition: color 0.3s ease-in-out, transform 0.3s ease-in;
   position: relative;
+  margin-left: auto;
+  margin-top: var(--space-2xs);
 }
 .btn:hover {
   transform: scale(1.1);
@@ -313,31 +367,10 @@ svg {
 }
 </style>
 
-#process-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  color: var(--secondary);
-}
-
-
-
-.process-section-transition {
-  width: 100%;
-  margin-top: var(--space-l);
-}
-h1,
-h2 {
-  font-size: clamp(var(--step-4), calc(1.77rem + 4.1vw), 4rem);
-  font-weight: 800;
-  line-height: 1;
-  padding-bottom: var(--space-xs);
-}
-p {
-  font-weight: 400;
-  font-style: italic;
-  font-size: clamp(var(--step-0), 0.5rem + 2.15vw, var(--step-1));
-  padding-top: var(--space-s);
-}
-
+#process-section { display: flex; flex-direction: column; align-items: center;
+align-content: center; color: var(--secondary); } .process-section-transition {
+width: 100%; margin-top: var(--space-l); } h1, h2 { font-size:
+clamp(var(--step-4), calc(1.77rem + 4.1vw), 4rem); font-weight: 800;
+line-height: 1; padding-bottom: var(--space-xs); } p { font-weight: 400;
+font-style: italic; font-size: clamp(var(--step-0), 0.5rem + 2.15vw,
+var(--step-1)); padding-top: var(--space-s); }
