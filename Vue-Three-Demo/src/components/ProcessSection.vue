@@ -25,27 +25,29 @@
               <span>1. Share Your Vision</span>
               with us and we will bring it to life.
             </div>
-            <div class="btn">
-              <div>Here</div>
-              <svg
-                width="10"
-                height="30"
-                viewBox="-5 -5 30 30"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6.65527 17.724C9.8356 17.724 10.8029 16.6639 11.6024 16.6639C12.6626 16.6639 14.2527 18.254 16.1962 17.3706"
-                  stroke="#A1A5C0"
-                  stroke-width="1.5"
-                />
-                <path
-                  d="M1.00211 18.0773C0.981086 16.9842 1.11763 15.8886 1.38437 14.8101M1.38437 14.8101C2.23886 6.4162 14.6067 0.0555414 17.2571 1.11562C19.9074 2.1757 14.8627 7.4449 11.6032 9.77318C10.3664 10.6566 6.30261 9.77318 6.65598 10.1265C7.00935 10.4799 8.42283 12.2467 8.42283 12.2467C6.04246 14.1267 4.47297 14.6359 1.38437 14.8101Z"
-                  stroke="white"
-                  stroke-width="1.5"
-                />
-              </svg>
-            </div>
+            <router-link to="/yoursole" class="router-link">
+              <div class="btn">
+                <div>Here</div>
+                <svg
+                  width="10"
+                  height="30"
+                  viewBox="-5 -5 30 30"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6.65527 17.724C9.8356 17.724 10.8029 16.6639 11.6024 16.6639C12.6626 16.6639 14.2527 18.254 16.1962 17.3706"
+                    stroke="#A1A5C0"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M1.00211 18.0773C0.981086 16.9842 1.11763 15.8886 1.38437 14.8101M1.38437 14.8101C2.23886 6.4162 14.6067 0.0555414 17.2571 1.11562C19.9074 2.1757 14.8627 7.4449 11.6032 9.77318C10.3664 10.6566 6.30261 9.77318 6.65598 10.1265C7.00935 10.4799 8.42283 12.2467 8.42283 12.2467C6.04246 14.1267 4.47297 14.6359 1.38437 14.8101Z"
+                    stroke="white"
+                    stroke-width="1.5"
+                  />
+                </svg>
+              </div>
+            </router-link>
           </div>
         </div>
       </section>
@@ -130,6 +132,8 @@ export default {
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
+  max-width: 90rem;
+  margin-inline: auto;
 }
 .section {
   width: 100%;
@@ -187,7 +191,8 @@ export default {
   place-items: center;
   text-align: center;
   gap: var(--space-s);
-  font-size: var(--step-0);
+  font-size: calc(var(--step-0) + 0.15rem);
+  color: var(--secondary);
 }
 .header-section-text h1 {
   font-size: var(--step-4);
@@ -269,10 +274,10 @@ svg {
 .first-section-text {
   display: flex;
   flex-direction: row;
-  font-size: var(--step-0);
+  font-size: calc(var(--step-0) + 0.15rem);
   align-items: center;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: var(--space-m);
 }
 .first-section-text span {
   font-weight: 800;
@@ -280,7 +285,7 @@ svg {
 }
 .section-text {
   text-align: start;
-  font-size: var(--step-0);
+  font-size: calc(var(--step-0) + 0.15rem);
 }
 .section-text span {
   font-weight: 800;
@@ -291,20 +296,20 @@ svg {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: var(--space-s) var(--space-s);
-  margin-top: var(--space-s);
+  padding: 0 var(--space-s);
   width: 100%;
 }
 .bottom-buttons .btn {
   margin: 0;
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   width: calc(8rem + 15vw);
+  text-align: center;
 }
 .bottom-buttons span {
   font-size: var(--step-0);
   font-weight: 700;
   color: var(--primary);
-  margin-inline: auto;
+  margin-inline: var(--space-m);
 }
 @keyframes float {
   0% {
@@ -349,11 +354,73 @@ svg {
   .section {
     flex-wrap: nowrap;
   }
-  .bottom-buttons {
-    justify-content: space-around;
+  .thought {
+    background: none;
   }
-  .bottom-buttons span {
-    margin-inline: 0;
+  .thought::after,
+  .thought::before {
+    display: none;
+  }
+  .chat {
+    background: none;
+  }
+  .chat::after {
+    display: none;
+  }
+  #header-section {
+    padding: 0;
+  }
+  #first-section {
+    padding: var(--space-m) 0;
+  }
+  #second-section {
+    padding: 0;
+  }
+  #third-section {
+    padding: 0;
+  }
+  .header-section-image img {
+    width: 100%;
+    height: clamp(20rem, 55vh, 35rem);
+    object-fit: cover;
+    border: 7px solid hsla(0, 0%, 100%, 0.3);
+  }
+  .header-section-text h1 {
+    font-size: var(--step-5);
+  }
+  .header-section-text {
+    text-align: start;
+    font-size: var(--step-1);
+    padding: var(--space-s) var(--space-l);
+  }
+  .section-container {
+    gap: 0;
+  }
+  #first-section .btn {
+    margin-top: 0;
+  }
+  .first-section-text {
+    font-size: var(--step-1);
+  }
+  .first-section-text span {
+    font-size: var(--step-2);
+  }
+  .section-text {
+    font-size: var(--step-1);
+  }
+  .section-text span {
+    font-size: var(--step-2);
+  }
+  .section-image {
+    width: 100%;
+    height: 100%;
+  }
+  .section-image img {
+    max-height: none;
+    border: 7px solid hsla(0, 0%, 100%, 0.5);
+  }
+  .bottom-buttons .btn {
+    font-size: var(--step-1);
   }
 }
 .btn {
@@ -372,6 +439,7 @@ svg {
   position: relative;
   margin-left: auto;
   margin-top: var(--space-2xs);
+  outline: 3px solid hsla(0, 0%, 100%, 0.5);
 }
 .btn:hover {
   transform: scale(1.1);
@@ -399,5 +467,8 @@ svg {
 .btn:hover svg path:nth-child(2) {
   animation: write 2s ease-in-out;
   stroke: var(--selected);
+}
+.router-link {
+  text-decoration: none;
 }
 </style>
