@@ -78,6 +78,16 @@
       </section>
     </div>
 
+    <div class="bottom-buttons">
+      <div class="btn">
+        <div>Your Design</div>
+      </div>
+      <span>Or</span>
+      <div class="btn">
+        <div>Shop Now</div>
+      </div>
+    </div>
+
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1440 320"
@@ -276,7 +286,26 @@ svg {
   font-weight: 800;
   font-size: var(--step-1);
 }
-
+.bottom-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-s) var(--space-s);
+  margin-top: var(--space-s);
+  width: 100%;
+}
+.bottom-buttons .btn {
+  margin: 0;
+  font-size: var(--step-1);
+  width: calc(8rem + 15vw);
+}
+.bottom-buttons span {
+  font-size: var(--step-0);
+  font-weight: 700;
+  color: var(--primary);
+  margin-inline: auto;
+}
 @keyframes float {
   0% {
     line-height: 20px;
@@ -319,6 +348,12 @@ svg {
 @media screen and (min-width: 777px) {
   .section {
     flex-wrap: nowrap;
+  }
+  .bottom-buttons {
+    justify-content: space-around;
+  }
+  .bottom-buttons span {
+    margin-inline: 0;
   }
 }
 .btn {
@@ -366,11 +401,3 @@ svg {
   stroke: var(--selected);
 }
 </style>
-
-#process-section { display: flex; flex-direction: column; align-items: center;
-align-content: center; color: var(--secondary); } .process-section-transition {
-width: 100%; margin-top: var(--space-l); } h1, h2 { font-size:
-clamp(var(--step-4), calc(1.77rem + 4.1vw), 4rem); font-weight: 800;
-line-height: 1; padding-bottom: var(--space-xs); } p { font-weight: 400;
-font-style: italic; font-size: clamp(var(--step-0), 0.5rem + 2.15vw,
-var(--step-1)); padding-top: var(--space-s); }

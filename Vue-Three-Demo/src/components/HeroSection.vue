@@ -65,11 +65,11 @@ export default {
   white-space: nowrap;
   color: var(--primary);
   overflow: hidden;
-  margin-top: auto;
 }
 #floating-section {
-  height: 100%;
+  width: 100%;
   position: relative;
+  height: 100%;
 }
 #floating-quote {
   position: absolute;
