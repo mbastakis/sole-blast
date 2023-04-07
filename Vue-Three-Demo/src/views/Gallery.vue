@@ -11,6 +11,7 @@
           <img
             :src="item.src"
             @mouseenter="mouseEnter(item)"
+            @mousemove="mouseMove(item)"
             @mouseleave="mouseLeave(item)"
             :alt="item.alt"
           />
@@ -235,6 +236,10 @@ export default {
     mouseEnter(item) {
       item.src = item.images[Math.floor(Math.random() * 7)];
     },
+    mouseMove(item) {
+      const d = new Date();
+      item.src = item.images[Math.floor(((d.getTime() * 2.5) / 1000) % 7)];
+    },
     mouseLeave(item) {
       item.src = require("@/assets/img1.png");
     },
@@ -295,10 +300,11 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 1.5rem 1.5rem 0 0;
+  transition: transform 500ms ease-in-out;
 }
 .gallery-item img:hover {
   --transition-property: transform;
-  --transision-duration: 500ms;
+  --transision-duration: 200ms;
 
   transition: var(--transition-property) var(--transision-duration) ease-in-out;
   transform: translateY(-5%);
