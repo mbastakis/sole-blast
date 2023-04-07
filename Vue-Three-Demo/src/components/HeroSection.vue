@@ -1,32 +1,20 @@
 <template>
   <div id="hero-section">
-    <navbar></navbar>
-
     <div id="floating-section">
       <viewport></viewport>
       <div id="floating-quote">
-        <p>Nike Air Force Supreme</p>
+        <p>Nike Air Force 1 Supreme</p>
         <h2>The Alien Invasion</h2>
-        <p>Handdrawn</p>
+        <p>Hand-Drawn</p>
       </div>
     </div>
 
     <div>
       <div id="hero-slider">
-        <span
-          >Express your <span class="slider-color">Soul</span> with your
-          <span class="slider-color">Soles</span>.
-        </span>
-        <h1>
-          &nbsp; Express your <span class="slider-color">Soul</span> with your
-          <span class="slider-color">Soles</span>.
-        </h1>
-        <span
-          >&nbsp; Express your <span class="slider-color">Soul</span> with your
-          <span class="slider-color">Soles</span>.
-        </span>
+        <span>&nbsp;<span class="slider-color">Color</span> Your Walk. </span>
+        <h1>&nbsp;<span class="slider-color">Color</span> Your Walk.</h1>
+        <span>&nbsp;<span class="slider-color">Color</span> Your Walk. </span>
       </div>
-
       <div id="transition-layer"></div>
     </div>
   </div>
@@ -34,13 +22,11 @@
 
 <script>
 import ViewPort from "./ViewPort.vue";
-import Navbar from "./Navbar.vue";
 import anime from "animejs";
 
 export default {
   components: {
     viewport: ViewPort,
-    navbar: Navbar,
   },
   mounted() {
     let elt = document.querySelectorAll("#hero-slider > *");
@@ -57,31 +43,8 @@ export default {
 
 <style scoped>
 #hero-section {
-  background: #dabed3;
-  background: -moz-linear-gradient(
-    -45deg,
-    #dabed3 1%,
-    #a9b1e0 33%,
-    #a9b1e0 53%,
-    #898acb 100%
-  );
-  background: -webkit-linear-gradient(
-    -45deg,
-    #dabed3 1%,
-    #a9b1e0 33%,
-    #a9b1e0 53%,
-    #898acb 100%
-  );
-  background: linear-gradient(
-    135deg,
-    #dabed3 1%,
-    #a9b1e0 33%,
-    #a9b1e0 53%,
-    #898acb 100%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dabed3', endColorstr='#898acb',GradientType=1 );
-  height: 100vh;
-  height: 100svh;
+  height: 85vh;
+  height: 85svh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -127,7 +90,7 @@ export default {
 #hero-slider > * {
   font-weight: 900;
   font-size: 4.5rem;
-  font-size: clamp(4.5rem, 3.4rem + 5.5vw, 10rem);
+  font-size: clamp(4.5rem, 3.4rem + 9.5vw, 10rem);
 }
 .slider-color {
   color: var(--secondary);

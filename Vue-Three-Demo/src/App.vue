@@ -1,24 +1,30 @@
 <template>
   <div id="app">
-    <herosection></herosection>
-    <minigallery></minigallery>
-    <processsection></processsection>
-    <contactus></contactus>
+    <navbar></navbar>
+    <transition :name="transitionName" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-import HeroSection from "./components/HeroSection.vue";
-import MiniGallery from "./components/MiniGallery.vue";
-import ProcessSection from "./components/ProcessSection.vue";
-import ContactUs from "./components/ContactUs.vue";
-
+import navbar from "@/components/Navbar.vue";
 export default {
+  name: "App",
   components: {
-    herosection: HeroSection,
-    minigallery: MiniGallery,
-    processsection: ProcessSection,
-    contactus: ContactUs,
+    navbar,
+  },
+  computed: {
+    transitionName() {
+      switch (this.$route.name) {
+        case "gallery":
+          return "fade";
+        case "faq":
+          return "fade";
+        default:
+          return "fade"; // Default transition for other routes
+      }
+    },
   },
 };
 </script>
@@ -27,6 +33,7 @@ export default {
 :root {
   --primary: white;
   --secondary: #282e5c;
+  --selected: #ffff6e;
 
   --step--2: clamp(0.78rem, calc(0.72rem + 0.31vw), 0.96rem);
   --step--1: clamp(0.94rem, calc(0.85rem + 0.46vw), 1.2rem);
@@ -47,15 +54,37 @@ export default {
   --space-2xl: clamp(4.5rem, calc(3.98rem + 2.61vw), 6rem);
   --space-3xl: clamp(6.75rem, calc(5.97rem + 3.91vw), 9rem);
 }
-
 html,
 body {
-  width: 100%;
-  height: 100%;
-  margin: 0px;
-  font-family: "Source Sans Pro", sans-serif;
+  margin: 0;
+  padding: 0;
 }
+
 #app {
-  height: 100%;
+  background: #dabed3;
+  background-image: linear-gradient(
+    to right bottom,
+    #dabed3,
+    #d4bbd5,
+    #cdb8d8,
+    #c5b5da,
+    #bab3dd,
+    #b2afdc,
+    #a9abdc,
+    #a0a7db,
+    #9aa0d7,
+    #9499d3,
+    #8e91cf,
+    #898acb
+  );
+}
+/* Fade transition */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

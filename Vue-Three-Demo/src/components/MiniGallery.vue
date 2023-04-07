@@ -1,10 +1,7 @@
 <template>
   <div class="mini-gallery">
     <div id="header">
-      <h1>
-        A Gallery of Sole-ful <br />
-        Creations
-      </h1>
+      <h1>Browse our Custom Shoe Store</h1>
     </div>
     <div class="mini-gallery-container-phone">
       <div class="Picture-1 img">
@@ -64,11 +61,29 @@
         </div>
       </div>
     </div>
+    <div class="btn">
+      View More
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M3 3L15.2929 15.2929C15.6834 15.6834 15.6834 16.3166 15.2929 16.7071L3 29"
+          stroke="#FFE391"
+          stroke-width="6"
+          stroke-linecap="round"
+        />
+        <path
+          d="M16 3L28.2929 15.2929C28.6834 15.6834 28.6834 16.3166 28.2929 16.7071L16 29"
+          stroke="#EDEFF9"
+          stroke-width="6"
+          stroke-linecap="round"
+        />
+      </svg>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  name: "MiniGallery",
   props: {},
 };
 </script>
@@ -88,6 +103,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--primary);
 }
 .mini-gallery-container-phone {
   height: 100%;
@@ -162,10 +178,10 @@ export default {
     max-height: 100%;
   }
   .img:hover {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
+    -webkit-transform: scale(1.03);
+    -moz-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    transform: scale(1.03);
     -webkit-transition: -webkit-transform 0.25s;
     -moz-transition: -moz-transform 0.25s;
     -ms-transition: -ms-transform 0.25s;
@@ -193,5 +209,51 @@ export default {
   .Picture-17 {
     grid-area: Picture-17;
   }
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary);
+  padding: var(--space-xs) var(--space-s);
+
+  font-size: var(--step-2);
+  color: var(--primary);
+  font-weight: 700;
+  border-radius: 0.5em;
+  margin-top: var(--space-l);
+  margin-bottom: var(--space-3xs);
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in;
+}
+.btn svg {
+  transition: transform 0.3s ease-in-out;
+}
+.btn svg path {
+  transition: stroke 0.3s ease-in-out;
+}
+.btn:hover {
+  transform: scale(1.1);
+  color: var(--selected);
+}
+.btn:hover svg {
+  transform: translateX(0.2em);
+}
+.btn svg path:nth-child(1) {
+  stroke: var(--selected);
+}
+.btn svg path:nth-child(2) {
+  stroke: var(--primary);
+}
+.btn:hover svg path:nth-child(1) {
+  stroke: var(--primary);
+}
+.btn:hover svg path:nth-child(2) {
+  stroke: var(--selected);
+}
+.btn svg {
+  width: 0.8em;
+  height: 0.8em;
+  margin-left: var(--space-xs);
 }
 </style>

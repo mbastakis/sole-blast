@@ -5,41 +5,41 @@
         <!--TODO: Add a Logo -->
         <div>
           <!-- I want to import an svg asset I added -->
-          <a href="./gallery.html" class="ham-item">
+          <router-link to="/gallery" class="ham-item">
             <img
               class="ham-icon"
               src="../assets/Gallery.svg"
               alt="Gallery icon"
-            />Gallery
-          </a>
+            />Shop
+          </router-link>
         </div>
         <div>
-          <a href="./yoursole.html" class="ham-item">
+          <router-link to="/yoursole" class="ham-item">
             <img
               class="ham-icon"
               src="../assets/Your Sole.svg"
               alt="Shoe svg"
             />
-            Your Sole
-          </a>
+            Your Design
+          </router-link>
         </div>
       </div>
       <div id="ham-bottom-list" class="ham-list">
         <div>
-          <a href="./faq.html" class="ham-item">
+          <router-link to="/faq" class="ham-item">
             <img class="ham-icon" src="../assets/Oustion.svg" alt="FAQ icon" />
             F.A.Q.
-          </a>
+          </router-link>
         </div>
         <div>
-          <a href="./aboutus.html" class="ham-item">
+          <router-link to="/about" class="ham-item">
             <img
               class="ham-icon"
               src="../assets/About Us.svg"
               alt="About Us icon"
             />
             About Us
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
@@ -63,19 +63,23 @@
 
       <ul id="left-list" class="nav-list">
         <li>
-          <a href="./gallery.html"> Gallery </a>
+          <router-link to="/gallery"> Shop </router-link>
         </li>
         <li>
-          <a href="./yoursole.html"> Your Sole </a>
+          <router-link to="/yoursole"> Your Design </router-link>
         </li>
       </ul>
-      <div id="logo">Sole-Blast</div>
+      <div id="logo">
+        <router-link to="/">
+          <img src="../assets/header_logo.png" alt="" />
+        </router-link>
+      </div>
       <ul id="right-list" class="nav-list">
         <li>
-          <a href="./faq.html"> F.A.Q. </a>
+          <router-link to="/faq"> F.A.Q. </router-link>
         </li>
         <li>
-          <a href="./aboutus.html"> About Us </a>
+          <router-link to="/about"> About Us </router-link>
         </li>
       </ul>
     </div>
@@ -126,17 +130,20 @@ export default {
   padding: var(--space-s) var(--space-s);
 }
 #logo {
-  font-family: "Ubuntu", sans-serif;
-  font-size: var(--step-4);
   cursor: pointer;
   user-select: none;
-  margin: 0 auto 0 0;
+  margin: 0 auto 0 auto;
+}
+#logo img {
+  height: clamp(4rem, 3rem + 7vw, 8rem);
 }
 #ham-icon {
   cursor: pointer;
-  width: 3rem;
-  margin-right: auto;
+  width: calc(3rem + 1vw);
   z-index: 2;
+  position: absolute;
+  left: calc(1rem + 1vw);
+  top: calc(1rem + 1vw);
 }
 .nav-list {
   display: none;
@@ -196,13 +203,6 @@ export default {
   }
   #logo {
     margin: 0 auto;
-    font-family: "Ubuntu", sans-serif;
-    letter-spacing: -1.4px;
-    /*font-size: 4rem;*/
-    transform: rotate(-5deg);
-    cursor: pointer;
-    user-select: none;
-    color: var(--primary);
   }
   .nav-list {
     display: flex;
@@ -247,4 +247,3 @@ export default {
   }
 }
 </style>
-c
