@@ -81,13 +81,17 @@
     </div>
 
     <div class="bottom-buttons">
-      <div class="btn">
-        <div>Your Design</div>
-      </div>
+      <router-link to="/yoursole" class="router-link">
+        <div class="btn">
+          <div>Your Design</div>
+        </div>
+      </router-link>
       <span>Or</span>
-      <div class="btn">
-        <div>Shop Now</div>
-      </div>
+      <router-link to="/gallery" class="router-link">
+        <div class="btn">
+          <div>Gallery</div>
+        </div>
+      </router-link>
     </div>
 
     <svg
@@ -303,6 +307,7 @@ svg {
   margin: 0;
   font-size: var(--step-0);
   width: calc(8rem + 15vw);
+  max-width: 20rem;
   text-align: center;
 }
 .bottom-buttons span {

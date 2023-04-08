@@ -93,6 +93,7 @@ export default {
 <style scoped>
 #header {
   width: 90vw;
+  max-width: 120rem;
   align-content: start;
   padding: var(--space-s) 0;
 
@@ -162,6 +163,7 @@ export default {
     display: block;
     height: 100%;
     width: 90vw;
+    max-width: 120rem;
   }
   .vertical-photos-1 {
     display: grid;
