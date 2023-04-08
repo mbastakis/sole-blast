@@ -16,7 +16,12 @@
             :class="{ down: item.showAnswer, right: !item.showAnswer }"
           ></i>
         </div>
-        <div class="answer" v-show="item.showAnswer" v-html="item.answer"></div>
+        <div
+          class="answer"
+          v-show="item.showAnswer"
+          v-html="item.answer"
+          @click="handleClick($event)"
+        ></div>
       </div>
 
       <div class="header">
@@ -103,7 +108,7 @@ export default {
         {
           question: "What does Sole-Blast stand for?",
           answer:
-            "In Sole-Blast, we believe that shoes offer a unique opportunity to unleash your inner creativity, elevate your style and make a lasting impression. That's why we're dedicated to transforming each customer's distinct vision into an awesome one-of-a-kind shoe design. <a href='/yoursole'>Order yours now!</a>",
+            "In Sole-Blast, we believe that shoes offer a unique opportunity to unleash your inner creativity, elevate your style and make a lasting impression. That's why we're dedicated to transforming each customer's distinct vision into an awesome one-of-a-kind shoe design. <a href='/yoursole' @click.prevent='navigateTo(\"/yoursole\")'>Order yours now!</a>",
           showAnswer: false,
         },
         {
@@ -254,6 +259,17 @@ export default {
     toggleShippingAndReturns(index) {
       this.shippingAndReturns[index].showAnswer =
         !this.shippingAndReturns[index].showAnswer;
+    },
+    navigateTo(route) {
+      console.log("test");
+      this.$router.push(route);
+    },
+    handleClick(event) {
+      if (event.target.tagName === "A") {
+        event.preventDefault(); // Prevent the default navigation behavior
+        const path = event.target.getAttribute("href");
+        this.$router.push(path);
+      }
     },
   },
 };
