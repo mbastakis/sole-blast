@@ -65,7 +65,7 @@
 
       <section id="third-section" class="left-chat chat section">
         <div class="last-section-image">
-          <img src="../assets/Group 1 (2).png" alt="" />
+          <img src="../assets/Group_1_(2).png" alt="" />
         </div>
         <div class="section-text">
           <span>3. From sketch to reality</span>
