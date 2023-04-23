@@ -2,20 +2,27 @@
   <div id="gallery">
     <div class="gallery">
       <div class="gallery-container">
-        <div class="gallery-item" v-for="item in items" :key="item.title" ref="galleryItems">
-          <img
-            :src="item.src"
-            @mouseenter="mouseEnter(item)"
-            @mousemove="mouseMove(item)"
-            @mouseleave="mouseLeave(item)"
-            :alt="item.alt"
-          />
-          <div class="gallery-item-info">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
-            <h4 class="price">{{ item.price }}€</h4>
+        <router-link
+          v-for="item in items"
+          :key="item.title"
+          :to="{ name: 'shopItem', query: { item: JSON.stringify(item) } }"
+          class="router-link"
+        >
+          <div class="gallery-item" ref="galleryItems">
+            <img
+              :src="item.src"
+              @mouseenter="mouseEnter(item)"
+              @mousemove="mouseMove(item)"
+              @mouseleave="mouseLeave(item)"
+              :alt="item.alt"
+            />
+            <div class="gallery-item-info">
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+              <h4 class="price">{{ item.price }}€</h4>
+            </div>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -42,7 +49,8 @@ export default {
           alt: 'Nike Shoe 1',
           title: 'Design Name 1',
           description: 'Nike Dunk Low Next Nature',
-          price: '100'
+          price: '100',
+          size: '42.5'
         },
         {
           src: img1,

@@ -38,13 +38,13 @@ export default {
             {
               question: 'What does Sole-Blast stand for?',
               answer:
-                "In Sole-Blast, we believe that shoes offer a unique opportunity to unleash your inner creativity, elevate your style and make a lasting impression. That's why we're dedicated to transforming each customer's distinct vision into an awesome one-of-a-kind shoe design. <a class='test' href='/yoursole'>Order yours now!</a>",
+                "In Sole-Blast, we believe that shoes offer a unique opportunity to unleash your inner creativity, elevate your style and make a lasting impression. That's why we're dedicated to transforming each customer's distinct vision into an awesome one-of-a-kind shoe design. <a class='test' href='/yourdesign'>Order yours now!</a>",
               showAnswer: false
             },
             {
               question: 'What do we offer?',
               answer:
-                "\tOur workshop excels in creating custom painted shoes tailored to your individual style. We provide a range of options, including unique designs inspired by your ideas and an exclusive selection of <a href='/yoursole'>Sole-Blast originals</a> to choose from. \n\n\tIn addition to shoes, our expertise extends to customizing a diverse array of items such as bags, wallets, skateboards, snowboards, and more. If you're seeking a special customization, simply fill out <a href='/yoursole'>Your Design form</a>, and let us bring your vision to life!",
+                "\tOur workshop excels in creating custom painted shoes tailored to your individual style. We provide a range of options, including unique designs inspired by your ideas and an exclusive selection of <a href='/shop'>Sole-Blast originals</a> to choose from. \n\n\tIn addition to shoes, our expertise extends to customizing a diverse array of items such as bags, wallets, skateboards, snowboards, and more. If you're seeking a special customization, simply fill out <a href='/yourdesign'>Your Design form</a>, and let us bring your vision to life!",
               showAnswer: false
             }
           ]
@@ -57,7 +57,7 @@ export default {
             {
               question: 'How can I order a custom pair of shoes?',
               answer:
-                "<div>To order a custom pair of shoes, follow the instructions listed in <a href='/yoursole'>Your Design page</a>. You can also <a href='/yoursole'>browse our store</a> and select one of our suggested captivating designs. \n\nGet ready to pursue new adventures wearing a head-turning unique pair of shoes!</div>",
+                "<div>To order a custom pair of shoes, follow the instructions listed in <a href='/yourdesign'>Your Design page</a>. You can also <a href='/shop'>browse our store</a> and select one of our suggested captivating designs. \n\nGet ready to pursue new adventures wearing a head-turning unique pair of shoes!</div>",
               showAnswer: false
             },
             {
@@ -117,7 +117,7 @@ export default {
             {
               question: 'Can I select a design that has been painted before?',
               answer:
-                "Yes, you can choose any design from <a href='/gallery'>our store</a> but please note that each pair is 100% hand-painted and unique, so we cannot guarantee an exact replica. We'll always aim to make the new pair even better!",
+                "Yes, you can choose any design from <a href='/shop'>our store</a> but please note that each pair is 100% hand-painted and unique, so we cannot guarantee an exact replica. We'll always aim to make the new pair even better!",
               showAnswer: false
             },
             {
