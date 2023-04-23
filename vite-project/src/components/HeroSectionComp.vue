@@ -30,9 +30,10 @@ export default {
   },
   mounted() {
     let elt = document.querySelectorAll('#hero-slider > *')
+    let sliderContent = document.querySelector('#hero-slider')
     anime({
       targets: elt,
-      translateX: '-100%',
+      translateX: [-sliderContent.clientWidth, 0],
       duration: 8000,
       easing: 'linear',
       loop: true

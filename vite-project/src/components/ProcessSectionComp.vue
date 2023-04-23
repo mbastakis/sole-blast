@@ -24,7 +24,7 @@
               <span>1. Share Your Vision</span>
               with us and we will bring it to life.
             </div>
-            <router-link to="/yoursole" class="router-link">
+            <router-link to="/yourdesign" class="router-link">
               <div class="btn">
                 <div>Here</div>
                 <svg
@@ -76,7 +76,7 @@
     </div>
 
     <div class="bottom-buttons">
-      <router-link to="/yoursole" class="router-link">
+      <router-link to="/yourdesign" class="router-link">
         <div class="btn">
           <div>Your Design</div>
         </div>
@@ -269,7 +269,6 @@ svg {
 .last-section-image img {
   object-fit: cover;
   width: 100%;
-  min-width: 25rem;
 }
 .first-section-text {
   display: flex;
@@ -302,7 +301,6 @@ svg {
 .bottom-buttons .btn {
   margin: 0;
   font-size: var(--step-0);
-  width: calc(8rem + 15vw);
   max-width: 20rem;
   text-align: center;
 }
@@ -417,12 +415,16 @@ svg {
     width: 100%;
     height: 100%;
   }
+  .last-section-image {
+    min-width: 25rem;
+  }
   .section-image img {
     min-width: 20rem;
     border: 7px solid hsla(0, 0%, 100%, 0.5);
   }
   .bottom-buttons .btn {
     font-size: var(--step-1);
+    width: calc(8rem + 15vw);
   }
 }
 .btn {
