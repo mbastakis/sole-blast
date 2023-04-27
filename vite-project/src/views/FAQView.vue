@@ -8,17 +8,24 @@
       <div class="header">
         <h2>{{ section.title }}</h2>
       </div>
-      <div class="faq-item" v-for="(item, index) in section.items" :key="section.keyPrefix + index">
-        <div class="question" @click="toggleAnswer(sectionIndex, index)">
+
+      <div
+        class="faq-item"
+        v-for="(item, index) in section.items"
+        :key="section.keyPrefix + index"
+        @click="toggleAnswer(sectionIndex, index)"
+      >
+        <div class="question">
           <span>{{ item.question }}</span>
-          <i class="arrow" :class="{ down: item.showAnswer, right: !item.showAnswer }"></i>
         </div>
-        <div
-          class="answer"
-          v-show="item.showAnswer"
-          v-html="item.answer"
-          @click="handleClick($event)"
-        ></div>
+        <transition name="faq-answer" tag="div">
+          <div
+            class="answer"
+            v-show="item.showAnswer"
+            v-html="item.answer"
+            @click="handleClick($event)"
+          ></div>
+        </transition>
       </div>
     </div>
   </div>
@@ -187,13 +194,13 @@ export default {
             }
           ]
         }
-      ]
+      ],
+      active: null
     }
   },
   methods: {
     toggleAnswer(sectionIndex, index) {
-      this.faqSections[sectionIndex].items[index].showAnswer =
-        !this.faqSections[sectionIndex].items[index].showAnswer
+      
     },
     handleClick(event) {
       if (event.target.tagName === 'A') {
@@ -222,7 +229,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  cursor: pointer;
   padding: var(--space-3xs);
   font-size: var(--step-1);
   font-weight: 600;
@@ -244,6 +250,7 @@ export default {
   padding: var(--space-m);
   box-shadow: 0rem 1rem 10px 0px rgba(0, 0, 0, 0.2);
   max-width: 60rem;
+  cursor: pointer;
 }
 
 .answer {
@@ -253,5 +260,13 @@ export default {
   font-weight: 400;
   color: var(--secondary);
   white-space: pre-wrap;
+}
+.faq-answer-enter-active,
+.faq-answer-leave-active {
+  transition: opacity 0.3s;
+}
+.faq-answer-enter,
+.faq-answer-leave-to {
+  opacity: 0;
 }
 </style>
