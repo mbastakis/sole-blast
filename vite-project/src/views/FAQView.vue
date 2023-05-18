@@ -9,29 +9,14 @@
         <h2>{{ section.title }}</h2>
       </div>
 
-      <div
-        class="faq-item"
-        v-for="(item, index) in section.items"
-        :key="section.keyPrefix + index"
-        @click="toggleAnswer(sectionIndex, index)"
-      >
-        <div class="question">
-          <span>{{ item.question }}</span>
-        </div>
-        <transition name="faq-answer" tag="div">
-          <div
-            class="answer"
-            v-show="item.showAnswer"
-            v-html="item.answer"
-            @click="handleClick($event)"
-          ></div>
-        </transition>
-      </div>
+      <BaseFAQContainerVue :faqData="section.items" />
     </div>
   </div>
 </template>
 
 <script>
+import BaseFAQContainerVue from '../components/BaseFAQContainer.vue'
+
 export default {
   name: 'FAQ',
   data() {
@@ -198,75 +183,34 @@ export default {
       active: null
     }
   },
-  methods: {
-    toggleAnswer(sectionIndex, index) {
-      
-    },
-    handleClick(event) {
-      if (event.target.tagName === 'A') {
-        event.preventDefault() // Prevent the default navigation behavior
-        const path = event.target.getAttribute('href')
-        this.$router.push(path)
-      }
-    }
+  components: {
+    BaseFAQContainerVue
   }
 }
 </script>
 
 <style scoped>
 #faq {
-  padding-bottom: var(--space-xl);
+  padding: var(--space-xs) var(--space-xs) var(--space-xl) var(--space-xs);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-m);
 }
 .header {
   font-size: var(--step-2);
   font-weight: 800;
   color: var(--secondary);
   text-align: center;
-  margin-top: var(--space-xl);
+  margin: var(--space-xs) 0;
   width: 100%;
-}
-.question {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-3xs);
-  font-size: var(--step-1);
-  font-weight: 600;
-  color: var(--secondary);
 }
 .faq-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
-  padding: var(--space-3xs) var(--space-s);
-  gap: var(--space-m);
-}
-.faq-item {
-  width: 100%;
-  background: white;
+  background-color: var(--primary);
+  padding: var(--space-xs) var(--space-s);
   border-radius: 1.5rem;
-  padding: var(--space-m);
-  box-shadow: 0rem 1rem 10px 0px rgba(0, 0, 0, 0.2);
-  max-width: 60rem;
-  cursor: pointer;
-}
-
-.answer {
-  padding-top: var(--space-s);
-  display: block;
-  font-size: var(--step-0);
-  font-weight: 400;
-  color: var(--secondary);
-  white-space: pre-wrap;
-}
-.faq-answer-enter-active,
-.faq-answer-leave-active {
-  transition: opacity 0.3s;
-}
-.faq-answer-enter,
-.faq-answer-leave-to {
-  opacity: 0;
+  max-width: 1200px;
 }
 </style>
