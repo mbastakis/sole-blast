@@ -1,7 +1,10 @@
 <template>
-  <div></div>
+  <div id="your-design"></div>
 </template>
 <script>
 export default {}
 </script>
-<style></style>
+<style>
+#your-design {
+}
+</style>

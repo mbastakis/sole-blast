@@ -1,97 +1,98 @@
 <template>
-  <div class="mobile-shop" v-if="item">
-    <div class="top-section">
-      <div class="title">
-        <svg
-          @click="goBack"
-          width="30"
-          height="25"
-          viewBox="0 0 30 25"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M14.6667 2L3 12.5M3 12.5L14.6667 23M3 12.5H28"
-            stroke="#282e5c"
-            stroke-width="4"
-            stroke-linecap="round"
-          />
-        </svg>
-        <h1>{{ item.title }}</h1>
-      </div>
-      <div>
-        <Carousel
-          id="gallery"
-          :items-to-show="1"
-          :wrap-around="true"
-          :autoplay="5000"
-          v-model="currentSlide"
-        >
-          <Slide class="img-carousel" v-for="(img, index) in item.images" :key="index">
-            <div class="carousel__item"><img :src="img" alt="" /></div>
-          </Slide>
-        </Carousel>
+  <div>
+    <div class="mobile-shop" v-if="item">
+      <div class="top-section">
+        <div class="title">
+          <svg
+            @click="goBack"
+            width="30"
+            height="25"
+            viewBox="0 0 30 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M14.6667 2L3 12.5M3 12.5L14.6667 23M3 12.5H28"
+              stroke="#282e5c"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+          </svg>
+          <h1>{{ item.title }}</h1>
+        </div>
+        <div>
+          <Carousel
+            id="gallery"
+            :items-to-show="1"
+            :wrap-around="true"
+            :autoplay="5000"
+            v-model="currentSlide"
+          >
+            <Slide class="img-carousel" v-for="(img, index) in item.images" :key="index">
+              <div class="carousel__item"><img :src="img" alt="" /></div>
+            </Slide>
+          </Carousel>
 
-        <Carousel
-          id="thumbnails"
-          :items-to-show="4"
-          :wrap-around="true"
-          v-model="currentSlide"
-          ref="carousel"
-        >
-          <Slide v-for="slide in item.images.length" :key="slide">
-            <div class="carousel__item" @click="slideTo(slide - 1)">
-              <div class="slide-item">{{}}</div>
-            </div>
-          </Slide>
-        </Carousel>
+          <Carousel
+            id="thumbnails"
+            :items-to-show="4"
+            :wrap-around="true"
+            v-model="currentSlide"
+            ref="carousel"
+          >
+            <Slide v-for="slide in item.images.length" :key="slide">
+              <div class="carousel__item" @click="slideTo(slide - 1)">
+                <div class="slide-item">{{}}</div>
+              </div>
+            </Slide>
+          </Carousel>
+        </div>
+      </div>
+      <div class="info-container">
+        <div id="shoe-model" class="shoe-info">
+          Model:
+          <h3>{{ item.description }}</h3>
+        </div>
+        <div id="shoe-size" class="shoe-info">
+          Size:
+          <select v-model="selectedSize">
+            <option disabled selected>Choose an option</option>
+            <option value="US 5">US 5</option>
+            <option value="US 6">US 6</option>
+            <option value="US 7">US 7</option>
+            <option value="US 8">US 8</option>
+            <option value="US 9">US 9</option>
+            <option value="US 10">US 10</option>
+            <option value="US 11">US 11</option>
+            <option value="US 12">US 12</option>
+          </select>
+        </div>
+        <div class="btn">
+          <button @click="addToCart(item)">
+            <span>${{ item.price }}</span> Buy Now
+          </button>
+        </div>
       </div>
     </div>
-    <div class="info-container">
-      <div id="shoe-model" class="shoe-info">
-        Model:
-        <h3>{{ item.description }}</h3>
+    <div class="desktop-shop" v-if="item">
+      <div class="image-container">
+        <div v-for="(img, index) in item.images" :key="index" class="desktop-image">
+          <img :src="img" alt="" />
+        </div>
       </div>
-      <div id="shoe-size" class="shoe-info">
-        Size:
-        <select v-model="selectedSize">
-          <option disabled selected>Choose an option</option>
-          <option value="US 5">US 5</option>
-          <option value="US 6">US 6</option>
-          <option value="US 7">US 7</option>
-          <option value="US 8">US 8</option>
-          <option value="US 9">US 9</option>
-          <option value="US 10">US 10</option>
-          <option value="US 11">US 11</option>
-          <option value="US 12">US 12</option>
-        </select>
-      </div>
-      <div class="btn">
-        <button @click="addToCart(item)">
-          <span>${{ item.price }}</span> Buy Now
-        </button>
-      </div>
+      <div id="text-container">test</div>
     </div>
-  </div>
-  <div class="desktop-shop" v-if="item">
-    <div class="image-container">
-      <div v-for="(img, index) in item.images" :key="index" class="desktop-image">
-        <img :src="img" alt="" />
-      </div>
-    </div>
-    <div id="text-container">test</div>
   </div>
 </template>
 
 <script>
 import { Carousel, Slide } from 'vue3-carousel'
-
 import 'vue3-carousel/dist/carousel.css'
+import { mapGetters } from 'vuex'
 
 export default {
   data() {
     return {
-      item: null,
       currentSlide: 0,
       timer: null,
       selectedSize: 'Choose an option'
@@ -104,19 +105,6 @@ export default {
     topSection.style.top = `${navbar}px`
     console.log('here')
   },
-  beforeRouteEnter(to, from, next) {
-    if (to.query.item) {
-      try {
-        const item = JSON.parse(to.query.item)
-        next((vm) => (vm.item = item))
-      } catch (error) {
-        console.error('Error parsing item:', error)
-        next(false)
-      }
-    } else {
-      next(false)
-    }
-  },
   methods: {
     slideTo(val) {
       this.currentSlide = val
@@ -126,6 +114,10 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['selectedItem']),
+    item() {
+      return this.selectedItem
+    },
     currentImg: function () {
       return this.item.images[Math.abs(this.currentIndex) % this.item.images.length]
     }
@@ -249,14 +241,13 @@ export default {
   .image-container {
     width: 60%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
   }
+  .desktop-image,
   .desktop-image img {
     object-fit: cover;
-    width: 100%;
-    height: 100%;
   }
   .text-container {
     width: 40%;

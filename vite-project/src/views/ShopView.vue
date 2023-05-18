@@ -1,28 +1,21 @@
 <template>
   <div id="gallery">
-    <div class="gallery">
-      <div class="gallery-container">
-        <router-link
-          v-for="item in items"
-          :key="item.title"
-          :to="{ name: 'shopItem', query: { item: JSON.stringify(item) } }"
-          class="router-link"
-        >
-          <div class="gallery-item" ref="galleryItems">
-            <img
-              :src="item.src"
-              @mouseenter="mouseEnter(item)"
-              @mousemove="mouseMove(item)"
-              @mouseleave="mouseLeave(item)"
-              :alt="item.alt"
-            />
-            <div class="gallery-item-info">
-              <h3>{{ item.title }}</h3>
-              <p>{{ item.description }}</p>
-              <h4 class="price">{{ item.price }}€</h4>
-            </div>
+    <div class="gallery-container">
+      <div v-for="item in items" :key="item.title">
+        <div class="gallery-item" ref="galleryItems" @click="selectItem(item)">
+          <img
+            :src="item.src"
+            @mouseenter="mouseEnter(item)"
+            @mousemove="mouseMove(item)"
+            @mouseleave="mouseLeave(item)"
+            :alt="item.alt"
+          />
+          <div class="gallery-item-info">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+            <h4 class="price">{{ item.price }}€</h4>
           </div>
-        </router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -158,6 +151,11 @@ export default {
     },
     mouseLeave(item) {
       item.src = img1
+    },
+    selectItem(item) {
+      this.$store.dispatch('selectItem', item)
+      console.log(this.$router.push({ name: 'shopItem' }))
+      console.log('test')
     }
   },
   mounted() {
@@ -180,18 +178,11 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 #gallery {
-  display: flex;
-  flex-direction: column;
-}
-.gallery {
   padding: var(--space-xl) var(--space-m);
   display: grid;
   place-content: center;
 }
 .gallery-container {
-  --min: 10ch;
-  --gap: 1rem;
-
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -248,7 +239,6 @@ body {
   font-weight: 700;
 }
 .gallery-item {
-  /* Add these lines */
   opacity: 0;
   transform: translateY(100px);
   transition: opacity 1.3s, transform 1.3s;
