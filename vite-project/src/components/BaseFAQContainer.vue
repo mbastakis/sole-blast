@@ -53,6 +53,7 @@ export default {
 .faq-item {
   cursor: pointer;
   color: var(--secondary);
+  border-bottom: dashed 1px var(--secondary);
 }
 
 .question {
@@ -60,6 +61,7 @@ export default {
   display: flex;
   justify-content: space-between;
   font-size: var(--step-1);
+  padding-top: var(--space-xs);
 }
 
 .toggle-icon {
@@ -70,6 +72,7 @@ export default {
   font-size: var(--step-0);
   padding-left: 1rem;
   padding-top: var(--space-xs);
+  padding-bottom: var(--space-xs);
   opacity: 0;
   max-height: 0;
   transform: translateY(-10px);

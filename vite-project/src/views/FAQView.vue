@@ -191,7 +191,7 @@ export default {
 
 <style scoped>
 #faq {
-  padding: var(--space-xs) var(--space-xs) var(--space-xl) var(--space-xs);
+  padding: var(--space-xl) var(--space-xs) var(--space-xl) var(--space-xs);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -203,7 +203,7 @@ export default {
   font-weight: 800;
   color: var(--secondary);
   text-align: center;
-  margin: var(--space-xs) 0;
+  margin: var(--space-xs) 0 var(--space-m) 0;
   width: 100%;
 }
 .faq-container {
