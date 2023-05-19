@@ -25,7 +25,7 @@ const router = createRouter({
     {
       path: '/shopItem',
       name: 'shopItem',
-      component: () => import('../views/ShopItemView.vue'),
+      component: () => import('../views/ShopItemView.vue')
     },
     {
       path: '/faq',
@@ -36,7 +36,7 @@ const router = createRouter({
       path: '/yourdesign',
       name: 'yourdesign',
       component: () => import('../views/YourDesignView.vue')
-    },
+    }
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

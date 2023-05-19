@@ -12,8 +12,7 @@
   "dependencies": {
     "three": "^0.151.3",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6",
-    "vue3-carousel": "^0.3.0"
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
