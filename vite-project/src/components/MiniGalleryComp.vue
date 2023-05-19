@@ -181,15 +181,19 @@ export default {
     max-width: 100%;
     max-height: 100%;
   }
+  .img {
+    transition: transform 200ms ease-in-out;
+  }
   .img:hover {
     -webkit-transform: scale(1.06);
     -moz-transform: scale(1.06);
     -ms-transform: scale(1.06);
     transform: scale(1.06);
-    -webkit-transition: -webkit-transform 0.25s;
-    -moz-transition: -moz-transform 0.25s;
-    -ms-transition: -ms-transform 0.25s;
-    transition: transform 0.75s;
+    --transition-property: transform;
+    --transision-duration: 500ms;
+
+    transition: var(--transition-property) var(--transision-duration) ease-in-out;
+    transform: translateY(-5%);
     z-index: 2;
   }
   .Picture-11 {
