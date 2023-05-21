@@ -1,21 +1,57 @@
 <script setup>
-import navbar from './components/NavbarComp.vue'
+import Navbar from './components/NavbarComp.vue'
+import { NConfigProvider } from 'naive-ui'
+
+const themeOverrides = {
+  Select: {
+    peers: {
+      InternalSelection: {
+        color: 'var(--background)',
+        placeholderColor: 'var(--secondary)',
+        borderHover: '1px solid var(--secondary)'
+      },
+      InternalSelectMenu: {}
+    }
+  },
+  Switch: {
+    railColorActive: 'var(--secondary)',
+    railColor: 'var(--background)'
+  },
+  Form: {
+    labelTextColor: 'var(--secondary)',
+    labelFontWeight: '600',
+    labelFontSizeTopMedium: 'var(--step--2)'
+  },
+  Input: {
+    color: 'var(--background)',
+    placeholderColor: 'var(--secondary)',
+    borderHover: '1px solid var(--secondary)',
+    fontSizeMedium: 'var(--step--2)'
+  },
+  Upload: {
+    draggerColor: 'var(--background)',
+    draggerBorder: '1px dashed var(--secondary)'
+  }
+}
 </script>
 
 <template>
-  <navbar />
-  <router-view class="router-view" v-slot="{ Component }">
-    <transition name="page-opacity" mode="out-in">
-      <component :is="Component" />
-    </transition>
-  </router-view>
+  <n-config-provider :theme-overrides="themeOverrides">
+    <navbar />
+    <router-view class="router-view" v-slot="{ Component }">
+      <transition name="page-opacity" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+  </n-config-provider>
 </template>
 
 <style>
 :root {
   --primary: white;
   --secondary: #282e5c;
-  --selected: #ffff6e;
+  --background: #f3f2fa;
+  --selected: #4954a8;
 
   --step--2: clamp(0.78rem, calc(0.72rem + 0.31vw), 0.96rem);
   --step--1: clamp(0.94rem, calc(0.85rem + 0.46vw), 1.2rem);

@@ -1,0 +1,247 @@
+<template>
+  <div id="pricingTiers">
+    <div class="header">Pricing Information</div>
+    <div class="container body-container">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet .</p>
+      <div class="btn" @click="toggleTiers">
+        {{ tiersVisible ? 'Hide' : 'View' }} Tiers
+        <svg
+          :style="tiersVisible ? rotateArrow : null"
+          width="10"
+          height="8"
+          viewBox="0 0 10 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M5.34154 8L0.944792 0.5L9.73828 0.500001L5.34154 8Z" fill="white" />
+        </svg>
+      </div>
+    </div>
+    <div class="container">
+      <div v-if="tiersVisible" class="pricing-tiers">
+        <div class="tier" v-for="tier in tiers" :key="tier.title">
+          <div class="tier-header">
+            <div class="tier-title">{{ tier.title }}</div>
+            <div class="tier-price">{{ tier.price }}</div>
+          </div>
+          <div class="tier-body">
+            <div class="tier-description">{{ tier.description }}</div>
+            <div class="tier-features">
+              <div class="feature" v-for="feature in tier.features" :key="feature">
+                <svg
+                  width="140"
+                  height="96"
+                  viewBox="0 0 140 96"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.00012 45.9153L49.6956 88.3006C50.0855 88.6877 50.7147 88.6877 51.1046 88.3006L133 7"
+                    stroke="#282E5C"
+                    stroke-width="14"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                {{ feature }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      tiersVisible: false,
+      rotateArrow: {
+        transform: 'rotate(-90deg)'
+      },
+      tiers: [
+        {
+          title: 'Canvas Collection',
+          price: '$100',
+          description:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet.',
+          features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4']
+        },
+        {
+          title: 'Palette Prestige',
+          price: '$150',
+          description:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet.',
+          features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
+        },
+        {
+          title: 'Masterpiece Edition',
+          price: '$200',
+          description:
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet.',
+          features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5', 'Feature 6']
+        }
+      ]
+    }
+  },
+  methods: {
+    toggleTiers() {
+      this.tiersVisible = !this.tiersVisible
+    }
+  }
+}
+</script>
+
+<style scoped>
+#pricingTiers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--secondary);
+  width: 90%;
+  max-width: 1064px;
+  padding-bottom: var(--space-l);
+}
+
+.header {
+  margin: var(--space-l) auto var(--space-2xs) auto;
+  font-weight: 800;
+  font-size: var(--step-2);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 var(--space-xs) 0 var(--space-xs);
+  gap: var(--space-m);
+}
+.container p {
+  text-align: center;
+  font-weight: 600;
+  font-size: var(--step-0);
+  max-width: 600px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary);
+  padding: var(--space-xs) var(--space-s);
+
+  font-size: var(--step-0);
+  color: var(--primary);
+  font-weight: 700;
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in;
+
+  background: linear-gradient(90deg, var(--selected) 50%, transparent 50%),
+    linear-gradient(90deg, var(--selected) 50%, var(--secondary) 50%) var(--space-xs);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-position: left bottom;
+  animation: slide 0.3s linear;
+  transform: scale(1.1);
+}
+
+@keyframes slide {
+  0% {
+    background-position: right bottom;
+  }
+  100% {
+    background-position: left bottom;
+  }
+}
+
+.btn svg {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 2.775);
+}
+.btn svg path {
+  transition: stroke 0.3s ease-in-out;
+  stroke: var(--primary);
+}
+.btn:hover svg {
+  transform: translateY(0.1em);
+}
+
+.btn svg {
+  width: 0.8em;
+  height: 0.8em;
+  margin-left: var(--space-xs);
+}
+
+.pricing-tiers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  gap: var(--space-m);
+  height: 100%;
+  margin-top: var(--space-m);
+}
+.tier {
+  background-color: #f3f2fa;
+  border-radius: 0.5em;
+  padding: var(--space-m);
+  max-width: 282px;
+  height: 100%;
+}
+.tier-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: var(--space-m);
+  gap: var(--space-3xs);
+}
+.tier-title {
+  font-weight: 700;
+  font-size: var(--step-1);
+}
+.tier-price {
+  font-weight: 700;
+  font-size: var(--step-3);
+}
+.tier-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: var(--space-xl);
+  font-size: var(--step-0);
+}
+.tier-features {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.feature {
+  width: 100%;
+  border-bottom: 1px solid #c1c0c6;
+  padding-bottom: var(--space-2xs);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-xs);
+}
+.feature svg {
+  width: 15px;
+  height: 15px;
+}
+.feature path {
+  stroke-width: 25;
+}
+</style>

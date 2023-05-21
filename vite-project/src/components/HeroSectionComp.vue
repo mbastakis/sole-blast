@@ -9,35 +9,33 @@
       </div>
     </div>
 
-    <div id="hero-slider-wrapper">
-      <div id="hero-slider">
-        <span>&nbsp;<span class="slider-color">Color</span> Your Walk. </span>
-        <h1>&nbsp;<span class="slider-color">Color</span> Your Walk.</h1>
-        <span>&nbsp;<span class="slider-color">Color</span> Your Walk. </span>
-      </div>
+    <div class="bottom-section">
+      <BaseHorizontalSlider text="Color Your Walk!" speed="10" />
       <div id="transition-layer"></div>
     </div>
   </div>
 </template>
 
 <script>
-import anime from 'animejs'
 import { defineAsyncComponent } from 'vue'
 
 export default {
   components: {
-    viewport: defineAsyncComponent(() => import('@/components/ViewPortComp.vue'))
+    viewport: defineAsyncComponent(() => import('@/components/ViewPortComp.vue')),
+    BaseHorizontalSlider: defineAsyncComponent(() =>
+      import('@/components/BaseHorizontalSlider.vue')
+    )
   },
   mounted() {
-    let elt = document.querySelectorAll('#hero-slider > *')
-    let sliderContent = document.querySelector('#hero-slider')
-    anime({
-      targets: elt,
-      translateX: [-sliderContent.clientWidth, 0],
-      duration: 8000,
-      easing: 'linear',
-      loop: true
-    })
+    const navbar = document.getElementById('navbar')
+    const navbarHeight = navbar.offsetHeight
+
+    const heroSection = document.getElementById('hero-section')
+    const windowHeight = window.innerHeight
+
+    const heroSectionHeight = windowHeight - navbarHeight
+
+    heroSection.style.height = `${heroSectionHeight}px`
   }
 }
 </script>
@@ -49,36 +47,31 @@ export default {
   flex-direction: column;
   justify-content: space-between;
 }
-
 #transition-layer {
   background-color: white;
   height: var(--space-m);
   width: 100%;
   border-top-right-radius: 1.5rem;
   border-top-left-radius: 1.5rem;
-}
-#hero-slider {
-  user-select: none;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  white-space: nowrap;
-  color: var(--primary);
-  overflow: hidden;
+  position: absolute;
+  bottom: 0;
 }
 #floating-section {
   width: 100%;
   position: relative;
   height: 100%;
+  z-index: 1;
 }
 #floating-quote {
   position: absolute;
-  bottom: clamp(8%, 10%, 50%);
+  bottom: clamp(10%, 20%, 50%);
   display: flex;
   flex-direction: column;
   gap: var(--space-3xs);
-  padding: 0 var(--space-l);
+  padding: var(--space-s);
   color: var(--primary);
+
+  text-shadow: 0px 0px 40px rgba(0, 0, 0, 0.25);
 }
 #floating-quote p {
   font-weight: 600;
@@ -87,12 +80,14 @@ export default {
 #floating-quote h2 {
   font-size: var(--step-2);
 }
-#hero-slider > * {
-  font-weight: 900;
-  font-size: 4.5rem;
-  font-size: clamp(4.5rem, 3.4rem + 9.5vw, 10rem);
+.bottom-section {
+  position: relative;
 }
-.slider-color {
-  color: var(--secondary);
+
+@media (min-width: 961px) {
+  #floating-quote {
+    padding-left: var(--space-l);
+    bottom: 50%;
+  }
 }
 </style>

@@ -181,15 +181,19 @@ export default {
     max-width: 100%;
     max-height: 100%;
   }
+  .img {
+    transition: transform 200ms ease-in-out;
+  }
   .img:hover {
     -webkit-transform: scale(1.06);
     -moz-transform: scale(1.06);
     -ms-transform: scale(1.06);
     transform: scale(1.06);
-    -webkit-transition: -webkit-transform 0.25s;
-    -moz-transition: -moz-transform 0.25s;
-    -ms-transition: -ms-transform 0.25s;
-    transition: transform 0.75s;
+    --transition-property: transform;
+    --transision-duration: 500ms;
+
+    transition: var(--transition-property) var(--transision-duration) ease-in-out;
+    transform: translateY(-5%);
     z-index: 2;
   }
   .Picture-11 {
@@ -229,32 +233,40 @@ export default {
   margin-bottom: var(--space-3xs);
   cursor: pointer;
   transition: color 0.3s ease-in-out, transform 0.3s ease-in;
+
+  background: linear-gradient(90deg, var(--selected) 50%, transparent 50%),
+    linear-gradient(90deg, var(--selected) 50%, var(--secondary) 50%) var(--space-xs);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.3s ease-in-out;
 }
+
+.btn:hover {
+  background-position: left bottom;
+  animation: slide 0.3s linear;
+  transform: scale(1.1);
+}
+
+@keyframes slide {
+  0% {
+    background-position: right bottom;
+  }
+  100% {
+    background-position: left bottom;
+  }
+}
+
 .btn svg {
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 2.775);
 }
 .btn svg path {
   transition: stroke 0.3s ease-in-out;
-}
-.btn:hover {
-  transform: scale(1.1);
-  color: var(--selected);
+  stroke: var(--primary);
 }
 .btn:hover svg {
-  transform: translateX(0.2em);
+  transform: translateX(0.3em);
 }
-.btn svg path:nth-child(1) {
-  stroke: var(--selected);
-}
-.btn svg path:nth-child(2) {
-  stroke: var(--primary);
-}
-.btn:hover svg path:nth-child(1) {
-  stroke: var(--primary);
-}
-.btn:hover svg path:nth-child(2) {
-  stroke: var(--selected);
-}
+
 .btn svg {
   width: 0.8em;
   height: 0.8em;

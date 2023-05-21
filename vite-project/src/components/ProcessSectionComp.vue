@@ -427,6 +427,10 @@ svg {
     width: calc(8rem + 15vw);
   }
 }
+
+.bottom-buttons .btn:hover {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+}
 .btn {
   display: flex;
   align-items: center;
@@ -444,10 +448,17 @@ svg {
   margin-left: auto;
   margin-top: var(--space-2xs);
   outline: 3px solid hsla(0, 0%, 100%, 0.5);
+
+  background: linear-gradient(90deg, var(--selected) 50%, transparent 50%),
+    linear-gradient(90deg, var(--selected) 50%, var(--secondary) 50%) var(--space-xs);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.3s ease-in-out;
 }
 .btn:hover {
   transform: scale(1.1);
-  color: var(--selected);
+  background-position: left bottom;
+  animation: slide 0.3s linear;
 }
 .btn svg {
   width: 1.7rem;
@@ -459,20 +470,19 @@ svg {
 .btn:hover svg {
   transform: translateX(0.2em);
 }
-.btn svg path:nth-child(1) {
-  stroke: var(--selected);
-}
-.btn svg path:nth-child(2) {
-  stroke: var(--primary);
-}
-.btn:hover svg path:nth-child(1) {
-  stroke: var(--primary);
-}
 .btn:hover svg path:nth-child(2) {
   animation: write 2s ease-in-out;
-  stroke: var(--selected);
 }
 .router-link {
   text-decoration: none;
+}
+
+@keyframes slide {
+  0% {
+    background-position: right bottom;
+  }
+  100% {
+    background-position: left bottom;
+  }
 }
 </style>
