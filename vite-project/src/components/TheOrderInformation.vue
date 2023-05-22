@@ -17,21 +17,23 @@
     </div>
 
     <n-form class="shoe-form" ref="formRef" :model="form" :rules="rules" label-placement="top">
-      <n-form-item label="SHOE MODEL" path="shoeModel">
-        <n-select
-          class="select"
-          v-model:value="form.shoeModel"
-          placeholder="Select shoe model"
-          :options="shoeModels"
-        />
-      </n-form-item>
-      <n-form-item label="SHOE SIZE" path="shoeSize">
-        <n-select
-          v-model:value="form.shoeSize"
-          placeholder="Select shoe size"
-          :options="shoeSizes"
-        />
-      </n-form-item>
+      <div class="flex-row">
+        <n-form-item class="flex-row-item" label="SHOE MODEL" path="shoeModel">
+          <n-select
+            class="select"
+            v-model:value="form.shoeModel"
+            placeholder="Select shoe model"
+            :options="shoeModels"
+          />
+        </n-form-item>
+        <n-form-item class="flex-row-item" label="SHOE SIZE" path="shoeSize">
+          <n-select
+            v-model:value="form.shoeSize"
+            placeholder="Select shoe size"
+            :options="shoeSizes"
+          />
+        </n-form-item>
+      </div>
       <n-form-item label="Use Customer's Shoe?" path="useCustomersShoe">
         <n-switch v-model:value="form.useCustomersShoe" />
       </n-form-item>
@@ -70,6 +72,7 @@ export default defineComponent({
     NUpload,
     NUploadDragger
   },
+  emits: ['submit'],
   data() {
     return {}
   },
@@ -121,8 +124,7 @@ export default defineComponent({
           if (!errors) {
             console.log(form.value) // Print the whole contents of the form
             message.value.success('Valid')
-
-            // Add your form submission logic here
+            this.$emit('submit')
           } else {
             console.log(errors)
             message.value.error('Invalid')
@@ -195,5 +197,13 @@ export default defineComponent({
 .btn:hover {
   background-position: left bottom;
   animation: slide 0.3s linear;
+}
+.flex-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+}
+.flex-row-item {
+  width: 100%;
 }
 </style>
