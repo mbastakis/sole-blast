@@ -3,8 +3,8 @@
     <TheSVGprocessSection class="section" />
     <ThePricingTiers class="section" />
     <n-message-provider>
-      <TheOrderInformation class="section" />
-      <TheShippingInformation class="section" />
+      <TheOrderInformation class="section" @submit="submitOrderForm" />
+      <TheShippingInformation class="section" v-if="finishedOrderForm" />
     </n-message-provider>
   </div>
 </template>
@@ -23,6 +23,16 @@ export default {
     TheOrderInformation,
     TheShippingInformation,
     NMessageProvider
+  },
+  data() {
+    return {
+      finishedOrderForm: false
+    }
+  },
+  methods: {
+    submitOrderForm() {
+      this.finishedOrderForm = true
+    }
   }
 }
 </script>
