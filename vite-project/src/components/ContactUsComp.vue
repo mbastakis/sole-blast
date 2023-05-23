@@ -10,31 +10,36 @@
 
     <div id="last-section-container">
       <div id="contact-section">
-        <div class="contact-container">
-          <div class="contact-img-1 contact-img desktop">
-            <img src="../assets/contact_img_1.jpg" alt="" />
+        <div class="contact-title">Contact Us</div>
+        <n-form
+          class="contact-form"
+          ref="formRef"
+          :model="form"
+          :rules="rules"
+          label-placement="top"
+        >
+          <div class="resp-flex-row">
+            <n-form-item class="resp-flex-row-item" label="FULL NAME" path="fullName">
+              <n-input v-model:value="form.fullName" placeholder="Enter full name" />
+            </n-form-item>
+
+            <n-form-item class="resp-flex-row-item" label="EMAIL" path="email">
+              <n-input v-model:value="form.email" placeholder="Enter email" />
+            </n-form-item>
           </div>
-          <div class="contact-img-2 contact-img desktop">
-            <img src="../assets/contact_img_2.jpg" alt="" />
-          </div>
-          <div class="text">
-            <h1>Get in touch</h1>
-            <div class="email-container">
-              <div class="container__item">
-                <input type="email" class="form__field" placeholder="Your Email Address" />
-                <button class="btn btn--primary btn--inside">Send</button>
-              </div>
-              <div class="container__item container__item--bottom"></div>
-            </div>
-          </div>
-          <div class="contact-img-3 contact-img desktop">
-            <img src="../assets/contact_img_3.jpg" alt="" />
-          </div>
-          <div class="contact-img-4 contact-img desktop">
-            <img src="../assets/contact_img_4.jpg" alt="" />
-          </div>
-        </div>
+
+          <n-form-item label="MESSAGE" path="message">
+            <n-input
+              v-model:value="form.message"
+              placeholder="Enter your message"
+              type="textarea"
+            />
+          </n-form-item>
+
+          <div class="btn" @click="submitForm">Send Message</div>
+        </n-form>
       </div>
+
       <div class="blob">
         <svg viewBox="0 0 200 200">
           <path
@@ -48,12 +53,77 @@
   </div>
 </template>
 
-<script></script>
+<script>
+import { defineComponent, ref } from 'vue'
+import { useMessage, NForm, NFormItem, NInput } from 'naive-ui'
+
+export default defineComponent({
+  name: 'ContactUsComp',
+  components: {
+    NForm,
+    NFormItem,
+    NInput
+  },
+  setup() {
+    const formRef = ref(null)
+    const message = useMessage()
+
+    let form = ref({
+      fullName: '',
+      email: '',
+      message: ''
+    })
+
+    // Add validation rules
+    const rules = {
+      fullName: {
+        required: true,
+        message: 'Please enter your full name'
+      },
+      email: [
+        { required: true, message: 'Please enter your email' },
+        { type: 'email', message: 'Please enter a valid email' }
+      ],
+      message: {
+        required: true,
+        message: 'Please enter your message'
+      }
+    }
+
+    const submitForm = async (e) => {
+      e.preventDefault()
+      try {
+        const result = await formRef.value?.validate()
+        if (result) {
+          console.log(form.value) // Print the whole contents of the form
+          message.success('Valid')
+          // Add your form submission logic here
+        } else {
+          console.log('Form invalid')
+          message.error('Invalid')
+        }
+      } catch (errors) {
+        console.log(errors)
+        message.error('Invalid')
+      }
+    }
+
+    return {
+      formRef,
+      form,
+      rules,
+      submitForm
+    }
+  }
+})
+</script>
 
 <style scoped>
 #contact-us {
   width: 100%;
   margin: 0px;
+  padding: 0px;
+  margin-top: -5px;
 
   background: #dabed3;
   background: -moz-linear-gradient(
@@ -80,11 +150,7 @@
     #898acb 99%,
     #898acb 99%
   );
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dabed3', endColorstr='#898acb',GradientType=0 );
   overflow: hidden;
-}
-.desktop {
-  display: none;
 }
 #last-section-container {
   width: 100%;
@@ -97,31 +163,32 @@
 }
 #contact-section {
   width: min(95%, 1600px);
-  height: 30vh;
   background-color: var(--primary);
   border-radius: 2.5rem;
   z-index: 3;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.contact-container {
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.text {
-  grid-area: text;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.text h1 {
-  font-size: min(9rem, 10vw);
+.contact-title {
+  font-size: var(--step-5);
+  font-weight: 700;
   color: var(--secondary);
-  margin-bottom: 20px;
+  margin-top: var(--space-m);
+}
+.contact-form {
+  width: 100%;
+  padding: var(--space-m) var(--space-xl);
+}
+.contact-form .resp-flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-s);
+}
+.contact-form .resp-flex-row-item {
+  width: 100%;
 }
 .blob {
   position: absolute;
@@ -155,111 +222,28 @@
   }
 }
 .btn {
-  display: inline-block;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  border: 0;
-  padding: 0;
-  transition: background 200ms ease-in;
-  cursor: pointer;
-}
-.email-container {
-  width: min(80vw, 1200px);
-}
-.btn--primary {
-  background: #7f8ff4;
-  color: #fff;
-  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
-  border-radius: 2px;
-  padding: 8px 26px;
-}
-.btn--primary:hover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--secondary);
+  padding: var(--space-xs) var(--space-s);
+
+  font-size: var(--step-0);
+  color: var(--primary);
+  font-weight: 700;
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in;
+
+  background: linear-gradient(90deg, var(--selected) 50%, transparent 50%),
+    linear-gradient(90deg, var(--selected) 50%, var(--secondary) 50%) var(--space-xs);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.3s ease-in-out;
 }
-.btn--primary:active {
-  box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, 0.2);
-}
-.btn--primary:focus {
-  outline: 0;
-}
-.btn--inside {
-  margin-left: -29%;
-}
-.form__field {
-  width: 95%;
-  background: #fff;
-  color: #282e5c;
-  font: inherit;
-  box-shadow: 0px 6px 5px 0 rgba(0, 0, 0, 0.1);
-  border: 0;
-  padding: 15px 13px;
-  transition: all 0.4s;
-  border-radius: 1rem;
-}
-.form__field:hover {
-  background: whitesmoke;
-}
-.form__field:focus {
-  outline: 0;
-  background: rgba(104, 122, 242, 0.05);
-}
-::-webkit-input-placeholder {
-  color: #282e5c;
-}
-:-moz-placeholder {
-  /* Firefox 18- */
-  color: #282e5c;
-}
-::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #282e5c;
-}
-:-ms-input-placeholder {
-  color: #282e5c;
-}
-.transition-contact {
-  z-index: 0;
-  position: relative;
-}
-.transition-contact path {
-  z-index: 4;
-}
-@media (min-width: 481px) {
-  .btn--inside {
-    margin-left: -20%;
-  }
-}
-@media (min-width: 641px) {
-  .btn--inside {
-    margin-left: -15%;
-  }
-  @keyframes move {
-    0% {
-      transform: scale(1) translate(-60px, 30%);
-    }
-    20% {
-      transform: scale(0.8, 1) translate(90vw, -13%) rotate(160deg);
-    }
-    40% {
-      transform: scale(0.9, 1) translate(-160px, -75%) rotate(1deg);
-    }
-    60% {
-      transform: scale(1.1) translate(80vw, -30%) rotate(80deg);
-    }
-    80% {
-      transform: scale(1.5) translate(20vw, -40%) rotate(-90deg);
-    }
-    100% {
-      transform: scale(1) translate(-60px, 30%);
-    }
-  }
-}
-@media (min-width: 961px) {
-  .btn--inside {
-    margin-left: -10%;
-  }
-}
-@media (min-width: 481px) {
+
+.btn:hover {
+  background-position: left bottom;
+  animation: slide 0.3s linear;
 }
 </style>
