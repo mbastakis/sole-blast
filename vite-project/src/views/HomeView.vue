@@ -4,12 +4,15 @@ import MiniGallery from '@/components/MiniGalleryComp.vue'
 import ProcessSection from '@/components/ProcessSectionComp.vue'
 import ContactUs from '@/components/ContactUsComp.vue'
 
+import { NMessageProvider } from 'naive-ui'
+
 export default {
   components: {
     herosection: HeroSection,
     minigallery: MiniGallery,
     processsection: ProcessSection,
-    contactus: ContactUs
+    contactus: ContactUs,
+    NMessageProvider
   }
 }
 </script>
@@ -19,7 +22,9 @@ export default {
     <herosection />
     <minigallery />
     <processsection />
-    <contactus />
+    <n-message-provider>
+      <contactus />
+    </n-message-provider>
   </main>
 </template>
 

@@ -3,18 +3,23 @@
     <TheSVGprocessSection class="section" />
     <ThePricingTiers class="section" />
     <n-message-provider>
-      <TheOrderInformation class="section" @submit="submitOrderForm" />
-      <TheShippingInformation class="section" v-if="finishedOrderForm" />
+      <n-dialog-provider>
+        <TheOrderInformation class="section" @submit="submitOrderForm" @change="hideShippingForm" />
+      </n-dialog-provider>
+      <keep-alive>
+        <TheShippingInformation class="section shipping-info" v-if="finishedOrderForm" />
+      </keep-alive>
     </n-message-provider>
   </div>
 </template>
 
 <script>
+import { ref, nextTick } from 'vue'
 import TheSVGprocessSection from '../components/TheSVGprocessSection.vue'
 import ThePricingTiers from '../components/ThePricingTiers.vue'
 import TheOrderInformation from '../components/TheOrderInformation.vue'
 import TheShippingInformation from '../components/TheShippingInformation.vue'
-import { NMessageProvider } from 'naive-ui'
+import { NMessageProvider, NDialogProvider } from 'naive-ui'
 
 export default {
   components: {
@@ -22,16 +27,30 @@ export default {
     ThePricingTiers,
     TheOrderInformation,
     TheShippingInformation,
-    NMessageProvider
+    NMessageProvider,
+    NDialogProvider
   },
-  data() {
-    return {
-      finishedOrderForm: false
+  setup() {
+    const finishedOrderForm = ref(false)
+
+    const submitOrderForm = () => {
+      finishedOrderForm.value = true
+      nextTick(() => {
+        const shippingInfoElement = document.querySelector('.shipping-info')
+        if (shippingInfoElement) {
+          shippingInfoElement.scrollIntoView({ behavior: 'smooth' })
+        }
+      })
     }
-  },
-  methods: {
-    submitOrderForm() {
-      this.finishedOrderForm = true
+
+    const hideShippingForm = () => {
+      finishedOrderForm.value = false
+    }
+
+    return {
+      finishedOrderForm,
+      submitOrderForm,
+      hideShippingForm
     }
   }
 }
@@ -44,6 +63,8 @@ export default {
   align-items: center;
   flex-direction: column;
   gap: var(--space-xl);
+  height: 100%;
+  overflow: hidden;
 }
 .section {
   background-color: var(--primary);

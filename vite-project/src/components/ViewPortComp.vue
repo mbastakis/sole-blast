@@ -148,10 +148,47 @@ export default {
         this.renderer.render(this.scene, this.camera)
       }
       loop()
+    },
+    onWindowResize() {
+      this.width = this.$el.offsetWidth
+      this.height = this.$el.offsetHeight
+
+      this.camera.aspect = this.width / this.height
+      this.camera.updateProjectionMatrix()
+
+      this.renderer.setSize(this.width, this.height)
+
+      // Update shoe size
+      const shoeSize = new Vector3(0.3138543045691101, 0.1380571369992008, 0.11502264321959318)
+      const aspectRatio = this.width / this.height
+      const maxDimension = Math.max(shoeSize.x, shoeSize.y, shoeSize.z)
+      // Determine which field of view (horizontal or vertical) should be used for the calculation
+      const verticalFov = (this.camera.fov * Math.PI) / 180
+      const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * aspectRatio)
+      // Calculate the distances needed for both horizontal and vertical fields of view
+      const verticalDistance = maxDimension / (2 * Math.tan(verticalFov / 2))
+      const horizontalDistance = maxDimension / (2 * Math.tan(horizontalFov / 2))
+      // Choose the larger distance to fit the object in the view
+      const distance = Math.max(verticalDistance, horizontalDistance)
+      const paddingFactor = 1.2 // Adjust this value to control the amount of padding around the object
+      const paddedDistance = distance * paddingFactor
+      // Set the camera's position
+      const box = new Box3().setFromObject(this.model)
+      const boxCenter = box.getCenter(new Vector3())
+      this.camera.position.set(boxCenter.x, boxCenter.y, boxCenter.z + paddedDistance)
+      // Set the camera to look at the center of the bounding box
+      this.camera.lookAt(boxCenter)
+      this.camera.near = paddedDistance / 10
+      this.camera.far = paddedDistance * 10
+      this.camera.updateProjectionMatrix()
     }
   },
   mounted() {
     this.init()
+    window.addEventListener('resize', this.onWindowResize, false)
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.onWindowResize)
   }
 }
 </script>

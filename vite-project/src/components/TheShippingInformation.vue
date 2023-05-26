@@ -155,9 +155,10 @@ export default defineComponent({
       // add more countries here
     ]
 
-    const submitForm = (e) => {
+    const submitForm = async (e) => {
       e.preventDefault()
-      formRef.value?.validate((errors) => {
+      try {
+        const errors = await formRef.value?.validate()
         if (!errors) {
           console.log(form.value) // Print the whole contents of the form
           message.value.success('Valid')
@@ -167,7 +168,9 @@ export default defineComponent({
           console.log(errors)
           message.value.error('Invalid')
         }
-      })
+      } catch (error) {
+        console.log(error)
+      }
     }
 
     return {

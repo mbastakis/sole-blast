@@ -18,16 +18,26 @@
 
     <n-form class="shoe-form" ref="formRef" :model="form" :rules="rules" label-placement="top">
       <div class="flex-row">
-        <n-form-item class="flex-row-item" label="SHOE MODEL" path="shoeModel">
+        <n-form-item
+          class="flex-row-item"
+          label="SHOE MODEL"
+          path="shoeModel"
+          :validation-status="shoeModelValidationStatus"
+          :feedback="shoeModelFeedback"
+        >
           <n-select
             class="select"
             v-model:value="form.shoeModel"
             placeholder="Select shoe model"
             :options="shoeModels"
+            :show-arrow="!form.useCustomersShoe"
+            :filterable="form.useCustomersShoe"
+            :tag="form.useCustomersShoe"
           />
         </n-form-item>
         <n-form-item class="flex-row-item" label="SHOE SIZE" path="shoeSize">
           <n-select
+            :disabled="form.useCustomersShoe"
             v-model:value="form.shoeSize"
             placeholder="Select shoe size"
             :options="shoeSizes"
@@ -39,9 +49,13 @@
       </n-form-item>
       <n-form-item label="SHOE DESCRIPTION" path="textareaValue">
         <n-input
+          class="textarea"
           v-model:value="form.textareaValue"
           placeholder="Enter any additional information"
           type="textarea"
+          maxlength="2000"
+          show-count
+          clearable
         />
       </n-form-item>
       <div class="btn" @click="submitForm">Continue</div>
@@ -50,9 +64,10 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted } from 'vue'
+import { defineComponent, ref, onMounted, computed, watch, watchEffect } from 'vue'
 import {
   useMessage,
+  useDialog,
   NForm,
   NFormItem,
   NSelect,
@@ -72,13 +87,14 @@ export default defineComponent({
     NUpload,
     NUploadDragger
   },
-  emits: ['submit'],
+  emits: ['submit', 'change'],
   data() {
     return {}
   },
-  setup() {
+  setup(_, { emit }) {
     const formRef = ref(null)
     const message = ref(null)
+    const dialog = useDialog()
 
     let form = ref({
       shoeModel: null,
@@ -87,23 +103,70 @@ export default defineComponent({
       textareaValue: ''
     })
 
+    const shoeModels = ref([
+      { label: 'Option 1', value: 'Option 1' },
+      { label: 'Option 2', value: 'Option 2' },
+      { label: 'Option 3', value: 'Option 3' }
+    ])
+
+    const shoeSizes = ref([
+      { label: 'Option 1', value: 'Option 1' },
+      { label: 'Option 2', value: 'Option 2' },
+      { label: 'Option 3', value: 'Option 3' }
+    ])
+
     onMounted(() => {
       message.value = useMessage()
+    })
+
+    const shoeModelValidationStatus = computed(() => {
+      if (
+        !form.value.useCustomersShoe &&
+        form.value.shoeModel &&
+        !shoeModels.value.find((option) => option.value === form.value.shoeModel)
+      ) {
+        return 'error'
+      }
+      return 'true'
+    })
+
+    const shoeModelFeedback = computed(() => {
+      if (shoeModelValidationStatus.value === 'error') {
+        return 'Invalid shoe model'
+      }
+      return ''
+    })
+
+    // Watch for changes in the useCustomersShoe field for the dialog
+    watch(
+      () => form.value.useCustomersShoe,
+      (newValue) => {
+        if (newValue) {
+          dialog.success({
+            title: 'Confirmation',
+            content:
+              "Are you sure you want to use the customer's shoe? You need to provide the shoe model in the field above and the shoe has to be new.",
+            positiveText: 'Understood',
+            maskClosable: false
+          })
+        }
+      }
+    )
+
+    // Watch for changes in any form field and emit the change event
+    watchEffect(() => {
+      // Emit the change event whenever any form value changes
+      if (form.value.shoeModel) emit('change')
+      if (form.value.shoeSize) emit('change')
+      if (form.value.useCustomersShoe !== undefined) emit('change')
+      if (form.value.textareaValue) emit('change')
     })
 
     return {
       formRef,
       form,
-      shoeModels: [
-        { label: 'Option 1', value: 'Option 1' },
-        { label: 'Option 2', value: 'Option 2' },
-        { label: 'Option 3', value: 'Option 3' }
-      ],
-      shoeSizes: [
-        { label: 'Option 1', value: 'Option 1' },
-        { label: 'Option 2', value: 'Option 2' },
-        { label: 'Option 3', value: 'Option 3' }
-      ],
+      shoeModels,
+      shoeSizes,
       rules: {
         shoeModel: {
           required: true,
@@ -111,26 +174,44 @@ export default defineComponent({
         },
         shoeSize: {
           required: true,
-          message: 'Please select a shoe size'
+          message: 'Please select a shoe size',
+          trigger: 'change'
         },
         textareaValue: {
           required: true,
           message: 'Please provide additional information'
         }
       },
-      submitForm(e) {
+      submitForm: async function (e) {
         e.preventDefault()
-        formRef.value?.validate((errors) => {
-          if (!errors) {
-            console.log(form.value) // Print the whole contents of the form
-            message.value.success('Valid')
-            this.$emit('submit')
-          } else {
-            console.log(errors)
-            message.value.error('Invalid')
-          }
-        })
-      }
+        formRef.value?.restoreValidation()
+        try {
+          await formRef.value?.validate(
+            (errors) => {
+              if (errors) {
+                console.error(errors)
+                message.value.error('Invalid')
+              } else if (shoeModelValidationStatus.value === 'error') {
+                console.error('Invalid shoe model')
+                message.value.error('Invalid')
+              } else {
+                console.log(form.value) // Print the whole contents of the form
+
+                message.value.success('Valid')
+                this.$emit('submit')
+              }
+            },
+            (rule) => {
+              // Skip validation for shoeSize when useCustomersShoe is true
+              return !(rule?.trigger === 'change' && form.value.useCustomersShoe)
+            }
+          )
+        } catch (error) {
+          console.log(error)
+        }
+      },
+      shoeModelValidationStatus,
+      shoeModelFeedback
     }
   }
 })
@@ -205,5 +286,8 @@ export default defineComponent({
 }
 .flex-row-item {
   width: 100%;
+}
+.textarea {
+  min-height: 150px;
 }
 </style>
