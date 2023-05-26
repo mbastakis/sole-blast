@@ -44,7 +44,6 @@ export default {
     }
 
     const hideShippingForm = () => {
-      console.log('test')
       finishedOrderForm.value = false
     }
 

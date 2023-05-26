@@ -127,7 +127,7 @@ export default defineComponent({
       ) {
         return 'error'
       }
-      return true
+      return 'true'
     })
 
     const shoeModelFeedback = computed(() => {
