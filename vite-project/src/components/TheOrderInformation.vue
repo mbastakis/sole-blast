@@ -142,7 +142,7 @@ export default defineComponent({
       () => form.value.useCustomersShoe,
       (newValue) => {
         if (newValue) {
-          dialog.success({
+          dialog.info({
             title: 'Confirmation',
             content:
               "Are you sure you want to use the customer's shoe? You need to provide the shoe model in the field above and the shoe has to be new.",
