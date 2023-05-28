@@ -79,14 +79,14 @@ export default {
           title: 'Premium Design',
           price: '€150',
           description:
-            'Designs that require ~15 hours of effort. (WIP) EG: More complex and detailed drawings, such as multiple portraits, landscapes or logos. Any kind of advanced artwork.',
+            'Designs that require ~15 hours of effort. EG: More complex and detailed drawings, such as multiple characters, stylized text or logos.',
           features: ['Advanced design', 'Up to 5 colors', 'Stylized text']
         },
         {
           title: 'Masterpiece Edition',
           price: '€200',
           description:
-            'Designs that require 20+ hours of effort. (WIP) Designs with high-level artistic skills and creativity, such as realistic paintings, abstract art or graffiti. Any kind of masterpiece artwork.',
+            'Designs that require 20+ hours of effort, high-level artistic skills and creativity. EG: High detail characters, abstract/realistic art or graffiti. Almost anything is possible!',
           features: ['High detail design', 'Entire shoe coverage', 'Many colors', 'Detailed background']
         }
       ]
