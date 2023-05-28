@@ -69,32 +69,25 @@ export default {
       },
       tiers: [
         {
-          title: 'Canvas Collection',
-          price: '$100',
+          title: 'Basic Design',
+          price: '€100',
           description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet.',
-          features: ['Simple design', 'Color', 'Symbols', 'Feature 4']
+            'Designs that require ~10 hours of effort. EG: Small custom drawings, symbols or characters. Any kind of simple artwork.',
+          features: ['Simple design', '1-3 colors']
         },
         {
-          title: 'Palette Prestige',
-          price: '$150',
+          title: 'Premium Design',
+          price: '€150',
           description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet.',
-          features: ['Advanced design', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
+            'Designs that require ~15 hours of effort. (WIP) EG: More complex and detailed drawings, such as multiple portraits, landscapes or logos. Any kind of advanced artwork.',
+          features: ['Advanced design', 'Up to 5 colors', 'Stylized text']
         },
         {
           title: 'Masterpiece Edition',
-          price: '$200',
+          price: '€200',
           description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet.',
-          features: [
-            'Entire shoe coverage',
-            'Many colors',
-            'Detailed design',
-            'Feature 4',
-            'Feature 5',
-            'Feature 6'
-          ]
+            'Designs that require 20+ hours of effort. (WIP) Designs with high-level artistic skills and creativity, such as realistic paintings, abstract art or graffiti. Any kind of masterpiece artwork.',
+          features: ['High detail design', 'Entire shoe coverage', 'Many colors', 'Detailed background']
         }
       ]
     }
