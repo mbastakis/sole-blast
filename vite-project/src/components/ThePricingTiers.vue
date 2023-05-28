@@ -2,7 +2,10 @@
   <div id="pricingTiers">
     <div class="header">Pricing Information</div>
     <div class="container body-container">
-      <p>The prices that are listed below, are for the custom artwork. Expect an additional cost for the price of the base shoe, which depends on the shoe model of your choice. Note that the prices are indicative, the final price will be determined after we process your request.</p>
+      <p>
+        The prices that are listed below, are for the custom artwork. Expect an additional cost for
+        the price of the base shoe, which depends on the shoe model of your choice.
+      </p>
       <div class="btn" @click="toggleTiers">
         {{ tiersVisible ? 'Hide' : 'View' }} Tiers
         <svg
@@ -47,6 +50,10 @@
             </div>
           </div>
         </div>
+        <p class="note">
+          * Note that the prices are indicative, the final price will be determined after we process
+          your request.
+        </p>
       </div>
     </div>
   </div>
@@ -80,7 +87,14 @@ export default {
           price: '$200',
           description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet.',
-          features: ['Entire shoe coverage', 'Many colors', 'Detailed design', 'Feature 4', 'Feature 5', 'Feature 6']
+          features: [
+            'Entire shoe coverage',
+            'Many colors',
+            'Detailed design',
+            'Feature 4',
+            'Feature 5',
+            'Feature 6'
+          ]
         }
       ]
     }
@@ -243,5 +257,11 @@ export default {
 }
 .feature path {
   stroke-width: 25;
+}
+
+.container .note {
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--secondary);
 }
 </style>
