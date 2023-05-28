@@ -10,20 +10,22 @@
             <div class="skeleton-text"></div>
           </div>
         </div>
-        <div v-else class="gallery-item" ref="galleryItems">
-          <img
-            :src="item.currentSrc"
-            :alt="item.alt"
-            @mouseover="item.currentSrc = item.hoverSrc"
-            @mouseleave="item.currentSrc = item.defaultSrc"
-          />
+        <router-link :to="`/shop/${item.id}`" v-else>
+          <div class="gallery-item" ref="galleryItems">
+            <img
+              :src="item.currentSrc"
+              :alt="item.alt"
+              @mouseover="item.currentSrc = item.hoverSrc"
+              @mouseleave="item.currentSrc = item.defaultSrc"
+            />
 
-          <div class="gallery-item-info">
-            <h3>{{ item.name }}</h3>
-            <p>{{ item.description }}</p>
-            <h4 class="price">{{ item.price }}€</h4>
+            <div class="gallery-item-info">
+              <h3>{{ item.name }}</h3>
+              <p>{{ item.description }}</p>
+              <h4 class="price">{{ item.price }}€</h4>
+            </div>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -133,6 +135,9 @@ body {
   background: var(--primary);
   border-radius: 1.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+
+  display: inline-block;
+  text-decoration: none;
 }
 .gallery-item:hover {
   cursor: pointer;
