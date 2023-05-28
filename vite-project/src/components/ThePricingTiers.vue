@@ -2,7 +2,7 @@
   <div id="pricingTiers">
     <div class="header">Pricing Information</div>
     <div class="container body-container">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet .</p>
+      <p>The prices that are listed below, are for the custom artwork. Expect an additional cost for the price of the base shoe, which depends on the shoe model of your choice. Note that the prices are indicative, the final price will be determined after we process your request.</p>
       <div class="btn" @click="toggleTiers">
         {{ tiersVisible ? 'Hide' : 'View' }} Tiers
         <svg
@@ -66,21 +66,21 @@ export default {
           price: '$100',
           description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet.',
-          features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4']
+          features: ['Simple design', 'Color', 'Symbols', 'Feature 4']
         },
         {
           title: 'Palette Prestige',
           price: '$150',
           description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet.',
-          features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
+          features: ['Advanced design', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
         },
         {
           title: 'Masterpiece Edition',
           price: '$200',
           description:
             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet.',
-          features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5', 'Feature 6']
+          features: ['Entire shoe coverage', 'Many colors', 'Detailed design', 'Feature 4', 'Feature 5', 'Feature 6']
         }
       ]
     }
@@ -122,7 +122,7 @@ export default {
   text-align: center;
   font-weight: 600;
   font-size: var(--step-0);
-  max-width: 600px;
+  max-width: 900px;
 }
 
 .btn {
