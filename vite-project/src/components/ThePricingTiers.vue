@@ -2,7 +2,10 @@
   <div id="pricingTiers">
     <div class="header">Pricing Information</div>
     <div class="container body-container">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet .</p>
+      <p>
+        The prices that are listed below, are for the custom artwork. Expect an additional cost for
+        the price of the base shoe, which depends on the shoe model of your choice.
+      </p>
       <div class="btn" @click="toggleTiers">
         {{ tiersVisible ? 'Hide' : 'View' }} Tiers
         <svg
@@ -47,6 +50,10 @@
             </div>
           </div>
         </div>
+        <p class="note">
+          * Note that the prices are indicative, the final price will be determined after we process
+          your request.
+        </p>
       </div>
     </div>
   </div>
@@ -62,25 +69,25 @@ export default {
       },
       tiers: [
         {
-          title: 'Canvas Collection',
-          price: '$100',
+          title: 'Basic Design',
+          price: '€100',
           description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet.',
-          features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4']
+            'Designs that require ~10 hours of effort. EG: Small custom drawings, symbols or characters. Any kind of simple artwork.',
+          features: ['Simple design', '1-3 colors']
         },
         {
-          title: 'Palette Prestige',
-          price: '$150',
+          title: 'Premium Design',
+          price: '€150',
           description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet.',
-          features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
+            'Designs that require ~15 hours of effort. (WIP) EG: More complex and detailed drawings, such as multiple portraits, landscapes or logos. Any kind of advanced artwork.',
+          features: ['Advanced design', 'Up to 5 colors', 'Stylized text']
         },
         {
           title: 'Masterpiece Edition',
-          price: '$200',
+          price: '€200',
           description:
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, dolorem ea amet.',
-          features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5', 'Feature 6']
+            'Designs that require 20+ hours of effort. (WIP) Designs with high-level artistic skills and creativity, such as realistic paintings, abstract art or graffiti. Any kind of masterpiece artwork.',
+          features: ['High detail design', 'Entire shoe coverage', 'Many colors', 'Detailed background']
         }
       ]
     }
@@ -122,7 +129,7 @@ export default {
   text-align: center;
   font-weight: 600;
   font-size: var(--step-0);
-  max-width: 600px;
+  max-width: 900px;
 }
 
 .btn {
@@ -243,5 +250,11 @@ export default {
 }
 .feature path {
   stroke-width: 25;
+}
+
+.container .note {
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--secondary);
 }
 </style>

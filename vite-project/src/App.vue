@@ -100,6 +100,8 @@ body {
     #898acb
   );
   font-family: 'Source Sans Pro', sans-serif;
+  min-height: 100vh;
+  min-height: 100svh;
 }
 /* Fade transition */
 .page-opacity-enter-active,

@@ -1,169 +1,106 @@
 <template>
   <div id="gallery">
     <div class="gallery-container">
-      <div v-for="item in items" :key="item.title">
-        <div class="gallery-item" ref="galleryItems" @click="selectItem(item)">
-          <img
-            :src="item.src"
-            @mouseenter="mouseEnter(item)"
-            @mousemove="mouseMove(item)"
-            @mouseleave="mouseLeave(item)"
-            :alt="item.alt"
-          />
+      <div v-for="item in renderedItems" :key="item.key">
+        <div v-if="loading" class="gallery-item" ref="skeletonGalleryItems">
+          <div class="skeleton-image"></div>
           <div class="gallery-item-info">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
-            <h4 class="price">{{ item.price }}€</h4>
+            <div class="skeleton-text"></div>
+            <div class="skeleton-text"></div>
+            <div class="skeleton-text"></div>
           </div>
         </div>
+        <router-link :to="`/shop/${item.id}`" v-else>
+          <div class="gallery-item" ref="galleryItems">
+            <img
+              :src="item.currentSrc"
+              :alt="item.alt"
+              @mouseover="item.currentSrc = item.hoverSrc"
+              @mouseleave="item.currentSrc = item.defaultSrc"
+            />
+
+            <div class="gallery-item-info">
+              <h3>{{ item.name }}</h3>
+              <p>{{ item.description }}</p>
+              <h4 class="price">{{ item.price }}€</h4>
+            </div>
+          </div>
+        </router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import img1 from '@/assets/img1.png'
-import img2 from '@/assets/img2.png'
-import img3 from '@/assets/img3.png'
-import img4 from '@/assets/img4.png'
-import img5 from '@/assets/img5.png'
-import img6 from '@/assets/img6.png'
-import img7 from '@/assets/img7.png'
-import img8 from '@/assets/img8.png'
+import db from '@/store/firebase'
+import { collection, getDocs } from 'firebase/firestore'
+import { getStorage, ref, getDownloadURL } from 'firebase/storage'
 
 export default {
   data() {
     return {
-      onGalleryItemBool: false,
-      items: [
-        {
-          src: img1,
-          images: [img2, img3, img4, img5, img6, img7, img8],
-          alt: 'Nike Shoe 1',
-          title: 'Design Name 1',
-          description: 'Nike Dunk Low Next Nature',
-          price: '100',
-          size: '42.5'
-        },
-        {
-          src: img1,
-          images: [img2, img3, img4, img5, img6, img7, img8],
-          alt: 'Nike Shoe 1',
-          title: 'Design Name 2',
-          description: 'Nike Dunk Low Next Nature',
-          price: '100'
-        },
-        {
-          src: img1,
-          images: [img2, img3, img4, img5, img6, img7, img8],
-          alt: 'Nike Shoe 1',
-          title: 'Design Name 3',
-          description: 'Nike Dunk Low Next Nature',
-          price: '100'
-        },
-        {
-          src: img1,
-          images: [img2, img3, img4, img5, img6, img7, img8],
-          alt: 'Nike Shoe 1',
-          title: 'Design Name 4',
-          description: 'Nike Dunk Low Next Nature',
-          price: '100'
-        },
-        {
-          src: img1,
-          images: [img2, img3, img4, img5, img6, img7, img8],
-          alt: 'Nike Shoe 1',
-          title: 'Design Name 5',
-          description: 'Nike Dunk Low Next Nature',
-          price: '100'
-        },
-        {
-          src: img1,
-          images: [img2, img3, img4, img5, img6, img7, img8],
-          alt: 'Nike Shoe 1',
-          title: 'Design Name 6',
-          description: 'Nike Dunk Low Next Nature',
-          price: '100'
-        },
-        {
-          src: img1,
-          images: [img2, img3, img4, img5, img6, img7, img8],
-          alt: 'Nike Shoe 1',
-          title: 'Design Name 7',
-          description: 'Nike Dunk Low Next Nature',
-          price: '100'
-        },
-        {
-          src: img1,
-          images: [img2, img3, img4, img5, img6, img7, img8],
-          alt: 'Nike Shoe 1',
-          title: 'Design Name 8',
-          description: 'Nike Dunk Low Next Nature',
-          price: '100'
-        },
-        {
-          src: img1,
-          images: [img2, img3, img4, img5, img6, img7, img8],
-          alt: 'Nike Shoe 1',
-          title: 'Design Name 9',
-          description: 'Nike Dunk Low Next Nature',
-          price: '100'
-        },
-        {
-          src: img1,
-          images: [img2, img3, img4, img5, img6, img7, img8],
-          alt: 'Nike Shoe 1',
-          title: 'Design Name 10',
-          description: 'Nike Dunk Low Next Nature',
-          price: '100'
-        },
-        {
-          src: img1,
-          images: [img2, img3, img4, img5, img6, img7, img8],
-          alt: 'Nike Shoe 1',
-          title: 'Design Name 11',
-          description: 'Nike Dunk Low Next Nature',
-          price: '100'
-        },
-        {
-          src: img1,
-          images: [img2, img3, img4, img5, img6, img7, img8],
-          alt: 'Nike Shoe 1',
-          title: 'Design Name 12',
-          description: 'Nike Dunk Low Next Nature',
-          price: '100'
-        }
-      ]
-    }
-  },
-  computed: {
-    onGalleryItem() {
-      return !this.onGalleryItemBool
-    }
-  },
-  methods: {
-    mouseEnter(item) {
-      item.src = item.images[Math.floor(Math.random() * 7)]
-    },
-    mouseMove(item) {
-      const d = new Date()
-      item.src = item.images[Math.floor((d.getTime() / 1000) % 7)]
-    },
-    mouseLeave(item) {
-      item.src = img1
-    },
-    selectItem(item) {
-      this.$store.dispatch('selectItem', item)
-      console.log(this.$router.push({ name: 'shopItem' }))
-      console.log('test')
+      loading: true,
+      items: []
     }
   },
   mounted() {
     setTimeout(() => {
-      this.$refs.galleryItems.forEach((item) => {
-        item.classList.add('visible')
+      if (this.$refs.skeletonGalleryItems) {
+        this.$refs.skeletonGalleryItems.forEach((item) => {
+          item.classList.add('visible')
+        })
+      }
+    }, 250)
+  },
+  computed: {
+    renderedItems() {
+      return this.loading ? Array.from({ length: 10 }, (_, i) => ({ key: i })) : this.items
+    }
+  },
+  methods: {},
+  async created() {
+    const shoeDetailsCollection = collection(db, 'shoe_details')
+    const shoeDetailsSnapshot = await getDocs(shoeDetailsCollection)
+    const shoeDetailsData = shoeDetailsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+
+    const lowResImagesCollection = collection(db, 'low_res_images')
+    const lowResImagesSnapshot = await getDocs(lowResImagesCollection)
+    const lowResImagesData = lowResImagesSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+
+    const storage = getStorage()
+
+    this.items = await Promise.all(
+      shoeDetailsData.map(async (shoeDetail) => {
+        const matchingImage = lowResImagesData.find((image) => image.id === shoeDetail.id)
+
+        const gsReferenceDefault = ref(storage, matchingImage?.default)
+        const gsReferenceHover = ref(storage, matchingImage?.hover)
+
+        const downloadURLDefault = await getDownloadURL(gsReferenceDefault)
+        const downloadURLHover = await getDownloadURL(gsReferenceHover)
+
+        // Pre-fetch the hover image
+        const prefetchImage = new Image()
+        prefetchImage.src = downloadURLHover
+
+        return {
+          ...shoeDetail,
+          currentSrc: downloadURLDefault,
+          defaultSrc: downloadURLDefault,
+          hoverSrc: downloadURLHover
+        }
       })
-    }, 100)
+    )
+
+    setTimeout(() => {
+      if (this.$refs.galleryItems) {
+        this.$refs.galleryItems.forEach((item) => {
+          item.classList.add('visible')
+        })
+      }
+    }, 250)
+
+    this.loading = false
   }
 }
 </script>
@@ -198,6 +135,9 @@ body {
   background: var(--primary);
   border-radius: 1.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+
+  display: inline-block;
+  text-decoration: none;
 }
 .gallery-item:hover {
   cursor: pointer;
@@ -208,6 +148,7 @@ body {
   object-fit: cover;
   border-radius: 1.5rem 1.5rem 0 0;
   transition: transform 500ms ease-in-out;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
 }
 .gallery-item img:hover {
   --transition-property: transform;
@@ -246,5 +187,20 @@ body {
 .visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 400px;
+  width: 400px;
+  border-radius: 1.5rem 1.5rem 0 0;
+  background-color: #eee;
+}
+
+.skeleton-text {
+  width: 80%;
+  height: 20px;
+  background-color: #eee;
+  margin-bottom: 5px;
 }
 </style>

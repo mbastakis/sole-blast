@@ -8,7 +8,7 @@
 
       <div class="container" ref="infographicContainer">
         <div class="step step-right">
-          <p>1. Share Your Vision with us and we will bring it to life!</p>
+          <p>1. Share your vision and let's embark on an artistic journey, creating your unique Sole-Blast shoes!</p>
           <div ref="step1" class="step1">
             <TheStep1 />
           </div>
@@ -16,8 +16,7 @@
 
         <div class="step step-left">
           <p>
-            2. Sketch & Approval We're committed to bringing your vision to life just as you
-            imagined.
+            2. Our artists dive into your idea, turning it into a tangible sketch. They shape your imagination and await your approval, ensuring your vision is brought to life just as you've imagined.
           </p>
           <div ref="step2" class="step2">
             <TheStep2 />
@@ -25,14 +24,14 @@
         </div>
 
         <div class="step step-right">
-          <p>3. From sketch to reality Each Sole-Blast shoe is meticulously hand-painted.</p>
+          <p>3. This is where the magic happens. Plain shoes are transformed into extraordinary works of art. Each pair is meticulously hand-painted, ensuring a unique and captivating result.</p>
           <div ref="step3" class="step3">
             <TheStep3 />
           </div>
         </div>
 
         <div class="step step-left">
-          <p>4. Lorem ipsum is the true god, too bored to right something</p>
+          <p>4. Excitement at your doorstep! Your custom-designed shoes arrive, ready to elevate your style.</p>
           <div ref="step4" class="step4">
             <TheStep4 />
           </div>
