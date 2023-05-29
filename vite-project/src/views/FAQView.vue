@@ -55,10 +55,12 @@ export default {
             {
               question: 'How long will it take to prepare a custom pair?',
               answer:
-                'We strive to complete your order as quickly as possible: \n\
-                  • It takes approximately 3 days to get the shoes delivered to our workshop. \n\
-                  • Customization and painting takes between 3-7 days, depending on the complexity of the design. \n\
-                  • Shipping takes around 6 days for Europe and 7-15 days for other countries.',
+                'We strive to complete your order as quickly as possible: \
+                <ul style="padding-left: var(--space-m);"> \
+                  <li>It takes approximately 3 days to get the shoes delivered to our workshop.</li> \
+                  <li>Customization and painting takes between 3-7 days, depending on the complexity of the design.</li> \
+                  <li>Shipping takes around 6 days for Europe and 7-15 days for other countries.</li> \
+                </ul>',
               showAnswer: false
             },
             {

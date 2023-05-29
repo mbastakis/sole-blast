@@ -3,7 +3,7 @@
     <div class="info-container">
       <div class="header">Custom Order Information</div>
       <div class="description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam quod tempore quisquam saepe.
+        (WIP)Enter as much detail as you can and be as specific as possible to help us to bring your dream design to reality.
       </div>
     </div>
 
@@ -44,14 +44,20 @@
           />
         </n-form-item>
       </div>
-      <n-form-item label="Use Customer's Shoe?" path="useCustomersShoe">
+      <n-form-item label="Customize an item you already own?" path="useCustomersShoe">
         <n-switch v-model:value="form.useCustomersShoe" />
       </n-form-item>
       <n-form-item label="SHOE DESCRIPTION" path="textareaValue">
         <n-input
           class="textarea"
           v-model:value="form.textareaValue"
-          placeholder="Enter any additional information"
+          placeholder="uheu (WIP)
+          
+          
+          test 
+          
+          
+          test2"
           type="textarea"
           maxlength="2000"
           show-count
@@ -145,7 +151,7 @@ export default defineComponent({
           dialog.info({
             title: 'Confirmation',
             content:
-              "Are you sure you want to use the customer's shoe? You need to provide the shoe model in the field above and the shoe has to be new.",
+              "If you wish to provide your own pair of shoes (or any item) by sending them to us, please specify the shoe model in the field above. The shoes must be in brand-new condition.",
             positiveText: 'Understood',
             maskClosable: false
           })
