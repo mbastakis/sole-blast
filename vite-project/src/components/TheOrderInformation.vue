@@ -81,13 +81,7 @@
               <n-input
                 class="textarea"
                 v-model:value="form.textareaValue"
-                placeholder="uheu (WIP)
-                  
-                  
-                  test 
-                  
-                  
-                  test2"
+                placeholder="(WIP) Enter details about your design."
                 type="textarea"
                 maxlength="2000"
                 show-count
@@ -130,13 +124,7 @@
               <n-input
                 class="textarea"
                 v-model:value="form2.textareaValue"
-                placeholder="uheu (WIP)
-                  
-                  
-                  test 
-                  
-                  
-                  test2"
+                placeholder="(WIP) Enter details about your design."
                 type="textarea"
                 maxlength="2000"
                 show-count
