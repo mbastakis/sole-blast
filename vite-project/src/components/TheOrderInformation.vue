@@ -46,7 +46,7 @@
         </n-form-item>
       </div>
       <n-form-item label="Customize an item you already own?" path="useCustomersShoe">
-        <n-switch v-model:value="form.useCustomersShoe" />
+        <n-switch v-model:value="form.useCustomersShoe" class="switch" />
         <n-tooltip trigger="hover">
           <template #trigger>
             <svg
@@ -325,9 +325,8 @@ export default defineComponent({
   min-height: 150px;
 }
 .info-svg {
-  width: 25px;
-  height: 25px;
+  width: 22px;
+  height: 22px;
   margin-left: var(--space-xs);
-  z-index: 2;
 }
 </style>

@@ -20,7 +20,8 @@ const themeOverrides = {
   Form: {
     labelTextColor: 'var(--secondary)',
     labelFontWeight: '600',
-    labelFontSizeTopMedium: 'var(--step--2)'
+    labelFontSizeTopMedium: 'var(--step--2)',
+    feedbackTextColor: '#d03050'
   },
   Input: {
     color: 'var(--background)',
