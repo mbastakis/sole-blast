@@ -1,15 +1,15 @@
 <template>
   <div id="orderInfo">
-    <div class="header">Custom Order Information</div>
+    <div class="info-container">
+      <div class="header">Custom Order Information</div>
+      <div class="description">
+        (WIP)Enter as much detail as you can and be as specific as possible to help us to bring your
+        dream design to reality.
+      </div>
+    </div>
     <n-tabs type="segment">
       <n-tab-pane name="Shoe">
         <div class="container">
-          <div class="info-container">
-            <div class="description">
-              (WIP)Enter as much detail as you can and be as specific as possible to help us to
-              bring your dream design to reality.
-            </div>
-          </div>
           <div class="upload">
             <div class="label">REFERENCE IMAGES</div>
             <n-upload multiple directory-dnd action="" :max="5">
@@ -95,12 +95,6 @@
       <!-- Any item view -->
       <n-tab-pane name="Your Item">
         <div class="container">
-          <div class="info-container">
-            <div class="description">
-              (WIP)Enter as much detail as you can and be as specific as possible to help us to
-              bring your dream design to reality.
-            </div>
-          </div>
           <div class="upload">
             <div class="label">REFERENCE IMAGES</div>
             <n-upload multiple directory-dnd action="" :max="5">
