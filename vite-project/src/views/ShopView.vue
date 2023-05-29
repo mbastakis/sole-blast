@@ -21,7 +21,7 @@
 
             <div class="gallery-item-info">
               <h3>{{ item.name }}</h3>
-              <p>{{ item.description }}</p>
+              <n-ellipsis line-clamp="2" class="description">{{ item.description }}</n-ellipsis>
               <h4 class="price">{{ item.price }}€</h4>
             </div>
           </div>
@@ -35,6 +35,7 @@
 import db from '@/store/firebase'
 import { collection, getDocs } from 'firebase/firestore'
 import { getStorage, ref, getDownloadURL } from 'firebase/storage'
+import { NEllipsis } from 'naive-ui'
 
 export default {
   data() {
@@ -42,6 +43,9 @@ export default {
       loading: true,
       items: []
     }
+  },
+  components: {
+    NEllipsis
   },
   mounted() {
     setTimeout(() => {
@@ -171,7 +175,7 @@ body {
   font-size: var(--step-2);
   font-weight: 700;
 }
-.gallery-item-info p {
+.gallery-item-info .description {
   font-size: var(--step-0);
   font-weight: 400;
 }

@@ -3,7 +3,8 @@
     <div class="info-container">
       <div class="header">Custom Order Information</div>
       <div class="description">
-        (WIP)Enter as much detail as you can and be as specific as possible to help us to bring your dream design to reality.
+        (WIP)Enter as much detail as you can and be as specific as possible to help us to bring your
+        dream design to reality.
       </div>
     </div>
 
@@ -151,9 +152,13 @@ export default defineComponent({
           dialog.info({
             title: 'Confirmation',
             content:
-              "If you wish to provide your own pair of shoes (or any item) by sending them to us, please specify the shoe model in the field above. The shoes must be in brand-new condition.",
+              'If you wish to provide your own pair of shoes (or any item) by sending them to us, please specify the shoe model in the field above. The shoes must be in brand-new condition.',
             positiveText: 'Understood',
-            maskClosable: false
+            maskClosable: false,
+            closeOnEsc: false,
+            onClose: () => {
+              form.value.useCustomersShoe = false
+            }
           })
         }
       }
