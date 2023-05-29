@@ -48,6 +48,13 @@ const themeOverrides = {
         borderInfo: 'none'
       }
     }
+  },
+  Tabs: {
+    colorSegment: 'var(--background)',
+    tabTextColorSegment: 'var(--secondary)',
+    tabTextColorActiveSegment: 'var(--secondary)',
+    tabFontSizeMedium: 'var(--step-0)',
+    fontWeightStrong: '800'
   }
 }
 </script>

@@ -1,93 +1,153 @@
 <template>
   <div id="orderInfo">
-    <div class="info-container">
-      <div class="header">Custom Order Information</div>
-      <div class="description">
-        (WIP)Enter as much detail as you can and be as specific as possible to help us to bring your
-        dream design to reality.
-      </div>
-    </div>
+    <div class="header">Custom Order Information</div>
+    <n-tabs type="segment">
+      <n-tab-pane name="Shoe">
+        <div class="container">
+          <div class="info-container">
+            <div class="description">
+              (WIP)Enter as much detail as you can and be as specific as possible to help us to
+              bring your dream design to reality.
+            </div>
+          </div>
+          <div class="upload">
+            <div class="label">REFERENCE IMAGES</div>
+            <n-upload multiple directory-dnd action="" :max="5">
+              <n-upload-dragger>
+                <div>Click or drag a file to this area to upload</div>
+              </n-upload-dragger>
+            </n-upload>
+          </div>
 
-    <div class="upload">
-      <div class="label">REFERENCE IMAGES</div>
-      <n-upload multiple directory-dnd action="" :max="5">
-        <n-upload-dragger>
-          <div>Click or drag a file to this area to upload</div>
-        </n-upload-dragger>
-      </n-upload>
-    </div>
-
-    <n-form class="shoe-form" ref="formRef" :model="form" :rules="rules" label-placement="top">
-      <div class="flex-row">
-        <n-form-item
-          class="flex-row-item"
-          label="SHOE MODEL"
-          path="shoeModel"
-          :validation-status="shoeModelValidationStatus"
-          :feedback="shoeModelFeedback"
-        >
-          <n-select
-            class="select"
-            v-model:value="form.shoeModel"
-            :placeholder="form.useCustomersShoe ? 'Input shoe model' : 'Select shoe model'"
-            :options="shoeModels"
-            :show-arrow="!form.useCustomersShoe"
-            :filterable="form.useCustomersShoe"
-            :tag="form.useCustomersShoe"
-          />
-        </n-form-item>
-        <n-form-item class="flex-row-item" label="SHOE SIZE" path="shoeSize">
-          <n-select
-            :disabled="form.useCustomersShoe"
-            v-model:value="form.shoeSize"
-            placeholder="Select shoe size"
-            :options="shoeSizes"
-          />
-        </n-form-item>
-      </div>
-      <n-form-item label="Customize an item you already own?" path="useCustomersShoe">
-        <n-switch v-model:value="form.useCustomersShoe" class="switch" />
-        <n-tooltip trigger="hover">
-          <template #trigger>
-            <svg
-              width="139"
-              height="139"
-              viewBox="0 0 139 139"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="info-svg"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M139 69.5C139 107.884 107.884 139 69.5 139C31.1162 139 0 107.884 0 69.5C0 31.1162 31.1162 0 69.5 0C107.884 0 139 31.1162 139 69.5ZM88.5502 37.0475C88.5502 42.0173 84.5214 46.0462 79.5516 46.0462C74.5818 46.0462 70.553 42.0173 70.553 37.0475C70.553 32.0777 74.5818 28.0489 79.5516 28.0489C84.5214 28.0489 88.5502 32.0777 88.5502 37.0475ZM51.5028 64.7135C51.5028 61.7459 65.4028 46.7354 79.456 49.4924C85.9273 52.1729 85.2636 58.2357 84.1467 60.8364L72.3719 89.2682C71.7497 90.8637 71.4625 93.6909 75.2917 92.2358C78.9677 90.283 80.844 89.4437 81.3227 89.2682C82.8703 88.646 85.4391 88.2152 83.333 91.47C82.2225 95.4524 77.5094 101.107 75.2917 103.436C72.2124 106.914 63.986 112.693 55.7149 107.983C50.8901 104.882 52.0772 97.5967 53.2738 94.3419C55.0767 88.9332 59.8792 75.4352 64.6657 64.7135C66.8196 59.8887 55.8585 62.3203 51.5028 64.7135Z"
-                fill="#282E5C"
+          <n-form
+            class="shoe-form"
+            ref="formRef"
+            :model="form"
+            :rules="rules"
+            label-placement="top"
+          >
+            <div class="flex-row">
+              <n-form-item
+                class="flex-row-item"
+                label="SHOE MODEL"
+                path="shoeModel"
+                :validation-status="shoeModelValidationStatus"
+                :feedback="shoeModelFeedback"
+              >
+                <n-select
+                  class="select"
+                  v-model:value="form.shoeModel"
+                  :placeholder="form.useCustomersShoe ? 'Input shoe model' : 'Select shoe model'"
+                  :options="shoeModels"
+                  :show-arrow="!form.useCustomersShoe"
+                  :filterable="form.useCustomersShoe"
+                  :tag="form.useCustomersShoe"
+                />
+              </n-form-item>
+              <n-form-item class="flex-row-item" label="SHOE SIZE" path="shoeSize">
+                <n-select
+                  :disabled="form.useCustomersShoe"
+                  v-model:value="form.shoeSize"
+                  placeholder="Select shoe size"
+                  :options="shoeSizes"
+                />
+              </n-form-item>
+            </div>
+            <n-form-item label="Want to customize a shoe you already own?" path="useCustomersShoe">
+              <n-switch v-model:value="form.useCustomersShoe" class="switch" />
+              <n-tooltip trigger="hover">
+                <template #trigger>
+                  <svg
+                    width="139"
+                    height="139"
+                    viewBox="0 0 139 139"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="info-svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M139 69.5C139 107.884 107.884 139 69.5 139C31.1162 139 0 107.884 0 69.5C0 31.1162 31.1162 0 69.5 0C107.884 0 139 31.1162 139 69.5ZM88.5502 37.0475C88.5502 42.0173 84.5214 46.0462 79.5516 46.0462C74.5818 46.0462 70.553 42.0173 70.553 37.0475C70.553 32.0777 74.5818 28.0489 79.5516 28.0489C84.5214 28.0489 88.5502 32.0777 88.5502 37.0475ZM51.5028 64.7135C51.5028 61.7459 65.4028 46.7354 79.456 49.4924C85.9273 52.1729 85.2636 58.2357 84.1467 60.8364L72.3719 89.2682C71.7497 90.8637 71.4625 93.6909 75.2917 92.2358C78.9677 90.283 80.844 89.4437 81.3227 89.2682C82.8703 88.646 85.4391 88.2152 83.333 91.47C82.2225 95.4524 77.5094 101.107 75.2917 103.436C72.2124 106.914 63.986 112.693 55.7149 107.983C50.8901 104.882 52.0772 97.5967 53.2738 94.3419C55.0767 88.9332 59.8792 75.4352 64.6657 64.7135C66.8196 59.8887 55.8585 62.3203 51.5028 64.7135Z"
+                      fill="#282E5C"
+                    />
+                  </svg>
+                </template>
+                If it looks like a duck, walks like a duck, and quacks like a duck, then it probably
+                is a duck.
+              </n-tooltip>
+            </n-form-item>
+            <n-form-item label="SHOE DESCRIPTION" path="textareaValue">
+              <n-input
+                class="textarea"
+                v-model:value="form.textareaValue"
+                placeholder="uheu (WIP)
+                  
+                  
+                  test 
+                  
+                  
+                  test2"
+                type="textarea"
+                maxlength="2000"
+                show-count
+                clearable
               />
-            </svg>
-          </template>
-          If it looks like a duck, walks like a duck, and quacks like a duck, then it probably is a
-          duck.
-        </n-tooltip>
-      </n-form-item>
-      <n-form-item label="SHOE DESCRIPTION" path="textareaValue">
-        <n-input
-          class="textarea"
-          v-model:value="form.textareaValue"
-          placeholder="uheu (WIP)
-          
-          
-          test 
-          
-          
-          test2"
-          type="textarea"
-          maxlength="2000"
-          show-count
-          clearable
-        />
-      </n-form-item>
-      <div class="btn" @click="submitForm">Continue</div>
-    </n-form>
+            </n-form-item>
+            <div class="btn" @click="submitForm">Continue</div>
+          </n-form>
+        </div>
+      </n-tab-pane>
+      <!-- Any item view -->
+      <n-tab-pane name="Your Item">
+        <div class="container">
+          <div class="info-container">
+            <div class="description">
+              (WIP)Enter as much detail as you can and be as specific as possible to help us to
+              bring your dream design to reality.
+            </div>
+          </div>
+          <div class="upload">
+            <div class="label">REFERENCE IMAGES</div>
+            <n-upload multiple directory-dnd action="" :max="5">
+              <n-upload-dragger>
+                <div>Click or drag a file to this area to upload</div>
+              </n-upload-dragger>
+            </n-upload>
+          </div>
+
+          <n-form
+            class="shoe-form"
+            ref="form2Ref"
+            :model="form2"
+            :rules="rules2"
+            label-placement="top"
+          >
+            <n-form-item label="ITEM NAME" path="itemname">
+              <n-input v-model:value="form2.itemname" placeholder="Enter the name of the item" />
+            </n-form-item>
+            <n-form-item label="DESIGN DESCRIPTION" path="textareaValue">
+              <n-input
+                class="textarea"
+                v-model:value="form2.textareaValue"
+                placeholder="uheu (WIP)
+                  
+                  
+                  test 
+                  
+                  
+                  test2"
+                type="textarea"
+                maxlength="2000"
+                show-count
+                clearable
+              />
+            </n-form-item>
+            <div class="btn" @click="submitForm2">Continue</div>
+          </n-form>
+        </div>
+      </n-tab-pane>
+    </n-tabs>
   </div>
 </template>
 
@@ -103,7 +163,9 @@ import {
   NInput,
   NUpload,
   NUploadDragger,
-  NTooltip
+  NTooltip,
+  NTabs,
+  NTabPane
 } from 'naive-ui'
 
 export default defineComponent({
@@ -115,7 +177,9 @@ export default defineComponent({
     NInput,
     NUpload,
     NUploadDragger,
-    NTooltip
+    NTooltip,
+    NTabs,
+    NTabPane
   },
   emits: ['submit', 'change'],
   data() {
@@ -123,6 +187,7 @@ export default defineComponent({
   },
   setup(_, { emit }) {
     const formRef = ref(null)
+    const form2Ref = ref(null)
     const message = ref(null)
     const dialog = useDialog()
 
@@ -130,6 +195,11 @@ export default defineComponent({
       shoeModel: null,
       shoeSize: null,
       useCustomersShoe: false,
+      textareaValue: ''
+    })
+
+    let form2 = ref({
+      itemname: null,
       textareaValue: ''
     })
 
@@ -194,11 +264,15 @@ export default defineComponent({
       if (form.value.shoeSize) emit('change')
       if (form.value.useCustomersShoe !== undefined) emit('change')
       if (form.value.textareaValue) emit('change')
+      if (form2.value.itemname) emit('change')
+      if (form2.value.textareaValue) emit('change')
     })
 
     return {
       formRef,
+      form2Ref,
       form,
+      form2,
       shoeModels,
       shoeSizes,
       rules: {
@@ -210,6 +284,16 @@ export default defineComponent({
           required: true,
           message: 'Please select a shoe size',
           trigger: 'change'
+        },
+        textareaValue: {
+          required: true,
+          message: 'Please provide additional information'
+        }
+      },
+      rules2: {
+        itemname: {
+          required: true,
+          message: 'Please enter the name of the item'
         },
         textareaValue: {
           required: true,
@@ -244,6 +328,25 @@ export default defineComponent({
           console.log(error)
         }
       },
+      submitForm2: async function (e) {
+        e.preventDefault()
+        form2Ref.value?.restoreValidation()
+        try {
+          await form2Ref.value?.validate((errors) => {
+            if (errors) {
+              console.error(errors)
+              message.value.error('Invalid')
+            } else {
+              console.log(form.value) // Print the whole contents of the form
+
+              message.value.success('Valid')
+              this.$emit('submit')
+            }
+          })
+        } catch (error) {
+          console.log(error)
+        }
+      },
       shoeModelValidationStatus,
       shoeModelFeedback
     }
@@ -263,6 +366,15 @@ export default defineComponent({
   padding: 0 var(--space-m) var(--space-l) var(--space-m);
   max-width: 1400px;
 }
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  color: var(--secondary);
+  gap: var(--space-m);
+}
 .info-container {
   text-align: center;
 }
@@ -270,6 +382,7 @@ export default defineComponent({
   margin: var(--space-l) auto var(--space-2xs) auto;
   font-weight: 800;
   font-size: var(--step-2);
+  text-align: center;
 }
 .description {
   font-size: var(--step-0);
