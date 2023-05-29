@@ -55,10 +55,12 @@ export default {
             {
               question: 'How long will it take to prepare a custom pair?',
               answer:
-                'We strive to complete your order as quickly as possible: \n\
-                  • It takes approximately 3 days to get the shoes delivered to our workshop. \n\
-                  • Customization and painting takes between 3-7 days, depending on the complexity of the design. \n\
-                  • Shipping takes around 6 days for Europe and 7-15 days for other countries.',
+                'We strive to complete your order as quickly as possible: \
+                <ul style="padding-left: var(--space-m);"> \
+                  <li>It takes approximately 3 days to get the shoes delivered to our workshop.</li> \
+                  <li>Customization and painting takes between 3-7 days, depending on the complexity of the design.</li> \
+                  <li>Shipping takes 5-10 business days for Europe and 7-20 days for other countries.</li> \
+                </ul>',
               showAnswer: false
             },
             {
@@ -70,7 +72,7 @@ export default {
             {
               question: 'What payment methods do you accept?',
               answer:
-                'We accept various payment methods, including credit cards, PayPal, and bank transfers.',
+                'We only accept the most secure payment methods, which include Paypal, credit cards and bank transfers.',
               showAnswer: false
             },
             {
@@ -89,7 +91,7 @@ export default {
             {
               question: 'What is the cost for a custom pair?',
               answer:
-                "The total cost depends on the chosen base shoe and the complexity of your design. For example, a pair of Nike Air Force 1's costs around 140€, and a simple artwork would cost around 90€, totaling 230€.",
+                "The total cost depends on the chosen base shoe and the complexity of your design. For example, a pair of Nike Air Force 1's costs around 140€, and a simple artwork would cost around €100, totaling €240.",
               showAnswer: false
             },
             {
@@ -109,7 +111,7 @@ export default {
             {
               question: 'Can I select a design that has been painted before?',
               answer:
-                "Yes, you can choose any design from <a href='/shop'>our store</a> but please note that each pair is 100% hand-painted and unique, so we cannot guarantee an exact replica. We'll always aim to make the new pair even better!",
+                "Yes, you can choose any design from <a href='/shop'>our store</a>, but please note that each pair is 100% hand-painted and unique, so we cannot guarantee an exact replica. We'll always aim to make each new pair even better!",
               showAnswer: false
             },
             {
@@ -121,13 +123,13 @@ export default {
             {
               question: 'What shoe brands and models can I choose from?',
               answer:
-                "Popular options include Nike Air Force 1's and Vans slip-on's due to their large painting surface.\nOther choices include Vans Classic, Vans Old Skool, Dr. Martens, Nike Air Max, Nike Dunk and Air Jordan 1.\nYou can also send us your own pair of shoes.",
+                "Popular options include Nike Air Force 1's, Vans slip-on's and Vans Old Skool due to their popularity and large painting surface.\nOther choices include Vans Classic, Dr. Martens, Nike Air Max, Nike Dunk Low and Air Jordan 1.\nYou can also send us your own pair of shoes if they're in brand new condition.",
               showAnswer: false
             },
             {
               question: 'How durable is the artwork?',
               answer:
-                'Our artwork is crafted using high-quality materials and best practices to ensure its durability. We guarantee that the artwork is 100% permanent and will not fade over time. Feel free to wear your shoes in any condition!',
+                'Our artwork is crafted using high-quality materials and best practices to ensure its durability. We guarantee that the artwork is 100% permanent and will not fade over time. Feel free to wear your shoes in all conditions!',
               showAnswer: false
             },
             {
