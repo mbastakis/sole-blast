@@ -29,7 +29,7 @@
           <n-select
             class="select"
             v-model:value="form.shoeModel"
-            :placeholder="form.useCustomersShoe ? 'Input shoe model': 'Select shoe model'"
+            :placeholder="form.useCustomersShoe ? 'Input shoe model' : 'Select shoe model'"
             :options="shoeModels"
             :show-arrow="!form.useCustomersShoe"
             :filterable="form.useCustomersShoe"
@@ -47,6 +47,27 @@
       </div>
       <n-form-item label="Customize an item you already own?" path="useCustomersShoe">
         <n-switch v-model:value="form.useCustomersShoe" />
+        <n-tooltip trigger="hover">
+          <template #trigger>
+            <svg
+              width="139"
+              height="139"
+              viewBox="0 0 139 139"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="info-svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M139 69.5C139 107.884 107.884 139 69.5 139C31.1162 139 0 107.884 0 69.5C0 31.1162 31.1162 0 69.5 0C107.884 0 139 31.1162 139 69.5ZM88.5502 37.0475C88.5502 42.0173 84.5214 46.0462 79.5516 46.0462C74.5818 46.0462 70.553 42.0173 70.553 37.0475C70.553 32.0777 74.5818 28.0489 79.5516 28.0489C84.5214 28.0489 88.5502 32.0777 88.5502 37.0475ZM51.5028 64.7135C51.5028 61.7459 65.4028 46.7354 79.456 49.4924C85.9273 52.1729 85.2636 58.2357 84.1467 60.8364L72.3719 89.2682C71.7497 90.8637 71.4625 93.6909 75.2917 92.2358C78.9677 90.283 80.844 89.4437 81.3227 89.2682C82.8703 88.646 85.4391 88.2152 83.333 91.47C82.2225 95.4524 77.5094 101.107 75.2917 103.436C72.2124 106.914 63.986 112.693 55.7149 107.983C50.8901 104.882 52.0772 97.5967 53.2738 94.3419C55.0767 88.9332 59.8792 75.4352 64.6657 64.7135C66.8196 59.8887 55.8585 62.3203 51.5028 64.7135Z"
+                fill="#282E5C"
+              />
+            </svg>
+          </template>
+          If it looks like a duck, walks like a duck, and quacks like a duck, then it probably is a
+          duck.
+        </n-tooltip>
       </n-form-item>
       <n-form-item label="SHOE DESCRIPTION" path="textareaValue">
         <n-input
@@ -81,7 +102,8 @@ import {
   NSwitch,
   NInput,
   NUpload,
-  NUploadDragger
+  NUploadDragger,
+  NTooltip
 } from 'naive-ui'
 
 export default defineComponent({
@@ -92,7 +114,8 @@ export default defineComponent({
     NSwitch,
     NInput,
     NUpload,
-    NUploadDragger
+    NUploadDragger,
+    NTooltip
   },
   emits: ['submit', 'change'],
   data() {
@@ -300,5 +323,11 @@ export default defineComponent({
 }
 .textarea {
   min-height: 150px;
+}
+.info-svg {
+  width: 25px;
+  height: 25px;
+  margin-left: var(--space-xs);
+  z-index: 2;
 }
 </style>
