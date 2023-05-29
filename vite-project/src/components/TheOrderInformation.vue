@@ -29,7 +29,7 @@
           <n-select
             class="select"
             v-model:value="form.shoeModel"
-            placeholder="Select shoe model"
+            :placeholder="form.useCustomersShoe ? 'Input shoe model': 'Select shoe model'"
             :options="shoeModels"
             :show-arrow="!form.useCustomersShoe"
             :filterable="form.useCustomersShoe"

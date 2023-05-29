@@ -31,6 +31,22 @@ const themeOverrides = {
   Upload: {
     draggerColor: 'var(--background)',
     draggerBorder: '1px dashed var(--secondary)'
+  },
+  Dialog: {
+    fontSize: 'var(--step--1)',
+    textColor: 'var(--secondary)',
+    iconColorInfo: 'var(--secondary)',
+    titleFontSize: 'var(--step-1)',
+    peers: {
+      Button: {
+        fontSizeSmall: 'var(--step-0)',
+        paddingSmall: 'var(--space-xs) var(--space-s)',
+        colorInfo: 'var(--secondary)',
+        colorHoverInfo: 'var(--selected)',
+        colorPressedInfo: 'var(--selected)',
+        borderInfo: 'none'
+      }
+    }
   }
 }
 </script>

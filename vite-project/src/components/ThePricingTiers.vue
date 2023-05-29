@@ -87,7 +87,12 @@ export default {
           price: '€200',
           description:
             'Designs that require 20+ hours of effort, high-level artistic skills and creativity. EG: High detail characters, abstract/realistic art or graffiti. Almost anything is possible!',
-          features: ['High detail design', 'Entire shoe coverage', 'Many colors', 'Detailed background']
+          features: [
+            'High detail design',
+            'Entire shoe coverage',
+            'Many colors',
+            'Detailed background'
+          ]
         }
       ]
     }
@@ -256,5 +261,10 @@ export default {
   font-size: var(--step--1);
   font-weight: 600;
   color: var(--secondary);
+}
+@media (min-width: 961px) {
+  .container .note {
+    font-size: var(--step-0);
+  }
 }
 </style>
