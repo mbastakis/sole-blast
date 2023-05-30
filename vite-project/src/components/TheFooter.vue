@@ -5,7 +5,7 @@
         <div class="logo">
           <FooterLogoSVG />
         </div>
-        <NGradientText gradient="linear-gradient(90deg, #D9DDFF 0%, #DABED3 100%)" class="phrase"
+        <NGradientText gradient="linear-gradient(90deg, #D9DDFF 0%, #DABED3 80%)" class="phrase"
           >Color Your Walk!</NGradientText
         >
       </router-link>

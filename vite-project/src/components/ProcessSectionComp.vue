@@ -436,17 +436,17 @@ export default {
 svg {
   margin-bottom: -5px;
 }
-.btn >>> .featherSVG {
+.btn :deep(.featherSVG) {
   width: 1.7rem;
   transition: transform 0.3s ease-in-out;
 }
-.btn >>> .featherSVG path {
+.btn :deep(.featherSVG path) {
   transition: stroke 0.3s ease-in-out;
 }
-.btn:hover >>> .featherSVG {
+.btn:hover :deep(.featherSVG) {
   transform: translateX(0.2em);
 }
-.btn:hover >>> .featherSVG path:nth-child(2) {
+.btn:hover :deep(.featherSVG path:nth-child(2)) {
   animation: write 2s ease-in-out;
 }
 .router-link {
