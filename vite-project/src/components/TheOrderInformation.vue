@@ -93,7 +93,7 @@
         </div>
       </n-tab-pane>
       <!-- Any item view -->
-      <n-tab-pane name="Your Item">
+      <n-tab-pane name="Other Item">
         <div class="container">
           <div class="upload">
             <div class="label">REFERENCE IMAGES</div>
