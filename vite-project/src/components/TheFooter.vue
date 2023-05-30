@@ -14,7 +14,7 @@
       <div class="details">
         <div class="redirects">
           <router-link class="router-link" to="/shop">
-            <div>Shop</div>
+            <div>shop</div>
           </router-link>
           <router-link class="router-link" to="/yourdesign">
             <div>your design</div>
