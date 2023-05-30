@@ -8,16 +8,7 @@
       </p>
       <div class="btn" @click="toggleTiers">
         {{ tiersVisible ? 'Hide' : 'View' }} Tiers
-        <svg
-          :style="tiersVisible ? rotateArrow : null"
-          width="10"
-          height="8"
-          viewBox="0 0 10 8"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M5.34154 8L0.944792 0.5L9.73828 0.500001L5.34154 8Z" fill="white" />
-        </svg>
+        <RotatingTriangeSVG :style="tiersVisible ? rotateArrow : null" />
       </div>
     </div>
     <div class="container">
@@ -31,20 +22,7 @@
             <div class="tier-description">{{ tier.description }}</div>
             <div class="tier-features">
               <div class="feature" v-for="feature in tier.features" :key="feature">
-                <svg
-                  width="140"
-                  height="96"
-                  viewBox="0 0 140 96"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7.00012 45.9153L49.6956 88.3006C50.0855 88.6877 50.7147 88.6877 51.1046 88.3006L133 7"
-                    stroke="#282E5C"
-                    stroke-width="14"
-                    stroke-linecap="round"
-                  />
-                </svg>
+                <checkSVG />
                 {{ feature }}
               </div>
             </div>
@@ -60,6 +38,9 @@
 </template>
 
 <script>
+import RotatingTriangeSVG from './svg-components/rotatingTriangeSVG.vue'
+import checkSVG from './svg-components/checkSVG.vue'
+
 export default {
   data() {
     return {
@@ -101,7 +82,8 @@ export default {
     toggleTiers() {
       this.tiersVisible = !this.tiersVisible
     }
-  }
+  },
+  components: { RotatingTriangeSVG, checkSVG }
 }
 </script>
 
