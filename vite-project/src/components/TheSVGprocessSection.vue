@@ -8,7 +8,10 @@
 
       <div class="container" ref="infographicContainer">
         <div class="step step-right">
-          <p>1. Share your vision and let's embark on an artistic journey, creating your unique Sole-Blast shoes!</p>
+          <p>
+            1. Share your vision and let's embark on an artistic journey, creating your unique
+            Sole-Blast shoes!
+          </p>
           <div ref="step1" class="step1">
             <TheStep1 />
           </div>
@@ -16,7 +19,9 @@
 
         <div class="step step-left">
           <p>
-            2. Our artists dive into your idea, turning it into a tangible sketch. They shape your imagination and await your approval, ensuring your vision is brought to life just as you've imagined.
+            2. Our artists dive into your idea, turning it into a tangible sketch. They shape your
+            imagination and await your approval, ensuring your vision is brought to life just as
+            you've imagined.
           </p>
           <div ref="step2" class="step2">
             <TheStep2 />
@@ -24,14 +29,21 @@
         </div>
 
         <div class="step step-right">
-          <p>3. This is where the magic happens. Plain shoes are transformed into extraordinary works of art. Each pair is meticulously hand-painted, ensuring a unique and captivating result.</p>
+          <p>
+            3. This is where the magic happens. Plain shoes are transformed into extraordinary works
+            of art. Each pair is meticulously hand-painted, ensuring a unique and captivating
+            result.
+          </p>
           <div ref="step3" class="step3">
             <TheStep3 />
           </div>
         </div>
 
         <div class="step step-left">
-          <p>4. Excitement at your doorstep! Your custom-designed shoes arrive, ready to elevate your style.</p>
+          <p>
+            4. Excitement at your doorstep! Your custom-designed shoes arrive, ready to elevate your
+            style.
+          </p>
           <div ref="step4" class="step4">
             <TheStep4 />
           </div>
@@ -43,10 +55,10 @@
 
 <script>
 import { ref, onMounted, watchEffect } from 'vue'
-import TheStep1 from './TheStep1.vue'
-import TheStep2 from './TheStep2.vue'
-import TheStep3 from './TheStep3.vue'
-import TheStep4 from './TheStep4.vue'
+import TheStep1 from '@/components/svg-components/TheStep1.vue'
+import TheStep2 from '@/components/svg-components/TheStep2.vue'
+import TheStep3 from '@/components/svg-components/TheStep3.vue'
+import TheStep4 from '@/components/svg-components/TheStep4.vue'
 
 export default {
   setup() {
