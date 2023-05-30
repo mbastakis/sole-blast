@@ -180,7 +180,7 @@ export default defineComponent({
 }
 .contact-form {
   width: 100%;
-  padding: var(--space-m) var(--space-xl);
+  padding: var(--space-m) var(--space-m);
 }
 .contact-form .resp-flex-row {
   display: flex;
