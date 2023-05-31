@@ -1,10 +1,40 @@
 <template>
-  <div>
-    <n-carousel :centered-slides="true" :slides-per-view="1" draggable>
-      <n-carousel-item v-for="(image, index) in item.images" :key="index">
-        <img class="carousel-img" :src="image" />
-      </n-carousel-item>
-    </n-carousel>
+  <div id="shop-item">
+    <div class="carousel-container">
+      <n-carousel :centered-slides="true" :slides-per-view="1" draggable>
+        <n-carousel-item v-for="(image, index) in item.images" :key="index">
+          <img class="carousel-img" :src="image" />
+        </n-carousel-item>
+      </n-carousel>
+      <div class="details">
+        <div class="shoe-info">
+          <div class="price">{{ item.price }}$</div>
+          <div class="name">{{ item.name }}</div>
+          <div class="shoe-model">{{ item.shoe_model }}</div>
+          <div class="stars"><n-rate readonly allow-half :default-value="4.5"></n-rate></div>
+          <div class="description">{{ item.description }}</div>
+          <div class="more-info-link"></div>
+        </div>
+        <div class="form">
+          <n-form
+            class="shoe-form"
+            ref="formRef"
+            :model="form"
+            :rules="rules"
+            label-placement="top"
+          >
+            <n-form-item class="flex-row-item" label="SHOE SIZE" path="shoeSize">
+              <n-select
+                v-model:value="form.shoeSize"
+                placeholder="Select shoe size"
+                :options="shoeSizes"
+              />
+            </n-form-item>
+            <div class="btn" @click="submitForm">Continue</div>
+          </n-form>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,7 +43,8 @@
 // import { collection, getDocs, doc, getDoc } from 'firebase/firestore'
 // import { getStorage, ref, getDownloadURL } from 'firebase/storage'
 // import db from '@/store/firebase'
-import { NCarousel, NCarouselItem } from 'naive-ui'
+import { NCarousel, NCarouselItem, NRate, NSelect, NFormItem, NForm } from 'naive-ui'
+import { ref } from 'vue'
 import shoe1 from '../assets/shoe1.jpg'
 import shoe2 from '../assets/shoe2.jpg'
 import shoe3 from '../assets/shoe3.jpg'
@@ -27,12 +58,53 @@ export default {
         price: '100',
         shoe_model: 'Dunk Above',
         images: [shoe1, shoe2, shoe3]
-      }
+      },
+      shoeSize: 22,
+      shoeSizeOptions: ['42', '43', '44', '45', '46', '47']
     }
   },
   components: {
     NCarousel,
-    NCarouselItem
+    NCarouselItem,
+    NRate,
+    NSelect,
+    NForm,
+    NFormItem
+  },
+  setup() {
+    const formRef = ref(null)
+
+    let form = ref({
+      shoeSize: null
+    })
+
+    const shoeSizes = ref([
+      { label: '42', value: '42' },
+      { label: '43', value: '43' },
+      { label: '44', value: '44' },
+      { label: '45', value: '45' },
+      { label: '46', value: '46' },
+      { label: '47', value: '47' }
+    ])
+
+    return {
+      formRef,
+      form,
+      shoeSizes,
+      rules: {
+        shoeSize: { required: true, message: 'Please select a shoe size', trigger: 'change' }
+      },
+      submitForm() {
+        formRef.value.validate((valid) => {
+          if (valid) {
+            console.log('submit!')
+          } else {
+            console.log('error submit!!')
+            return false
+          }
+        })
+      }
+    }
   },
   async created() {
     // const route = useRoute()
@@ -66,136 +138,14 @@ export default {
 </script>
 
 <style scoped>
-.mobile-shop {
-  display: flex;
+.carousel-container {
+  width: 100%;
 }
-.desktop-shop {
-  display: none;
-}
-.shoe-info {
-  display: flex;
-  gap: 0.5em;
-}
-.mobile-shop {
-  display: flex;
-  flex-direction: column;
-}
-.top-section {
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: var(--space-s) var(--space-s) var(--space-xl) var(--space-s);
-  margin-bottom: calc(-1 * var(--space-l));
-  z-index: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-.title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-s);
-  position: relative;
-}
-.title svg {
-  position: absolute;
-  left: 0;
-}
-.title h1 {
-  font-size: var(--step-3);
-  color: var(--secondary);
-}
-.info-container {
-  z-index: 1;
-  background: var(--primary);
-  border-top-left-radius: 1.5em;
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-top-right-radius: 1.5em;
-  padding: var(--space-s);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-  color: var(--secondary);
-  font-weight: 600;
-}
-.btn button {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  font-size: var(--step-1);
-  font-weight: 400;
-  padding: var(--space-2xs) var(--space-s);
-  border-radius: 0.5em;
-  border: none;
-  background: var(--secondary);
-  color: #f0f2fd;
-}
-.btn button span {
-  margin-right: var(--space-xs);
-  color: var(--primary);
-  font-weight: 800;
-}
-.mobile-shop img {
-  width: 100%;
-  border-radius: 1.5em;
-}
-.slide-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--primary);
-  color: var(--secondary);
-  border-radius: 50%;
-  width: 1.5em;
-  height: 1.5em;
-}
-.carousel__slide--active .slide-item {
-  background: var(--secondary);
-  color: var(--primary);
-}
-#shoe-size {
-  display: flex;
-  align-items: center;
-}
-#shoe-size select {
-  border: none;
-  background: var(--secondary);
-  color: var(--primary);
-  padding: var(--space-2xs) var(--space-s);
-  border-radius: 0.5em;
-}
-@media screen and (min-width: 777px) {
-  .mobile-shop {
-    display: none;
-  }
-  .desktop-shop {
-    display: flex;
-  }
-  .image-container {
-    width: 60%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .desktop-image,
-  .desktop-image img {
-    object-fit: cover;
-  }
-  .text-container {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: var(--primary);
-    position: sticky;
-    top: calc(-20vh);
-    right: 0;
-    height: 100vh;
-  }
+  border-top-left-radius: 1.5em;
 }
 </style>
