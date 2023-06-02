@@ -22,7 +22,7 @@
       <div class="details-container">
         <div class="details">
           <div class="shoe-info">
-            <div class="price">{{ item.price }}$</div>
+            <div class="price">{{ item.price }}€</div>
             <div>
               <div class="name">{{ item.name }}</div>
               <div class="shoe-model">{{ item.shoe_model }}</div>
@@ -146,6 +146,12 @@ export default {
           shippingInfoElement.scrollIntoView({ behavior: 'smooth' })
         }
       })
+    }
+  },
+  mounted() {
+    const view = document.querySelector('#shop-item')
+    if (view) {
+      view.scrollIntoView({ behavior: 'smooth' })
     }
   },
   async created() {
@@ -323,7 +329,8 @@ img {
   .details {
     min-height: 100vh;
     min-height: 100svh;
-    justify-content: space-around;
+    justify-content: start;
+    gap: var(--space-m);
   }
   .btn {
     margin-top: var(--space-s);
@@ -333,6 +340,9 @@ img {
     padding: var(--space-3xs) var(--space-s);
     border-radius: 0.5em;
     width: fit-content;
+  }
+  .form {
+    margin-top: auto;
   }
 }
 </style>
