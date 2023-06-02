@@ -8,13 +8,7 @@
           </n-carousel-item>
         </n-carousel>
         <div class="images">
-          <div
-            v-for="(image, index) in item.images"
-            :key="index"
-            class="image"
-            :class="{ active: index === activeImage }"
-            @click="activeImage = index"
-          >
+          <div v-for="(image, index) in item.images" :key="index" class="image">
             <img :src="image" />
           </div>
         </div>

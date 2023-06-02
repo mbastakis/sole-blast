@@ -9,12 +9,16 @@
         class="answer"
         :style="activeIndex === index ? expandedAnswerStyle : collapsedAnswerStyle"
         v-html="item.answer"
+        :ref="(el) => (answerRefs[index] = el)"
       ></div>
     </div>
   </div>
 </template>
 
 <script>
+import { onMounted, nextTick, ref } from 'vue'
+import { useRouter } from 'vue-router'
+
 export default {
   name: 'BaseFAQContainer',
   props: {
@@ -23,20 +27,44 @@ export default {
       required: true
     }
   },
-  data() {
-    return {
-      activeIndex: null,
-      expandedAnswerStyle: { opacity: '1', maxHeight: '100vh', transform: 'translateY(0)' },
-      collapsedAnswerStyle: { opacity: '0', maxHeight: '0', transform: 'translateY(-10px)' }
-    }
-  },
-  methods: {
-    toggle(index) {
-      if (this.activeIndex === index) {
-        this.activeIndex = null
+  setup() {
+    const activeIndex = ref(null)
+    const answerRefs = ref([])
+    const router = useRouter()
+
+    const expandedAnswerStyle = { opacity: '1', maxHeight: '100vh', transform: 'translateY(0)' }
+    const collapsedAnswerStyle = { opacity: '0', maxHeight: '0', transform: 'translateY(-10px)' }
+
+    const toggle = (index) => {
+      if (activeIndex.value === index) {
+        activeIndex.value = null
       } else {
-        this.activeIndex = index
+        activeIndex.value = index
       }
+    }
+
+    onMounted(async () => {
+      await nextTick()
+
+      answerRefs.value.forEach((ref) => {
+        const links = ref.querySelectorAll('a')
+        links.forEach((link) => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault()
+            const href = e.target.getAttribute('href')
+            console.log(href)
+            router.push(href)
+          })
+        })
+      })
+    })
+
+    return {
+      activeIndex,
+      answerRefs,
+      expandedAnswerStyle,
+      collapsedAnswerStyle,
+      toggle
     }
   }
 }
