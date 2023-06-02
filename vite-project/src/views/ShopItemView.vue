@@ -25,7 +25,7 @@
             <div class="price">{{ item.price }}€</div>
             <div>
               <div class="name">{{ item.name }}</div>
-              <div class="shoe-model">{{ item.shoe_model }}</div>
+              <div class="shoe-model">{{ item.model }}</div>
             </div>
             <div class="description">{{ item.description }}</div>
           </div>
@@ -74,7 +74,7 @@ export default {
         name: 'Loading Name',
         description: 'Loading the description.',
         price: '100',
-        shoe_model: 'Loading shoe model',
+        model: 'Loading shoe model',
         images: [loading_img, loading_img, loading_img]
       },
       shoeSize: 0,
