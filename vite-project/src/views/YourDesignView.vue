@@ -65,6 +65,7 @@ export default {
   gap: var(--space-xl);
   height: 100%;
   overflow: hidden;
+  padding-bottom: var(--space-xl);
 }
 .section {
   background-color: var(--primary);

@@ -27,24 +27,7 @@
             <router-link to="/yourdesign" class="router-link">
               <div class="btn">
                 <div>Here</div>
-                <svg
-                  width="10"
-                  height="30"
-                  viewBox="-5 -5 30 30"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M6.65527 17.724C9.8356 17.724 10.8029 16.6639 11.6024 16.6639C12.6626 16.6639 14.2527 18.254 16.1962 17.3706"
-                    stroke="#A1A5C0"
-                    stroke-width="1.5"
-                  />
-                  <path
-                    d="M1.00211 18.0773C0.981086 16.9842 1.11763 15.8886 1.38437 14.8101M1.38437 14.8101C2.23886 6.4162 14.6067 0.0555414 17.2571 1.11562C19.9074 2.1757 14.8627 7.4449 11.6032 9.77318C10.3664 10.6566 6.30261 9.77318 6.65598 10.1265C7.00935 10.4799 8.42283 12.2467 8.42283 12.2467C6.04246 14.1267 4.47297 14.6359 1.38437 14.8101Z"
-                    stroke="white"
-                    stroke-width="1.5"
-                  />
-                </svg>
+                <featherSVG class="featherSVG" />
               </div>
             </router-link>
           </div>
@@ -89,23 +72,17 @@
       </router-link>
     </div>
 
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1440 320"
-      class="mobile process-section-transition"
-    >
-      <path
-        fill="#ffffff"
-        fill-opacity="1"
-        d="M0,128L21.8,149.3C43.6,171,87,213,131,218.7C174.5,224,218,192,262,197.3C305.5,203,349,245,393,234.7C436.4,224,480,160,524,149.3C567.3,139,611,181,655,202.7C698.2,224,742,224,785,234.7C829.1,245,873,267,916,234.7C960,203,1004,117,1047,112C1090.9,107,1135,181,1178,218.7C1221.8,256,1265,256,1309,234.7C1352.7,213,1396,171,1418,149.3L1440,128L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"
-      ></path>
-    </svg>
+    <processSectionTransitionSVG />
   </div>
 </template>
 
 <script>
+import featherSVG from '@/components/svg-components/featherSVG.vue'
+import processSectionTransitionSVG from '@/components/svg-components/processSectionTransitionSVG.vue'
+
 export default {
-  name: 'ProcessSection'
+  name: 'ProcessSection',
+  components: { featherSVG, processSectionTransitionSVG }
 }
 </script>
 
@@ -247,10 +224,6 @@ export default {
 .chat span {
   font-size: var(--step-0);
   font-weight: 800;
-}
-svg {
-  width: 100%;
-  margin-bottom: -5px;
 }
 .section-image {
   width: 100%;
@@ -460,17 +433,20 @@ svg {
   background-position: left bottom;
   animation: slide 0.3s linear;
 }
-.btn svg {
+svg {
+  margin-bottom: -5px;
+}
+.btn >>> .featherSVG {
   width: 1.7rem;
   transition: transform 0.3s ease-in-out;
 }
-.btn svg path {
+.btn >>> .featherSVG path {
   transition: stroke 0.3s ease-in-out;
 }
-.btn:hover svg {
+.btn:hover >>> .featherSVG {
   transform: translateX(0.2em);
 }
-.btn:hover svg path:nth-child(2) {
+.btn:hover >>> .featherSVG path:nth-child(2) {
   animation: write 2s ease-in-out;
 }
 .router-link {
