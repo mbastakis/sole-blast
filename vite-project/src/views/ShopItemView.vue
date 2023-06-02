@@ -71,13 +71,13 @@ export default {
   data() {
     return {
       item: {
-        name: 'Example name',
-        description: 'A description for example',
+        name: 'Loading Name',
+        description: 'Loading the description.',
         price: '100',
-        shoe_model: 'Dunk Above',
+        shoe_model: 'Loading shoe model',
         images: [loading_img, loading_img, loading_img]
       },
-      shoeSize: 22,
+      shoeSize: 0,
       shoeSizeOptions: ['42', '43', '44', '45', '46', '47'],
       faq: [
         {
