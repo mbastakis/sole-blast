@@ -129,7 +129,7 @@ export default {
             {
               question: 'How durable is the artwork?',
               answer:
-                'Our artwork is crafted using high-quality materials and best practices to ensure its durability. We guarantee that the artwork is 100% permanent and will not fade over time. Feel free to wear your shoes in all conditions!',
+                'Our artwork is crafted using top-quality, eco-friendly materials and best practices to ensure its durability. We guarantee that the artwork is 100% permanent and will not fade over time. Feel free to wear your shoes in all conditions!',
               showAnswer: false
             },
             {
