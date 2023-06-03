@@ -29,10 +29,10 @@
         <div class="social">
           <div>social</div>
           <div class="social-icon-container">
-            <a href="https://www.facebook.com/">
+            <a href="https://www.facebook.com/profile.php?id=100091480560209">
               <FacebookSVG />
             </a>
-            <a href="https://www.instagram.com/">
+            <a href="https://www.tiktok.com/@soleblast">
               <TikTokSVG />
             </a>
             <a href="https://www.instagram.com/sole.blast/">

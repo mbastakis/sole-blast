@@ -29,7 +29,7 @@
             <div class="feature">🖌️ 100% Hand Painted</div>
             <div class="feature">💎 Waterproof, Durable and Scratch-Proof</div>
             <div class="feature">🚚 Worldwide Tracked & Signed Shipping</div>
-            <div class="description">
+            <div class="description2">
               <p>
                 One shoe, a thousand impressions. Make every step you take a testament to
                 self-expression, a symbol of your uniqueness. Compliments guaranteed!
@@ -255,6 +255,10 @@ img {
 .price {
   font-size: var(--step-2);
   font-weight: 800;
+  background-color: var(--background);
+  padding: var(--space-3xs) var(--space-s);
+  border-radius: 0.5em;
+  width: fit-content;
 }
 
 .name {
@@ -268,6 +272,12 @@ img {
 .description {
   font-size: var(--step-0);
   font-weight: 400;
+}
+.description2 {
+  font-size: var(--step-0);
+  font-weight: 400;
+  margin-top: var(--space-s);
+  margin-bottom: var(--space-s);
 }
 
 .features {
@@ -374,11 +384,11 @@ img {
   .btn {
     margin-top: var(--space-s);
   }
-  .price {
-    background-color: var(--background);
-    padding: var(--space-3xs) var(--space-s);
-    border-radius: 0.5em;
-    width: fit-content;
+  .description2 {
+    font-size: var(--step-0);
+    font-weight: 400;
+    margin-top: var(--space-m);
+    margin-bottom: var(--space-m);
   }
 }
 </style>
