@@ -47,7 +47,7 @@
 
       <ul id="left-list" class="nav-list">
         <li>
-          <router-link to="/shop"> Shop </router-link>
+          <router-link to="/shop">{{ $t('navbar-first') }}</router-link>
         </li>
         <li>
           <router-link to="/yourdesign"> Your Design </router-link>
