@@ -1,3 +1,8 @@
 {
-  "navbar-first": "Shop"
+  "navbar": {
+    "shop": "Shop",
+    "yourdesign": "Your Design",
+    "faq": "F.A.Q.",
+    "aboutus": "About Us"
+  }
 }

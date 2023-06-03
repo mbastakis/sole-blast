@@ -7,13 +7,13 @@
           <!-- I want to import an svg asset I added -->
           <router-link to="/shop" class="ham-item">
             <img class="ham-icon" src="../assets/Nav_Shop.svg" alt="Gallery icon" />
-            <div>Shop</div>
+            <div>{{ $t('navbar.shop') }}</div>
           </router-link>
         </div>
         <div>
           <router-link to="/yourdesign" class="ham-item">
             <img class="ham-icon" src="../assets/Nav_Your_Design.svg" alt="Shoe svg" />
-            <div>Your Design</div>
+            <div>{{ $t('navbar.yourdesign') }}</div>
           </router-link>
         </div>
       </div>
@@ -21,15 +21,16 @@
         <div>
           <router-link to="/faq" class="ham-item">
             <img class="ham-icon" src="../assets/Nav_FAQ.svg" alt="FAQ icon" />
-            <div>F.A.Q.</div>
+            <div>{{ $t('navbar.faq') }}</div>
           </router-link>
         </div>
         <div>
           <router-link to="/about" class="ham-item">
             <img class="ham-icon" src="../assets/Nav_About_Us.svg" alt="About Us icon" />
-            <div>About Us</div>
+            <div>{{ $t('navbar.aboutus') }}</div>
           </router-link>
         </div>
+        <div></div>
       </div>
     </div>
 
@@ -47,10 +48,10 @@
 
       <ul id="left-list" class="nav-list">
         <li>
-          <router-link to="/shop">{{ $t('navbar-first') }}</router-link>
+          <router-link to="/shop">{{ $t('navbar.shop') }}</router-link>
         </li>
         <li>
-          <router-link to="/yourdesign"> Your Design </router-link>
+          <router-link to="/yourdesign"> {{ $t('navbar.yourdesign') }} </router-link>
         </li>
       </ul>
       <div id="logo">
@@ -60,12 +61,13 @@
       </div>
       <ul id="right-list" class="nav-list">
         <li>
-          <router-link to="/faq"> F.A.Q. </router-link>
+          <router-link to="/faq"> {{ $t('navbar.faq') }} </router-link>
         </li>
         <li>
-          <router-link to="/about"> About Us </router-link>
+          <router-link to="/about">{{ $t('navbar.aboutus') }}</router-link>
         </li>
       </ul>
+      <div class="nav-language" @click="changeLang">{{ this.$i18n.locale.toUpperCase() }}</div>
     </div>
   </div>
 </template>
@@ -96,6 +98,9 @@ export default {
       if (!ham_list.contains(event.target)) {
         this.close_ham_menu()
       }
+    },
+    changeLang() {
+      this.$i18n.locale === 'en' ? (this.$i18n.locale = 'gr') : (this.$i18n.locale = 'en')
     }
   }
 }
@@ -176,7 +181,16 @@ export default {
 .ham-icon {
   width: var(--step-3);
 }
+.nav-language {
+  cursor: pointer;
+  user-select: none;
+  font-size: var(--step-0);
+  font-weight: 600;
+}
 @media (min-width: 961px) {
+  .nav-language {
+    font-size: var(--step--1);
+  }
   #mobile-nav,
   #ham-icon {
     display: none;
@@ -228,6 +242,9 @@ export default {
   }
   .nav-list li a:hover {
     color: var(--secondary);
+  }
+  .nav-language {
+    margin-left: var(--space-m);
   }
 }
 </style>
