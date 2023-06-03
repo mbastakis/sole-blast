@@ -68,7 +68,12 @@ After you've submitted your idea, remember to check your email within the next c
               <n-input
                 class="textarea"
                 v-model:value="form.textareaValue"
-                placeholder="(WIP) Enter details about your design."
+                placeholder="e.g. The theme is alien invention. Description:
+- Base color: Deep purple
+- Flaming pyramids and palm tree figures on both sides of the shoe
+- On the inner side of the shoe, a UFO shoots a blue beam which causes human figures to levitate
+- On the outer side of the shoe, a blue flame meteor is approaching the pyramids below
+- On the front of the shoe, a rocket is taking off"
                 type="textarea"
                 maxlength="2000"
                 show-count
