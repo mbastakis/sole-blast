@@ -4,11 +4,13 @@ import App from './App.vue'
 import router from './router'
 import messages from "@intlify/unplugin-vue-i18n/messages";
 
-const language = navigator.language
+// const language = navigator.language
+// const locale = language.includes('gr') || language.includes('el') ? 'gr' : 'en'
+const locale = 'en'
 
 const i18n = createI18n({
     legacy: false,
-    locale: language.includes('gr') || language.includes('el') ? 'gr' : 'en',
+    locale: locale,
     globalInjection: true,
     fallbackLocale: 'en',
     availableLocales: ['en', 'gr'],
