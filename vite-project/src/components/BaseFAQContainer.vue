@@ -112,6 +112,7 @@ export default {
 
 .toggle-icon {
   display: none;
+  user-select: none;
 }
 
 .answer {

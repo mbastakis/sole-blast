@@ -8,3 +8,13 @@
     />
   </svg>
 </template>
+
+<style scoped>
+svg path {
+  transition: fill 0.25s ease-in-out;
+}
+
+svg:hover path {
+  fill: var(--primary);
+}
+</style>
