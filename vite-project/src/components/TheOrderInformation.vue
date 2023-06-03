@@ -3,8 +3,9 @@
     <div class="info-container">
       <div class="header">Custom Order Information</div>
       <div class="description">
-        (WIP)Enter as much detail as you can and be as specific as possible to help us to bring your
-        dream design to reality.
+        Help us bring your dream design to life. Please provide as many details and try to be specific in your description, allowing us to better tailor the design to your vision. 
+Feel free to upload any image files or reference any of our existing designs to better communicate your idea.
+After you've submitted your idea, remember to check your email within the next couple of days. We'll send you a sketch and the final cost of your unique design.
       </div>
     </div>
     <n-tabs type="segment">
@@ -174,15 +175,40 @@ export default defineComponent({
     })
 
     const shoeModels = ref([
-      { label: 'Option 1', value: 'Option 1' },
-      { label: 'Option 2', value: 'Option 2' },
-      { label: 'Option 3', value: 'Option 3' }
+      { label: 'Nike Air Force 1 Low', value: 'Option 1' },
+      { label: 'Nike Air Force 1 High', value: 'Option 2' },
+      { label: 'Nike Dunk Low', value: 'Option 3' },
+      { label: 'Vans Slip-On', value: 'Option 4' },
+      { label: 'Vans Old Skool', value: 'Option 5' },
+      { label: 'Vans Classic', value: 'Option 6' },
+      { label: 'Dr. Martens 1460', value: 'Option 7' },
+      { label: 'Air Jordan 1 Mid', value: 'Option 8' },
     ])
 
     const shoeSizes = ref([
-      { label: 'Option 1', value: 'Option 1' },
-      { label: 'Option 2', value: 'Option 2' },
-      { label: 'Option 3', value: 'Option 3' }
+      { "label": "EU 35.5 - US Men's 4 - US Women's 5.5", "value": "Option 1" },
+      { "label": "EU 36 - US Men's 4.5 - US Women's 6", "value": "Option 2" },
+      { "label": "EU 36.5 - US Men's 5 - US Women's 6.5", "value": "Option 3" },
+      { "label": "EU 37 - US Men's 5 - US Women's 6.5", "value": "Option 4" },
+      { "label": "EU 37.5 - US Men's 5.5 - US Women's 7", "value": "Option 5" },
+      { "label": "EU 38 - US Men's 6 - US Women's 7.5", "value": "Option 6" },
+      { "label": "EU 38.5 - US Men's 6 - US Women's 7.5", "value": "Option 7" },
+      { "label": "EU 39 - US Men's 6.5 - US Women's 8", "value": "Option 8" },
+      { "label": "EU 40 - US Men's 7.5 - US Women's 9", "value": "Option 9" },
+      { "label": "EU 40.5 - US Men's 8 - US Women's 9.5", "value": "Option 10" },
+      { "label": "EU 41 - US Men's 8.5 - US Women's 10", "value": "Option 11" },
+      { "label": "EU 42 - US Men's 9 - US Women's 10.5", "value": "Option 12" },
+      { "label": "EU 42.5 - US Men's 9.5 - US Women's 11", "value": "Option 13" },
+      { "label": "EU 43 - US Men's 10 - US Women's 11.5", "value": "Option 14" },
+      { "label": "EU 44 - US Men's 10.5 - US Women's 12", "value": "Option 15" },
+      { "label": "EU 44.5 - US Men's 11 - US Women's 12.5", "value": "Option 16" },
+      { "label": "EU 45 - US Men's 11.5 - US Women's 13", "value": "Option 17" },
+      { "label": "EU 45.5 - US Men's 12 - US Women's 13.5", "value": "Option 18" },
+      { "label": "EU 46 - US Men's 12.5 - US Women's 14", "value": "Option 19" },
+      { "label": "EU 47 - US Men's 13 - US Women's 14.5", "value": "Option 20" },
+      { "label": "EU 47.5 - US Men's 13.5 - US Women's 15", "value": "Option 21" },
+      { "label": "EU 48.5 - US Men's 14 - US Women's 15.5", "value": "Option 22" },
+      { "label": "EU 49.5 - US Men's 15 - US Women's 16.5", "value": "Option 23" }
     ])
 
     onMounted(() => {
