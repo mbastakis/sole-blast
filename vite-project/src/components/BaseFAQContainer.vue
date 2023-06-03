@@ -3,7 +3,7 @@
     <div v-for="(item, index) in faqData" :key="index" class="faq-item" @click="toggle(index)">
       <div class="question">
         {{ item.question }}
-        <span class="toggle-icon">{{ activeIndex === index ? '-' : '+' }}</span>
+        <span class="toggle-icon" :class="{ 'rotate-to-x': activeIndex === index }">+</span>
       </div>
       <div
         class="answer"
@@ -120,7 +120,14 @@ export default {
 
 @media (min-width: 641px) {
   .toggle-icon {
-    display: block;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(0);
+    font-size: var(--step-2);
+  }
+
+  .toggle-icon.rotate-to-x {
+    transform: rotate(45deg);
   }
 
   .answer {

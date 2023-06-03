@@ -245,7 +245,8 @@ img {
   font-weight: 800;
   text-decoration: underline;
   cursor: pointer;
-  text-align: center;
+  width: fit-content;
+  margin-inline: auto;
 }
 
 .btn {
