@@ -76,13 +76,14 @@ export default {
   flex-direction: column;
   padding: var(--space-s) var(--space-m);
   font-weight: 500;
-  font-size: var(--step--1);
+  font-size: var(--step-0);
 }
 .header {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  margin-inline: auto;
 }
 .logo {
   margin-right: var(--space-m);
@@ -167,6 +168,9 @@ export default {
 }
 
 @media (min-width: 1300px) {
+  #footer-section {
+    font-size: var(--step--1);
+  }
   .main {
     flex-direction: row-reverse;
     justify-content: center;
