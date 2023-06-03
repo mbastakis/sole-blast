@@ -5,7 +5,7 @@
     <div class="section-container">
       <section id="header-section" class="thought section">
         <div class="header-section-image">
-          <img src="../assets/design_process.png" alt="" />
+          <img src="../assets/Process_Section_Step1.png" alt="" />
         </div>
         <div class="header-section-text">
           <h1>The Creation Process</h1>
@@ -36,7 +36,7 @@
 
       <section id="second-section" class="right-chat chat section right-section">
         <div class="section-image">
-          <img src="../assets/sketch_process_section_2.png" alt="" />
+          <img src="../assets/Process_Section_Step2.png" alt="" />
         </div>
         <div class="section-text">
           <span> 2. Sketch & Approval </span>
@@ -48,7 +48,7 @@
 
       <section id="third-section" class="left-chat chat section">
         <div class="last-section-image">
-          <img src="../assets/Group_1_(2).png" alt="" />
+          <img src="../assets/Process_Section_Step3.png" alt="" />
         </div>
         <div class="section-text">
           <span>3. From sketch to reality</span>

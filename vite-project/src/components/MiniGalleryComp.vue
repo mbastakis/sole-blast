@@ -4,60 +4,92 @@
       <h1>Browse our Custom Shoe Store</h1>
     </div>
     <div class="mini-gallery-container-phone">
-      <div class="Picture-1 img">
-        <img src="../assets/adv_6.png" />
+      <div class="img">
+        <router-link :to="urls[3]">
+          <img :src="images[3]" />
+        </router-link>
       </div>
-      <div class="Picture-2 img">
-        <img src="../assets/Screenshot_12.png" />
+      <div class="img">
+        <router-link :to="urls[1]">
+          <img :src="images[1]" />
+        </router-link>
       </div>
-      <div class="Picture-3 img">
-        <img src="../assets/nike_graffiti.jpg" />
+      <div class="img">
+        <router-link :to="urls[2]">
+          <img :src="images[2]" />
+        </router-link>
       </div>
-      <div class="Picture-4 img">
-        <img src="../assets/floral.jpg" />
+      <div class="img">
+        <router-link :to="urls[0]">
+          <img :src="images[0]" />
+        </router-link>
       </div>
-      <div class="Picture-5 img">
-        <img src="../assets/simsons_verticaljpg.jpg" />
+      <div class="img">
+        <router-link :to="urls[5]">
+          <img :src="images[5]" />
+        </router-link>
       </div>
     </div>
     <div class="mini-gallery-container-tablet">
-      <div class="Picture-6 img">
-        <img src="../assets/adv_6.png" />
+      <div class="img">
+        <router-link :to="urls[3]">
+          <img :src="images[3]" />
+        </router-link>
       </div>
-      <div class="Picture-7 img">
-        <img src="../assets/adv_8.png" />
+      <div class="img">
+        <router-link :to="urls[4]">
+          <img :src="images[4]" />
+        </router-link>
       </div>
       <div class="horizontal-photos">
-        <div class="Picture-8 img">
-          <img src="../assets/Screenshot_9.png" />
+        <div class="img">
+          <router-link :to="urls[0]">
+            <img :src="images[0]" />
+          </router-link>
         </div>
-        <div class="Picture-9 img">
-          <img src="../assets/Screenshot_8.png" />
+        <div class="img">
+          <router-link :to="urls[5]">
+            <img :src="images[5]" />
+          </router-link>
         </div>
       </div>
-      <div class="Picture-10 img">
-        <img src="../assets/nike_graffiti.jpg" />
+      <div class="img">
+        <router-link :to="urls[1]">
+          <img :src="images[1]" />
+        </router-link>
       </div>
     </div>
     <div class="mini-gallery-container-desktop">
       <div class="vertical-photos-1">
-        <div class="Picture-11 img">
-          <img src="../assets/adv_6.png" />
+        <div class="Picture-1 img">
+          <router-link :to="urls[3]">
+            <img :src="images[3]" />
+          </router-link>
         </div>
-        <div class="Picture-12 img">
-          <img src="../assets/adv_8.png" />
+        <div class="Picture-2 img">
+          <router-link :to="urls[4]">
+            <img :src="images[4]" />
+          </router-link>
         </div>
-        <div class="Picture-13 img">
-          <img src="../assets/Screenshot_9.png" />
+        <div class="Picture-3 img">
+          <router-link :to="urls[1]">
+            <img :src="images[1]" />
+          </router-link>
         </div>
-        <div class="Picture-14 img">
-          <img src="../assets/Screenshot_8.png" />
+        <div class="Picture-4 img">
+          <router-link :to="urls[2]">
+            <img :src="images[2]" />
+          </router-link>
         </div>
-        <div class="Picture-15 img">
-          <img src="../assets/Screenshot_11.png" />
+        <div class="Picture-5 img">
+          <router-link :to="urls[0]">
+            <img :src="images[0]" />
+          </router-link>
         </div>
-        <div class="Picture-16 img">
-          <img src="../assets/Screenshot_12.png" />
+        <div class="Picture-6 img">
+          <router-link :to="urls[5]">
+            <img :src="images[5]" />
+          </router-link>
         </div>
       </div>
     </div>
@@ -72,11 +104,30 @@
 
 <script>
 import DoubleRightArrowSVG from './svg-components/doubleRightArrowSVG.vue'
+import img3 from '../assets/miniGallery/alien_comix1.webp'
+import img2 from '../assets/miniGallery/charizard_1.jpg'
+import img1 from '../assets/miniGallery/girl.jpg'
+import img4 from '../assets/miniGallery/rick_and_morty.jpg'
+import img5 from '../assets/miniGallery/street.jpg'
+import img6 from '../assets/miniGallery/watergun1.jpg'
 
 export default {
   name: 'MiniGallery',
   props: {},
-  components: { DoubleRightArrowSVG }
+  components: { DoubleRightArrowSVG },
+  data() {
+    return {
+      images: [img1, img2, img3, img4, img5, img6],
+      urls: [
+        '/shop/NyFcl9nE3aZZ53W3tpqS',
+        '/shop/6JodqmfS3yEsLLIRtegk',
+        '/shop/QgcY3Rtm054CihLz1hwu',
+        '/shop/B0tRhIehvws7RHwwUieD',
+        '/shop/EtZ1V8IUVs4Z9pJWe7L1',
+        '/shop/6M0K7mSnqncsCSmN4e6w'
+      ]
+    }
+  }
 }
 </script>
 
@@ -135,14 +186,6 @@ export default {
     display: flex;
     gap: var(--space-xs);
   }
-  .Picture-8,
-  .Picture-9 {
-    width: 50%;
-  }
-  .Picture-8 img,
-  .Picture-9 img {
-    height: 100%;
-  }
 }
 
 @media (min-width: 961px) {
@@ -161,18 +204,20 @@ export default {
     grid-template-rows: 0.3fr 0.58fr 0.26fr 0.36fr 0.3fr;
     gap: var(--space-2xs) var(--space-2xs);
     grid-template-areas:
-      'Picture-11 Picture-11 Picture-12'
-      'Picture-13 Picture-13 Picture-12'
-      'Picture-13 Picture-13 Picture-14'
-      'Picture-15 Picture-15 Picture-14'
-      'Picture-15 Picture-15 Picture-16';
-  }
-  .img img {
-    max-width: 100%;
-    max-height: 100%;
+      'Picture-1 Picture-1 Picture-2'
+      'Picture-1 Picture-1 Picture-2'
+      'Picture-3 Picture-3 Picture-2'
+      'Picture-3 Picture-3 Picture-2'
+      'Picture-3 Picture-3 Picture-2'
+      'Picture-3 Picture-3 Picture-4'
+      'Picture-5 Picture-5 Picture-4'
+      'Picture-5 Picture-5 Picture-6'
+      'Picture-5 Picture-5 Picture-6';
   }
   .img {
     transition: transform 200ms ease-in-out;
+    display: grid;
+    place-items: center;
   }
   .img:hover {
     -webkit-transform: scale(1.06);
@@ -186,23 +231,23 @@ export default {
     transform: translateY(-5%);
     z-index: 2;
   }
-  .Picture-11 {
-    grid-area: Picture-11;
+  .Picture-1 {
+    grid-area: Picture-1;
   }
-  .Picture-12 {
-    grid-area: Picture-12;
+  .Picture-2 {
+    grid-area: Picture-2;
   }
-  .Picture-13 {
-    grid-area: Picture-13;
+  .Picture-3 {
+    grid-area: Picture-3;
   }
-  .Picture-14 {
-    grid-area: Picture-14;
+  .Picture-4 {
+    grid-area: Picture-4;
   }
-  .Picture-15 {
-    grid-area: Picture-15;
+  .Picture-5 {
+    grid-area: Picture-5;
   }
-  .Picture-16 {
-    grid-area: Picture-16;
+  .Picture-6 {
+    grid-area: Picture-6;
   }
   .Picture-17 {
     grid-area: Picture-17;
