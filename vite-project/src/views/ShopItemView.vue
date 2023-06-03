@@ -22,16 +22,21 @@
               <div class="shoe-model">{{ item.model }}</div>
             </div>
             <div class="description">{{ item.description }}</div>
-            <br>
-            <div class="description">⭐️ Exclusive SoleBlast Design </div>
-            <div class="description">✔️ Only Authentic Shoes</div>
-            <div class="description">🖌️ 100% Hand Painted </div>
-            <div class="description">💎 Waterproof, Durable and Scratch-Proof </div>
-            <div class="description">🚚 Worldwide Tracked & Signed Shipping </div>
-            <br>
-            <div class="description"><p>One shoe, a thousand impressions. Make every step you take a testament to self-expression, a symbol of your uniqueness. Compliments guaranteed!</p> </div>
           </div>
-          <div class="more-info-link" @click="scrollToFAQ">ORDER INFORMATION</div>
+          <div class="features">
+            <div class="feature">⭐️ Exclusive SoleBlast Design</div>
+            <div class="feature">✔️ Only Authentic Shoes</div>
+            <div class="feature">🖌️ 100% Hand Painted</div>
+            <div class="feature">💎 Waterproof, Durable and Scratch-Proof</div>
+            <div class="feature">🚚 Worldwide Tracked & Signed Shipping</div>
+            <div class="feature">
+              <p>
+                One shoe, a thousand impressions. Make every step you take a testament to
+                self-expression, a symbol of your uniqueness. Compliments guaranteed!
+              </p>
+            </div>
+            <div class="more-info-link" @click="scrollToFAQ">ORDER INFORMATION</div>
+          </div>
           <div class="form">
             <n-form
               class="shoe-form"
@@ -102,13 +107,13 @@ export default {
         {
           question: 'Payments and Security',
           answer:
-            "\tYour security is our priority. Our site is HTTPS certified, ensuring a 100% secure shopping environment.<br><br> We accept the safest payment methods, including credit cards and Paypal.",
+            '\tYour security is our priority. Our site is HTTPS certified, ensuring a 100% secure shopping environment.<br><br> We accept the safest payment methods, including credit cards and Paypal.',
           showAnswer: false
         },
         {
           question: 'Returns and Policies',
           answer:
-            "\tEverything is hand-crafted and made to order therefore all sales are final and we do not offer refunds. <br><br>However, if we make a mistake, such as sending the wrong size or design, we will correct our mistake. Please contact us upon receipt of your order, if there are any issues. ",
+            '\tEverything is hand-crafted and made to order therefore all sales are final and we do not offer refunds. <br><br>However, if we make a mistake, such as sending the wrong size or design, we will correct our mistake. Please contact us upon receipt of your order, if there are any issues. ',
           showAnswer: false
         }
       ]
@@ -265,6 +270,16 @@ img {
   font-weight: 400;
 }
 
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+.feature {
+  font-size: var(--step-0);
+  font-weight: 400;
+}
+
 .more-info-link {
   font-size: var(--step-0);
   font-weight: 800;
@@ -349,9 +364,13 @@ img {
   .details {
     min-height: 100vh;
     min-height: 100svh;
-    justify-content: start;
-    gap: var(--space-m);
+    justify-content: space-between;
+    padding: var(--space-2xl) var(--space-m);
   }
+  .features {
+    gap: var(--space-s);
+  }
+
   .btn {
     margin-top: var(--space-s);
   }
@@ -360,9 +379,6 @@ img {
     padding: var(--space-3xs) var(--space-s);
     border-radius: 0.5em;
     width: fit-content;
-  }
-  .form {
-    margin-top: auto;
   }
 }
 </style>
