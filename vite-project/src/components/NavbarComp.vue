@@ -7,7 +7,7 @@
           <!-- I want to import an svg asset I added -->
           <router-link to="/shop" class="ham-item">
             <img class="ham-icon" src="../assets/Nav_Shop.svg" alt="Gallery icon" />
-            <div>Shop</div>
+            <div>{{ $t('navbar-first') }}</div>
           </router-link>
         </div>
         <div>
