@@ -1,7 +1,7 @@
 <template>
   <div id="footer-section">
     <div class="main">
-      <router-link to="/" class="header router-link">
+      <router-link to="/" class="header router-link-logo">
         <div class="logo">
           <FooterLogoSVG />
         </div>
@@ -133,9 +133,31 @@ export default {
   margin-inline: auto;
 }
 
-.router-link {
+.router-link,
+.router-link-logo {
   text-decoration: none;
   color: var(--primary);
+  cursor: pointer;
+  position: relative;
+  width: fit-content;
+}
+
+.router-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background: var(--primary);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+  transform: scaleX(0);
+}
+
+.router-link:hover::after {
+  transform-origin: bottom left;
+  transform: scaleX(1);
 }
 
 @media (min-width: 558px) {

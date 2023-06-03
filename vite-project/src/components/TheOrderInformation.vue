@@ -120,7 +120,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, computed, watch, watchEffect } from 'vue'
+import { defineComponent, ref, onMounted, computed, watch, watchEffect, useAttrs } from 'vue'
 import {
   useMessage,
   useDialog,

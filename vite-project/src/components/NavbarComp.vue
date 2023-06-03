@@ -6,13 +6,13 @@
         <div>
           <!-- I want to import an svg asset I added -->
           <router-link to="/shop" class="ham-item">
-            <img class="ham-icon" src="../assets/Gallery.svg" alt="Gallery icon" />
+            <img class="ham-icon" src="../assets/Nav_Shop.svg" alt="Gallery icon" />
             <div>Shop</div>
           </router-link>
         </div>
         <div>
           <router-link to="/yourdesign" class="ham-item">
-            <img class="ham-icon" src="../assets/Your_Sole.svg" alt="Shoe svg" />
+            <img class="ham-icon" src="../assets/Nav_Your_Design.svg" alt="Shoe svg" />
             <div>Your Design</div>
           </router-link>
         </div>
@@ -20,13 +20,13 @@
       <div id="ham-bottom-list" class="ham-list">
         <div>
           <router-link to="/faq" class="ham-item">
-            <img class="ham-icon" src="../assets/Oustion.svg" alt="FAQ icon" />
+            <img class="ham-icon" src="../assets/Nav_FAQ.svg" alt="FAQ icon" />
             <div>F.A.Q.</div>
           </router-link>
         </div>
         <div>
           <router-link to="/about" class="ham-item">
-            <img class="ham-icon" src="../assets/About_Us.svg" alt="About Us icon" />
+            <img class="ham-icon" src="../assets/Nav_About_Us.svg" alt="About Us icon" />
             <div>About Us</div>
           </router-link>
         </div>

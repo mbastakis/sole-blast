@@ -163,6 +163,7 @@ export default defineComponent({
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: var(--space-m) 0px;
 }
 .contact-title {
   font-size: var(--step-5);

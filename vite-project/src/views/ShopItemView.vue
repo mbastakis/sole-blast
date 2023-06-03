@@ -8,13 +8,7 @@
           </n-carousel-item>
         </n-carousel>
         <div class="images">
-          <div
-            v-for="(image, index) in item.images"
-            :key="index"
-            class="image"
-            :class="{ active: index === activeImage }"
-            @click="activeImage = index"
-          >
+          <div v-for="(image, index) in item.images" :key="index" class="image">
             <img :src="image" />
           </div>
         </div>
@@ -25,11 +19,24 @@
             <div class="price">{{ item.price }}€</div>
             <div>
               <div class="name">{{ item.name }}</div>
-              <div class="shoe-model">{{ item.shoe_model }}</div>
+              <div class="shoe-model">{{ item.model }}</div>
             </div>
             <div class="description">{{ item.description }}</div>
           </div>
-          <div class="more-info-link" @click="scrollToFAQ">READ MORE</div>
+          <div class="features">
+            <div class="feature">⭐️ Exclusive SoleBlast Design</div>
+            <div class="feature">✔️ Only Authentic Shoes</div>
+            <div class="feature">🖌️ 100% Hand Painted</div>
+            <div class="feature">💎 Waterproof, Durable and Scratch-Proof</div>
+            <div class="feature">🚚 Worldwide Tracked & Signed Shipping</div>
+            <div class="description">
+              <p>
+                One shoe, a thousand impressions. Make every step you take a testament to
+                self-expression, a symbol of your uniqueness. Compliments guaranteed!
+              </p>
+            </div>
+            <div class="more-info-link" @click="scrollToFAQ">ORDER INFORMATION</div>
+          </div>
           <div class="form">
             <n-form
               class="shoe-form"
@@ -74,22 +81,39 @@ export default {
         name: 'Loading Name',
         description: 'Loading the description.',
         price: '100',
-        shoe_model: 'Loading shoe model',
+        model: 'Loading shoe model',
         images: [loading_img, loading_img, loading_img]
       },
       shoeSize: 0,
       shoeSizeOptions: ['42', '43', '44', '45', '46', '47'],
       faq: [
         {
-          question: 'What does Sole-Blast stand for?',
+          question: 'Order Details',
           answer:
-            "In Sole-Blast, we believe that shoes offer a unique opportunity to unleash your inner creativity, elevate your style and make a lasting impression. That's why we're dedicated to transforming each customer's distinct vision into an awesome one-of-a-kind shoe design. <a class='test' href='/yourdesign'>Order yours now!</a>",
+            'We are committed to completing your order as quickly as possible. The process is as follows: \
+                <ul style="padding-left: var(--space-m); padding-top: var(--space-s);"> \
+                  <li>The delivery of shoes to our workshop takes approximately 3 business days.</li> \
+                  <li>Customization and painting require between 2-7 days, depending on the design complexity.</li> \
+                  <li>Shipping takes 5-10 business days for Europe and 7-20 days for other countries.</li> \
+                </ul><br>We will keep you updated via email about your order\'s progress.',
           showAnswer: false
         },
         {
-          question: 'What do we offer?',
+          question: 'Shipping',
           answer:
-            "\tOur workshop excels in creating custom painted shoes tailored to your individual style. We provide a range of options, including unique designs inspired by your ideas and an exclusive selection of <a href='/shop'>Sole-Blast originals</a> to choose from. \n\n\tIn addition to shoes, our expertise extends to customizing a diverse array of items such as bags, wallets, skateboards, snowboards, and more. If you're seeking a special customization, simply fill out <a href='/yourdesign'>Your Design form</a>, and let us bring your vision to life!",
+            "\tWorldwide shipping is offered, using only tracked options, to ensure your order's safe arrival. <br><br> We partner with reliable shipping services such as DHL, UPS, and FedEx, ensuring your order's safe and prompt delivery. Shipping costs depend on the destination country. The exact shipping cost will be provided during checkout. <br><br> As we ship from Europe, there are no import fees for European Union countries. For the rest of the world, it's the buyer's responsibility to check if import duties apply in their country and pay any import taxes and fees that may be charged upon arrival. Please be aware of your country's policies before purchasing.",
+          showAnswer: false
+        },
+        {
+          question: 'Payments and Security',
+          answer:
+            '\tYour security is our priority. Our site is HTTPS certified, ensuring a 100% secure shopping environment.<br><br> We accept the safest payment methods, including credit cards and Paypal.',
+          showAnswer: false
+        },
+        {
+          question: 'Returns and Policies',
+          answer:
+            '\tEverything is hand-crafted and made to order therefore all sales are final and we do not offer refunds. <br><br>However, if we make a mistake, such as sending the wrong size or design, we will correct our mistake. Please contact us upon receipt of your order, if there are any issues. ',
           showAnswer: false
         }
       ]
@@ -246,12 +270,23 @@ img {
   font-weight: 400;
 }
 
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+.feature {
+  font-size: var(--step-0);
+  font-weight: 600;
+}
+
 .more-info-link {
   font-size: var(--step-0);
   font-weight: 800;
   text-decoration: underline;
   cursor: pointer;
-  text-align: center;
+  width: fit-content;
+  margin-inline: auto;
 }
 
 .btn {
@@ -329,9 +364,13 @@ img {
   .details {
     min-height: 100vh;
     min-height: 100svh;
-    justify-content: start;
-    gap: var(--space-m);
+    justify-content: space-between;
+    padding: var(--space-2xl) var(--space-m);
   }
+  .features {
+    gap: var(--space-s);
+  }
+
   .btn {
     margin-top: var(--space-s);
   }
@@ -340,9 +379,6 @@ img {
     padding: var(--space-3xs) var(--space-s);
     border-radius: 0.5em;
     width: fit-content;
-  }
-  .form {
-    margin-top: auto;
   }
 }
 </style>
