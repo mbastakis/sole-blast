@@ -209,19 +209,19 @@ export default {
     padding: 0;
   }
   .nav-list li {
-    cursor: pointer;
     position: relative;
     text-decoration: none;
     list-style: none;
     gap: var(--space-xl);
   }
   .nav-list li a {
+    cursor: pointer;
     font-size: var(--step-0);
     color: var(--primary);
     font-weight: 600;
     text-decoration: none;
   }
-  .nav-list li::after {
+  .nav-list a::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -233,11 +233,11 @@ export default {
     transition: transform 0.25s ease-out;
     transform: scaleX(0);
   }
-  .nav-list li:hover::after {
+  .nav-list a:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
-  .nav-list li:hover {
+  .nav-list a:hover {
     color: var(--secondary);
   }
   .nav-list li a:hover {
