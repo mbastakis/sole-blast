@@ -14,20 +14,20 @@
       <div class="details">
         <div class="redirects">
           <router-link class="router-link" to="/shop">
-            <div>shop</div>
+            <div>Shop</div>
           </router-link>
           <router-link class="router-link" to="/yourdesign">
-            <div>your design</div>
+            <div>Your Design</div>
           </router-link>
           <router-link class="router-link" to="/faq">
-            <div>faq</div>
+            <div>FAQ</div>
           </router-link>
           <router-link class="router-link" to="/about">
-            <div>about us</div>
+            <div>About Us</div>
           </router-link>
         </div>
         <div class="social">
-          <div>social</div>
+          <div>Social:</div>
           <div class="social-icon-container">
             <a href="https://www.facebook.com/profile.php?id=100091480560209">
               <FacebookSVG />
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="contact">
-          <div>contact</div>
+          <div>Contact Us:</div>
           <div>soleblastofficial@gmail.com</div>
         </div>
       </div>
