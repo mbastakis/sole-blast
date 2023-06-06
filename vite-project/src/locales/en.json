@@ -187,12 +187,12 @@
     },
     "btn": "Continue",
     "itemName": {
-      "label": "ITEM NAME",
-      "placeholder": "Enter the name of the item"
+      "label": "ITEM NAME/TYPE",
+      "placeholder": "E.g. Louis Vuitton Pocket Organizer Wallet"
     },
     "designDescription": {
       "label": "DESIGN DESCRIPTION",
-      "placeholder": "WIP"
+      "placeholder": "E.g. I want you to paint a panda figure on the wallet.\n- The panda shall look like Takashi Murakami's popular panda design, as referenced in the pictures i provided.\n- In the belly of the panda, write the initial letters of my name 'NF' using an elegant font and black color. \n- Main colors: Black and white\n- Colors for the details: Pink, yellow, brown, light green and light blue."
     }
   }
 }
