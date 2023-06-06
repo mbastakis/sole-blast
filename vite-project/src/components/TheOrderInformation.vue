@@ -26,7 +26,7 @@
             :rules="rules"
             label-placement="top"
           >
-            <div class="flex-row">
+            <div class="flex-row resp-flex-row">
               <n-form-item
                 class="flex-row-item"
                 :label="$t('orderInfo.shoeModel.label')"
@@ -442,6 +442,10 @@ export default defineComponent({
   align-items: center;
   gap: var(--space-s);
 }
+.resp-flex-row {
+  flex-direction: column;
+  gap: 0;
+}
 .flex-row-item {
   width: 100%;
 }
@@ -452,5 +456,12 @@ export default defineComponent({
   width: 22px;
   height: 22px;
   margin-left: var(--space-xs);
+}
+
+@media (min-width: 640px) {
+  .resp-flex-row {
+    flex-direction: row;
+    gap: var(--space-s);
+  }
 }
 </style>
