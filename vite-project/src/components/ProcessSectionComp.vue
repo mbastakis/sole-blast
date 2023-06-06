@@ -22,7 +22,7 @@
               <span>{{ $t('process-section.step1.title') }}</span>
               {{ $t('process-section.step1.description') }}
             </div>
-            <router-link to="/yourdesign" class="router-link">
+            <router-link to="/yourdesign" class="router-link here-btn">
               <div class="btn">
                 <div>{{ $t('process-section.yourdesignBtn') }}</div>
                 <featherSVG class="featherSVG" />
@@ -243,9 +243,16 @@ export default {
   flex-direction: row;
   font-size: calc(var(--step-0) + 0.15rem);
   align-items: center;
+  justify-content: start;
   flex-wrap: wrap;
   gap: var(--space-m);
 }
+
+.here-btn {
+  margin-left: auto;
+  margin-right: 0;
+}
+
 .first-section-text span {
   font-weight: 800;
   font-size: var(--step-1);
@@ -317,7 +324,7 @@ export default {
     transform: rotate(0deg);
   }
 }
-@media screen and (min-width: 777px) {
+@media screen and (min-width: 877px) {
   .section {
     flex-wrap: nowrap;
   }
@@ -369,6 +376,9 @@ export default {
   }
   .first-section-text {
     font-size: var(--step-1);
+  }
+  .here-btn {
+    margin: 0;
   }
   .first-section-text span {
     font-size: var(--step-2);

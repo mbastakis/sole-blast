@@ -94,8 +94,10 @@ export default {
 
 @media (max-width: 733px) {
   .svg {
+    width: 50%;
     position: absolute;
     right: 0;
+    top: 0;
     z-index: 1;
   }
   .text-container {
