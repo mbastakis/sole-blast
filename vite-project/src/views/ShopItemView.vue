@@ -76,6 +76,8 @@ import loading_img from '../assets/loading_img.jpg'
 export default {
   data() {
     return {
+      detailsContainer: null,
+      currentScrollTop: 0,
       item: {
         name: 'Loading Name',
         description: 'Loading the description.',
@@ -181,6 +183,34 @@ export default {
           shippingInfoElement.scrollIntoView({ behavior: 'smooth' })
         }
       })
+    },
+    handleScroll() {
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop
+      const detailsContainerHeight = this.detailsContainer.clientHeight
+
+      const detailsTop = 0
+      const detailsBottom = detailsTop + detailsContainerHeight - window.innerHeight
+      const scrollOffset = 10
+
+      if (currentScrollTop > this.lastScrollTop) {
+        // We're scrolling down
+        if (-1 * this.currentScrollTop <= detailsBottom) {
+          this.currentScrollTop -= scrollOffset
+          this.detailsContainer.style.top = `${
+            -1 * this.currentScrollTop > detailsBottom ? -1 * detailsBottom : this.currentScrollTop
+          }px`
+        }
+      } else {
+        // We're scrolling up
+        if (-1 * this.currentScrollTop >= detailsTop) {
+          this.currentScrollTop += scrollOffset
+          this.detailsContainer.style.top = `${
+            -1 * this.currentScrollTop < 0 ? 0 : this.currentScrollTop
+          }px`
+        }
+      }
+
+      this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop // For mobile or negative scrolling
     }
   },
   mounted() {
@@ -188,6 +218,12 @@ export default {
     if (view) {
       view.scrollIntoView({ behavior: 'smooth' })
     }
+
+    this.detailsContainer = document.querySelector('.details-container')
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
   },
   async created() {
     const route = useRoute()
@@ -391,7 +427,6 @@ img {
   .features {
     gap: var(--space-s);
   }
-
   .btn {
     margin-top: var(--space-s);
   }
