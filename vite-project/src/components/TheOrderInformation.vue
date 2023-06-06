@@ -256,7 +256,7 @@ export default defineComponent({
           dialog.info({
             title: 'Confirmation',
             content:
-              'If you wish to provide your own pair of shoes (or any item) by sending them to us, please specify the shoe model in the field above. The shoes must be in brand-new condition.',
+              'While we typically handle the purchase of shoes in your preferred size, you have the option to provide your special pair of shoes by shipping them to us. Please specify the shoe model in the field above. The shoes must be in brand-new condition.',
             positiveText: 'Understood',
             maskClosable: false,
             closeOnEsc: false,
