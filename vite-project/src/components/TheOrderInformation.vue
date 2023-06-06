@@ -1,21 +1,20 @@
 <template>
   <div id="orderInfo">
     <div class="info-container">
-      <div class="header">Custom Order Information</div>
+      <div class="header">{{ $t('orderInfo.title') }}</div>
       <div class="description">
-        Help us bring your dream design to life. Please provide as many details and try to be specific in your description, allowing us to better tailor the design to your vision. 
-Feel free to upload any image files or reference any of our existing designs to better communicate your idea.
-After you've submitted your idea, remember to check your email within the next couple of days. We'll send you a sketch and the final cost of your unique design.
+        {{ $t('orderInfo.description') }}
       </div>
     </div>
     <n-tabs type="segment">
-      <n-tab-pane name="Shoe">
+      <n-tab-pane :name="$t('orderInfo.shoeTab')">
         <div class="container">
           <div class="upload">
-            <div class="label">REFERENCE IMAGES</div>
+            <div class="label">{{ $t('orderInfo.refImg.label') }}</div>
             <n-upload multiple directory-dnd action="" :max="5">
               <n-upload-dragger>
-                <div>Click or drag a file to this area to upload</div>
+                <imageSVG />
+                <div>{{ $t('orderInfo.refImg.placeholder') }}</div>
               </n-upload-dragger>
             </n-upload>
           </div>
@@ -30,7 +29,7 @@ After you've submitted your idea, remember to check your email within the next c
             <div class="flex-row">
               <n-form-item
                 class="flex-row-item"
-                label="SHOE MODEL"
+                :label="$t('orderInfo.shoeModel.label')"
                 path="shoeModel"
                 :validation-status="shoeModelValidationStatus"
                 :feedback="shoeModelFeedback"
@@ -38,60 +37,59 @@ After you've submitted your idea, remember to check your email within the next c
                 <n-select
                   class="select"
                   v-model:value="form.shoeModel"
-                  :placeholder="form.useCustomersShoe ? 'Input shoe model' : 'Select shoe model'"
+                  :placeholder="shoeModelPlaceholder"
                   :options="shoeModels"
                   :show-arrow="!form.useCustomersShoe"
                   :filterable="form.useCustomersShoe"
                   :tag="form.useCustomersShoe"
                 />
               </n-form-item>
-              <n-form-item class="flex-row-item" label="SHOE SIZE" path="shoeSize">
+              <n-form-item
+                class="flex-row-item"
+                :label="$t('orderInfo.shoeSize.label')"
+                path="shoeSize"
+              >
                 <n-select
                   :disabled="form.useCustomersShoe"
                   v-model:value="form.shoeSize"
-                  placeholder="Select shoe size"
+                  :placeholder="$t('orderInfo.shoeSize.placeholder')"
                   :options="shoeSizes"
                 />
               </n-form-item>
             </div>
-            <n-form-item label="Want to customize a shoe you already own?" path="useCustomersShoe">
+            <n-form-item :label="$t('orderInfo.radioBtn.label')" path="useCustomersShoe">
               <n-switch v-model:value="form.useCustomersShoe" class="switch" />
               <n-tooltip trigger="hover">
                 <template #trigger>
                   <infoSVG class="info-svg" />
                 </template>
-                If it looks like a duck, walks like a duck, and quacks like a duck, then it probably
-                is a duck.
+                {{ $t('orderInfo.radioBtn.tooltip') }}
               </n-tooltip>
             </n-form-item>
-            <n-form-item label="SHOE DESCRIPTION" path="textareaValue">
+            <n-form-item :label="$t('orderInfo.shoeDescription.label')" path="textareaValue">
               <n-input
                 class="textarea"
                 v-model:value="form.textareaValue"
-                placeholder="e.g. The theme is alien invention. Description:
-- Base color: Deep purple
-- Flaming pyramids and palm tree figures on both sides of the shoe
-- On the inner side of the shoe, a UFO shoots a blue beam which causes human figures to levitate
-- On the outer side of the shoe, a blue flame meteor is approaching the pyramids below
-- On the front of the shoe, a rocket is taking off"
+                :placeholder="$t('orderInfo.shoeDescription.placeholder')"
                 type="textarea"
                 maxlength="2000"
                 show-count
                 clearable
               />
             </n-form-item>
-            <div class="btn" @click="submitForm">Continue</div>
+            <div class="btn" @click="submitForm">{{ $t('orderInfo.btn') }}</div>
           </n-form>
         </div>
       </n-tab-pane>
       <!-- Any item view -->
-      <n-tab-pane name="Other Item">
+      <n-tab-pane :name="$t('orderInfo.otherTab')">
         <div class="container">
           <div class="upload">
-            <div class="label">REFERENCE IMAGES</div>
+            <div class="label">{{ $t('orderInfo.refImg.label') }}</div>
             <n-upload multiple directory-dnd action="" :max="5">
               <n-upload-dragger>
-                <div>Click or drag a file to this area to upload</div>
+                <imageSVG />
+                <div>{{ $t('orderInfo.refImg.placeholder') }}</div>
               </n-upload-dragger>
             </n-upload>
           </div>
@@ -103,14 +101,17 @@ After you've submitted your idea, remember to check your email within the next c
             :rules="rules2"
             label-placement="top"
           >
-            <n-form-item label="ITEM NAME" path="itemname">
-              <n-input v-model:value="form2.itemname" placeholder="Enter the name of the item" />
+            <n-form-item :label="$t('orderInfo.itemName.label')" path="itemname">
+              <n-input
+                v-model:value="form2.itemname"
+                :placeholder="$t('orderInfo.itemName.placeholder')"
+              />
             </n-form-item>
-            <n-form-item label="DESIGN DESCRIPTION" path="textareaValue">
+            <n-form-item :label="$t('orderInfo.designDescription.label')" path="textareaValue">
               <n-input
                 class="textarea"
                 v-model:value="form2.textareaValue"
-                placeholder="(WIP) Enter details about your design."
+                :placeholder="$t('orderInfo.designDescription.placeholder')"
                 type="textarea"
                 maxlength="2000"
                 show-count
@@ -126,7 +127,7 @@ After you've submitted your idea, remember to check your email within the next c
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, computed, watch, watchEffect, useAttrs } from 'vue'
+import { defineComponent, ref, onMounted, computed, watch, watchEffect } from 'vue'
 import {
   useMessage,
   useDialog,
@@ -142,6 +143,7 @@ import {
   NTabPane
 } from 'naive-ui'
 import infoSVG from './svg-components/infoSVG.vue'
+import imageSVG from './svg-components/imageSVG.vue'
 
 export default defineComponent({
   components: {
@@ -155,11 +157,19 @@ export default defineComponent({
     NTooltip,
     NTabs,
     NTabPane,
-    infoSVG
+    infoSVG,
+    imageSVG
   },
   emits: ['submit', 'change'],
   data() {
     return {}
+  },
+  computed: {
+    shoeModelPlaceholder() {
+      return !this.form.useCustomersShoe
+        ? this.$t('orderInfo.shoeModel.placeholder')
+        : this.$t('orderInfo.shoeModel.placeholder2')
+    }
   },
   setup(_, { emit }) {
     const formRef = ref(null)
@@ -187,33 +197,33 @@ export default defineComponent({
       { label: 'Vans Old Skool', value: 'Option 5' },
       { label: 'Vans Classic', value: 'Option 6' },
       { label: 'Dr. Martens 1460', value: 'Option 7' },
-      { label: 'Air Jordan 1 Mid', value: 'Option 8' },
+      { label: 'Air Jordan 1 Mid', value: 'Option 8' }
     ])
 
     const shoeSizes = ref([
-      { "label": "EU 35.5 - US Men's 4 - US Women's 5.5", "value": "Option 1" },
-      { "label": "EU 36 - US Men's 4.5 - US Women's 6", "value": "Option 2" },
-      { "label": "EU 36.5 - US Men's 5 - US Women's 6.5", "value": "Option 3" },
-      { "label": "EU 37 - US Men's 5 - US Women's 6.5", "value": "Option 4" },
-      { "label": "EU 37.5 - US Men's 5.5 - US Women's 7", "value": "Option 5" },
-      { "label": "EU 38 - US Men's 6 - US Women's 7.5", "value": "Option 6" },
-      { "label": "EU 38.5 - US Men's 6 - US Women's 7.5", "value": "Option 7" },
-      { "label": "EU 39 - US Men's 6.5 - US Women's 8", "value": "Option 8" },
-      { "label": "EU 40 - US Men's 7.5 - US Women's 9", "value": "Option 9" },
-      { "label": "EU 40.5 - US Men's 8 - US Women's 9.5", "value": "Option 10" },
-      { "label": "EU 41 - US Men's 8.5 - US Women's 10", "value": "Option 11" },
-      { "label": "EU 42 - US Men's 9 - US Women's 10.5", "value": "Option 12" },
-      { "label": "EU 42.5 - US Men's 9.5 - US Women's 11", "value": "Option 13" },
-      { "label": "EU 43 - US Men's 10 - US Women's 11.5", "value": "Option 14" },
-      { "label": "EU 44 - US Men's 10.5 - US Women's 12", "value": "Option 15" },
-      { "label": "EU 44.5 - US Men's 11 - US Women's 12.5", "value": "Option 16" },
-      { "label": "EU 45 - US Men's 11.5 - US Women's 13", "value": "Option 17" },
-      { "label": "EU 45.5 - US Men's 12 - US Women's 13.5", "value": "Option 18" },
-      { "label": "EU 46 - US Men's 12.5 - US Women's 14", "value": "Option 19" },
-      { "label": "EU 47 - US Men's 13 - US Women's 14.5", "value": "Option 20" },
-      { "label": "EU 47.5 - US Men's 13.5 - US Women's 15", "value": "Option 21" },
-      { "label": "EU 48.5 - US Men's 14 - US Women's 15.5", "value": "Option 22" },
-      { "label": "EU 49.5 - US Men's 15 - US Women's 16.5", "value": "Option 23" }
+      { label: "EU 35.5 - US Men's 4 - US Women's 5.5", value: 'Option 1' },
+      { label: "EU 36 - US Men's 4.5 - US Women's 6", value: 'Option 2' },
+      { label: "EU 36.5 - US Men's 5 - US Women's 6.5", value: 'Option 3' },
+      { label: "EU 37 - US Men's 5 - US Women's 6.5", value: 'Option 4' },
+      { label: "EU 37.5 - US Men's 5.5 - US Women's 7", value: 'Option 5' },
+      { label: "EU 38 - US Men's 6 - US Women's 7.5", value: 'Option 6' },
+      { label: "EU 38.5 - US Men's 6 - US Women's 7.5", value: 'Option 7' },
+      { label: "EU 39 - US Men's 6.5 - US Women's 8", value: 'Option 8' },
+      { label: "EU 40 - US Men's 7.5 - US Women's 9", value: 'Option 9' },
+      { label: "EU 40.5 - US Men's 8 - US Women's 9.5", value: 'Option 10' },
+      { label: "EU 41 - US Men's 8.5 - US Women's 10", value: 'Option 11' },
+      { label: "EU 42 - US Men's 9 - US Women's 10.5", value: 'Option 12' },
+      { label: "EU 42.5 - US Men's 9.5 - US Women's 11", value: 'Option 13' },
+      { label: "EU 43 - US Men's 10 - US Women's 11.5", value: 'Option 14' },
+      { label: "EU 44 - US Men's 10.5 - US Women's 12", value: 'Option 15' },
+      { label: "EU 44.5 - US Men's 11 - US Women's 12.5", value: 'Option 16' },
+      { label: "EU 45 - US Men's 11.5 - US Women's 13", value: 'Option 17' },
+      { label: "EU 45.5 - US Men's 12 - US Women's 13.5", value: 'Option 18' },
+      { label: "EU 46 - US Men's 12.5 - US Women's 14", value: 'Option 19' },
+      { label: "EU 47 - US Men's 13 - US Women's 14.5", value: 'Option 20' },
+      { label: "EU 47.5 - US Men's 13.5 - US Women's 15", value: 'Option 21' },
+      { label: "EU 48.5 - US Men's 14 - US Women's 15.5", value: 'Option 22' },
+      { label: "EU 49.5 - US Men's 15 - US Women's 16.5", value: 'Option 23' }
     ])
 
     onMounted(() => {
@@ -436,7 +446,7 @@ export default defineComponent({
   width: 100%;
 }
 .textarea {
-  min-height: 150px;
+  min-height: 250px;
 }
 .info-svg {
   width: 22px;

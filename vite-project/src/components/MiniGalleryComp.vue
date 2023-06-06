@@ -1,7 +1,7 @@
 <template>
   <div class="mini-gallery">
     <div id="header">
-      <h1>Browse our Custom Shoe Store</h1>
+      <h1>{{ $t('mini-gallery.title') }}</h1>
     </div>
     <div class="mini-gallery-container-phone">
       <div class="img">
@@ -95,7 +95,7 @@
     </div>
     <router-link to="/shop" class="router-link">
       <div class="btn">
-        View More
+        {{ $t('mini-gallery.button') }}
         <DoubleRightArrowSVG />
       </div>
     </router-link>

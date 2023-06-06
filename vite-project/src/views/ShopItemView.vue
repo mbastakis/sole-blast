@@ -24,18 +24,17 @@
             <div class="description">{{ item.description }}</div>
           </div>
           <div class="features">
-            <div class="feature">⭐️ Exclusive SoleBlast Design</div>
-            <div class="feature">✔️ Only Authentic Shoes</div>
-            <div class="feature">🖌️ 100% Hand Painted</div>
-            <div class="feature">💎 Waterproof, Durable and Scratch-Proof</div>
-            <div class="feature">🚚 Worldwide Tracked & Signed Shipping</div>
+            <div class="feature">⭐️ {{ $t('shopItem.features[0]') }}</div>
+            <div class="feature">✔️ {{ $t('shopItem.features[1]') }}</div>
+            <div class="feature">🖌️ {{ $t('shopItem.features[2]') }}</div>
+            <div class="feature">💎 {{ $t('shopItem.features[3]') }}</div>
+            <div class="feature">🚚 {{ $t('shopItem.features[4]') }}</div>
             <div class="description2">
               <p>
-                One shoe, a thousand impressions. Make every step you take a testament to
-                self-expression, a symbol of your uniqueness. Compliments guaranteed!
+                {{ $t('shopItem.description') }}
               </p>
             </div>
-            <div class="more-info-link" @click="scrollToFAQ">ORDER INFORMATION</div>
+            <div class="more-info-link" @click="scrollToFAQ">{{ $t('shopItem.more-info') }}</div>
           </div>
           <div class="form">
             <n-form
@@ -45,14 +44,14 @@
               :rules="rules"
               label-placement="top"
             >
-              <n-form-item class="flex-row-item" label="SHOE SIZE" path="shoeSize">
+              <n-form-item class="flex-row-item" :label="$t('shopItem.size-label')" path="shoeSize">
                 <n-select
                   v-model:value="form.shoeSize"
-                  placeholder="Select shoe size"
+                  :placeholder="$t('shopItem.size-placeholder')"
                   :options="shoeSizes"
                 />
               </n-form-item>
-              <div class="btn" @click="submitForm">Continue</div>
+              <div class="btn" @click="submitForm">{{ $t('shopItem.button') }}</div>
             </n-form>
           </div>
         </div>
@@ -88,33 +87,45 @@ export default {
       shoeSizeOptions: ['42', '43', '44', '45', '46', '47'],
       faq: [
         {
-          question: 'Order Details',
+          question: this.$t('shopItem.faq[0].question'),
           answer:
-            'We are committed to completing your order as quickly as possible. The process is as follows: \
+            this.$t('shopItem.faq.0.answer.title') +
+            '\
                 <ul style="padding-left: var(--space-m); padding-top: var(--space-s);"> \
-                  <li>The delivery of shoes to our workshop takes approximately 3 business days.</li> \
-                  <li>Customization and painting require between 2-7 days, depending on the design complexity.</li> \
-                  <li>Shipping takes 5-10 business days for Europe and 7-20 days for other countries.</li> \
-                </ul><br>We will keep you updated via email about your order\'s progress.',
-          showAnswer: false
+                  <li>' +
+            this.$t('shopItem.faq.0.answer.bullets.0') +
+            '</li> \
+                  <li>' +
+            this.$t('shopItem.faq.0.answer.bullets.1') +
+            '</li> \
+                  <li>' +
+            this.$t('shopItem.faq.0.answer.bullets.2') +
+            '</li> \
+                </ul><br>' +
+            this.$t('shopItem.faq.0.answer.end')
         },
         {
-          question: 'Shipping',
+          question: this.$t('shopItem.faq.1.question'),
           answer:
-            "\tWorldwide shipping is offered, using only tracked options, to ensure your order's safe arrival. <br><br> We partner with reliable shipping services such as DHL, UPS, and FedEx, ensuring your order's safe and prompt delivery. Shipping costs depend on the destination country. The exact shipping cost will be provided during checkout. <br><br> As we ship from Europe, there are no import fees for European Union countries. For the rest of the world, it's the buyer's responsibility to check if import duties apply in their country and pay any import taxes and fees that may be charged upon arrival. Please be aware of your country's policies before purchasing.",
-          showAnswer: false
+            this.$t('shopItem.faq.1.answer.description.0') +
+            '<br><br>' +
+            this.$t('shopItem.faq.1.answer.description.1') +
+            '<br><br>' +
+            this.$t('shopItem.faq.1.answer.description.2')
         },
         {
-          question: 'Payments and Security',
+          question: this.$t('shopItem.faq.2.question'),
           answer:
-            '\tYour security is our priority. Our site is HTTPS certified, ensuring a 100% secure shopping environment.<br><br> We accept the safest payment methods, including credit cards and Paypal.',
-          showAnswer: false
+            this.$t('shopItem.faq.2.answer.description.0') +
+            '<br><br>' +
+            this.$t('shopItem.faq.2.answer.description.1')
         },
         {
-          question: 'Returns and Policies',
+          question: this.$t('shopItem.faq.3.question'),
           answer:
-            '\tEverything is hand-crafted and made to order therefore all sales are final and we do not offer refunds. <br><br>However, if we make a mistake, such as sending the wrong size or design, we will correct our mistake. Please contact us upon receipt of your order, if there are any issues. ',
-          showAnswer: false
+            this.$t('shopItem.faq.3.answer.description.0') +
+            '<br><br>' +
+            this.$t('shopItem.faq.3.answer.description.1')
         }
       ]
     }

@@ -1,13 +1,15 @@
 <template>
   <div id="pricingTiers">
-    <div class="header">Pricing Information</div>
+    <div class="header">{{ $t('pricingTiers.title') }}</div>
     <div class="container body-container">
       <p>
-        The prices that are listed below, are for the custom artwork. Expect an additional cost for
-        the price of the base shoe, which depends on the shoe model of your choice.
+        {{ $t('pricingTiers.description') }}
       </p>
       <div class="btn" @click="toggleTiers">
-        {{ tiersVisible ? 'Hide' : 'View' }} Tiers
+        {{
+          (tiersVisible ? $t('pricingTiers.btn.hide') : $t('pricingTiers.btn.view')) +
+          $t('pricingTiers.btn.suffix')
+        }}
         <RotatingTriangeSVG :style="tiersVisible ? rotateArrow : null" />
       </div>
     </div>
@@ -29,8 +31,7 @@
           </div>
         </div>
         <p class="note">
-          * Note that the prices are indicative, the final price will be determined after we process
-          your request.
+          {{ $t('pricingTiers.note') }}
         </p>
       </div>
     </div>
@@ -50,29 +51,33 @@ export default {
       },
       tiers: [
         {
-          title: 'Basic Design',
-          price: '€100',
-          description:
-            'Designs that require ~10 hours of effort. EG: Small custom drawings, symbols or characters. Any kind of simple artwork.',
-          features: ['Simple design', '1-3 colors']
-        },
-        {
-          title: 'Premium Design',
-          price: '€150',
-          description:
-            'Designs that require ~15 hours of effort. EG: More complex and detailed drawings, such as multiple characters, stylized text or logos.',
-          features: ['Advanced design', 'Up to 5 colors', 'Stylized text']
-        },
-        {
-          title: 'Masterpiece Edition',
-          price: '€200',
-          description:
-            'Designs that require 20+ hours of effort, high-level artistic skills and creativity. EG: High detail characters, abstract/realistic art or graffiti. Almost anything is possible!',
+          title: this.$t('pricingTiers.tiers.0.title'),
+          price: this.$t('pricingTiers.tiers.0.price'),
+          description: this.$t('pricingTiers.tiers.0.description'),
           features: [
-            'High detail design',
-            'Entire shoe coverage',
-            'Many colors',
-            'Detailed background'
+            this.$t('pricingTiers.tiers.0.features.0'),
+            this.$t('pricingTiers.tiers.0.features.1')
+          ]
+        },
+        {
+          title: this.$t('pricingTiers.tiers.1.title'),
+          price: this.$t('pricingTiers.tiers.1.price'),
+          description: this.$t('pricingTiers.tiers.1.description'),
+          features: [
+            this.$t('pricingTiers.tiers.1.features.0'),
+            this.$t('pricingTiers.tiers.1.features.1'),
+            this.$t('pricingTiers.tiers.1.features.2')
+          ]
+        },
+        {
+          title: this.$t('pricingTiers.tiers.2.title'),
+          price: this.$t('pricingTiers.tiers.2.price'),
+          description: this.$t('pricingTiers.tiers.2.description'),
+          features: [
+            this.$t('pricingTiers.tiers.2.features.0'),
+            this.$t('pricingTiers.tiers.2.features.1'),
+            this.$t('pricingTiers.tiers.2.features.2'),
+            this.$t('pricingTiers.tiers.2.features.3')
           ]
         }
       ]
@@ -202,10 +207,14 @@ export default {
 .tier-title {
   font-weight: 700;
   font-size: var(--step-1);
+  width: 100%;
+  text-align: center;
 }
 .tier-price {
   font-weight: 700;
   font-size: var(--step-3);
+  width: 100%;
+  text-align: center;
 }
 .tier-body {
   display: flex;

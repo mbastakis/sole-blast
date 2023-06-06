@@ -8,11 +8,9 @@
           <img src="../assets/Process_Section_Step1.png" alt="" />
         </div>
         <div class="header-section-text">
-          <h1>The Creation Process</h1>
+          <h1>{{ $t('process-section.title') }}</h1>
           <p>
-            We believe that shoes offer a unique opportunity to unleash your inner creativity,
-            elevate your style and make a lasting impression. We're dedicated to transforming each
-            customer's distinct vision into an awesome one-of-a-kind shoe design.
+            {{ $t('process-section.description') }}
           </p>
         </div>
       </section>
@@ -21,12 +19,12 @@
         <div>
           <div class="first-section-text">
             <div>
-              <span>1. Share Your Vision</span>
-              with us and we will bring it to life.
+              <span>{{ $t('process-section.step1.title') }}</span>
+              {{ $t('process-section.step1.description') }}
             </div>
             <router-link to="/yourdesign" class="router-link">
               <div class="btn">
-                <div>Here</div>
+                <div>{{ $t('process-section.yourdesignBtn') }}</div>
                 <featherSVG class="featherSVG" />
               </div>
             </router-link>
@@ -39,10 +37,8 @@
           <img src="../assets/Process_Section_Step2.png" alt="" />
         </div>
         <div class="section-text">
-          <span> 2. Sketch & Approval </span>
-          We're committed to bringing your vision to life just as you imagined. That's why we start
-          by creating a preliminary sketch of your design and sharing it with you for feedback and
-          approval.
+          <span> {{ $t('process-section.step2.title') }}</span>
+          {{ $t('process-section.step2.description') }}
         </div>
       </section>
 
@@ -51,9 +47,8 @@
           <img src="../assets/Process_Section_Step3.png" alt="" />
         </div>
         <div class="section-text">
-          <span>3. From sketch to reality</span>
-          Each Sole-Blast shoe is meticulously hand-painted, ensuring a unique and eye-catching
-          result. Then it's shipped straight to your doorstep. Enjoy!
+          <span>{{ $t('process-section.step3.title') }}</span>
+          {{ $t('process-section.step3.description') }}
         </div>
       </section>
     </div>
@@ -61,13 +56,13 @@
     <div class="bottom-buttons">
       <router-link to="/yourdesign" class="router-link">
         <div class="btn">
-          <div>Your Design</div>
+          <div>{{ $t('process-section.yourdesignBtn2') }}</div>
         </div>
       </router-link>
-      <span>Or</span>
+      <span>{{ $t('process-section.splitBtn') }}</span>
       <router-link to="/shop" class="router-link">
         <div class="btn">
-          <div>Gallery</div>
+          <div>{{ $t('process-section.galleryBtn') }}</div>
         </div>
       </router-link>
     </div>
