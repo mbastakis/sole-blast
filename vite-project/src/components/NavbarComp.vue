@@ -186,10 +186,13 @@ export default {
   user-select: none;
   font-size: var(--step-0);
   font-weight: 600;
+  position: absolute;
+  right: calc(1rem + 1vw);
 }
 @media (min-width: 961px) {
   .nav-language {
     font-size: var(--step--1);
+    position: static;
   }
   #mobile-nav,
   #ham-icon {

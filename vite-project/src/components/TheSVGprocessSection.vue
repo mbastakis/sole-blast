@@ -1,6 +1,6 @@
 <template>
   <div id="TheSVG">
-    <div class="header">Create Your Design</div>
+    <div class="header">{{ $t('SVGProcessSection.title') }}</div>
     <div class="infographic">
       <svg class="connector" :viewBox="`0 0 ${containerWidth} ${containerHeight}`" ref="connector">
         <path :d="path" fill="transparent" stroke="#F3F2FA" stroke-width="10" />
@@ -9,8 +9,7 @@
       <div class="container" ref="infographicContainer">
         <div class="step step-right">
           <p>
-            1. Share your vision and let's embark on an artistic journey, creating your unique
-            Sole-Blast shoes!
+            {{ $t('SVGProcessSection.steps.0') }}
           </p>
           <div ref="step1" class="step1">
             <TheStep1 />
@@ -19,9 +18,7 @@
 
         <div class="step step-left">
           <p>
-            2. Our artists dive into your idea, turning it into a tangible sketch. They shape your
-            imagination and await your approval, ensuring your vision is brought to life just as
-            you've imagined.
+            {{ $t('SVGProcessSection.steps.1') }}
           </p>
           <div ref="step2" class="step2">
             <TheStep2 />
@@ -30,9 +27,7 @@
 
         <div class="step step-right">
           <p>
-            3. This is where the magic happens. Plain shoes are transformed into extraordinary works
-            of art. Each pair is meticulously hand-painted, ensuring a unique and captivating
-            result.
+            {{ $t('SVGProcessSection.steps.2') }}
           </p>
           <div ref="step3" class="step3">
             <TheStep3 />
@@ -41,8 +36,7 @@
 
         <div class="step step-left">
           <p>
-            4. Excitement at your doorstep! Your custom-designed shoes arrive, ready to elevate your
-            style.
+            {{ $t('SVGProcessSection.steps.3') }}
           </p>
           <div ref="step4" class="step4">
             <TheStep4 />

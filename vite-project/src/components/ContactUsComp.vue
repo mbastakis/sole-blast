@@ -4,7 +4,7 @@
 
     <div id="last-section-container">
       <div id="contact-section">
-        <div class="contact-title">Contact Us</div>
+        <div class="contact-title">{{ $t('contact.title') }}</div>
         <n-form
           class="contact-form"
           ref="formRef"
@@ -13,24 +13,31 @@
           label-placement="top"
         >
           <div class="resp-flex-row">
-            <n-form-item class="resp-flex-row-item" label="FULL NAME" path="fullName">
-              <n-input v-model:value="form.fullName" placeholder="Enter full name" />
+            <n-form-item
+              class="resp-flex-row-item"
+              :label="$t('contact.name-label')"
+              path="fullName"
+            >
+              <n-input
+                v-model:value="form.fullName"
+                :placeholder="$t('contact.name-placeholder')"
+              />
             </n-form-item>
 
-            <n-form-item class="resp-flex-row-item" label="EMAIL" path="email">
-              <n-input v-model:value="form.email" placeholder="Enter email" />
+            <n-form-item class="resp-flex-row-item" :label="$t('contact.email-label')" path="email">
+              <n-input v-model:value="form.email" :placeholder="$t('contact.email-placeholder')" />
             </n-form-item>
           </div>
 
-          <n-form-item label="MESSAGE" path="message">
+          <n-form-item :label="$t('contact.message-label')" path="message">
             <n-input
               v-model:value="form.message"
-              placeholder="Enter your message"
+              :placeholder="$t('contact.message-placeholder')"
               type="textarea"
             />
           </n-form-item>
 
-          <div class="btn" @click="submitForm">Send Message</div>
+          <div class="btn" @click="submitForm">{{ $t('contact.button') }}</div>
         </n-form>
       </div>
 

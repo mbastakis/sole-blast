@@ -24,18 +24,17 @@
             <div class="description">{{ item.description }}</div>
           </div>
           <div class="features">
-            <div class="feature">⭐️ Exclusive SoleBlast Design</div>
-            <div class="feature">✔️ Only Authentic Shoes</div>
-            <div class="feature">🖌️ 100% Hand Painted</div>
-            <div class="feature">💎 Waterproof, Durable and Scratch-Proof</div>
-            <div class="feature">🚚 Worldwide Tracked & Signed Shipping</div>
+            <div class="feature">⭐️ {{ $t('shopItem.features[0]') }}</div>
+            <div class="feature">✔️ {{ $t('shopItem.features[1]') }}</div>
+            <div class="feature">🖌️ {{ $t('shopItem.features[2]') }}</div>
+            <div class="feature">💎 {{ $t('shopItem.features[3]') }}</div>
+            <div class="feature">🚚 {{ $t('shopItem.features[4]') }}</div>
             <div class="description2">
               <p>
-                One shoe, a thousand impressions. Make every step you take a testament to
-                self-expression, a symbol of your uniqueness. Compliments guaranteed!
+                {{ $t('shopItem.description') }}
               </p>
             </div>
-            <div class="more-info-link" @click="scrollToFAQ">ORDER INFORMATION</div>
+            <div class="more-info-link" @click="scrollToFAQ">{{ $t('shopItem.more-info') }}</div>
           </div>
           <div class="form">
             <n-form
@@ -45,14 +44,14 @@
               :rules="rules"
               label-placement="top"
             >
-              <n-form-item class="flex-row-item" label="SHOE SIZE" path="shoeSize">
+              <n-form-item class="flex-row-item" :label="$t('shopItem.size-label')" path="shoeSize">
                 <n-select
                   v-model:value="form.shoeSize"
-                  placeholder="Select shoe size"
+                  :placeholder="$t('shopItem.size-placeholder')"
                   :options="shoeSizes"
                 />
               </n-form-item>
-              <div class="btn" @click="submitForm">Continue</div>
+              <div class="btn" @click="submitForm">{{ $t('shopItem.button') }}</div>
             </n-form>
           </div>
         </div>
@@ -77,6 +76,8 @@ import loading_img from '../assets/loading_img.jpg'
 export default {
   data() {
     return {
+      detailsContainer: null,
+      currentScrollTop: 0,
       item: {
         name: 'Loading Name',
         description: 'Loading the description.',
@@ -85,36 +86,51 @@ export default {
         images: [loading_img, loading_img, loading_img]
       },
       shoeSize: 0,
-      shoeSizeOptions: ['42', '43', '44', '45', '46', '47'],
+      shoeSizeOptions: [
+        '35.5','36','36.5','37','37.5','38','38.5','39','40','40.5','41','42',
+        '42.5','43','44','44.5','45','45.5','46','47','47.5','48.5','49.5'
+      ], 
       faq: [
         {
-          question: 'Order Details',
+          question: this.$t('shopItem.faq[0].question'),
           answer:
-            'We are committed to completing your order as quickly as possible. The process is as follows: \
+            this.$t('shopItem.faq.0.answer.title') +
+            '\
                 <ul style="padding-left: var(--space-m); padding-top: var(--space-s);"> \
-                  <li>The delivery of shoes to our workshop takes approximately 3 business days.</li> \
-                  <li>Customization and painting require between 2-7 days, depending on the design complexity.</li> \
-                  <li>Shipping takes 5-10 business days for Europe and 7-20 days for other countries.</li> \
-                </ul><br>We will keep you updated via email about your order\'s progress.',
-          showAnswer: false
+                  <li>' +
+            this.$t('shopItem.faq.0.answer.bullets.0') +
+            '</li> \
+                  <li>' +
+            this.$t('shopItem.faq.0.answer.bullets.1') +
+            '</li> \
+                  <li>' +
+            this.$t('shopItem.faq.0.answer.bullets.2') +
+            '</li> \
+                </ul><br>' +
+            this.$t('shopItem.faq.0.answer.end')
         },
         {
-          question: 'Shipping',
+          question: this.$t('shopItem.faq.1.question'),
           answer:
-            "\tWorldwide shipping is offered, using only tracked options, to ensure your order's safe arrival. <br><br> We partner with reliable shipping services such as DHL, UPS, and FedEx, ensuring your order's safe and prompt delivery. Shipping costs depend on the destination country. The exact shipping cost will be provided during checkout. <br><br> As we ship from Europe, there are no import fees for European Union countries. For the rest of the world, it's the buyer's responsibility to check if import duties apply in their country and pay any import taxes and fees that may be charged upon arrival. Please be aware of your country's policies before purchasing.",
-          showAnswer: false
+            this.$t('shopItem.faq.1.answer.description.0') +
+            '<br><br>' +
+            this.$t('shopItem.faq.1.answer.description.1') +
+            '<br><br>' +
+            this.$t('shopItem.faq.1.answer.description.2')
         },
         {
-          question: 'Payments and Security',
+          question: this.$t('shopItem.faq.2.question'),
           answer:
-            '\tYour security is our priority. Our site is HTTPS certified, ensuring a 100% secure shopping environment.<br><br> We accept the safest payment methods, including credit cards and Paypal.',
-          showAnswer: false
+            this.$t('shopItem.faq.2.answer.description.0') +
+            '<br><br>' +
+            this.$t('shopItem.faq.2.answer.description.1')
         },
         {
-          question: 'Returns and Policies',
+          question: this.$t('shopItem.faq.3.question'),
           answer:
-            '\tEverything is hand-crafted and made to order therefore all sales are final and we do not offer refunds. <br><br>However, if we make a mistake, such as sending the wrong size or design, we will correct our mistake. Please contact us upon receipt of your order, if there are any issues. ',
-          showAnswer: false
+            this.$t('shopItem.faq.3.answer.description.0') +
+            '<br><br>' +
+            this.$t('shopItem.faq.3.answer.description.1')
         }
       ]
     }
@@ -135,12 +151,29 @@ export default {
     })
 
     const shoeSizes = ref([
-      { label: '42', value: '42' },
-      { label: '43', value: '43' },
-      { label: '44', value: '44' },
-      { label: '45', value: '45' },
-      { label: '46', value: '46' },
-      { label: '47', value: '47' }
+      { label: "EU 35.5 - US Men's 4 - US Women's 5.5", value: 'Option 1' },
+      { label: "EU 36 - US Men's 4.5 - US Women's 6", value: 'Option 2' },
+      { label: "EU 36.5 - US Men's 5 - US Women's 6.5", value: 'Option 3' },
+      { label: "EU 37 - US Men's 5 - US Women's 6.5", value: 'Option 4' },
+      { label: "EU 37.5 - US Men's 5.5 - US Women's 7", value: 'Option 5' },
+      { label: "EU 38 - US Men's 6 - US Women's 7.5", value: 'Option 6' },
+      { label: "EU 38.5 - US Men's 6 - US Women's 7.5", value: 'Option 7' },
+      { label: "EU 39 - US Men's 6.5 - US Women's 8", value: 'Option 8' },
+      { label: "EU 40 - US Men's 7.5 - US Women's 9", value: 'Option 9' },
+      { label: "EU 40.5 - US Men's 8 - US Women's 9.5", value: 'Option 10' },
+      { label: "EU 41 - US Men's 8.5 - US Women's 10", value: 'Option 11' },
+      { label: "EU 42 - US Men's 9 - US Women's 10.5", value: 'Option 12' },
+      { label: "EU 42.5 - US Men's 9.5 - US Women's 11", value: 'Option 13' },
+      { label: "EU 43 - US Men's 10 - US Women's 11.5", value: 'Option 14' },
+      { label: "EU 44 - US Men's 10.5 - US Women's 12", value: 'Option 15' },
+      { label: "EU 44.5 - US Men's 11 - US Women's 12.5", value: 'Option 16' },
+      { label: "EU 45 - US Men's 11.5 - US Women's 13", value: 'Option 17' },
+      { label: "EU 45.5 - US Men's 12 - US Women's 13.5", value: 'Option 18' },
+      { label: "EU 46 - US Men's 12.5 - US Women's 14", value: 'Option 19' },
+      { label: "EU 47 - US Men's 13 - US Women's 14.5", value: 'Option 20' },
+      { label: "EU 47.5 - US Men's 13.5 - US Women's 15", value: 'Option 21' },
+      { label: "EU 48.5 - US Men's 14 - US Women's 15.5", value: 'Option 22' },
+      { label: "EU 49.5 - US Men's 15 - US Women's 16.5", value: 'Option 23' }
     ])
 
     return {
@@ -170,6 +203,34 @@ export default {
           shippingInfoElement.scrollIntoView({ behavior: 'smooth' })
         }
       })
+    },
+    handleScroll() {
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop
+      const detailsContainerHeight = this.detailsContainer.clientHeight
+
+      const detailsTop = 0
+      const detailsBottom = detailsTop + detailsContainerHeight - window.innerHeight
+      const scrollOffset = 10
+
+      if (currentScrollTop > this.lastScrollTop) {
+        // We're scrolling down
+        if (-1 * this.currentScrollTop <= detailsBottom) {
+          this.currentScrollTop -= scrollOffset
+          this.detailsContainer.style.top = `${
+            -1 * this.currentScrollTop > detailsBottom ? -1 * detailsBottom : this.currentScrollTop
+          }px`
+        }
+      } else {
+        // We're scrolling up
+        if (-1 * this.currentScrollTop >= detailsTop) {
+          this.currentScrollTop += scrollOffset
+          this.detailsContainer.style.top = `${
+            -1 * this.currentScrollTop < 0 ? 0 : this.currentScrollTop
+          }px`
+        }
+      }
+
+      this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop // For mobile or negative scrolling
     }
   },
   mounted() {
@@ -177,6 +238,12 @@ export default {
     if (view) {
       view.scrollIntoView({ behavior: 'smooth' })
     }
+
+    this.detailsContainer = document.querySelector('.details-container')
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
   },
   async created() {
     const route = useRoute()
@@ -380,7 +447,6 @@ img {
   .features {
     gap: var(--space-s);
   }
-
   .btn {
     margin-top: var(--space-s);
   }

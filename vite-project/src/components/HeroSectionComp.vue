@@ -5,12 +5,12 @@
       <div id="floating-quote">
         <p>Nike Air Force 1 Supreme</p>
         <h2>The Alien Invasion</h2>
-        <p>Hand-Drawn</p>
+        <p>{{ $t('hero-section.description') }}</p>
       </div>
     </div>
 
     <div class="bottom-section">
-      <BaseHorizontalSlider text="Color Your Walk!" speed="10" />
+      <BaseHorizontalSlider :text="$t('hero-section.sliding-text')" speed="10" />
       <div id="transition-layer"></div>
     </div>
   </div>
