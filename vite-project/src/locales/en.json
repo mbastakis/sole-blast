@@ -50,7 +50,8 @@
     "name-placeholder": "Enter full name",
     "email-placeholder": "Enter your email",
     "message-placeholder": "Enter your message",
-    "button": "Send Message"
+    "button": "Send Message",
+    "sendingButton": "Sending..."
   },
   "shopItem": {
     "features": [

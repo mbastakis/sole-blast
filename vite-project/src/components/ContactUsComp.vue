@@ -34,10 +34,13 @@
               v-model:value="form.message"
               :placeholder="$t('contact.message-placeholder')"
               type="textarea"
+              maxlength="2000"
+              show-count
+              clearable
             />
           </n-form-item>
 
-          <div class="btn" @click="submitForm">{{ $t('contact.button') }}</div>
+          <div class="btn" :class=" isLoading ? 'loading' : ''" @click="submitForm">{{ buttonMessage }}</div>
         </n-form>
       </div>
 
@@ -63,9 +66,15 @@ export default defineComponent({
     contactTransitionSVG,
     blobSVG
   },
+  computed: {
+    buttonMessage() {
+      return this.isLoading ? this.$t('contact.sendingButton') : this.$t('contact.button');
+    }
+  },
   setup() {
     const formRef = ref(null)
     const message = useMessage()
+    let isLoading = ref(false)
 
     let form = ref({
       fullName: '',
@@ -88,13 +97,13 @@ export default defineComponent({
         message: 'Please enter your message'
       }
     }
-
+    
     const submitForm = async (e) => {
       e.preventDefault()
       try {
-        const result = await formRef.value?.validate()
-        if (!result) {
-          console.log(form.value) // Print the whole contents of the form
+        const errors = await formRef.value?.validate()
+        if (!errors) {
+          isLoading.value = true
           // Send email
           fetch('./.netlify/functions/sendEmail', {
             method: 'POST',
@@ -105,16 +114,28 @@ export default defineComponent({
             })
           }).then((res) => {
             console.log(res)
-            if (res.status === 200) message.success('Email sent successfully!')
-            else
+            if (res.status === 200) {
+              message.success('Email sent successfully!')
+              form.value = {
+                fullName: '',
+                email: '',
+                message: ''
+              }
+            }
+            else {
               message.error('Something went wrong, please try again later or contact us directly.')
+            }
+
+              isLoading.value = false
           })
         } else {
           message.error('Something went wrong, please try again later or contact us directly.')
         }
+        
       } catch (errors) {
         console.log(errors)
-        message.error('Something went wrong, please try again later or contact us directly.')
+        message.error('Please fill in all the fields.')
+        
       }
     }
 
@@ -122,7 +143,8 @@ export default defineComponent({
       formRef,
       form,
       rules,
-      submitForm
+      submitForm,
+      isLoading
     }
   }
 })
@@ -233,6 +255,17 @@ export default defineComponent({
     transform: scale(1) translate(-60px, 30%);
   }
 }
+.loading {
+  animation: slide  2s ease-in-out infinite;
+}
+@keyframes slide {
+  0% {
+    background-position: right bottom;
+  }
+  100% {
+    background-position: left bottom;
+  }
+}
 .btn {
   display: flex;
   align-items: center;
@@ -245,7 +278,6 @@ export default defineComponent({
   font-weight: 700;
   border-radius: 0.5em;
   cursor: pointer;
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in;
 
   background: linear-gradient(90deg, var(--selected) 50%, transparent 50%),
     linear-gradient(90deg, var(--selected) 50%, var(--secondary) 50%) var(--space-xs);
@@ -256,6 +288,5 @@ export default defineComponent({
 
 .btn:hover {
   background-position: left bottom;
-  animation: slide 0.3s linear;
 }
 </style>
