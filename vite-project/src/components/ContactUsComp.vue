@@ -93,17 +93,28 @@ export default defineComponent({
       e.preventDefault()
       try {
         const result = await formRef.value?.validate()
-        if (result) {
+        if (!result) {
           console.log(form.value) // Print the whole contents of the form
-          message.success('Valid')
-          // Add your form submission logic here
+          // Send email
+          fetch('./.netlify/functions/sendEmail', {
+            method: 'POST',
+            body: JSON.stringify({
+              subscriberName: form.value.fullName,
+              subscriberEmail: form.value.email,
+              message: form.value.message
+            })
+          }).then((res) => {
+            console.log(res)
+            if (res.status === 200) message.success('Email sent successfully!')
+            else
+              message.error('Something went wrong, please try again later or contact us directly.')
+          })
         } else {
-          console.log('Form invalid')
-          message.error('Invalid')
+          message.error('Something went wrong, please try again later or contact us directly.')
         }
       } catch (errors) {
         console.log(errors)
-        message.error('Invalid')
+        message.error('Something went wrong, please try again later or contact us directly.')
       }
     }
 
