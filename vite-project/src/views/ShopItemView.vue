@@ -71,7 +71,7 @@ import db from '@/store/firebase'
 import { NCarousel, NCarouselItem, NSelect, NFormItem, NForm } from 'naive-ui'
 import BaseFAQContainer from '@/components/BaseFAQContainer.vue'
 import { ref, nextTick } from 'vue'
-import loading_img from '../assets/loading_img.jpg'
+import loading_img from '../assets/loading_img.webp'
 
 export default {
   data() {

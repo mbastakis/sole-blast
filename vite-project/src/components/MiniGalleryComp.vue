@@ -104,12 +104,12 @@
 
 <script>
 import DoubleRightArrowSVG from './svg-components/doubleRightArrowSVG.vue'
-import img3 from '../assets/miniGallery/alien_comix1.webp'
-import img2 from '../assets/miniGallery/charizard_1.jpg'
-import img1 from '../assets/miniGallery/girl.jpg'
-import img4 from '../assets/miniGallery/rick_and_morty.jpg'
-import img5 from '../assets/miniGallery/street.jpg'
-import img6 from '../assets/miniGallery/watergun1.jpg'
+import img3 from '../assets/miniGallery/alien_comix.webp'
+import img2 from '../assets/miniGallery/charizard.webp'
+import img1 from '../assets/miniGallery/girl.webp'
+import img4 from '../assets/miniGallery/rick_and_morty.webp'
+import img5 from '../assets/miniGallery/street.webp'
+import img6 from '../assets/miniGallery/watergun.webp'
 
 export default {
   name: 'MiniGallery',
