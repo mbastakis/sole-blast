@@ -50,7 +50,8 @@
     "name-placeholder": "Enter full name",
     "email-placeholder": "Enter your email",
     "message-placeholder": "Enter your message",
-    "button": "Send Message"
+    "button": "Send Message",
+    "sendingButton": "Sending..."
   },
   "shopItem": {
     "features": [
@@ -130,20 +131,13 @@
         "title": "Basic Design",
         "price": "€100",
         "description": "Designs that require ~10 hours of effort. EG: Small custom drawings, symbols or characters. Any kind of simple artwork.",
-        "features": [
-          "Simple design",
-          "1-3 colors"
-        ]
+        "features": ["Simple design", "1-3 colors"]
       },
       {
         "title": "Premium Design",
         "price": "€150",
         "description": "Designs that require ~15 hours of effort. EG: More complex and detailed drawings, such as multiple characters, stylized text or logos.",
-        "features": [
-          "Advanced design",
-          "Up to 5 colors",
-          "Stylized text"
-        ]
+        "features": ["Advanced design", "Up to 5 colors", "Stylized text"]
       },
       {
         "title": "Masterpiece Edition",
@@ -179,7 +173,7 @@
     },
     "radioBtn": {
       "label": "Do you want to customize shoes you already own?",
-      "tooltip": "The shoes must be in brand new condition.",
+      "tooltip": "The shoes must be in brand new condition."
     },
     "shoeDescription": {
       "label": "SHOE DESCRIPTION",
