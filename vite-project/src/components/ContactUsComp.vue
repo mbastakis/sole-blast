@@ -40,7 +40,9 @@
             />
           </n-form-item>
 
-          <div class="btn" :class=" isLoading ? 'loading' : ''" @click="submitForm">{{ buttonMessage }}</div>
+          <div class="btn" :class="isLoading ? 'loading' : ''" @click="submitForm">
+            {{ buttonMessage }}
+          </div>
         </n-form>
       </div>
 
@@ -68,7 +70,7 @@ export default defineComponent({
   },
   computed: {
     buttonMessage() {
-      return this.isLoading ? this.$t('contact.sendingButton') : this.$t('contact.button');
+      return this.isLoading ? this.$t('contact.sendingButton') : this.$t('contact.button')
     }
   },
   setup() {
@@ -97,7 +99,7 @@ export default defineComponent({
         message: 'Please enter your message'
       }
     }
-    
+
     const submitForm = async (e) => {
       e.preventDefault()
       try {
@@ -121,21 +123,18 @@ export default defineComponent({
                 email: '',
                 message: ''
               }
-            }
-            else {
+            } else {
               message.error('Something went wrong, please try again later or contact us directly.')
             }
 
-              isLoading.value = false
+            isLoading.value = false
           })
         } else {
           message.error('Something went wrong, please try again later or contact us directly.')
         }
-        
       } catch (errors) {
         console.log(errors)
         message.error('Please fill in all the fields.')
-        
       }
     }
 
@@ -256,7 +255,7 @@ export default defineComponent({
   }
 }
 .loading {
-  animation: slide  2s ease-in-out infinite;
+  animation: slide 2s ease-in-out infinite;
 }
 @keyframes slide {
   0% {

@@ -11,11 +11,14 @@
         <div class="container">
           <div class="upload">
             <div class="label">{{ $t('orderInfo.refImg.label') }}</div>
-            <n-upload multiple directory-dnd
-            :action="uploadUrl"
-            :max="5"  
-            :on-success="handleUploadSuccess"
-            :on-remove="handleUploadRemove">
+            <n-upload
+              multiple
+              directory-dnd
+              :action="uploadUrl"
+              :max="5"
+              :on-success="handleUploadSuccess"
+              :on-remove="handleUploadRemove"
+            >
               <n-upload-dragger>
                 <imageSVG />
                 <div>{{ $t('orderInfo.refImg.placeholder') }}</div>
@@ -167,24 +170,24 @@ export default defineComponent({
   emits: ['submit', 'change'],
   data() {
     return {
-      uploadedFiles: [],
+      uploadedFiles: []
     }
   },
   methods: {
     uploadUrl(file) {
-      console.log('uploadFile', file);
-      return new Promise(() => {});
+      console.log('uploadFile', file)
+      return new Promise(() => {})
     },
     handleUploadSuccess(response, file) {
-      console.log('handleUploadSuccess', file);
-      this.uploadedFiles.push(file);
+      console.log('handleUploadSuccess', file)
+      this.uploadedFiles.push(file)
     },
     handleUploadRemove(file) {
-      const index = this.uploadedFiles.indexOf(file);
+      const index = this.uploadedFiles.indexOf(file)
       if (index !== -1) {
-        this.uploadedFiles.splice(index, 1);
+        this.uploadedFiles.splice(index, 1)
       }
-    },
+    }
   },
   computed: {
     shoeModelPlaceholder() {
