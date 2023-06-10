@@ -5,9 +5,10 @@
     <div class="section-container">
       <section id="header-section" class="thought section">
         <div class="header-section-image">
-          <img src="../assets/Process_Section_Step1.webp" 
-          alt="Man throwing a paper plane" 
-          style="aspect-ratio: auto 400 / 588"
+          <img
+            src="../assets/Process_Section_Step1.webp"
+            alt="Man throwing a paper plane"
+            style="aspect-ratio: auto 400 / 588"
           />
         </div>
         <div class="header-section-text">
@@ -37,9 +38,10 @@
 
       <section id="second-section" class="right-chat chat section right-section">
         <div class="section-image">
-          <img src="../assets/Process_Section_Step2.webp" 
-          alt="Team designing a sketch" 
-          style="aspect-ratio: auto 465 / 267"
+          <img
+            src="../assets/Process_Section_Step2.webp"
+            alt="Team designing a sketch"
+            style="aspect-ratio: auto 465 / 267"
           />
         </div>
         <div class="section-text">
@@ -50,9 +52,10 @@
 
       <section id="third-section" class="left-chat chat section">
         <div class="last-section-image">
-          <img src="../assets/Process_Section_Step3.webp" 
-          alt="Team creating the shoe" 
-          style="aspect-ratio: auto 522 / 402"
+          <img
+            src="../assets/Process_Section_Step3.webp"
+            alt="Team creating the shoe"
+            style="aspect-ratio: auto 522 / 402"
           />
         </div>
         <div class="section-text">

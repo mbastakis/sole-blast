@@ -5,7 +5,6 @@ import MiniGallery from '@/components/MiniGalleryComp.vue'
 import { NMessageProvider } from 'naive-ui'
 import { defineAsyncComponent } from 'vue'
 
-
 export default {
   components: {
     herosection: HeroSection,
