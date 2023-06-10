@@ -1,17 +1,16 @@
 <script>
 import HeroSection from '@/components/HeroSectionComp.vue'
 import MiniGallery from '@/components/MiniGalleryComp.vue'
-import ProcessSection from '@/components/ProcessSectionComp.vue'
-import ContactUs from '@/components/ContactUsComp.vue'
 
 import { NMessageProvider } from 'naive-ui'
+import { defineAsyncComponent } from 'vue'
 
 export default {
   components: {
     herosection: HeroSection,
     minigallery: MiniGallery,
-    processsection: ProcessSection,
-    contactus: ContactUs,
+    processsection: defineAsyncComponent(() => import('@/components/ProcessSectionComp.vue')),
+    contactus: defineAsyncComponent(() => import('@/components/ContactUsComp.vue')),
     NMessageProvider
   }
 }
