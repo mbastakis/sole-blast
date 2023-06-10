@@ -19,6 +19,7 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@netlify/plugin-lighthouse": "^4.1.1",
     "@rushstack/eslint-patch": "^1.2.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-prettier": "^7.1.0",
