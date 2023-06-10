@@ -29,13 +29,19 @@
         <div class="social">
           <div>{{ $t('footer.social') }}</div>
           <div class="social-icon-container">
-            <a href="https://www.facebook.com/profile.php?id=100091480560209">
+            <a href="https://www.facebook.com/profile.php?id=100091480560209"
+            alt="Link for Sole Blast's Facebook page"
+            >
               <FacebookSVG />
             </a>
-            <a href="https://www.tiktok.com/@soleblast">
+            <a href="https://www.tiktok.com/@soleblast"
+            alt="Link for Sole Blast's TikTok page"
+            >
               <TikTokSVG />
             </a>
-            <a href="https://www.instagram.com/sole.blast/">
+            <a href="https://www.instagram.com/sole.blast/"
+            alt="Link for Sole Blast's Instagram page"
+            >
               <InstagramSVG />
             </a>
           </div>
