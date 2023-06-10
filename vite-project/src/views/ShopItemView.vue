@@ -81,7 +81,7 @@ export default {
       item: {
         name: 'Loading Name',
         description: 'Loading the description.',
-        price: '100',
+        price: '...',
         model: 'Loading shoe model',
         images: [loading_img, loading_img, loading_img]
       },
