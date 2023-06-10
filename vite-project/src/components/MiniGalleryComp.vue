@@ -6,56 +6,56 @@
     <div class="mini-gallery-container-phone">
       <div class="img">
         <router-link :to="urls[3]">
-          <img :src="images[3]" />
+          <img :src="images[3]" alt="Custom painted shoe image"/>
         </router-link>
       </div>
       <div class="img">
         <router-link :to="urls[1]">
-          <img :src="images[1]" />
+          <img :src="images[1]" alt="Custom painted shoe image"/>
         </router-link>
       </div>
       <div class="img">
         <router-link :to="urls[2]">
-          <img :src="images[2]" />
+          <img :src="images[2]" alt="Custom painted shoe image"/>
         </router-link>
       </div>
       <div class="img">
         <router-link :to="urls[0]">
-          <img :src="images[0]" />
+          <img :src="images[0]" alt="Custom painted shoe image"/>
         </router-link>
       </div>
       <div class="img">
         <router-link :to="urls[5]">
-          <img :src="images[5]" />
+          <img :src="images[5]" alt="Custom painted shoe image"/>
         </router-link>
       </div>
     </div>
     <div class="mini-gallery-container-tablet">
       <div class="img">
         <router-link :to="urls[3]">
-          <img :src="images[3]" />
+          <img :src="images[3]" alt="Custom painted shoe image"/>
         </router-link>
       </div>
       <div class="img">
         <router-link :to="urls[4]">
-          <img :src="images[4]" />
+          <img :src="images[4]" alt="Custom painted shoe image"/>
         </router-link>
       </div>
       <div class="horizontal-photos">
         <div class="img">
           <router-link :to="urls[0]">
-            <img :src="images[0]" />
+            <img :src="images[0]" alt="Custom painted shoe image"/>
           </router-link>
         </div>
         <div class="img">
           <router-link :to="urls[5]">
-            <img :src="images[5]" />
+            <img :src="images[5]" alt="Custom painted shoe image"/>
           </router-link>
         </div>
       </div>
       <div class="img">
         <router-link :to="urls[1]">
-          <img :src="images[1]" />
+          <img :src="images[1]" alt="Custom painted shoe image"/>
         </router-link>
       </div>
     </div>
@@ -63,32 +63,32 @@
       <div class="vertical-photos-1">
         <div class="Picture-1 img">
           <router-link :to="urls[3]">
-            <img :src="images[3]" />
+            <img :src="images[3]" alt="Custom painted shoe image"/>
           </router-link>
         </div>
         <div class="Picture-2 img">
           <router-link :to="urls[4]">
-            <img :src="images[4]" />
+            <img :src="images[4]" alt="Custom painted shoe image"/>
           </router-link>
         </div>
         <div class="Picture-3 img">
           <router-link :to="urls[1]">
-            <img :src="images[1]" />
+            <img :src="images[1]" alt="Custom painted shoe image"/>
           </router-link>
         </div>
         <div class="Picture-4 img">
           <router-link :to="urls[2]">
-            <img :src="images[2]" />
+            <img :src="images[2]" alt="Custom painted shoe image"/>
           </router-link>
         </div>
         <div class="Picture-5 img">
           <router-link :to="urls[0]">
-            <img :src="images[0]" />
+            <img :src="images[0]" alt="Custom painted shoe image"/>
           </router-link>
         </div>
         <div class="Picture-6 img">
           <router-link :to="urls[5]">
-            <img :src="images[5]" />
+            <img :src="images[5]" alt="Custom painted shoe image"/>
           </router-link>
         </div>
       </div>

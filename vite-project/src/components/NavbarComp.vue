@@ -56,7 +56,7 @@
       </ul>
       <div id="logo">
         <router-link to="/">
-          <img src="../assets/header_logo.png" alt="" />
+          <img src="../assets/header_logo.png" alt="Website Logo" />
         </router-link>
       </div>
       <ul id="right-list" class="nav-list">

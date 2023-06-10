@@ -5,7 +5,7 @@
     <div class="section-container">
       <section id="header-section" class="thought section">
         <div class="header-section-image">
-          <img src="../assets/Process_Section_Step1.png" alt="" />
+          <img src="../assets/Process_Section_Step1.png" alt="Man throwing a paper plane" />
         </div>
         <div class="header-section-text">
           <h1>{{ $t('process-section.title') }}</h1>
@@ -34,7 +34,7 @@
 
       <section id="second-section" class="right-chat chat section right-section">
         <div class="section-image">
-          <img src="../assets/Process_Section_Step2.png" alt="" />
+          <img src="../assets/Process_Section_Step2.png" alt="Team designing a sketch" />
         </div>
         <div class="section-text">
           <span> {{ $t('process-section.step2.title') }}</span>
@@ -44,7 +44,7 @@
 
       <section id="third-section" class="left-chat chat section">
         <div class="last-section-image">
-          <img src="../assets/Process_Section_Step3.png" alt="" />
+          <img src="../assets/Process_Section_Step3.png" alt="Team creating the shoe" />
         </div>
         <div class="section-text">
           <span>{{ $t('process-section.step3.title') }}</span>
