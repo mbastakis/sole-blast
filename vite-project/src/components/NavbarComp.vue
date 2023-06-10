@@ -6,13 +6,16 @@
         <div>
           <!-- I want to import an svg asset I added -->
           <router-link to="/shop" class="ham-item">
-            <img class="ham-icon" src="../assets/Nav_Shop.svg" alt="Gallery icon" />
+            <img class="ham-icon" src="../assets/Nav_Shop.svg" 
+            alt="Gallery icon" 
+            aspect-ratio="auto 35 / 30"
+            />
             <div>{{ $t('navbar.shop') }}</div>
           </router-link>
         </div>
         <div>
           <router-link to="/yourdesign" class="ham-item">
-            <img class="ham-icon" src="../assets/Nav_Your_Design.svg" alt="Shoe svg" />
+            <img class="ham-icon" src="../assets/Nav_Your_Design.svg" alt="Shoe svg" aspect-ratio="auto 35 / 30"/>
             <div>{{ $t('navbar.yourdesign') }}</div>
           </router-link>
         </div>
@@ -20,13 +23,13 @@
       <div id="ham-bottom-list" class="ham-list">
         <div>
           <router-link to="/faq" class="ham-item">
-            <img class="ham-icon" src="../assets/Nav_FAQ.svg" alt="FAQ icon" />
+            <img class="ham-icon" src="../assets/Nav_FAQ.svg" alt="FAQ icon" aspect-ratio="auto 35 / 30"/>
             <div>{{ $t('navbar.faq') }}</div>
           </router-link>
         </div>
         <div>
           <router-link to="/about" class="ham-item">
-            <img class="ham-icon" src="../assets/Nav_About_Us.svg" alt="About Us icon" />
+            <img class="ham-icon" src="../assets/Nav_About_Us.svg" alt="About Us icon" aspect-ratio="auto 35 / 30"/>
             <div>{{ $t('navbar.aboutus') }}</div>
           </router-link>
         </div>
@@ -56,7 +59,7 @@
       </ul>
       <div id="logo">
         <router-link to="/">
-          <img src="../assets/header_logo.png" alt="Website Logo" />
+          <img src="../assets/header_logo.png" alt="Website Logo" aspect-ratio="auto 175 / 87"/>
         </router-link>
       </div>
       <ul id="right-list" class="nav-list">
