@@ -116,7 +116,6 @@ body {
   width: 100%;
   margin: 0px;
   padding: 0px;
-  font-family: 'Source Sans Pro', sans-serif;
 }
 #gallery {
   padding: var(--space-xl) var(--space-m);

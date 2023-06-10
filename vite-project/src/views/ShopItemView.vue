@@ -4,12 +4,12 @@
       <div class="carousel-images-container">
         <n-carousel class="carousel" :centered-slides="true" :slides-per-view="1" draggable>
           <n-carousel-item v-for="(image, index) in item.images" :key="index">
-            <img class="carousel-img" :src="image" />
+            <img class="carousel-img" :src="image" alt="Shoe image"/>
           </n-carousel-item>
         </n-carousel>
         <div class="images">
           <div v-for="(image, index) in item.images" :key="index" class="image">
-            <img :src="image" />
+            <img :src="image" alt="Shoe image"/>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@ import db from '@/store/firebase'
 import { NCarousel, NCarouselItem, NSelect, NFormItem, NForm } from 'naive-ui'
 import BaseFAQContainer from '@/components/BaseFAQContainer.vue'
 import { ref, nextTick } from 'vue'
-import loading_img from '../assets/loading_img.jpg'
+import loading_img from '../assets/loading_img.webp'
 
 export default {
   data() {
