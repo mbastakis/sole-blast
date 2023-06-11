@@ -6,7 +6,7 @@
         {{ $t('orderInfo.description') }}
       </div>
     </div>
-    <n-tabs type="segment">
+    <n-tabs type="segment" :on-before-leave="resetFiles">
       <n-tab-pane :name="$t('orderInfo.shoeTab')">
         <div class="container">
           <div class="upload">
@@ -14,9 +14,9 @@
             <n-upload
               multiple
               directory-dnd
-              :action="uploadUrl"
               :max="5"
-              :on-success="handleUploadSuccess"
+              :custom-request="customRequest"
+              :on-finish="handleUploadSuccess"
               :on-remove="handleUploadRemove"
             >
               <n-upload-dragger>
@@ -93,7 +93,13 @@
         <div class="container">
           <div class="upload">
             <div class="label">{{ $t('orderInfo.refImg.label') }}</div>
-            <n-upload multiple directory-dnd action="" :max="5">
+            <n-upload multiple
+            directory-dnd
+            :max="5"
+            :custom-request="customRequest"
+            :on-finish="handleUploadSuccess"
+            :on-remove="handleUploadRemove"
+            >
               <n-upload-dragger>
                 <imageSVG />
                 <div>{{ $t('orderInfo.refImg.placeholder') }}</div>
@@ -126,6 +132,7 @@
               />
             </n-form-item>
             <div class="btn" @click="submitForm2">Continue</div>
+            <div class="btn" @click="sendEmails">Continue</div>
           </n-form>
         </div>
       </n-tab-pane>
@@ -170,22 +177,74 @@ export default defineComponent({
   emits: ['submit', 'change'],
   data() {
     return {
-      uploadedFiles: []
+      uploadedFiles: [],
+      stringUploadedFiles: []
     }
   },
   methods: {
-    uploadUrl(file) {
-      console.log('uploadFile', file)
-      return new Promise(() => {})
+    resetFiles() {
+      this.uploadedFiles = []
+      this.stringUploadedFiles = []
+
+      return true
     },
-    handleUploadSuccess(response, file) {
-      console.log('handleUploadSuccess', file)
-      this.uploadedFiles.push(file)
+    fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        let reader = new FileReader()
+        reader.onload = function (event) {
+          // event.target.result is the base64 string
+          resolve(event.target.result)
+        }
+        reader.onerror = function (error) {
+          reject(error)
+        }
+        reader.readAsDataURL(file.file)
+      })
     },
-    handleUploadRemove(file) {
-      const index = this.uploadedFiles.indexOf(file)
-      if (index !== -1) {
-        this.uploadedFiles.splice(index, 1)
+    async customRequest(options) {
+      let base64Image = await this.fileToBase64(options.file)
+      this.stringUploadedFiles.push(base64Image)
+      options.onFinish(options.file)
+    },
+    handleUploadSuccess(response) {
+      // Assuming `response` is the response from the upload function
+      let base64Image = response.file
+      this.uploadedFiles.push(base64Image)
+    },
+    handleUploadRemove(files) {
+      // Remove file from `uploadedFiles` array
+      for (let i = 0; i < this.uploadedFiles.length; i++) {
+        if (this.uploadedFiles[i].id === files.file.id) {
+          this.uploadedFiles.splice(i, 1)
+          this.stringUploadedFiles.splice(i, 1)
+          break
+        }
+      }
+    },
+    async sendEmails() {
+      const attachments = this.stringUploadedFiles.map((file) => {
+        let base64Image = file.split(',')[1] // Remove the Data URL prefix
+        // Create an attachment object for each file in uploadedFiles
+        return {
+          filename: 'attachment.jpg', // Name your file
+          content: base64Image, // your base64 image
+          encoding: 'base64' // specify it's base64
+        }
+      })
+
+      // Send a single POST request with all attachments
+      const response = await fetch('http://localhost:8888/.netlify/functions/upload', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({
+          attachments
+        })
+      })
+
+      if (!response.ok) {
+        console.error('Failed to send email')
       }
     }
   },
