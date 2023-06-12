@@ -75,7 +75,8 @@ export default defineComponent({
     NSelect,
     NInput
   },
-  setup() {
+  emits: ['submit'],
+  setup(_, { emit }) {
     const formRef = ref(null)
     const message = ref(null)
 
@@ -395,6 +396,7 @@ export default defineComponent({
           message.value.success('Valid')
 
           // Add your form submission logic here
+          emit('submit', form.value)
         } else {
           console.log(errors)
           message.value.error('Invalid')

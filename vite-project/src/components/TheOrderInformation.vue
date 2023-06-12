@@ -16,8 +16,8 @@
               directory-dnd
               :max="5"
               :custom-request="customRequest"
-              :on-finish="handleUploadSuccess"
               :on-remove="handleUploadRemove"
+              list-type="image"
             >
               <n-upload-dragger>
                 <imageSVG />
@@ -93,12 +93,13 @@
         <div class="container">
           <div class="upload">
             <div class="label">{{ $t('orderInfo.refImg.label') }}</div>
-            <n-upload multiple
-            directory-dnd
-            :max="5"
-            :custom-request="customRequest"
-            :on-finish="handleUploadSuccess"
-            :on-remove="handleUploadRemove"
+            <n-upload
+              multiple
+              directory-dnd
+              :max="5"
+              :custom-request="customRequest"
+              :on-remove="handleUploadRemove"
+              list-type="image"
             >
               <n-upload-dragger>
                 <imageSVG />
@@ -132,7 +133,6 @@
               />
             </n-form-item>
             <div class="btn" @click="submitForm2">Continue</div>
-            <div class="btn" @click="sendEmails">Continue</div>
           </n-form>
         </div>
       </n-tab-pane>
@@ -176,78 +176,9 @@ export default defineComponent({
   },
   emits: ['submit', 'change'],
   data() {
-    return {
-      uploadedFiles: [],
-      stringUploadedFiles: []
-    }
+    return {}
   },
-  methods: {
-    resetFiles() {
-      this.uploadedFiles = []
-      this.stringUploadedFiles = []
-
-      return true
-    },
-    fileToBase64(file) {
-      return new Promise((resolve, reject) => {
-        let reader = new FileReader()
-        reader.onload = function (event) {
-          // event.target.result is the base64 string
-          resolve(event.target.result)
-        }
-        reader.onerror = function (error) {
-          reject(error)
-        }
-        reader.readAsDataURL(file.file)
-      })
-    },
-    async customRequest(options) {
-      let base64Image = await this.fileToBase64(options.file)
-      this.stringUploadedFiles.push(base64Image)
-      options.onFinish(options.file)
-    },
-    handleUploadSuccess(response) {
-      // Assuming `response` is the response from the upload function
-      let base64Image = response.file
-      this.uploadedFiles.push(base64Image)
-    },
-    handleUploadRemove(files) {
-      // Remove file from `uploadedFiles` array
-      for (let i = 0; i < this.uploadedFiles.length; i++) {
-        if (this.uploadedFiles[i].id === files.file.id) {
-          this.uploadedFiles.splice(i, 1)
-          this.stringUploadedFiles.splice(i, 1)
-          break
-        }
-      }
-    },
-    async sendEmails() {
-      const attachments = this.stringUploadedFiles.map((file) => {
-        let base64Image = file.split(',')[1] // Remove the Data URL prefix
-        // Create an attachment object for each file in uploadedFiles
-        return {
-          filename: 'attachment.jpg', // Name your file
-          content: base64Image, // your base64 image
-          encoding: 'base64' // specify it's base64
-        }
-      })
-
-      // Send a single POST request with all attachments
-      const response = await fetch('http://localhost:8888/.netlify/functions/upload', {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body: JSON.stringify({
-          attachments
-        })
-      })
-
-      if (!response.ok) {
-        console.error('Failed to send email')
-      }
-    }
-  },
+  methods: {},
   computed: {
     shoeModelPlaceholder() {
       return !this.form.useCustomersShoe
@@ -260,6 +191,9 @@ export default defineComponent({
     const form2Ref = ref(null)
     const message = ref(null)
     const dialog = useDialog()
+
+    const uploadedFiles = ref([])
+    const stringUploadedFiles = ref([])
 
     let form = ref({
       shoeModel: null,
@@ -274,44 +208,45 @@ export default defineComponent({
     })
 
     const shoeModels = ref([
-      { label: 'Nike Air Force 1 Low', value: 'Option 1' },
-      { label: 'Nike Air Force 1 High', value: 'Option 2' },
-      { label: 'Nike Dunk Low', value: 'Option 3' },
-      { label: 'Vans Slip-On', value: 'Option 4' },
-      { label: 'Vans Old Skool', value: 'Option 5' },
-      { label: 'Vans Classic', value: 'Option 6' },
-      { label: 'Dr. Martens 1460', value: 'Option 7' },
-      { label: 'Air Jordan 1 Mid', value: 'Option 8' }
+      { label: 'Nike Air Force 1 Low', value: 'Nike Air Force 1 Low'},
+      { label: 'Nike Air Force 1 High', value: 'Nike Air Force 1 High'},
+      { label: 'Nike Dunk Low', value: 'Nike Dunk Low'},
+      { label: 'Vans Slip-On', value: 'Vans Slip-On'},
+      { label: 'Vans Old Skool', value: 'Vans Old Skool'},
+      { label: 'Vans Classic', value: 'Vans Classic'},
+      { label: 'Dr. Martens 1460', value: 'Dr. Martens 1460'},
+      { label: 'Air Jordan 1 Mid', value: 'Air Jordan 1 Mid' }
     ])
 
     const shoeSizes = ref([
-      { label: "EU 35.5 - US Men's 4 - US Women's 5.5", value: 'Option 1' },
-      { label: "EU 36 - US Men's 4.5 - US Women's 6", value: 'Option 2' },
-      { label: "EU 36.5 - US Men's 5 - US Women's 6.5", value: 'Option 3' },
-      { label: "EU 37 - US Men's 5 - US Women's 6.5", value: 'Option 4' },
-      { label: "EU 37.5 - US Men's 5.5 - US Women's 7", value: 'Option 5' },
-      { label: "EU 38 - US Men's 6 - US Women's 7.5", value: 'Option 6' },
-      { label: "EU 38.5 - US Men's 6 - US Women's 7.5", value: 'Option 7' },
-      { label: "EU 39 - US Men's 6.5 - US Women's 8", value: 'Option 8' },
-      { label: "EU 40 - US Men's 7.5 - US Women's 9", value: 'Option 9' },
-      { label: "EU 40.5 - US Men's 8 - US Women's 9.5", value: 'Option 10' },
-      { label: "EU 41 - US Men's 8.5 - US Women's 10", value: 'Option 11' },
-      { label: "EU 42 - US Men's 9 - US Women's 10.5", value: 'Option 12' },
-      { label: "EU 42.5 - US Men's 9.5 - US Women's 11", value: 'Option 13' },
-      { label: "EU 43 - US Men's 10 - US Women's 11.5", value: 'Option 14' },
-      { label: "EU 44 - US Men's 10.5 - US Women's 12", value: 'Option 15' },
-      { label: "EU 44.5 - US Men's 11 - US Women's 12.5", value: 'Option 16' },
-      { label: "EU 45 - US Men's 11.5 - US Women's 13", value: 'Option 17' },
-      { label: "EU 45.5 - US Men's 12 - US Women's 13.5", value: 'Option 18' },
-      { label: "EU 46 - US Men's 12.5 - US Women's 14", value: 'Option 19' },
-      { label: "EU 47 - US Men's 13 - US Women's 14.5", value: 'Option 20' },
-      { label: "EU 47.5 - US Men's 13.5 - US Women's 15", value: 'Option 21' },
-      { label: "EU 48.5 - US Men's 14 - US Women's 15.5", value: 'Option 22' },
-      { label: "EU 49.5 - US Men's 15 - US Women's 16.5", value: 'Option 23' }
+      { label: "EU 35.5 - US Men's 4 - US Women's 5.5", value: "EU 35.5 - US Men's 4 - US Women's 5.5",},
+      { label: "EU 36 - US Men's 4.5 - US Women's 6", value: "EU 36 - US Men's 4.5 - US Women's 6"},
+      { label: "EU 36.5 - US Men's 5 - US Women's 6.5", value: "EU 36.5 - US Men's 5 - US Women's 6.5"},
+      { label: "EU 37 - US Men's 5 - US Women's 6.5", value: "EU 37 - US Men's 5 - US Women's 6.5"},
+      { label: "EU 37.5 - US Men's 5.5 - US Women's 7", value: "EU 37.5 - US Men's 5.5 - US Women's 7"},
+      { label: "EU 38 - US Men's 6 - US Women's 7.5", value: "EU 38 - US Men's 6 - US Women's 7.5"},
+      { label: "EU 38.5 - US Men's 6 - US Women's 7.5", value: "EU 38.5 - US Men's 6 - US Women's 7.5"},
+      { label: "EU 39 - US Men's 6.5 - US Women's 8", value: "EU 39 - US Men's 6.5 - US Women's 8"},
+      { label: "EU 40 - US Men's 7.5 - US Women's 9", value: "EU 40 - US Men's 7.5 - US Women's 9"},
+      { label: "EU 40.5 - US Men's 8 - US Women's 9.5", value: "EU 40.5 - US Men's 8 - US Women's 9.5"},
+      { label: "EU 41 - US Men's 8.5 - US Women's 10", value: "EU 41 - US Men's 8.5 - US Women's 10"},
+      { label: "EU 42 - US Men's 9 - US Women's 10.5", value: "EU 42 - US Men's 9 - US Women's 10.5"},
+      { label: "EU 42.5 - US Men's 9.5 - US Women's 11", value: "EU 42.5 - US Men's 9.5 - US Women's 11"},
+      { label: "EU 43 - US Men's 10 - US Women's 11.5", value: "EU 43 - US Men's 10 - US Women's 11.5"},
+      { label: "EU 44 - US Men's 10.5 - US Women's 12", value: "EU 44 - US Men's 10.5 - US Women's 12"},
+      { label: "EU 44.5 - US Men's 11 - US Women's 12.5", value: "EU 44.5 - US Men's 11 - US Women's 12.5"},
+      { label: "EU 45 - US Men's 11.5 - US Women's 13", value: "EU 45 - US Men's 11.5 - US Women's 13"},
+      { label: "EU 45.5 - US Men's 12 - US Women's 13.5", value: "EU 45.5 - US Men's 12 - US Women's 13.5"},
+      { label: "EU 46 - US Men's 12.5 - US Women's 14", value: "EU 46 - US Men's 12.5 - US Women's 14"},
+      { label: "EU 47 - US Men's 13 - US Women's 14.5", value: "EU 47 - US Men's 13 - US Women's 14.5"},
+      { label: "EU 47.5 - US Men's 13.5 - US Women's 15", value: "EU 47.5 - US Men's 13.5 - US Women's 15"},
+      { label: "EU 48.5 - US Men's 14 - US Women's 15.5", value: "EU 48.5 - US Men's 14 - US Women's 15.5"},
+      { label: "EU 49.5 - US Men's 15 - US Women's 16.5", value: "EU 49.5 - US Men's 15 - US Women's 16.5"}
     ])
 
     onMounted(() => {
       message.value = useMessage()
+      window.$message = useMessage()
     })
 
     const shoeModelValidationStatus = computed(() => {
@@ -363,6 +298,64 @@ export default defineComponent({
       if (form2.value.textareaValue) emit('change')
     })
 
+    // Upload functionality
+
+    const fileToBase64 = (file) => {
+      return new Promise((resolve, reject) => {
+        let reader = new FileReader()
+        reader.onload = function (event) {
+          // event.target.result is the base64 string
+          resolve(event.target.result)
+        }
+        reader.onerror = function (error) {
+          reject(error)
+        }
+        reader.readAsDataURL(file.file)
+      })
+    }
+    const customRequest = async (options) => {
+      console.log('hello im here')
+      // Allow only the new image to pass
+      for (let i = 0; i < uploadedFiles.value.length; i++) {
+        if (uploadedFiles.value[i].id === options.file.id) {
+          return
+        }
+      }
+      // Check if file is an image
+      if (!options.file.type.startsWith('image/')) {
+        window.$message.error('Uploaded file is not an image')
+        options.onError()
+        return
+      }
+      // Check file size
+      const maxSizeInBytes = 1 * 1024 * 1024 // 1 MB in bytes
+      if (options.file.file.size > maxSizeInBytes) {
+        window.$message.error('Image size should not exceed 1MB')
+        options.onError()
+        return
+      }
+
+      let base64Image = await fileToBase64(options.file)
+      stringUploadedFiles.value.push(base64Image)
+      uploadedFiles.value.push(options.file)
+    }
+    const handleUploadRemove = (files) => {
+      // Remove file from `uploadedFiles` array
+      for (let i = 0; i < uploadedFiles.value.length; i++) {
+        if (uploadedFiles.value[i].id === files.file.id) {
+          uploadedFiles.value.splice(i, 1)
+          stringUploadedFiles.value.splice(i, 1)
+          break
+        }
+      }
+    }
+    const resetFiles = () => {
+      uploadedFiles.value = []
+      stringUploadedFiles.value = []
+
+      return true
+    }
+
     return {
       formRef,
       form2Ref,
@@ -408,10 +401,8 @@ export default defineComponent({
                 console.error('Invalid shoe model')
                 message.value.error('Invalid')
               } else {
-                console.log(form.value) // Print the whole contents of the form
-
                 message.value.success('Valid')
-                this.$emit('submit')
+                this.$emit('submit', form.value, stringUploadedFiles.value)
               }
             },
             (rule) => {
@@ -432,10 +423,8 @@ export default defineComponent({
               console.error(errors)
               message.value.error('Invalid')
             } else {
-              console.log(form.value) // Print the whole contents of the form
-
               message.value.success('Valid')
-              this.$emit('submit')
+              this.$emit('submit', form2.value, stringUploadedFiles.value)
             }
           })
         } catch (error) {
@@ -443,7 +432,13 @@ export default defineComponent({
         }
       },
       shoeModelValidationStatus,
-      shoeModelFeedback
+      shoeModelFeedback,
+      fileToBase64,
+      customRequest,
+      handleUploadRemove,
+      resetFiles,
+      uploadedFiles,
+      stringUploadedFiles
     }
   }
 })
