@@ -32,7 +32,7 @@ export default {
     const answerRefs = ref([])
     const router = useRouter()
 
-    const expandedAnswerStyle = { opacity: '1', maxHeight: '100vh', transform: 'translateY(0)' }
+    const expandedAnswerStyle = { opacity: '1', maxHeight: '3000vh', transform: 'translateY(0)' }
     const collapsedAnswerStyle = { opacity: '0', maxHeight: '0', transform: 'translateY(-10px)' }
 
     const toggle = (index) => {

@@ -59,6 +59,13 @@
         />
       </n-form-item>
 
+      
+      <n-form-item label="" path="checkbox" class="checkbox">
+        <n-checkbox v-model:checked="form.checkbox" />
+        <div class="text">I accept  the 
+          <router-link to="/policies" class="link">Terms & Conditions</router-link>
+        </div>
+      </n-form-item>
       <div class="btn" @click="submitForm">Continue to Payment</div>
     </n-form>
   </div>
@@ -66,16 +73,18 @@
 
 <script>
 import { defineComponent, ref, onMounted } from 'vue'
-import { useMessage, NForm, NFormItem, NSelect, NInput } from 'naive-ui'
+import { useMessage, NForm, NFormItem, NSelect, NInput, NCheckbox } from 'naive-ui'
 
 export default defineComponent({
   components: {
     NForm,
     NFormItem,
     NSelect,
-    NInput
+    NInput,
+    NCheckbox
   },
-  setup() {
+  emits: ['submit'],
+  setup(_, { emit }) {
     const formRef = ref(null)
     const message = ref(null)
 
@@ -88,7 +97,8 @@ export default defineComponent({
       townCity: '',
       postcode: '',
       country: null,
-      shippingNotes: ''
+      shippingNotes: '',
+      checkbox: false
     })
 
     onMounted(() => {
@@ -143,7 +153,18 @@ export default defineComponent({
       country: {
         required: true,
         message: 'Please select your country'
-      }
+      },
+      checkbox: [{
+        required: true,
+        message: 'Please agree to the terms and conditions'
+      }, {
+        validator: () => {
+          if (form.value.checkbox) {
+            return true
+          } else return false
+        },
+        message: 'Please agree to the terms and conditions'
+      }]
     }
 
     const countries = [
@@ -395,6 +416,7 @@ export default defineComponent({
           message.value.success('Valid')
 
           // Add your form submission logic here
+          emit('submit', form.value)
         } else {
           console.log(errors)
           message.value.error('Invalid')
@@ -492,6 +514,19 @@ export default defineComponent({
 .space {
   height: var(--space-l);
 }
+.checkbox {
+  display: flex;
+  flex-direction: column;
+  margin: var(--space-s) 0 var(--space-2xs) 0;
+  font-size: var(--step--2);
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.checkbox .text {
+  margin-left: var(--space-xs);
+}
+
 @media (min-width: 604px) {
   .resp-flex-row {
     flex-wrap: nowrap;
