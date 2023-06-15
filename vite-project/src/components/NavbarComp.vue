@@ -76,7 +76,7 @@
       </ul>
       <div id="logo">
         <router-link to="/">
-          <img src="../assets/header_logo.png" alt="Website Logo" aspect-ratio="auto 175 / 87" />
+          <img src="../assets/logo_final.png" height="120" alt="Website Logo" />
         </router-link>
       </div>
       <ul id="right-list" class="nav-list">
