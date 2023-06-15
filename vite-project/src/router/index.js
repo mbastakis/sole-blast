@@ -36,6 +36,11 @@ const router = createRouter({
       component: () => import('../views/YourDesignView.vue')
     },
     {
+      path: '/policies',
+      name: 'policies',
+      component: () => import('../views/PoliciesView.vue')
+    },
+    {
       path: '/:catchAll(.*)',
       name: 'NotFound',
       component: NotFoundView
