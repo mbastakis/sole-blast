@@ -121,6 +121,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-m);
+  flex-direction: column;
 }
 .logo {
   margin-right: var(--space-m);
