@@ -19,6 +19,8 @@ coverage
 /cypress/videos/
 /cypress/screenshots/
 
+.netlify
+
 # Editor directories and files
 .vscode/*
 .vite
