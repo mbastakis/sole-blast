@@ -57,6 +57,11 @@
         </div>
       </div>
     </div>
+    <n-message-provider>
+      <keep-alive>
+        <TheShippingInformation v-if="isShippingInformationVisible" class="section"/>
+      </keep-alive>
+    </n-message-provider>
     <div class="faq-container">
       <BaseFAQContainer :faqData="faq" />
     </div>
@@ -68,9 +73,10 @@ import { useRoute } from 'vue-router'
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore'
 import { getStorage, ref as firebaseRef, getDownloadURL } from 'firebase/storage'
 import db from '@/store/firebase'
-import { NCarousel, NCarouselItem, NSelect, NFormItem, NForm } from 'naive-ui'
+import { NCarousel, NCarouselItem, NSelect, NFormItem, NForm, NMessageProvider } from 'naive-ui'
 import BaseFAQContainer from '@/components/BaseFAQContainer.vue'
-import { ref, nextTick } from 'vue'
+import TheShippingInformation from '@/components/TheShippingInformation.vue'
+import { ref, nextTick, watchEffect } from 'vue'
 import loading_img from '../assets/loading_img.webp'
 
 export default {
@@ -162,10 +168,13 @@ export default {
     NSelect,
     NForm,
     NFormItem,
-    BaseFAQContainer
+    BaseFAQContainer,
+    TheShippingInformation,
+    NMessageProvider
   },
   setup() {
     const formRef = ref(null)
+    const isShippingInformationVisible = ref(false)
 
     let form = ref({
       shoeSize: null
@@ -197,7 +206,16 @@ export default {
       { label: "EU 49.5 - US Men's 15 - US Women's 16.5", value: 'Option 23' }
     ])
 
+    // Watch for changes in any form field and emit the change event
+    watchEffect(() => {
+      // Emit the change event whenever any form value changes
+      if (form.value.shoeSize){
+        isShippingInformationVisible.value = false
+      }
+    })
+
     return {
+      isShippingInformationVisible,
       formRef,
       form,
       shoeSizes,
@@ -211,6 +229,13 @@ export default {
             return false
           } else {
             console.log('submit!')
+            isShippingInformationVisible.value = true
+            nextTick(() => {
+              const shippingInfoElement = document.querySelector('.section')
+              if (shippingInfoElement) {
+                shippingInfoElement.scrollIntoView({ behavior: 'smooth' })
+              }
+            })
           }
         })
       }
@@ -310,6 +335,13 @@ img {
   object-fit: cover;
   border-top-right-radius: 1.5em;
   border-top-left-radius: 1.5em;
+}
+.section {
+  background-color: var(--primary);
+  border-radius: 1.5rem;
+  width: 100%;
+  margin-bottom: var(--space-l);
+  margin-inline: auto;
 }
 .details-container {
   display: flex;
