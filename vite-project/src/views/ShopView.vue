@@ -73,28 +73,34 @@ export default {
 
     const storage = getStorage()
 
-    this.items = await Promise.all(
+    this.items = (await Promise.all(
       shoeDetailsData.map(async (shoeDetail) => {
         const matchingImage = lowResImagesData.find((image) => image.id === shoeDetail.id)
 
         const gsReferenceDefault = ref(storage, matchingImage?.default)
         const gsReferenceHover = ref(storage, matchingImage?.hover)
 
-        const downloadURLDefault = await getDownloadURL(gsReferenceDefault)
-        const downloadURLHover = await getDownloadURL(gsReferenceHover)
+        try {
+          const downloadURLDefault = await getDownloadURL(gsReferenceDefault)
+          const downloadURLHover = await getDownloadURL(gsReferenceHover)
+          console.log(downloadURLDefault, downloadURLHover);
 
-        // Pre-fetch the hover image
-        const prefetchImage = new Image()
-        prefetchImage.src = downloadURLHover
+          // Pre-fetch the hover image
+          const prefetchImage = new Image()
+          prefetchImage.src = downloadURLHover
 
-        return {
-          ...shoeDetail,
-          currentSrc: downloadURLDefault,
-          defaultSrc: downloadURLDefault,
-          hoverSrc: downloadURLHover
+          return {
+            ...shoeDetail,
+            currentSrc: downloadURLDefault,
+            defaultSrc: downloadURLDefault,
+            hoverSrc: downloadURLHover
+          }
+        } catch (e) {
+          console.error(`Failed to get download URL for ${shoeDetail.id}`, e);
+          return null; // return null if there's an error
         }
       })
-    )
+    )).filter(Boolean) // filter out nulls
 
     setTimeout(() => {
       if (this.$refs.galleryItems) {
@@ -109,6 +115,7 @@ export default {
 }
 </script>
 
+
 <style>
 html,
 body {
@@ -116,7 +123,6 @@ body {
   width: 100%;
   margin: 0px;
   padding: 0px;
-  font-family: 'Source Sans Pro', sans-serif;
 }
 #gallery {
   padding: var(--space-xl) var(--space-m);

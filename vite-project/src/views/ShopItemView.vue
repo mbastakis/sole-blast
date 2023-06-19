@@ -4,12 +4,12 @@
       <div class="carousel-images-container">
         <n-carousel class="carousel" :centered-slides="true" :slides-per-view="1" draggable>
           <n-carousel-item v-for="(image, index) in item.images" :key="index">
-            <img class="carousel-img" :src="image" />
+            <img class="carousel-img" :src="image" alt="Shoe image" />
           </n-carousel-item>
         </n-carousel>
         <div class="images">
           <div v-for="(image, index) in item.images" :key="index" class="image">
-            <img :src="image" />
+            <img :src="image" alt="Shoe image" />
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@ import db from '@/store/firebase'
 import { NCarousel, NCarouselItem, NSelect, NFormItem, NForm } from 'naive-ui'
 import BaseFAQContainer from '@/components/BaseFAQContainer.vue'
 import { ref, nextTick } from 'vue'
-import loading_img from '../assets/loading_img.jpg'
+import loading_img from '../assets/loading_img.webp'
 
 export default {
   data() {
@@ -81,15 +81,36 @@ export default {
       item: {
         name: 'Loading Name',
         description: 'Loading the description.',
-        price: '100',
+        price: '...',
         model: 'Loading shoe model',
         images: [loading_img, loading_img, loading_img]
       },
       shoeSize: 0,
       shoeSizeOptions: [
-        '35.5','36','36.5','37','37.5','38','38.5','39','40','40.5','41','42',
-        '42.5','43','44','44.5','45','45.5','46','47','47.5','48.5','49.5'
-      ], 
+        '35.5',
+        '36',
+        '36.5',
+        '37',
+        '37.5',
+        '38',
+        '38.5',
+        '39',
+        '40',
+        '40.5',
+        '41',
+        '42',
+        '42.5',
+        '43',
+        '44',
+        '44.5',
+        '45',
+        '45.5',
+        '46',
+        '47',
+        '47.5',
+        '48.5',
+        '49.5'
+      ],
       faq: [
         {
           question: this.$t('shopItem.faq[0].question'),
