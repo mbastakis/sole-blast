@@ -325,7 +325,7 @@ export default {
         }
 
         // Send a POST request to your Netlify function
-        const response = await fetch('http://localhost:8888/.netlify/functions/submitDesign', {
+        const response = await fetch('./.netlify/functions/submitDesign', {
           headers: {
             'Content-Type': 'application/json'
           },

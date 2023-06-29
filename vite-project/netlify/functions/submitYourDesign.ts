@@ -1,3 +1,6 @@
+import { Handler } from '@netlify/functions'
+import fetch from 'node-fetch'
+
 const handler: Handler = async function (event) {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' }
@@ -30,7 +33,7 @@ const handler: Handler = async function (event) {
       body: JSON.stringify({
         from: 'soleblastofficial@gmail.com',
         to: 'soleblastmessages@gmail.com',
-        subject: 'New Design Submission',
+        subject: 'New Design Submission from ' + fullName,
         attachments: attachments,
         parameters: {
           shoeModel: shoeModel,

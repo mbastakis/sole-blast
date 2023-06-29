@@ -28,7 +28,7 @@ const handler: Handler = async function (event) {
       body: JSON.stringify({
         from: 'soleblastofficial@gmail.com',
         to: 'soleblastmessages@gmail.com',
-        subject: 'New Message from ' + requestBody.subscriberName,
+        subject: 'Message from ' + requestBody.subscriberName,
         parameters: {
           name: requestBody.subscriberName,
           email: requestBody.subscriberEmail,
