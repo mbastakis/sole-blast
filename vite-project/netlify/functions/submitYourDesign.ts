@@ -1,13 +1,10 @@
-import fetch from 'node-fetch'
-
-const handler = async function (event) {
+const handler: Handler = async function (event) {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' }
   }
 
   const { attachments, orderForm, shippingForm } = JSON.parse(event.body)
 
-  // Decompose orderForm and shippingForm into individual fields
   const { shoeModel, shoeSize, useCustomersShoe, textareaValue, itemname } = orderForm
 
   const {
@@ -22,10 +19,10 @@ const handler = async function (event) {
     shippingNotes
   } = shippingForm
 
-  // Note: it is assumed here that either shoeModel or itemname will be present in orderForm
+  console.log('Inside submitYourDesign.ts')
 
   try {
-    await fetch(`${process.env.URL}/.netlify/functions/emails/test`, {
+    const res = await fetch(`${process.env.URL}/.netlify/functions/emails/test`, {
       headers: {
         'netlify-emails-secret': process.env.NETLIFY_EMAILS_SECRET
       },
@@ -36,13 +33,11 @@ const handler = async function (event) {
         subject: 'New Design Submission',
         attachments: attachments,
         parameters: {
-          // Order form data
           shoeModel: shoeModel,
           shoeSize: shoeSize,
           useCustomersShoe: useCustomersShoe,
           textareaValue: textareaValue,
           itemname: itemname,
-          // Shipping form data
           fullName: fullName,
           email: email,
           confirmEmail: confirmEmail,
@@ -54,19 +49,21 @@ const handler = async function (event) {
           shippingNotes: shippingNotes
         }
       })
-    }).then((res) => {
-      if (res.status !== 200) {
-        return {
-          statusCode: 400,
-          body: JSON.stringify("Something wen't wrong! Please try again")
-        }
-      }
-
-      return {
-        statusCode: 200,
-        body: JSON.stringify('Message email sent!')
-      }
     })
+
+    console.log('inside the response', res.status)
+
+    if (res.status !== 200) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify('Something went wrong! Please try again')
+      }
+    }
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify('Message email sent!')
+    }
   } catch (error) {
     console.error(error)
     return { statusCode: 500, body: 'An error occurred' }
