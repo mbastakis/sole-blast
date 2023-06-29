@@ -1,20 +1,14 @@
 import fetch from 'node-fetch'
 
-const handler = async function(event) {
+const handler = async function (event) {
   if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+    return { statusCode: 405, body: 'Method Not Allowed' }
   }
-  
-  const { attachments, orderForm, shippingForm } = JSON.parse(event.body);
+
+  const { attachments, orderForm, shippingForm } = JSON.parse(event.body)
 
   // Decompose orderForm and shippingForm into individual fields
-  const {
-    shoeModel, 
-    shoeSize, 
-    useCustomersShoe, 
-    textareaValue, 
-    itemname
-  } = orderForm;
+  const { shoeModel, shoeSize, useCustomersShoe, textareaValue, itemname } = orderForm
 
   const {
     fullName,
@@ -26,14 +20,14 @@ const handler = async function(event) {
     postcode,
     country,
     shippingNotes
-  } = shippingForm;
+  } = shippingForm
 
   // Note: it is assumed here that either shoeModel or itemname will be present in orderForm
-  
+
   try {
-    const response = await fetch(`${process.env.URL}/.netlify/functions/emails/test`, {
+    await fetch(`${process.env.URL}/.netlify/functions/emails/test`, {
       headers: {
-        'netlify-emails-secret': process.env.NETLIFY_EMAILS_SECRET,
+        'netlify-emails-secret': process.env.NETLIFY_EMAILS_SECRET
       },
       method: 'POST',
       body: JSON.stringify({
@@ -60,17 +54,23 @@ const handler = async function(event) {
           shippingNotes: shippingNotes
         }
       })
-    });
+    }).then((res) => {
+      if (res.status !== 200) {
+        return {
+          statusCode: 400,
+          body: JSON.stringify("Something wen't wrong! Please try again")
+        }
+      }
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status} ${response.statusText}`);
-    }
-    
-    return { statusCode: 200, body: 'Design submitted successfully' };
+      return {
+        statusCode: 200,
+        body: JSON.stringify('Message email sent!')
+      }
+    })
   } catch (error) {
-    console.error(error);
-    return { statusCode: 500, body: 'An error occurred' };
+    console.error(error)
+    return { statusCode: 500, body: 'An error occurred' }
   }
-};
+}
 
-export { handler };
+export { handler }

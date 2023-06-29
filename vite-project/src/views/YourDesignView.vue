@@ -23,7 +23,7 @@ import TheSVGprocessSection from '../components/TheSVGprocessSection.vue'
 import ThePricingTiers from '../components/ThePricingTiers.vue'
 import TheOrderInformation from '../components/TheOrderInformation.vue'
 import TheShippingInformation from '../components/TheShippingInformation.vue'
-import { NMessageProvider, NDialogProvider } from 'naive-ui'
+import { NMessageProvider, NDialogProvider, useMessage } from 'naive-ui'
 
 export default {
   components: {
@@ -32,7 +32,8 @@ export default {
     TheOrderInformation,
     TheShippingInformation,
     NMessageProvider,
-    NDialogProvider
+    NDialogProvider,
+    useMessage
   },
   data() {
     return {
@@ -41,6 +42,9 @@ export default {
       shippingForm: null,
       uploadedImages: null
     }
+  },
+  setup() {
+    window.$message = useMessage()
   },
   methods: {
     async submitYourDesign() {
@@ -62,20 +66,25 @@ export default {
       }
 
       // Send a POST request to your Netlify function
-      const response = await fetch('http://localhost:8888/.netlify/functions/submitYourDesign', {
+      await fetch('./.netlify/functions/submitYourDesign', {
         headers: {
           'Content-Type': 'application/json'
         },
         method: 'POST',
         body: JSON.stringify(requestData)
+      }).then((res) => {
+        if (res.status === 200) {
+          window.$message.success('Your design was submitted successfully!')
+        } else {
+          window.$message.error('There was an error submitting your design. Please try again.')
+        }
       })
-
-      if (!response.ok) {
-        console.error('Failed to submit design')
-        // You might want to provide more specific error handling here
-      } else {
-        // Handle success case, if necessary
-      }
+    },
+    clearForms() {
+      this.orderForm = null
+      this.shippingForm = null
+      this.uploadedImages = null
+      this.finishedOrderForm = false
     },
     submitOrderForm(formData, uploadedImages) {
       this.orderForm = formData
