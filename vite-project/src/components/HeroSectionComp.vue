@@ -17,25 +17,26 @@
 </template>
 
 <script>
-import { defineAsyncComponent } from 'vue'
+import BaseHorizontalSlider from '@/components/BaseHorizontalSlider.vue'
+import ViewPortComp from '@/components/ViewPortComp.vue'
 
 export default {
   components: {
-    viewport: defineAsyncComponent(() => import('@/components/ViewPortComp.vue')),
-    BaseHorizontalSlider: defineAsyncComponent(() =>
-      import('@/components/BaseHorizontalSlider.vue')
-    )
+    Viewport: ViewPortComp,
+    BaseHorizontalSlider
   },
   mounted() {
-    const navbar = document.getElementById('navbar')
-    const navbarHeight = navbar.offsetHeight
+    setTimeout(() => {
+      const navbar = document.getElementById('navbar')
+      const navbarHeight = navbar.offsetHeight
 
-    const heroSection = document.getElementById('hero-section')
-    const windowHeight = window.innerHeight
+      const heroSection = document.getElementById('hero-section')
+      const windowHeight = window.innerHeight
 
-    const heroSectionHeight = windowHeight - navbarHeight
-
-    heroSection.style.height = `${heroSectionHeight}px`
+      const heroSectionHeight = windowHeight - navbarHeight
+      console.log(navbarHeight)
+      heroSection.style.height = `${heroSectionHeight}px`
+    }, 100)
   }
 }
 </script>
