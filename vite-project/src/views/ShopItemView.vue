@@ -59,7 +59,11 @@
     </div>
     <n-message-provider>
       <keep-alive>
-        <TheShippingInformation v-if="isShippingInformationVisible" class="section"/>
+        <TheShippingInformation
+          v-if="isShippingInformationVisible"
+          @submit="submitInformation"
+          class="section"
+        />
       </keep-alive>
     </n-message-provider>
     <div class="faq-container">
@@ -181,35 +185,104 @@ export default {
     })
 
     const shoeSizes = ref([
-      { label: "EU 35.5 - US Men's 4 - US Women's 5.5", value: 'Option 1' },
-      { label: "EU 36 - US Men's 4.5 - US Women's 6", value: 'Option 2' },
-      { label: "EU 36.5 - US Men's 5 - US Women's 6.5", value: 'Option 3' },
-      { label: "EU 37 - US Men's 5 - US Women's 6.5", value: 'Option 4' },
-      { label: "EU 37.5 - US Men's 5.5 - US Women's 7", value: 'Option 5' },
-      { label: "EU 38 - US Men's 6 - US Women's 7.5", value: 'Option 6' },
-      { label: "EU 38.5 - US Men's 6 - US Women's 7.5", value: 'Option 7' },
-      { label: "EU 39 - US Men's 6.5 - US Women's 8", value: 'Option 8' },
-      { label: "EU 40 - US Men's 7.5 - US Women's 9", value: 'Option 9' },
-      { label: "EU 40.5 - US Men's 8 - US Women's 9.5", value: 'Option 10' },
-      { label: "EU 41 - US Men's 8.5 - US Women's 10", value: 'Option 11' },
-      { label: "EU 42 - US Men's 9 - US Women's 10.5", value: 'Option 12' },
-      { label: "EU 42.5 - US Men's 9.5 - US Women's 11", value: 'Option 13' },
-      { label: "EU 43 - US Men's 10 - US Women's 11.5", value: 'Option 14' },
-      { label: "EU 44 - US Men's 10.5 - US Women's 12", value: 'Option 15' },
-      { label: "EU 44.5 - US Men's 11 - US Women's 12.5", value: 'Option 16' },
-      { label: "EU 45 - US Men's 11.5 - US Women's 13", value: 'Option 17' },
-      { label: "EU 45.5 - US Men's 12 - US Women's 13.5", value: 'Option 18' },
-      { label: "EU 46 - US Men's 12.5 - US Women's 14", value: 'Option 19' },
-      { label: "EU 47 - US Men's 13 - US Women's 14.5", value: 'Option 20' },
-      { label: "EU 47.5 - US Men's 13.5 - US Women's 15", value: 'Option 21' },
-      { label: "EU 48.5 - US Men's 14 - US Women's 15.5", value: 'Option 22' },
-      { label: "EU 49.5 - US Men's 15 - US Women's 16.5", value: 'Option 23' }
+      {
+        label: "EU 35.5 - US Men's 4 - US Women's 5.5",
+        value: "EU 35.5 - US Men's 4 - US Women's 5.5"
+      },
+      {
+        label: "EU 36 - US Men's 4.5 - US Women's 6",
+        value: "EU 36 - US Men's 4.5 - US Women's 6"
+      },
+      {
+        label: "EU 36.5 - US Men's 5 - US Women's 6.5",
+        value: "EU 36.5 - US Men's 5 - US Women's 6.5"
+      },
+      {
+        label: "EU 37 - US Men's 5 - US Women's 6.5",
+        value: "EU 37 - US Men's 5 - US Women's 6.5"
+      },
+      {
+        label: "EU 37.5 - US Men's 5.5 - US Women's 7",
+        value: "EU 37.5 - US Men's 5.5 - US Women's 7"
+      },
+      {
+        label: "EU 38 - US Men's 6 - US Women's 7.5",
+        value: "EU 38 - US Men's 6 - US Women's 7.5"
+      },
+      {
+        label: "EU 38.5 - US Men's 6 - US Women's 7.5",
+        value: "EU 38.5 - US Men's 6 - US Women's 7.5"
+      },
+      {
+        label: "EU 39 - US Men's 6.5 - US Women's 8",
+        value: "EU 39 - US Men's 6.5 - US Women's 8"
+      },
+      {
+        label: "EU 40 - US Men's 7.5 - US Women's 9",
+        value: "EU 40 - US Men's 7.5 - US Women's 9"
+      },
+      {
+        label: "EU 40.5 - US Men's 8 - US Women's 9.5",
+        value: "EU 40.5 - US Men's 8 - US Women's 9.5"
+      },
+      {
+        label: "EU 41 - US Men's 8.5 - US Women's 10",
+        value: "EU 41 - US Men's 8.5 - US Women's 10"
+      },
+      {
+        label: "EU 42 - US Men's 9 - US Women's 10.5",
+        value: "EU 42 - US Men's 9 - US Women's 10.5"
+      },
+      {
+        label: "EU 42.5 - US Men's 9.5 - US Women's 11",
+        value: "EU 42.5 - US Men's 9.5 - US Women's 11"
+      },
+      {
+        label: "EU 43 - US Men's 10 - US Women's 11.5",
+        value: "EU 43 - US Men's 10 - US Women's 11.5"
+      },
+      {
+        label: "EU 44 - US Men's 10.5 - US Women's 12",
+        value: "EU 44 - US Men's 10.5 - US Women's 12"
+      },
+      {
+        label: "EU 44.5 - US Men's 11 - US Women's 12.5",
+        value: "EU 44.5 - US Men's 11 - US Women's 12.5"
+      },
+      {
+        label: "EU 45 - US Men's 11.5 - US Women's 13",
+        value: "EU 45 - US Men's 11.5 - US Women's 13"
+      },
+      {
+        label: "EU 45.5 - US Men's 12 - US Women's 13.5",
+        value: "EU 45.5 - US Men's 12 - US Women's 13.5"
+      },
+      {
+        label: "EU 46 - US Men's 12.5 - US Women's 14",
+        value: "EU 46 - US Men's 12.5 - US Women's 14"
+      },
+      {
+        label: "EU 47 - US Men's 13 - US Women's 14.5",
+        value: "EU 47 - US Men's 13 - US Women's 14.5"
+      },
+      {
+        label: "EU 47.5 - US Men's 13.5 - US Women's 15",
+        value: "EU 47.5 - US Men's 13.5 - US Women's 15"
+      },
+      {
+        label: "EU 48.5 - US Men's 14 - US Women's 15.5",
+        value: "EU 48.5 - US Men's 14 - US Women's 15.5"
+      },
+      {
+        label: "EU 49.5 - US Men's 15 - US Women's 16.5",
+        value: "EU 49.5 - US Men's 15 - US Women's 16.5"
+      }
     ])
 
     // Watch for changes in any form field and emit the change event
     watchEffect(() => {
       // Emit the change event whenever any form value changes
-      if (form.value.shoeSize){
+      if (form.value.shoeSize) {
         isShippingInformationVisible.value = false
       }
     })
@@ -238,6 +311,34 @@ export default {
             })
           }
         })
+      },
+      async submitInformation(shippingFormData) {
+        const shoeModel = document.querySelector('.name').innerHTML
+        const shippingForm = shippingFormData
+        const shoeSize = form.value.shoeSize
+
+        // Include orderForm and shippingForm in the request
+        const requestData = {
+          shippingForm: shippingForm,
+          shoeModel: shoeModel,
+          shoeSize: shoeSize
+        }
+
+        // Send a POST request to your Netlify function
+        const response = await fetch('http://localhost:8888/.netlify/functions/submitDesign', {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'POST',
+          body: JSON.stringify(requestData)
+        })
+
+        if (!response.ok) {
+          console.error('Failed to submit design')
+          // You might want to provide more specific error handling here
+        } else {
+          // Handle success case, if necessary
+        }
       }
     }
   },

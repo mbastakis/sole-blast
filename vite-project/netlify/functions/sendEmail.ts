@@ -34,12 +34,19 @@ const handler: Handler = async function (event) {
         message: requestBody.message
       }
     })
-  })
+  }).then((res) => {
+    if (res.status !== 200) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify("Something wen't wrong! Please try again")
+      }
+    }
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify('Message email sent!')
-  }
+    return {
+      statusCode: 200,
+      body: JSON.stringify('Message email sent!')
+    }
+  })
 }
 
 export { handler }

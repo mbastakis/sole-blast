@@ -1,7 +1,7 @@
 <script setup>
 import Navbar from './components/NavbarComp.vue'
 import TheFooter from './components/TheFooter.vue'
-import { NConfigProvider } from 'naive-ui'
+import { NConfigProvider, NMessageProvider } from 'naive-ui'
 
 const themeOverrides = {
   Select: {
@@ -65,7 +65,9 @@ const themeOverrides = {
     <navbar />
     <router-view class="router-view" v-slot="{ Component }">
       <transition name="page-opacity" mode="out-in">
-        <component :is="Component" />
+        <n-message-provider>
+          <component :is="Component" />
+        </n-message-provider>
       </transition>
     </router-view>
   </n-config-provider>

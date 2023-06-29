@@ -59,10 +59,10 @@
         />
       </n-form-item>
 
-      
       <n-form-item label="" path="checkbox" class="checkbox">
         <n-checkbox v-model:checked="form.checkbox" />
-        <div class="text">I accept  the 
+        <div class="text">
+          I accept the
           <router-link to="/policies" class="link">Terms & Conditions</router-link>
         </div>
       </n-form-item>
@@ -154,17 +154,20 @@ export default defineComponent({
         required: true,
         message: 'Please select your country'
       },
-      checkbox: [{
-        required: true,
-        message: 'Please agree to the terms and conditions'
-      }, {
-        validator: () => {
-          if (form.value.checkbox) {
-            return true
-          } else return false
+      checkbox: [
+        {
+          required: true,
+          message: 'Please agree to the terms and conditions'
         },
-        message: 'Please agree to the terms and conditions'
-      }]
+        {
+          validator: () => {
+            if (form.value.checkbox) {
+              return true
+            } else return false
+          },
+          message: 'Please agree to the terms and conditions'
+        }
+      ]
     }
 
     const countries = [
@@ -412,14 +415,9 @@ export default defineComponent({
       try {
         const errors = await formRef.value?.validate()
         if (!errors) {
-          console.log(form.value) // Print the whole contents of the form
-          message.value.success('Valid')
-
-          // Add your form submission logic here
           emit('submit', form.value)
         } else {
           console.log(errors)
-          message.value.error('Invalid')
         }
       } catch (error) {
         console.log(error)
