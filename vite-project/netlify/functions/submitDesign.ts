@@ -30,7 +30,7 @@ const handler = async function (event) {
       body: JSON.stringify({
         from: 'soleblastofficial@gmail.com',
         to: 'soleblastmessages@gmail.com',
-        subject: 'New Design Submission',
+        subject: 'Ready Design Submission',
         parameters: {
           // Order form data
           shoeModel: shoeModel,
