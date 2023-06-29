@@ -11,6 +11,7 @@
           :model="form"
           :rules="rules"
           label-placement="top"
+          @submit.prevent="submitForm"
         >
           <div class="resp-flex-row">
             <n-form-item
@@ -100,8 +101,7 @@ export default defineComponent({
       }
     }
 
-    const submitForm = async (e) => {
-      e.preventDefault()
+    const submitForm = async () => {
       try {
         const errors = await formRef.value?.validate()
         if (!errors) {
@@ -113,22 +113,30 @@ export default defineComponent({
               subscriberName: form.value.fullName,
               subscriberEmail: form.value.email,
               message: form.value.message
+            }),
+            headers: { 'Content-Type': 'application/json' }
+          })
+            .then((res) => {
+              if (!res.ok) {
+                throw new Error(`Server responded with ${res.status}`)
+              }
+              return res.json()
             })
-          }).then((res) => {
-            console.log(res)
-            if (res.status === 200) {
+            .then((json) => {
+              console.log(json)
               message.success('Email sent successfully!')
               form.value = {
                 fullName: '',
                 email: '',
                 message: ''
               }
-            } else {
+              isLoading.value = false
+            })
+            .catch((error) => {
+              console.error(error)
               message.error('Something went wrong, please try again later or contact us directly.')
-            }
-
-            isLoading.value = false
-          })
+              isLoading.value = false
+            })
         } else {
           message.error('Something went wrong, please try again later or contact us directly.')
         }
