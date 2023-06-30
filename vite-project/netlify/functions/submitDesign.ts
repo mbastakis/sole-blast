@@ -22,7 +22,7 @@ const handler = async function (event) {
   // Note: it is assumed here that either shoeModel or itemname will be present in orderForm
 
   try {
-    const response = await fetch(`${process.env.URL}/.netlify/functions/emails/test`, {
+    const response = await fetch(`${process.env.URL}/.netlify/functions/emails/design`, {
       headers: {
         'netlify-emails-secret': process.env.NETLIFY_EMAILS_SECRET
       },
@@ -30,7 +30,7 @@ const handler = async function (event) {
       body: JSON.stringify({
         from: 'soleblastofficial@gmail.com',
         to: 'soleblastmessages@gmail.com',
-        subject: 'Ready Design Submission',
+        subject: 'Ready Design Submission from ' + fullName,
         parameters: {
           // Order form data
           shoeModel: shoeModel,

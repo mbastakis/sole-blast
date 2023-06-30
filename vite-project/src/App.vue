@@ -62,16 +62,16 @@ const themeOverrides = {
 
 <template>
   <n-config-provider :theme-overrides="themeOverrides">
+    <n-message-provider>
     <navbar />
     <router-view class="router-view" v-slot="{ Component }">
-      <transition name="page-opacity" mode="out-in">
-        <n-message-provider>
+        <transition name="page-opacity" mode="out-in">
           <component :is="Component" />
-        </n-message-provider>
-      </transition>
-    </router-view>
+        </transition>
+      </router-view>
+      <the-footer />
+    </n-message-provider>
   </n-config-provider>
-  <the-footer />
 </template>
 
 <style>
