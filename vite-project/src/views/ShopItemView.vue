@@ -314,6 +314,8 @@ export default {
       },
       async submitInformation(shippingFormData) {
         const shoeModel = document.querySelector('.name').innerHTML
+        const price = document.querySelector('.price').innerHTML
+
         const shippingForm = shippingFormData
         const shoeSize = form.value.shoeSize
 
@@ -321,11 +323,12 @@ export default {
         const requestData = {
           shippingForm: shippingForm,
           shoeModel: shoeModel,
-          shoeSize: shoeSize
+          shoeSize: shoeSize,
+          price: price
         }
 
         // Send a POST request to your Netlify function
-        const response = await fetch('./.netlify/functions/submitDesign', {
+        const response = await fetch('http://localhost:8888/.netlify/functions/submitDesign', {
           headers: {
             'Content-Type': 'application/json'
           },
