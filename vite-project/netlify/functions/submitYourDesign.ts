@@ -25,7 +25,7 @@ const handler: Handler = async function (event) {
   console.log('Inside submitYourDesign.ts')
 
   try {
-    const res = await fetch(`${process.env.URL}/.netlify/functions/emails/test`, {
+    const res = await fetch(`${process.env.URL}/.netlify/functions/emails/design`, {
       headers: {
         'netlify-emails-secret': process.env.NETLIFY_EMAILS_SECRET
       },

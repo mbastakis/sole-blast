@@ -169,7 +169,7 @@
 <script>
 import DoubleRightArrowSVG from './svg-components/doubleRightArrowSVG.vue'
 import img3 from '../assets/miniGallery/alien_comix.webp'
-import img2 from '../assets/miniGallery/charizard.webp'
+import img2 from '../assets/miniGallery/simpsons.webp'
 import img1 from '../assets/miniGallery/girl.webp'
 import img4 from '../assets/miniGallery/rick_and_morty.webp'
 import img5 from '../assets/miniGallery/street.webp'
@@ -184,11 +184,11 @@ export default {
       images: [img1, img2, img3, img4, img5, img6],
       urls: [
         '/shop/NyFcl9nE3aZZ53W3tpqS',
-        '/shop/6JodqmfS3yEsLLIRtegk',
+        '/shop/APOXtWrNBUmbrS0Xctvj',
         '/shop/QgcY3Rtm054CihLz1hwu',
-        '/shop/B0tRhIehvws7RHwwUieD',
-        '/shop/EtZ1V8IUVs4Z9pJWe7L1',
-        '/shop/6M0K7mSnqncsCSmN4e6w'
+        '/shop/gOQT9wgnkx1wHvjqbXpQ',
+        '/shop/BB1KaCRTfx1yJ5bUOWPp',
+        '/shop/SfT3hBzr8EbF43CcvmDq'
       ],
       aspectRatios: [850 / 850, 851 / 705, 559 / 559, 844 / 410, 559 / 889, 559 / 559]
     }
