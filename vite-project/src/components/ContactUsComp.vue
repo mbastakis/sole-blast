@@ -107,7 +107,7 @@ export default defineComponent({
         if (!errors) {
           isLoading.value = true
           // Send email
-          fetch('./.netlify/functions/sendEmail', {
+          fetch('https://sole-blast.com/.netlify/functions/sendEmail', {
             method: 'POST',
             body: JSON.stringify({
               subscriberName: form.value.fullName,

@@ -79,7 +79,7 @@ export default {
       }
 
       // Send a POST request to your Netlify function
-      await fetch('./.netlify/functions/submitYourDesign', {
+      await fetch('https://sole-blast.com/.netlify/functions/submitYourDesign', {
         headers: {
           'Content-Type': 'application/json'
         },
