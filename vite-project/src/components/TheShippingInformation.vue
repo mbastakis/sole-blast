@@ -66,13 +66,15 @@
           <router-link to="/policies" class="link">Terms & Conditions</router-link>
         </div>
       </n-form-item>
-      <div class="btn" @click="submitForm">Continue to Payment</div>
+      <div class="btn" @click="submitForm" :class="{ 'is-loading': loading }">
+        {{ loading ? 'Processing...' : 'Continue to Payment' }}
+      </div>
     </n-form>
   </div>
 </template>
 
 <script>
-import { defineComponent, ref, onMounted } from 'vue'
+import { defineComponent, ref, onMounted, inject, toRefs } from 'vue'
 import { useMessage, NForm, NFormItem, NSelect, NInput, NCheckbox } from 'naive-ui'
 
 export default defineComponent({
@@ -87,6 +89,8 @@ export default defineComponent({
   setup(_, { emit }) {
     const formRef = ref(null)
     const message = ref(null)
+
+    const state = inject('state')
 
     let form = ref({
       fullName: '',
@@ -415,6 +419,7 @@ export default defineComponent({
       try {
         const errors = await formRef.value?.validate()
         if (!errors) {
+          state.loading = true
           emit('submit', form.value)
         } else {
           console.log(errors)
@@ -429,7 +434,8 @@ export default defineComponent({
       form,
       rules,
       countries,
-      submitForm
+      submitForm,
+      ...toRefs(state)
     }
   }
 })
@@ -523,6 +529,18 @@ export default defineComponent({
 
 .checkbox .text {
   margin-left: var(--space-xs);
+}
+
+.is-loading {
+  animation: slide 2s ease-in-out infinite;
+}
+@keyframes slide {
+  0% {
+    background-position: right bottom;
+  }
+  100% {
+    background-position: left bottom;
+  }
 }
 
 @media (min-width: 604px) {

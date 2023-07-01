@@ -77,11 +77,20 @@ import { useRoute } from 'vue-router'
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore'
 import { getStorage, ref as firebaseRef, getDownloadURL } from 'firebase/storage'
 import db from '@/store/firebase'
-import { NCarousel, NCarouselItem, NSelect, NFormItem, NForm, NMessageProvider } from 'naive-ui'
+import {
+  NCarousel,
+  NCarouselItem,
+  NSelect,
+  NFormItem,
+  NForm,
+  NMessageProvider,
+  useMessage
+} from 'naive-ui'
 import BaseFAQContainer from '@/components/BaseFAQContainer.vue'
 import TheShippingInformation from '@/components/TheShippingInformation.vue'
-import { ref, nextTick, watchEffect } from 'vue'
+import { ref, nextTick, watchEffect, provide, toRefs, reactive } from 'vue'
 import loading_img from '../assets/loading_img.webp'
+import { useRouter } from 'vue-router'
 
 export default {
   data() {
@@ -179,6 +188,15 @@ export default {
   setup() {
     const formRef = ref(null)
     const isShippingInformationVisible = ref(false)
+
+    const message = useMessage()
+    const router = useRouter()
+
+    const state = reactive({
+      loading: false
+    })
+
+    provide('state', state)
 
     let form = ref({
       shoeSize: null
@@ -292,13 +310,14 @@ export default {
       formRef,
       form,
       shoeSizes,
+      ...toRefs(state),
       rules: {
         shoeSize: { required: true, message: 'Please select a shoe size', trigger: 'change' }
       },
       submitForm() {
         formRef.value.validate((errors) => {
           if (errors) {
-            console.log('error submit!!')
+            message.error('Please complete the form')
             return false
           } else {
             console.log('submit!')
@@ -328,7 +347,7 @@ export default {
         }
 
         // Send a POST request to your Netlify function
-        const response = await fetch('http://localhost:8888/.netlify/functions/submitDesign', {
+        const response = await fetch('./.netlify/functions/submitDesign', {
           headers: {
             'Content-Type': 'application/json'
           },
@@ -337,10 +356,14 @@ export default {
         })
 
         if (!response.ok) {
-          console.error('Failed to submit design')
-          // You might want to provide more specific error handling here
+          state.loading = false
+          message.error('Something went wrong please try again later!')
         } else {
-          // Handle success case, if necessary
+          state.loading = false
+          message.success('Your order has been submitted!')
+          setTimeout(() => {
+            router.push('/payment')
+          }, 500)
         }
       }
     }

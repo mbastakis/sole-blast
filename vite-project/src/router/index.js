@@ -41,6 +41,11 @@ const router = createRouter({
       component: () => import('../views/PoliciesView.vue')
     },
     {
+      path: '/payment',
+      name: 'payment',
+      component: () => import('../views/PaymentMethodView.vue')
+    },
+    {
       path: '/:catchAll(.*)',
       name: 'NotFound',
       component: NotFoundView
