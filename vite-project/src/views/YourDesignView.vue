@@ -18,12 +18,13 @@
 </template>
 
 <script>
-import { nextTick } from 'vue'
+import { nextTick, reactive, provide, toRefs } from 'vue'
 import TheSVGprocessSection from '../components/TheSVGprocessSection.vue'
 import ThePricingTiers from '../components/ThePricingTiers.vue'
 import TheOrderInformation from '../components/TheOrderInformation.vue'
 import TheShippingInformation from '../components/TheShippingInformation.vue'
 import { NMessageProvider, NDialogProvider, useMessage } from 'naive-ui'
+import { useRouter } from 'vue-router'
 
 export default {
   components: {
@@ -44,7 +45,19 @@ export default {
     }
   },
   setup() {
+    const state = reactive({
+      loading: false
+    })
+    const router = useRouter()
+
+    provide('state', state)
+
     window.$message = useMessage()
+
+    return {
+      ...toRefs(state),
+      router
+    }
   },
   methods: {
     async submitYourDesign() {
@@ -73,11 +86,16 @@ export default {
         method: 'POST',
         body: JSON.stringify(requestData)
       }).then((res) => {
+        console.log('im back')
         if (res.status === 200) {
           window.$message.success('Your design was submitted successfully!')
+          setTimeout(() => {
+            this.router.push('/payment')
+          }, 1000)
         } else {
           window.$message.error('There was an error submitting your design. Please try again.')
         }
+        this.loading = false
       })
     },
     clearForms() {

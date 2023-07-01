@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { onMounted, nextTick, ref } from 'vue'
+import { onMounted, nextTick, ref, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default {
@@ -25,10 +25,16 @@ export default {
     faqData: {
       type: Array,
       required: true
+    },
+    openQuestionIndex: {
+      // New prop
+      type: Number,
+      required: false,
+      default: null
     }
   },
-  setup() {
-    const activeIndex = ref(null)
+  setup(props) {
+    const activeIndex = ref(props.openQuestionIndex)
     const answerRefs = ref([])
     const router = useRouter()
 
@@ -60,6 +66,7 @@ export default {
     })
 
     return {
+      ...toRefs(props),
       activeIndex,
       answerRefs,
       expandedAnswerStyle,

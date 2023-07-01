@@ -6,9 +6,11 @@
           <div class="logo">
             <FooterLogoSVG />
           </div>
-          <NGradientText gradient="linear-gradient(90deg, #D9DDFF 0%, #DABED3 80%)" class="phrase">{{
-            $t('footer.title')
-          }}</NGradientText>
+          <NGradientText
+            gradient="linear-gradient(90deg, #D9DDFF 0%, #DABED3 80%)"
+            class="phrase"
+            >{{ $t('footer.title') }}</NGradientText
+          >
         </router-link>
         <div class="main-details">
           <div class="pin">
@@ -68,6 +70,9 @@
             <router-link class="router-link" to="/policies">
               <div>{{ $t('footer.terms') }}</div>
             </router-link>
+            <router-link class="router-link" to="/payment">
+              <div>{{ $t('footer.payment') }}</div>
+            </router-link>
           </div>
         </div>
         <div class="banks">
@@ -92,7 +97,16 @@ import BanksSVG from './svg-components/banksSVG.vue'
 import { NGradientText } from 'naive-ui'
 
 export default {
-  components: { FooterLogoSVG, FacebookSVG, TikTokSVG, InstagramSVG, NGradientText, PhoneSVG, PinSVG, BanksSVG },
+  components: {
+    FooterLogoSVG,
+    FacebookSVG,
+    TikTokSVG,
+    InstagramSVG,
+    NGradientText,
+    PhoneSVG,
+    PinSVG,
+    BanksSVG
+  }
 }
 </script>
 
@@ -202,7 +216,6 @@ export default {
   transform-origin: bottom left;
   transform: scaleX(1);
 }
-
 
 .pin,
 .phone {

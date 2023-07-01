@@ -5,7 +5,7 @@ const handler = async function (event) {
     return { statusCode: 405, body: 'Method Not Allowed' }
   }
 
-  const { shoeModel, shoeSize, shippingForm } = JSON.parse(event.body)
+  const { shoeModel, shoeSize, shippingForm, price } = JSON.parse(event.body)
 
   const {
     fullName,
@@ -21,6 +21,16 @@ const handler = async function (event) {
 
   // Note: it is assumed here that either shoeModel or itemname will be present in orderForm
 
+  // Generate unique order code
+
+  // Get the current timestamp and convert it to a string
+  let timestamp = new Date().getTime().toString()
+  // Reverse the timestamp string to ensure we are getting the most unique part (the milliseconds)
+  let reversedTimestamp = timestamp.split('').reverse().join('')
+
+  // Convert reversed timestamp to base 36 (numbers + letters) and slice the first 10 characters
+  let orderCode = parseInt(reversedTimestamp, 10).toString(36).toUpperCase().slice(0, 10)
+
   try {
     const response = await fetch(`${process.env.URL}/.netlify/functions/emails/design`, {
       headers: {
@@ -30,7 +40,7 @@ const handler = async function (event) {
       body: JSON.stringify({
         from: 'soleblastofficial@gmail.com',
         to: 'soleblastmessages@gmail.com',
-        subject: 'Ready Design Submission from ' + fullName,
+        subject: 'Ready Design Submission, ' + orderCode,
         parameters: {
           // Order form data
           shoeModel: shoeModel,
@@ -44,12 +54,34 @@ const handler = async function (event) {
           townCity: townCity,
           postcode: postcode,
           country: country,
-          shippingNotes: shippingNotes
+          shippingNotes: shippingNotes,
+          orderCode: orderCode
         }
       })
     })
 
-    if (!response.ok) {
+    const response2 = await fetch(`${process.env.URL}/.netlify/functions/emails/order`, {
+      headers: {
+        'netlify-emails-secret': process.env.NETLIFY_EMAILS_SECRET
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        from: 'soleblastofficial@gmail.com',
+        to: email,
+        subject: 'Order Confirmation from SoleBlast',
+        parameters: {
+          // Order form data
+          name: fullName,
+          address: townCity + ', ' + streetAddress + ' ' + postcode,
+          phoneNumber: phoneNumber,
+          shoeSize: shoeSize,
+          price: price,
+          orderCode: orderCode
+        }
+      })
+    })
+
+    if (!response.ok || !response2.ok) {
       throw new Error(`HTTP ${response.status} ${response.statusText}`)
     }
 

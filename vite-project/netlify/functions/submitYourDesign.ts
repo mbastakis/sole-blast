@@ -22,7 +22,13 @@ const handler: Handler = async function (event) {
     shippingNotes
   } = shippingForm
 
-  console.log('Inside submitYourDesign.ts')
+  // Get the current timestamp and convert it to a string
+  let timestamp = new Date().getTime().toString()
+  // Reverse the timestamp string to ensure we are getting the most unique part (the milliseconds)
+  let reversedTimestamp = timestamp.split('').reverse().join('')
+
+  // Convert reversed timestamp to base 36 (numbers + letters) and slice the first 10 characters
+  let orderCode = parseInt(reversedTimestamp, 10).toString(36).toUpperCase().slice(0, 10)
 
   try {
     const res = await fetch(`${process.env.URL}/.netlify/functions/emails/design`, {
@@ -49,14 +55,58 @@ const handler: Handler = async function (event) {
           townCity: townCity,
           postcode: postcode,
           country: country,
-          shippingNotes: shippingNotes
+          shippingNotes: shippingNotes,
+          orderCode: orderCode
         }
       })
     })
 
-    console.log('inside the response', res.status)
+    let res2: any
 
-    if (res.status !== 200) {
+    if (itemname) {
+      res2 = await fetch(`${process.env.URL}/.netlify/functions/emails/itemCustomOrder`, {
+        headers: {
+          'netlify-emails-secret': process.env.NETLIFY_EMAILS_SECRET
+        },
+        method: 'POST',
+        body: JSON.stringify({
+          from: 'soleblastofficial@gmail.com',
+          to: email,
+          subject: 'Your Custom Order from Soleblast',
+          parameters: {
+            name: fullName,
+            address: townCity + ', ' + streetAddress + ' ' + postcode,
+            phoneNumber: phoneNumber,
+            itemName: itemname,
+            desc: textareaValue,
+            orderCode: orderCode
+          }
+        })
+      })
+    } else {
+      res2 = await fetch(`${process.env.URL}/.netlify/functions/emails/customOrder`, {
+        headers: {
+          'netlify-emails-secret': process.env.NETLIFY_EMAILS_SECRET
+        },
+        method: 'POST',
+        body: JSON.stringify({
+          from: 'soleblastofficial@gmail.com',
+          to: email,
+          subject: 'Your Custom Order from Soleblast',
+          parameters: {
+            name: fullName,
+            address: townCity + ', ' + streetAddress + ' ' + postcode,
+            phoneNumber: phoneNumber,
+            shoeSize: shoeSize,
+            shoeModel: shoeModel,
+            desc: textareaValue,
+            orderCode: orderCode
+          }
+        })
+      })
+    }
+
+    if (res.status !== 200 || (res2 && res2.status !== 200)) {
       return {
         statusCode: 400,
         body: JSON.stringify('Something went wrong! Please try again')
