@@ -76,7 +76,7 @@
       </ul>
       <div id="logo">
         <router-link to="/">
-          <img src="../assets/logo_final.png" height="120" alt="Website Logo" />
+          <img src="../assets/logo_final.png" height="100" alt="Website Logo" />
         </router-link>
       </div>
       <ul id="right-list" class="nav-list">
@@ -144,7 +144,7 @@ export default {
   margin: 0 auto 0 auto;
 }
 #logo img {
-  height: clamp(4rem, 3rem + 7vw, 8rem);
+  height: clamp(2rem, 2rem + 4vw, 8rem);
 }
 #ham-icon {
   cursor: pointer;

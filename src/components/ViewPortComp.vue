@@ -13,6 +13,7 @@ import {
   HemisphereLight,
   DirectionalLight,
   AmbientLight,
+  DirectionalLightHelper,
   Box3,
   Vector3
 } from 'three'
@@ -64,7 +65,7 @@ export default {
       this.hemiLight.position.set(0, 3, 6)
       // this.scene.add(this.hemiLight)
       this.dirLight = new DirectionalLight(0xffffff, 1)
-      this.dirLight.position.set(200, 200, 500)
+      this.dirLight.position.set(-200, 200, 1200)
       this.dirLight.castShadow = true
       this.dirLight.shadow.camera.top = 180
       this.dirLight.shadow.camera.bottom = -100
@@ -74,10 +75,10 @@ export default {
       this.scene.add(new AmbientLight(0x404040, 0.5))
       // GLFT
       this.loader = new GLTFLoader()
-      this.loader.load('/alien_shoe2.glb', (gltf) => {
+      this.loader.load('/shoe.glb', (gltf) => {
         this.model = gltf.scene
         this.scene.add(this.model)
-        const shoeSize = new Vector3(0.3138543045691101, 0.1380571369992008, 0.11502264321959318)
+        const shoeSize = new Vector3(0.3138543045691101, 0.1380571369992008, 1.8)
         const aspectRatio = this.width / this.height
         const maxDimension = Math.max(shoeSize.x, shoeSize.y, shoeSize.z)
         // Determine which field of view (horizontal or vertical) should be used for the calculation
@@ -137,13 +138,13 @@ export default {
               this.initialZRotation = this.model.rotation.z
             }
             // Add small up and down rotation on z-axis after the first 3 seconds of idle animation
-            const zRotationAmplitude = 0.03 // Adjust this value to change the amplitude of z-axis rotation
+            const zRotationAmplitude = 0.06 // Adjust this value to change the amplitude of z-axis rotation
             const targetZRotation =
               this.initialZRotation +
               zRotationAmplitude * Math.sin(((timeSinceIdle - 3) * Math.PI) / 2)
             this.model.rotation.z = this.lerp(this.model.rotation.z, targetZRotation, 0.1)
           }
-          this.model.position.y = initialHeight + (Math.sin(timeSinceIdle) * Math.PI) / 80
+          this.model.position.y = initialHeight + (Math.sin(timeSinceIdle) * Math.PI) / 20
         }
         this.renderer.render(this.scene, this.camera)
       }
@@ -159,7 +160,7 @@ export default {
       this.renderer.setSize(this.width, this.height)
 
       // Update shoe size
-      const shoeSize = new Vector3(0.3138543045691101, 0.1380571369992008, 0.11502264321959318)
+      const shoeSize = new Vector3(0.3138543045691101, 0.1380571369992008, 1.8)
       const aspectRatio = this.width / this.height
       const maxDimension = Math.max(shoeSize.x, shoeSize.y, shoeSize.z)
       // Determine which field of view (horizontal or vertical) should be used for the calculation
