@@ -5,11 +5,11 @@
 
 [[plugins]]
 package = "@netlify/plugin-emails"
-NETLIFY_EMAILS_PROVIDER = "sendgrid"
-NETLIFY_EMAILS_API_KEY = "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"
-NETLIFY_EMAILS_DIRECTORY = "./netlify/emails"
 
-[[plugins]]
+  [plugins.inputs]
+  NETLIFY_EMAILS_PROVIDER = "sendgrid"
+  NETLIFY_EMAILS_API_KEY = "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"
+  NETLIFY_EMAILS_DIRECTORY = "./netlify/emails"
 
 [[plugins]]
 package = "@netlify/plugin-lighthouse"
