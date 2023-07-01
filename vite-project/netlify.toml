@@ -4,7 +4,4 @@
   status = 200
 
 [[plugins]]
-package = "@netlify/plugin-emails"
-
-[[plugins]]
 package = "@netlify/plugin-lighthouse"
