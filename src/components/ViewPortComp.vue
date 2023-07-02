@@ -75,7 +75,7 @@ export default {
       this.scene.add(new AmbientLight(0x404040, 0.5))
       // GLFT
       this.loader = new GLTFLoader()
-      this.loader.load('/shoe.glb', (gltf) => {
+      this.loader.load('/shoe_fixed.glb', (gltf) => {
         this.model = gltf.scene
         this.scene.add(this.model)
         const shoeSize = new Vector3(0.3138543045691101, 0.1380571369992008, 1.8)
