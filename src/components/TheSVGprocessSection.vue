@@ -113,8 +113,8 @@ export default {
         }
       ]
 
-      let point1curve1 = { x: 0, y: 100 }
-      let point1curve2 = { x: 50, y: -300 }
+      let point1curve1 = { x: 0, y: 70 }
+      let point1curve2 = { x: 50, y: -200 }
 
       let point3curve1 = { x: 0, y: 100 }
       let point3curve2 = { x: 0, y: -250 }
@@ -186,7 +186,13 @@ export default {
           containerHeight.value = rect.height / devicePixelRatio.value
         }
 
-        path.value = calculatePath()
+        setTimeout(() => {
+          console.log('timeout')
+          const rect = infographicContainer.value.getBoundingClientRect()
+          containerWidth.value = rect.width / devicePixelRatio.value
+          containerHeight.value = rect.height / devicePixelRatio.value
+          path.value = calculatePath()
+        }, 1000)
 
         // Recalculate the path and container dimensions when the window is resized
         window.addEventListener('resize', () => {
@@ -202,6 +208,7 @@ export default {
             const rect = infographicContainer.value.getBoundingClientRect()
             containerWidth.value = rect.width / devicePixelRatio.value
             containerHeight.value = rect.height / devicePixelRatio.value
+
             path.value = calculatePath()
           }
         })
@@ -257,6 +264,8 @@ export default {
   height: 100%;
 }
 .connector path {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 15;
   fill: none;
 }
 .header {
