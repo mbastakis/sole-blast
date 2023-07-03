@@ -11,7 +11,7 @@
           <p>
             {{ $t('SVGProcessSection.steps.0') }}
           </p>
-          <div ref="step1" class="step1">
+          <div ref="step1" class="step1 step-svg">
             <TheStep1 />
           </div>
         </div>
@@ -20,7 +20,7 @@
           <p>
             {{ $t('SVGProcessSection.steps.1') }}
           </p>
-          <div ref="step2" class="step2">
+          <div ref="step2" class="step2 step-svg">
             <TheStep2 />
           </div>
         </div>
@@ -29,7 +29,7 @@
           <p>
             {{ $t('SVGProcessSection.steps.2') }}
           </p>
-          <div ref="step3" class="step3">
+          <div ref="step3" class="step3 step-svg">
             <TheStep3 />
           </div>
         </div>
@@ -38,7 +38,7 @@
           <p>
             {{ $t('SVGProcessSection.steps.3') }}
           </p>
-          <div ref="step4" class="step4">
+          <div ref="step4" class="step4 step-svg">
             <TheStep4 />
           </div>
         </div>
@@ -78,9 +78,9 @@ export default {
       const step3Rect = step3.value.getBoundingClientRect()
       const step4Rect = step4.value.getBoundingClientRect()
 
-      const step1offset = -17
-      const step2offset = 13
-      const step3offset = 5
+      const step1offset = -6
+      const step2offset = 0
+      const step3offset = 15
       // Calculate the start and end points of the path relative to the container
       const points = [
         {
@@ -186,13 +186,21 @@ export default {
           containerHeight.value = rect.height / devicePixelRatio.value
         }
 
+        path.value = calculatePath()
         setTimeout(() => {
           console.log('timeout')
           const rect = infographicContainer.value.getBoundingClientRect()
           containerWidth.value = rect.width / devicePixelRatio.value
           containerHeight.value = rect.height / devicePixelRatio.value
           path.value = calculatePath()
-        }, 1000)
+        }, 5000)
+
+        window.onload = () => {
+          const rect = this.infographicContainer.value.getBoundingClientRect()
+          this.containerWidth.value = rect.width / this.devicePixelRatio.value
+          this.containerHeight.value = rect.height / this.devicePixelRatio.value
+          this.path.value = this.calculatePath()
+        }
 
         // Recalculate the path and container dimensions when the window is resized
         window.addEventListener('resize', () => {
@@ -322,6 +330,14 @@ export default {
   margin-right: auto;
 }
 
+.step-svg {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
 @media (min-width: 601px) {
   #TheSVG {
     margin: auto var(--space-m);
@@ -368,6 +384,9 @@ export default {
 
   .connector path {
     stroke-width: 20;
+  }
+  .step-svg {
+    max-width: 350px;
   }
 }
 </style>
