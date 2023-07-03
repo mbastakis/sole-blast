@@ -176,6 +176,11 @@ export default {
         containerHeight.value = rect.height
       }
 
+      // After 350ms set the path to the calculated path
+      setTimeout(() => {
+        path.value = calculatePath()
+      }, 350)
+
       // Recalculate the path and container dimensions when the window is resized
       window.addEventListener('resize', () => {
         if (
