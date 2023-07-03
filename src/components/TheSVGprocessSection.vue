@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { ref, onMounted, watchEffect } from 'vue'
+import { ref, onMounted, watchEffect, nextTick } from 'vue'
 import TheStep1 from '@/components/svg-components/TheStep1.vue'
 import TheStep2 from '@/components/svg-components/TheStep2.vue'
 import TheStep3 from '@/components/svg-components/TheStep3.vue'
@@ -67,6 +67,9 @@ export default {
 
     const path = ref('')
 
+    // Add new ref for devicePixelRatio
+    const devicePixelRatio = ref(window.devicePixelRatio || 1)
+
     const calculatePath = () => {
       // Get the bounding rectangles of the SVGs and the container
       const containerRect = infographicContainer.value.getBoundingClientRect()
@@ -81,28 +84,32 @@ export default {
       // Calculate the start and end points of the path relative to the container
       const points = [
         {
-          x: step1Rect.left + step2Rect.width / 2 - containerRect.left,
-          y: step1Rect.bottom - containerRect.top + step1offset
+          x: (step1Rect.left + step2Rect.width / 2 - containerRect.left) / devicePixelRatio.value,
+          y: (step1Rect.bottom - containerRect.top + step1offset) / devicePixelRatio.value
         },
         {
-          x: step2Rect.left + step2Rect.width / 2 - containerRect.left,
-          y: step2Rect.top - containerRect.top + 30
+          x: (step2Rect.left + step2Rect.width / 2 - containerRect.left) / devicePixelRatio.value,
+          y: (step2Rect.top - containerRect.top + 30) / devicePixelRatio.value
         },
         {
-          x: step2Rect.left + step2Rect.width / 2 - containerRect.left,
-          y: step2Rect.bottom - containerRect.top - step2offset
+          x: (step2Rect.left + step2Rect.width / 2 - containerRect.left) / devicePixelRatio.value,
+          y: (step2Rect.bottom - containerRect.top - step2offset) / devicePixelRatio.value
         },
         {
-          x: step3Rect.right - containerRect.left - 10,
-          y: step3Rect.top + step3Rect.height / 2 - containerRect.top + step3offset
+          x: (step3Rect.right - containerRect.left - 10) / devicePixelRatio.value,
+          y:
+            (step3Rect.top + step3Rect.height / 2 - containerRect.top + step3offset) /
+            devicePixelRatio.value
         },
         {
-          x: step3Rect.left - containerRect.left + 10,
-          y: step3Rect.top + step3Rect.height / 2 - containerRect.top + step3offset
+          x: (step3Rect.left - containerRect.left + 10) / devicePixelRatio.value,
+          y:
+            (step3Rect.top + step3Rect.height / 2 - containerRect.top + step3offset) /
+            devicePixelRatio.value
         },
         {
-          x: step4Rect.left + step4Rect.width / 2 - containerRect.left,
-          y: step4Rect.top - containerRect.top + 30
+          x: (step4Rect.left + step4Rect.width / 2 - containerRect.left) / devicePixelRatio.value,
+          y: (step4Rect.top - containerRect.top + 30) / devicePixelRatio.value
         }
       ]
 
@@ -165,37 +172,39 @@ export default {
         step3.value &&
         step4.value
       ) {
-        path.value = calculatePath()
+        nextTick(() => {
+          path.value = calculatePath()
+        })
       }
     })
 
     onMounted(() => {
-      if (infographicContainer.value) {
-        const rect = infographicContainer.value.getBoundingClientRect()
-        containerWidth.value = rect.width
-        containerHeight.value = rect.height
-      }
-
-      // After 350ms set the path to the calculated path
-      setTimeout(() => {
-        path.value = calculatePath()
-      }, 350)
-
-      // Recalculate the path and container dimensions when the window is resized
-      window.addEventListener('resize', () => {
-        if (
-          infographicContainer.value &&
-          connector.value &&
-          step1.value &&
-          step2.value &&
-          step3.value &&
-          step4.value
-        ) {
+      nextTick(() => {
+        if (infographicContainer.value) {
           const rect = infographicContainer.value.getBoundingClientRect()
-          containerWidth.value = rect.width
-          containerHeight.value = rect.height
-          path.value = calculatePath()
+          containerWidth.value = rect.width / devicePixelRatio.value
+          containerHeight.value = rect.height / devicePixelRatio.value
         }
+
+        path.value = calculatePath()
+
+        // Recalculate the path and container dimensions when the window is resized
+        window.addEventListener('resize', () => {
+          devicePixelRatio.value = window.devicePixelRatio || 1
+          if (
+            infographicContainer.value &&
+            connector.value &&
+            step1.value &&
+            step2.value &&
+            step3.value &&
+            step4.value
+          ) {
+            const rect = infographicContainer.value.getBoundingClientRect()
+            containerWidth.value = rect.width / devicePixelRatio.value
+            containerHeight.value = rect.height / devicePixelRatio.value
+            path.value = calculatePath()
+          }
+        })
       })
     })
 
@@ -208,7 +217,8 @@ export default {
       step4,
       path,
       containerWidth,
-      containerHeight
+      containerHeight,
+      devicePixelRatio
     }
   },
   components: {
@@ -245,6 +255,9 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+}
+.connector path {
+  fill: none;
 }
 .header {
   margin: var(--space-l) auto;
