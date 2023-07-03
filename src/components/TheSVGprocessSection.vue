@@ -11,7 +11,7 @@
           <p>
             {{ $t('SVGProcessSection.steps.0') }}
           </p>
-          <div ref="step1" class="step1">
+          <div ref="step1" class="step1 step-svg">
             <TheStep1 />
           </div>
         </div>
@@ -20,7 +20,7 @@
           <p>
             {{ $t('SVGProcessSection.steps.1') }}
           </p>
-          <div ref="step2" class="step2">
+          <div ref="step2" class="step2 step-svg">
             <TheStep2 />
           </div>
         </div>
@@ -29,7 +29,7 @@
           <p>
             {{ $t('SVGProcessSection.steps.2') }}
           </p>
-          <div ref="step3" class="step3">
+          <div ref="step3" class="step3 step-svg">
             <TheStep3 />
           </div>
         </div>
@@ -38,7 +38,7 @@
           <p>
             {{ $t('SVGProcessSection.steps.3') }}
           </p>
-          <div ref="step4" class="step4">
+          <div ref="step4" class="step4 step-svg">
             <TheStep4 />
           </div>
         </div>
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { ref, onMounted, watchEffect } from 'vue'
+import { ref, onMounted, watchEffect, nextTick } from 'vue'
 import TheStep1 from '@/components/svg-components/TheStep1.vue'
 import TheStep2 from '@/components/svg-components/TheStep2.vue'
 import TheStep3 from '@/components/svg-components/TheStep3.vue'
@@ -67,6 +67,9 @@ export default {
 
     const path = ref('')
 
+    // Add new ref for devicePixelRatio
+    const devicePixelRatio = ref(window.devicePixelRatio || 1)
+
     const calculatePath = () => {
       // Get the bounding rectangles of the SVGs and the container
       const containerRect = infographicContainer.value.getBoundingClientRect()
@@ -75,39 +78,43 @@ export default {
       const step3Rect = step3.value.getBoundingClientRect()
       const step4Rect = step4.value.getBoundingClientRect()
 
-      const step1offset = -17
-      const step2offset = 13
-      const step3offset = 5
+      const step1offset = -6
+      const step2offset = 0
+      const step3offset = 15
       // Calculate the start and end points of the path relative to the container
       const points = [
         {
-          x: step1Rect.left + step2Rect.width / 2 - containerRect.left,
-          y: step1Rect.bottom - containerRect.top + step1offset
+          x: (step1Rect.left + step2Rect.width / 2 - containerRect.left) / devicePixelRatio.value,
+          y: (step1Rect.bottom - containerRect.top + step1offset) / devicePixelRatio.value
         },
         {
-          x: step2Rect.left + step2Rect.width / 2 - containerRect.left,
-          y: step2Rect.top - containerRect.top + 30
+          x: (step2Rect.left + step2Rect.width / 2 - containerRect.left) / devicePixelRatio.value,
+          y: (step2Rect.top - containerRect.top + 30) / devicePixelRatio.value
         },
         {
-          x: step2Rect.left + step2Rect.width / 2 - containerRect.left,
-          y: step2Rect.bottom - containerRect.top - step2offset
+          x: (step2Rect.left + step2Rect.width / 2 - containerRect.left) / devicePixelRatio.value,
+          y: (step2Rect.bottom - containerRect.top - step2offset) / devicePixelRatio.value
         },
         {
-          x: step3Rect.right - containerRect.left - 10,
-          y: step3Rect.top + step3Rect.height / 2 - containerRect.top + step3offset
+          x: (step3Rect.right - containerRect.left - 10) / devicePixelRatio.value,
+          y:
+            (step3Rect.top + step3Rect.height / 2 - containerRect.top + step3offset) /
+            devicePixelRatio.value
         },
         {
-          x: step3Rect.left - containerRect.left + 10,
-          y: step3Rect.top + step3Rect.height / 2 - containerRect.top + step3offset
+          x: (step3Rect.left - containerRect.left + 10) / devicePixelRatio.value,
+          y:
+            (step3Rect.top + step3Rect.height / 2 - containerRect.top + step3offset) /
+            devicePixelRatio.value
         },
         {
-          x: step4Rect.left + step4Rect.width / 2 - containerRect.left,
-          y: step4Rect.top - containerRect.top + 30
+          x: (step4Rect.left + step4Rect.width / 2 - containerRect.left) / devicePixelRatio.value,
+          y: (step4Rect.top - containerRect.top + 30) / devicePixelRatio.value
         }
       ]
 
-      let point1curve1 = { x: 0, y: 100 }
-      let point1curve2 = { x: 50, y: -300 }
+      let point1curve1 = { x: 0, y: 70 }
+      let point1curve2 = { x: 50, y: -200 }
 
       let point3curve1 = { x: 0, y: 100 }
       let point3curve2 = { x: 0, y: -250 }
@@ -165,37 +172,54 @@ export default {
         step3.value &&
         step4.value
       ) {
-        path.value = calculatePath()
+        nextTick(() => {
+          path.value = calculatePath()
+        })
       }
     })
 
     onMounted(() => {
-      if (infographicContainer.value) {
-        const rect = infographicContainer.value.getBoundingClientRect()
-        containerWidth.value = rect.width
-        containerHeight.value = rect.height
-      }
-
-      // After 350ms set the path to the calculated path
-      setTimeout(() => {
-        path.value = calculatePath()
-      }, 350)
-
-      // Recalculate the path and container dimensions when the window is resized
-      window.addEventListener('resize', () => {
-        if (
-          infographicContainer.value &&
-          connector.value &&
-          step1.value &&
-          step2.value &&
-          step3.value &&
-          step4.value
-        ) {
+      nextTick(() => {
+        if (infographicContainer.value) {
           const rect = infographicContainer.value.getBoundingClientRect()
-          containerWidth.value = rect.width
-          containerHeight.value = rect.height
-          path.value = calculatePath()
+          containerWidth.value = rect.width / devicePixelRatio.value
+          containerHeight.value = rect.height / devicePixelRatio.value
         }
+
+        path.value = calculatePath()
+        setTimeout(() => {
+          console.log('timeout')
+          const rect = infographicContainer.value.getBoundingClientRect()
+          containerWidth.value = rect.width / devicePixelRatio.value
+          containerHeight.value = rect.height / devicePixelRatio.value
+          path.value = calculatePath()
+        }, 5000)
+
+        window.onload = () => {
+          const rect = this.infographicContainer.value.getBoundingClientRect()
+          this.containerWidth.value = rect.width / this.devicePixelRatio.value
+          this.containerHeight.value = rect.height / this.devicePixelRatio.value
+          this.path.value = this.calculatePath()
+        }
+
+        // Recalculate the path and container dimensions when the window is resized
+        window.addEventListener('resize', () => {
+          devicePixelRatio.value = window.devicePixelRatio || 1
+          if (
+            infographicContainer.value &&
+            connector.value &&
+            step1.value &&
+            step2.value &&
+            step3.value &&
+            step4.value
+          ) {
+            const rect = infographicContainer.value.getBoundingClientRect()
+            containerWidth.value = rect.width / devicePixelRatio.value
+            containerHeight.value = rect.height / devicePixelRatio.value
+
+            path.value = calculatePath()
+          }
+        })
       })
     })
 
@@ -208,7 +232,8 @@ export default {
       step4,
       path,
       containerWidth,
-      containerHeight
+      containerHeight,
+      devicePixelRatio
     }
   },
   components: {
@@ -245,6 +270,11 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+}
+.connector path {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 15;
+  fill: none;
 }
 .header {
   margin: var(--space-l) auto;
@@ -300,6 +330,14 @@ export default {
   margin-right: auto;
 }
 
+.step-svg {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
 @media (min-width: 601px) {
   #TheSVG {
     margin: auto var(--space-m);
@@ -346,6 +384,9 @@ export default {
 
   .connector path {
     stroke-width: 20;
+  }
+  .step-svg {
+    max-width: 350px;
   }
 }
 </style>

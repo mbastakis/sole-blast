@@ -137,9 +137,6 @@ export default {
   gap: var(--space-m);
   flex-direction: column;
 }
-.logo {
-  margin-right: var(--space-m);
-}
 .phrase {
   font-size: var(--step-4);
   font-weight: 700;
