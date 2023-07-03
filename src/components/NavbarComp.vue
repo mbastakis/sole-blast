@@ -122,6 +122,11 @@ export default {
     changeLang() {
       this.$i18n.locale === 'en' ? (this.$i18n.locale = 'gr') : (this.$i18n.locale = 'en')
     }
+  },
+  mounted() {
+    this.$watch('$route', () => {
+      this.close_ham_menu()
+    })
   }
 }
 </script>
