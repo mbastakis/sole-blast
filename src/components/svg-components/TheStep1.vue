@@ -76,21 +76,5 @@
 svg {
   width: 100%;
   height: 100%;
-  transform: scale(1.2);
-}
-@media (min-width: 660px) {
-  svg {
-    transform: scale(1.5);
-  }
-}
-@media (min-width: 961px) {
-  svg {
-    transform: scale(2);
-  }
-}
-@media (min-width: 1281px) {
-  svg {
-    transform: scale(2.5);
-  }
 }
 </style>
