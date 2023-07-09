@@ -8,15 +8,22 @@
 <script>
 export default {
   name: 'TestView',
+  mounted() {
+    this.initializePayment()
+  },
   methods: {
+    initializePayment() {
+      if (window.SimplifyCommerce) {
+        window.SimplifyCommerce.hostedPayments(this.paymentResponseHandler, {
+          operation: 'create.payment',
+          publicKey: 'sbpb_YzYxOWMwNTItYTRlMi00MTM4LTllZmMtYTI3NzFkYjdjMDky',
+          sandbox: true,
+          frameId: 'paymentFrame'
+        })
+      }
+    },
     makePayment() {
-      var paymentFrame = document.getElementById('paymentFrame')
-
-      window.SimplifyCommerce.hostedPayments(this.paymentResponseHandler, {
-        operation: 'create.payment',
-        publicKey: 'lvpb_ODY5MzMxZTgtMjE1ZS00ZThiLWFiMmEtM2JlOTk3YTc0OGM1',
-        frameId: 'paymentFrame'
-      })
+      // Trigger your payment process
     },
     paymentResponseHandler(response) {
       // Handle the payment response here
