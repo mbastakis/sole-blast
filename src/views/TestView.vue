@@ -14,7 +14,7 @@ export default {
 
       window.SimplifyCommerce.hostedPayments(this.paymentResponseHandler, {
         operation: 'create.payment',
-        publicKey: 'YOUR_HOSTED_PAYMENTS_ENABLED_PUBLIC_KEY',
+        publicKey: 'lvpb_ODY5MzMxZTgtMjE1ZS00ZThiLWFiMmEtM2JlOTk3YTc0OGM1',
         frameId: 'paymentFrame'
       })
     },
