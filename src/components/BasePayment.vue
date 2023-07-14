@@ -9,7 +9,7 @@
       :data-reference="reference"
       :data-amount="amount"
       :data-color="color"
-      style="border: none; height: 500px; overflow: hidden"
+      data-redirect-url="https://www.sole-blast.com/success"
     >
     </iframe>
   </div>
@@ -22,7 +22,7 @@ const scKey = 'sbpb_YzYxOWMwNTItYTRlMi00MTM4LTllZmMtYTI3NzFkYjdjMDky'
 const name = 'Jasmine Green Tea'
 const description = 'Smooth tea with a rich jasmine bouquet'
 const reference = '99999'
-const amount = '10'
+const amount = '900'
 const color = '#282e5c'
 
 let iframe = ref(null)

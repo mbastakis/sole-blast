@@ -15,6 +15,4 @@ export default {
 }
 </script>
 
-<style>
-/* Here you can style your iframe and the rest of your page */
-</style>
+<style></style>
