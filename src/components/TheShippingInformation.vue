@@ -66,6 +66,7 @@
           <router-link to="/policies" class="link">Terms & Conditions</router-link>
         </div>
       </n-form-item>
+
       <div class="btn" @click="submitForm" :class="{ 'is-loading': loading }">
         {{ loading ? 'Processing...' : 'Continue to Payment' }}
       </div>

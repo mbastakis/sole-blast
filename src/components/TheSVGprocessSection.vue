@@ -196,10 +196,10 @@ export default {
         }, 5000)
 
         window.onload = () => {
-          const rect = this.infographicContainer.value.getBoundingClientRect()
-          this.containerWidth.value = rect.width / this.devicePixelRatio.value
-          this.containerHeight.value = rect.height / this.devicePixelRatio.value
-          this.path.value = this.calculatePath()
+          const rect = infographicContainer.value.getBoundingClientRect()
+          containerWidth.value = rect.width / devicePixelRatio.value
+          containerHeight.value = rect.height / devicePixelRatio.value
+          path.value = calculatePath()
         }
 
         // Recalculate the path and container dimensions when the window is resized

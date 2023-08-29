@@ -66,6 +66,25 @@
         />
       </keep-alive>
     </n-message-provider>
+
+    <div class="payment" v-if="isPaymentVisible">
+      <div class="paymentInfo">
+        <div class="paymentInfoTitle">{{ $t('shopItem.paymentInfo.title') }}</div>
+        <div class="paymentInfoDescription">{{ $t('shopItem.paymentInfo.description') }}</div>
+      </div>
+      <div class="payment-section">
+        <NTabs type="segment">
+          <NTabPane name="Credit Card" tab="Credit Card">
+            <BasePayment @paymentSuccess="submitPayment" />
+          </NTabPane>
+          <NTabPane name="IBAN" tab="IBAN" class="iban-section">
+            {{ $t('shopItem.paymentInfo.iban') }}
+            <div class="btn">Complete Order</div>
+          </NTabPane>
+        </NTabs>
+      </div>
+    </div>
+
     <div class="faq-container">
       <BaseFAQContainer :faqData="faq" />
     </div>
@@ -84,13 +103,16 @@ import {
   NFormItem,
   NForm,
   NMessageProvider,
-  useMessage
+  useMessage,
+  NTabs,
+  NTabPane
 } from 'naive-ui'
 import BaseFAQContainer from '@/components/BaseFAQContainer.vue'
 import TheShippingInformation from '@/components/TheShippingInformation.vue'
 import { ref, nextTick, watchEffect, provide, toRefs, reactive } from 'vue'
 import loading_img from '../assets/loading_img.webp'
 import { useRouter } from 'vue-router'
+import BasePayment from '../components/BasePayment.vue'
 
 export default {
   data() {
@@ -183,11 +205,16 @@ export default {
     NFormItem,
     BaseFAQContainer,
     TheShippingInformation,
-    NMessageProvider
+    NMessageProvider,
+    BasePayment,
+    NTabs,
+    NTabPane
   },
   setup() {
     const formRef = ref(null)
+    const shippingFormRef = ref(null)
     const isShippingInformationVisible = ref(false)
+    const isPaymentVisible = ref(true)
 
     const message = useMessage()
     const router = useRouter()
@@ -306,6 +333,7 @@ export default {
     })
 
     return {
+      isPaymentVisible,
       isShippingInformationVisible,
       formRef,
       form,
@@ -331,14 +359,30 @@ export default {
           }
         })
       },
-      async submitInformation(shippingFormData) {
+      submitInformation(formData) {
+        state.loading = false
+        formRef.value.validate((errors) => {
+          shippingFormRef.value = formData
+          isPaymentVisible.value = true
+          nextTick(() => {
+            const shippingInfoElement = document.querySelector('.section')
+            if (shippingInfoElement) {
+              shippingInfoElement.scrollIntoView({ behavior: 'smooth' })
+            }
+          })
+        })
+      },
+      async submitPayment() {
+        console.log('on sumbit payment')
         const shoeModel = document.querySelector('.name').innerHTML
         const price = document.querySelector('.price').innerHTML
 
-        const shippingForm = shippingFormData
+        const shippingForm = shippingFormRef.value
+        console.log(shippingForm)
         const shoeSize = form.value.shoeSize
 
         // Include orderForm and shippingForm in the request
+        console.log(shippingForm)
         const requestData = {
           shippingForm: shippingForm,
           shoeModel: shoeModel,
@@ -580,6 +624,50 @@ img {
   background-color: var(--primary);
   border-top-right-radius: 1.5em;
   border-top-left-radius: 1.5em;
+  color: var(--secondary);
+}
+
+.payment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--secondary);
+  padding: var(--space-m);
+  text-align: center;
+  gap: var(--space-s);
+  max-width: 900px;
+
+  background-color: var(--primary);
+  border-radius: 1.5em;
+  margin-inline: auto;
+  margin-bottom: var(--space-l);
+}
+.paymentInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.paymentInfoTitle {
+  font-size: var(--step-3);
+  font-weight: 800;
+}
+.paymentInfoDescription {
+  font-size: var(--step-0);
+  font-weight: 400;
+}
+.payment-section {
+  width: 100%;
+}
+
+.iban-section {
+  font-size: var(--step-0);
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
   color: var(--secondary);
 }
 
