@@ -110,7 +110,12 @@
           ]
         }
       }
-    ]
+    ],
+    "paymentInfo": {
+      "title": "Payment Details",
+      "description": "Complete your purchase by providing your payment details.",
+      "iban": "You can pay for your orders via IBAN transfer. Complete your order to receive information on how to continue."
+    }
   },
   "SVGProcessSection": {
     "title": "Create Your Design",
