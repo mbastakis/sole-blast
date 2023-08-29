@@ -214,7 +214,7 @@ export default {
     const formRef = ref(null)
     const shippingFormRef = ref(null)
     const isShippingInformationVisible = ref(false)
-    const isPaymentVisible = ref(true)
+    const isPaymentVisible = ref(false)
 
     const message = useMessage()
     const router = useRouter()
