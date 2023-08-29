@@ -406,7 +406,7 @@ export default {
           state.loading = false
           message.success('Your order has been submitted!')
           setTimeout(() => {
-            router.push('/payment')
+            router.push('/success')
           }, 500)
         }
       }
