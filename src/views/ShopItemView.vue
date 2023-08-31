@@ -75,11 +75,17 @@
       <div class="payment-section">
         <NTabs type="segment">
           <NTabPane name="Credit Card" tab="Credit Card">
-            <BasePayment @paymentSuccess="submitPayment" />
+            <BasePayment
+              @paymentSuccess="submitPayment"
+              :name="item.name"
+              :description="item.description"
+              :reference="generateReferenceData()"
+              :amount="item.price * 100"
+            />
           </NTabPane>
           <NTabPane name="IBAN" tab="IBAN" class="iban-section">
             {{ $t('shopItem.paymentInfo.iban') }}
-            <div class="btn">Complete Order</div>
+            <div class="btn" @click="submitPayment">Complete Order</div>
           </NTabPane>
         </NTabs>
       </div>
@@ -219,6 +225,8 @@ export default {
     const message = useMessage()
     const router = useRouter()
 
+    const generatedRef = ref(null)
+
     const state = reactive({
       loading: false
     })
@@ -338,6 +346,7 @@ export default {
       formRef,
       form,
       shoeSizes,
+      generatedRef,
       ...toRefs(state),
       rules: {
         shoeSize: { required: true, message: 'Please select a shoe size', trigger: 'change' }
@@ -373,7 +382,6 @@ export default {
         })
       },
       async submitPayment() {
-        console.log('on sumbit payment')
         const shoeModel = document.querySelector('.name').innerHTML
         const price = document.querySelector('.price').innerHTML
 
@@ -382,12 +390,12 @@ export default {
         const shoeSize = form.value.shoeSize
 
         // Include orderForm and shippingForm in the request
-        console.log(shippingForm)
         const requestData = {
           shippingForm: shippingForm,
           shoeModel: shoeModel,
           shoeSize: shoeSize,
-          price: price
+          price: price,
+          orderCode: this.generateReferenceData()
         }
 
         // Send a POST request to your Netlify function
@@ -448,6 +456,22 @@ export default {
       }
 
       this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop // For mobile or negative scrolling
+    },
+    generateReferenceData() {
+      if (this.generatedRef) {
+        return this.generatedRef
+      } else {
+        // Get the current timestamp and convert it to a string
+        let timestamp = new Date().getTime().toString()
+        // Reverse the timestamp string to ensure we are getting the most unique part (the milliseconds)
+        let reversedTimestamp = timestamp.split('').reverse().join('')
+
+        // Convert reversed timestamp to base 36 (numbers + letters) and slice the first 10 characters
+        let orderCode = parseInt(reversedTimestamp, 10).toString(36).toUpperCase().slice(0, 10)
+
+        this.generatedRef = orderCode
+        return orderCode
+      }
     }
   },
   mounted() {

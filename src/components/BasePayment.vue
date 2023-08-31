@@ -3,26 +3,39 @@
     <iframe
       ref="iframe"
       name="my-hosted-form"
-      :data-sc-key="scKey"
+      data-sc-key="sbpb_YzYxOWMwNTItYTRlMi00MTM4LTllZmMtYTI3NzFkYjdjMDky"
       :data-name="name"
       :data-description="description"
       :data-reference="reference"
       :data-amount="amount"
-      :data-color="color"
+      data-color="#282e5c"
     >
     </iframe>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, defineEmits } from 'vue'
+import { ref, onMounted, defineEmits, defineProps } from 'vue'
 
-const scKey = 'sbpb_YzYxOWMwNTItYTRlMi00MTM4LTllZmMtYTI3NzFkYjdjMDky'
-const name = 'Jasmine Green Tea'
-const description = 'Smooth tea with a rich jasmine bouquet'
-const reference = '99999'
-const amount = '900'
-const color = '#282e5c'
+// Defining props
+const props = defineProps({
+  name: {
+    type: String,
+    default: 'Jasmine Green Tea'
+  },
+  description: {
+    type: String,
+    default: 'Smooth tea with a rich jasmine bouquet'
+  },
+  reference: {
+    type: String,
+    default: '99991'
+  },
+  amount: {
+    type: String,
+    default: '100'
+  }
+})
 
 let iframe = ref(null)
 
