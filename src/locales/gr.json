@@ -1,8 +1,195 @@
 {
   "navbar": {
-    "shop": "Καταστημα",
-    "yourdesign": "Φτιαξε το δικο σου",
+    "shop": "Κατάστημα",
+    "yourdesign": "Το Σχέδιο Σου",
     "faq": "Συχνες Ερωτησεις",
-    "aboutus": "Γνωρισε μας"
+    "aboutus": "Σχετικά με Εμάς"
+  },
+  "footer": {
+    "shop": "Κατάστημα",
+    "yourdesign": "Το Σχέδιο Σου",
+    "faq": "Συχνες Ερωτησεις",
+    "aboutus": "Σχετικά με Εμάς",
+    "social": "Κοινωνικά Δίκτυα",
+    "contact": "Επικοινωνία",
+    "title": "Color Your Walk!",
+    "policies": "Πολιτικές",
+    "payment": "Πληρωμή",
+    "terms": "Όροι & Προϋποθέσεις"
+  },
+  "hero-section": {
+    "description": "Χειροποίητο",
+    "sliding-text": "Color Your Walk!"
+  },
+  "mini-gallery": {
+    "title": "Περιηγηθείτε στο Κατάστημα Παπουτσιών μας",
+    "button": "Δείτε Περισσότερα"
+  },
+  "process-section": {
+    "title": "Η Διαδικασία Δημιουργίας",
+    "description": "Πιστεύουμε ότι τα παπούτσια προσφέρουν μια μοναδική ευκαιρία για να απελευθερώσετε την εσωτερική σας δημιουργικότητα, να αναδείξετε το στυλ σας και να κάνετε μια εντύπωση. Είμαστε αφοσιωμένοι στην δημιουργία της ξεχωριστής ιδέας κάθε πελάτη σε ένα εντυπωσιακό παπούτσι.",
+    "step1": {
+      "title": "1. Μοιραστείτε το Όραμά σας",
+      "description": "μαζί μας και εμείς θα το κάνουμε πραγματικότητα."
+    },
+    "step2": {
+      "title": "2. Σκίτσο & Έγκριση",
+      "description": "Είμαστε αφοσιωμένοι στο να κάνουμε το όραμά σας πραγματικότητα όπως το φαντάζεστε. Γι' αυτό αρχίζουμε δημιουργώντας ένα προκαταρκτικό σκίτσο του σχεδίου σας και το μοιραζόμαστε μαζί σας για ανατροφοδότηση και έγκριση."
+    },
+    "step3": {
+      "title": "3. Από σκίτσο σε πραγματικότητα",
+      "description": "Κάθε παπούτσι Sole-Blast είναι προσεκτικά χειροποίητο, εξασφαλίζοντας ένα μοναδικό και εντυπωσιακό αποτέλεσμα. Στη συνέχεια, στέλνεται απευθείας στην πόρτα σας. Απολαύστε!"
+    },
+    "yourdesignBtn": "Εδώ",
+    "galleryBtn": "Γκαλερί",
+    "yourdesignBtn2": "Το Σχέδιό σας",
+    "splitBtn": "Ή"
+  },
+  "contact": {
+    "title": "Επικοινωνία",
+    "name-label": "ΠΛΗΡΕΣ ΟΝΟΜΑ",
+    "email-label": "EMAIL",
+    "message-label": "ΜΗΝΥΜΑ",
+    "name-placeholder": "Εισάγετε πλήρες όνομα",
+    "email-placeholder": "Εισάγετε το email σας",
+    "message-placeholder": "Εισάγετε το μήνυμά σας",
+    "button": "Αποστολή Μηνύματος",
+    "sendingButton": "Αποστολή..."
+  },
+  "shopItem": {
+    "features": [
+      "Σχέδιο SoleBlast",
+      "Μόνο Γνήσια Παπούτσια",
+      "100% Χειροποίητο",
+      "Αδιάβροχο, Ανθεκτικό και Ανθεκτικό στις Γρατζουνιές",
+      "Παγκόσμια Αποστολή"
+    ],
+    "description": "Ένα παπούτσι, χίλιες εντυπώσεις. Κάντε κάθε βήμα που κάνετε ένα μνημείο αυτο-έκφρασης, ένα σύμβολο της μοναδικότητάς σας. Εγγυημένα σχόλια!",
+    "more-info": "ΠΛΗΡΟΦΟΡΙΕΣ ΠΑΡΑΓΓΕΛΙΑΣ",
+    "size-label": "ΜΕΓΕΘΟΣ ΠΑΠΟΥΤΣΙΟΥ",
+    "size-placeholder": "Επιλέξτε το μέγεθος του παπουτσιού σας",
+    "button": "Συνέχεια",
+    "faq": [
+      {
+        "question": "Λεπτομέρειες Παραγγελίας",
+        "answer": {
+          "title": "Είμαστε δεσμευμένοι να ολοκληρώσουμε την παραγγελία σας όσο το δυνατόν πιο γρήγορα. Η διαδικασία είναι ως εξής:",
+          "bullets": [
+            "Η παράδοση των παπουτσιών στο εργαστήριο μας διαρκεί περίπου 3 εργάσιμες ημέρες.",
+            "Η προσαρμογή και ζωγραφική απαιτούν μεταξύ 2-7 ημερών, ανάλογα με την πολυπλοκότητα του σχεδίου.",
+            "Η αποστολή διαρκεί 5-10 εργάσιμες ημέρες για την Ευρώπη και 7-20 ημέρες για άλλες χώρες."
+          ],
+          "end": "Θα σας ενημερώνουμε μέσω email για την πρόοδο της παραγγελίας σας."
+        }
+      },
+      {
+        "question": "Αποστολή",
+        "answer": {
+          "description": [
+            "\tΠροσφέρεται παγκόσμια αποστολή, χρησιμοποιώντας μόνο επιλογές με κωδικό παρακολούθησης, για να διασφαλίσετε την ασφαλή παραλαβή της παραγγελίας σας.",
+            "Συνεργαζόμαστε με αξιόπιστες υπηρεσίες αποστολής όπως DHL, UPS, και FedEx, διασφαλίζοντας την ασφαλή και έγκαιρη παράδοση της παραγγελίας σας. Τα έξοδα αποστολής εξαρτώνται από τη χώρα προορισμού. Το ακριβές κόστος αποστολής θα παρασχεθεί κατά το ταμείο.",
+            "Καθώς στέλνουμε από την Ευρώπη, δεν υπάρχουν τελωνειακά δικαιώματα για τις χώρες της Ευρωπαϊκής Ένωσης. Για όλες τις υπόλοιπες χώρες, είναι ευθύνη του αγοραστή να ελέγξει αν ισχύουν τελωνειακά δικαιώματα στη χώρα τους και να πληρώσουν οποιουσδήποτε φόρους και τέλη που μπορεί να χρεωθούν κατά την άφιξη. Παρακαλούμε να ενημερωθείτε για τις πολιτικές της χώρας σας πριν από την αγορά."
+          ]
+        }
+      },
+      {
+        "question": "Πληρωμή και Ασφάλεια",
+        "answer": {
+          "description": [
+            "\tΗ ασφάλειά σας είναι η προτεραιότητά μας. Ο ιστότοπός μας είναι πιστοποιημένος HTTPS, εξασφαλίζοντας ένα 100% ασφαλές περιβάλλον αγορών.",
+            "Δεχόμαστε τους πιο ασφαλείς τρόπους πληρωμής, συμπεριλαμβανομένων των πιστωτικών καρτών και του Paypal."
+          ]
+        }
+      },
+      {
+        "question": "Returns and Policies",
+        "answer": {
+          "description": [
+            "\tEverything is hand-crafted and made to order therefore all sales are final and we do not offer refunds. ",
+            "However, if we make a mistake, such as sending the wrong size or design, we will correct our mistake. Please contact us upon receipt of your order, if there are any issues. "
+          ]
+        }
+      }
+    ],
+    "paymentInfo": {
+      "title": "Πληροφορίες Πληρωμής",
+      "description": "Ολοκλήρωσε την αγορά σου προσθέτοντας της πληροφορίες πληρωμής σας.",
+      "iban": "Μπορείτε να πληρώσετε την παραγγελία σας μέσω IBAN μεταφοράς. Ολοκληρώστε την παραγγελία σας για να λάβετε πληροφορίες για το πώς να συνεχίσετε."
+    }
+  },
+  "SVGProcessSection": {
+    "title": "Δημιουργήστε το Σχέδιό σας",
+    "steps": []
+  },
+  "pricingTiers": {
+    "title": "Pricing Information",
+    "description": "The prices that are listed below, are for the custom artwork. Expect an additional cost for the price of the base shoe, which depends on the shoe model of your choice.",
+    "btn": {
+      "suffix": " Tiers",
+      "view": "View",
+      "hide": "Hide"
+    },
+    "tiers": [
+      {
+        "title": "Basic Design",
+        "price": "€100",
+        "description": "Designs that require ~10 hours of effort. EG: Small custom drawings, symbols or characters. Any kind of simple artwork.",
+        "features": ["Simple design", "1-3 colors"]
+      },
+      {
+        "title": "Premium Design",
+        "price": "€150",
+        "description": "Designs that require ~15 hours of effort. EG: More complex and detailed drawings, such as multiple characters, stylized text or logos.",
+        "features": ["Advanced design", "Up to 5 colors", "Stylized text"]
+      },
+      {
+        "title": "Masterpiece Edition",
+        "price": "€200",
+        "description": "Designs that require 20+ hours of effort, high-level artistic skills and creativity. EG: High detail characters, abstract/realistic art or graffiti. Almost anything is possible!",
+        "features": [
+          "High detail design",
+          "Entire shoe coverage",
+          "Many colors",
+          "Detailed background"
+        ]
+      }
+    ],
+    "note": "* Note that the prices are indicative, the final price will be determined after we process your request."
+  },
+  "orderInfo": {
+    "title": "Custom Order Information",
+    "description": "Help us bring your dream design to life. Please provide as many details and try to be specific in your description, allowing us to better tailor the design to your vision. Feel free to upload any image files or reference any of our existing designs to better communicate your idea. After you've submitted your idea, remember to check your email within the next couple of days. We'll send you a sketch and the final cost of your unique design.",
+    "shoeTab": "Shoe",
+    "otherTab": "Other Item",
+    "refImg": {
+      "label": "REFERENCE IMAGES",
+      "placeholder": "Click or drag a file to this area to upload"
+    },
+    "shoeModel": {
+      "label": "SHOE MODEL",
+      "placeholder": "Select a shoe model",
+      "placeholder2": "Input a shoe model"
+    },
+    "shoeSize": {
+      "label": "SHOE SIZE",
+      "placeholder": "Select a shoe size"
+    },
+    "radioBtn": {
+      "label": "Do you want to customize shoes you already own?",
+      "tooltip": "The shoes must be in brand new condition."
+    },
+    "shoeDescription": {
+      "label": "SHOE DESCRIPTION",
+      "placeholder": "e.g. The theme is alien invention. Description:\n- Base color: Deep purple\n- Flaming pyramids and palm tree figures on both sides of the shoe\n- On the inner side of the shoe, a UFO shoots a blue beam which causes human figures to levitate\n- On the outer side of the shoe, a blue flame meteor is approaching the pyramids below\n- On the front of the shoe, a rocket is taking off"
+    },
+    "btn": "Continue",
+    "itemName": {
+      "label": "ITEM NAME/TYPE",
+      "placeholder": "E.g. Louis Vuitton Pocket Organizer Wallet"
+    },
+    "designDescription": {
+      "label": "DESIGN DESCRIPTION",
+      "placeholder": "E.g. I want you to paint a panda figure on the wallet.\n- The panda shall look like Takashi Murakami's popular panda design, as referenced in the pictures i provided.\n- In the belly of the panda, write the initial letters of my name 'NF' using an elegant font and black color. \n- Main colors: Black and white\n- Colors for the details: Pink, yellow, brown, light green and light blue."
+    }
   }
 }
