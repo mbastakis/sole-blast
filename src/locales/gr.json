@@ -102,11 +102,11 @@
         }
       },
       {
-        "question": "Returns and Policies",
+        "question": "Επιστροφές και Πολιτικές",
         "answer": {
           "description": [
-            "\tEverything is hand-crafted and made to order therefore all sales are final and we do not offer refunds. ",
-            "However, if we make a mistake, such as sending the wrong size or design, we will correct our mistake. Please contact us upon receipt of your order, if there are any issues. "
+            "\tΌλα τα προϊόντα είναι χειροποίητα και γίνονται κατόπιν παραγγελίας, επομένως όλες οι εκπτώσεις είναι οριστικές και δεν προσφέρουμε επιστροφές χρημάτων.",
+            "Ωστόσο, εάν κάνουμε κάποιο λάθος, όπως αποστολή λάθος μεγέθους ή σχεδίου, θα διορθώσουμε το λάθος μας. Επικοινωνήστε μαζί μας κατά την παραλαβή της παραγγελίας σας, εάν υπάρχουν προβλήματα."
           ]
         }
       }
@@ -119,77 +119,129 @@
   },
   "SVGProcessSection": {
     "title": "Δημιουργήστε το Σχέδιό σας",
-    "steps": []
+    "steps": [
+      "1. Μοιραστείτε το όραμά σας και ας ξεκινήσουμε ένα καλλιτεχνικό ταξίδι, δημιουργώντας τα μοναδικά σας Sole-Blast παπούτσια!",
+      "2. Οι καλλιτέχνες μας βυθίζονται στην ιδέα σας, μετατρέποντάς την σε ένα απτό σκίτσο. Διαμορφώνουν τη φαντασία σας και περιμένουν την έγκρισή σας, διασφαλίζοντας ότι το όραμά σας θα ζωντανέψει όπως ακριβώς το έχετε φανταστεί.",
+      "3. Εδώ συμβαίνει η μαγεία. Τα απλά παπούτσια μεταμορφώνονται σε εξαιρετικά έργα τέχνης. Κάθε ζευγάρι είναι σχολαστικά ζωγραφισμένο στο χέρι, εξασφαλίζοντας ένα μοναδικό και σαγηνευτικό αποτέλεσμα.",
+      "4. Ενθουσιασμός στο κατώφλι σας! Τα ειδικά σχεδιασμένα παπούτσια σας φτάνουν, έτοιμα να αναδείξουν το στυλ σας."
+    ]
   },
   "pricingTiers": {
-    "title": "Pricing Information",
-    "description": "The prices that are listed below, are for the custom artwork. Expect an additional cost for the price of the base shoe, which depends on the shoe model of your choice.",
+    "title": "Πληροφορίες Τιμολόγησης",
+    "description": "Οι τιμές που αναφέρονται παρακάτω αφορούν το προσαρμοσμένο έργο τέχνης. Αναμένετε ένα επιπλέον κόστος για την τιμή του βασικού παπουτσιού, το οποίο εξαρτάται από το μοντέλο παπουτσιού της επιλογής σας.",
     "btn": {
-      "suffix": " Tiers",
-      "view": "View",
-      "hide": "Hide"
+      "suffix": " Βαθμίδες",
+      "view": "Εμφάνισε",
+      "hide": "Κρύψε"
     },
     "tiers": [
       {
-        "title": "Basic Design",
+        "title": "Βασικη Έκδοση",
         "price": "€100",
-        "description": "Designs that require ~10 hours of effort. EG: Small custom drawings, symbols or characters. Any kind of simple artwork.",
-        "features": ["Simple design", "1-3 colors"]
+        "description": "Σχέδια που απαιτούν ~10 ώρες δουλείας. Π.χ.: Μικρά προσαρμοσμένα σχέδια, σύμβολα ή χαρακτήρες. Οποιοδήποτε απλό έργο τέχνης.",
+        "features": ["Απλό Σχέδιο", "1-3 χρώματα"]
       },
       {
-        "title": "Premium Design",
+        "title": "Προχωρημένη Εκδοση",
         "price": "€150",
-        "description": "Designs that require ~15 hours of effort. EG: More complex and detailed drawings, such as multiple characters, stylized text or logos.",
-        "features": ["Advanced design", "Up to 5 colors", "Stylized text"]
+        "description": "Σχέδια που απαιτούν ~15 ώρες δουλείας. Π.χ.: Πιο πολύπλοκα και λεπτομερή σχέδια, όπως πολλοί χαρακτήρες, στυλιζαρισμένο κείμενο ή λογότυπα.",
+        "features": ["Σύνθετη σχεδίαση", "Έως 5 χρώματα", "Στιλοποιημένο κείμενο"]
       },
       {
-        "title": "Masterpiece Edition",
+        "title": "Αριστουργηματική Έκδοση",
         "price": "€200",
-        "description": "Designs that require 20+ hours of effort, high-level artistic skills and creativity. EG: High detail characters, abstract/realistic art or graffiti. Almost anything is possible!",
+        "description": "Σχέδια που απαιτούν 20+ ώρες δουλείας, υψηλού επιπέδου καλλιτεχνικές δεξιότητες και δημιουργικότητα. Π.χ.: Χαρακτήρες με υψηλή λεπτομέρεια, αφηρημένη/ρεαλιστική τέχνη ή γκράφιτι. Σχεδόν όλα είναι δυνατά!",
         "features": [
-          "High detail design",
-          "Entire shoe coverage",
-          "Many colors",
-          "Detailed background"
+          "Σχέδιο υψηλής λεπτομέρειας",
+          "Ολόκληρη κάλυψη παπουτσιών",
+          "Πολλά χρώματα",
+          "Περίτεχνο φόντο"
         ]
       }
     ],
-    "note": "* Note that the prices are indicative, the final price will be determined after we process your request."
+    "note": "* Σημειώστε ότι οι τιμές είναι ενδεικτικές, η τελική τιμή θα καθοριστεί αφού επεξεργαστούμε το αίτημά σας."
   },
   "orderInfo": {
-    "title": "Custom Order Information",
-    "description": "Help us bring your dream design to life. Please provide as many details and try to be specific in your description, allowing us to better tailor the design to your vision. Feel free to upload any image files or reference any of our existing designs to better communicate your idea. After you've submitted your idea, remember to check your email within the next couple of days. We'll send you a sketch and the final cost of your unique design.",
-    "shoeTab": "Shoe",
-    "otherTab": "Other Item",
+    "title": "Πληροφορίες παραγγελίας",
+    "description": "Βοηθήστε μας να ζωντανέψουμε το σχέδιο των ονείρων σας. Δώστε όσες λεπτομέρειες και προσπαθήστε να είστε συγκεκριμένοι στην περιγραφή σας, επιτρέποντάς μας να προσαρμόσουμε καλύτερα το σχέδιο στο όραμά σας. Μη διστάσετε να ανεβάσετε οποιοδήποτε αρχείο εικόνας ή να ανατρέξετε σε οποιοδήποτε από τα υπάρχοντα σχέδιά μας στο επικοινωνήστε καλύτερα την ιδέα σας. Αφού υποβάλετε την ιδέα σας, θυμηθείτε να ελέγξετε το email σας εντός των επόμενων δύο ημερών. Θα σας στείλουμε ένα σκίτσο και το τελικό κόστος του μοναδικού σας σχεδίου.",
+    "shoeTab": "Παπούτσι",
+    "otherTab": "Διαφορετικό Αντικείμενο",
     "refImg": {
-      "label": "REFERENCE IMAGES",
-      "placeholder": "Click or drag a file to this area to upload"
+      "label": "ΕΙΚΟΝΕΣ ΑΝΑΦΟΡΑΣ",
+      "placeholder": "Κάντε κλικ ή σύρετε ένα αρχείο σε αυτήν την περιοχή για μεταφόρτωση"
     },
     "shoeModel": {
-      "label": "SHOE MODEL",
-      "placeholder": "Select a shoe model",
-      "placeholder2": "Input a shoe model"
+      "label": "ΜΟΝΤΕΛΟ ΠΑΠΟΥΤΣΙΟΥ",
+      "placeholder": "Διαλέξτε ένα μοντέλο παπουτσιού",
+      "placeholder2": "Εισαγάγετε ένα μοντέλο παπουτσιού"
     },
     "shoeSize": {
-      "label": "SHOE SIZE",
-      "placeholder": "Select a shoe size"
+      "label": "ΜΕΓΕΘΟΣ ΠΑΠΟΥΤΣΙΟΥ",
+      "placeholder": "Διαλέξτε ένα μέγεθος παπουτσιού"
     },
     "radioBtn": {
-      "label": "Do you want to customize shoes you already own?",
-      "tooltip": "The shoes must be in brand new condition."
+      "label": "Θέλετε να χρησιμοποιήσετε παπούτσια που έχετε ήδη;",
+      "tooltip": "Τα παπούτσια πρέπει να είναι σε ολοκαίνουργια κατάσταση."
     },
     "shoeDescription": {
-      "label": "SHOE DESCRIPTION",
-      "placeholder": "e.g. The theme is alien invention. Description:\n- Base color: Deep purple\n- Flaming pyramids and palm tree figures on both sides of the shoe\n- On the inner side of the shoe, a UFO shoots a blue beam which causes human figures to levitate\n- On the outer side of the shoe, a blue flame meteor is approaching the pyramids below\n- On the front of the shoe, a rocket is taking off"
+      "label": "ΠΕΡΙΓΡΑΦΗ ΠΑΠΟΥΤΣΙΟΥ",
+      "placeholder": "π.χ. Το θέμα είναι η εισβολή εξωγήινων. Περιγραφή:\n- Χρώμα βάσης: Βαθύ μωβ\n- Φλεγόμενες πυραμίδες και φιγούρες φοίνικα και στις δύο πλευρές του παπουτσιού\n- Στην εσωτερική πλευρά του παπουτσιού, ένα UFO εκτοξεύει μια μπλε ακτίνα η οποία αναγκάζει ανθρώπινες μορφές να αιωρούνται\n - Στην εξωτερική πλευρά του παπουτσιού, ένας μετεωρίτης μπλε φλόγας πλησιάζει τις πυραμίδες από κάτω\n- Στο μπροστινό μέρος του παπουτσιού, ένας πύραυλος απογειώνεται"
     },
-    "btn": "Continue",
+    "btn": "Συνέχεια",
     "itemName": {
-      "label": "ITEM NAME/TYPE",
-      "placeholder": "E.g. Louis Vuitton Pocket Organizer Wallet"
+      "label": "ΟΝΟΜΑ/ΤΥΠΟΣ ΑΝΤΙΚΕΙΜΕΝΟΥ",
+      "placeholder": "Π.χ. Πορτοφόλι Louis Vuitton Pocket Organizer"
     },
     "designDescription": {
-      "label": "DESIGN DESCRIPTION",
-      "placeholder": "E.g. I want you to paint a panda figure on the wallet.\n- The panda shall look like Takashi Murakami's popular panda design, as referenced in the pictures i provided.\n- In the belly of the panda, write the initial letters of my name 'NF' using an elegant font and black color. \n- Main colors: Black and white\n- Colors for the details: Pink, yellow, brown, light green and light blue."
+      "label": "ΠΕΡΙΓΡΑΦΗ ΣΧΕΔΙΟΥ",
+      "placeholder": "Π.χ. Θέλω να ζωγραφίσεις μια φιγούρα panda στο πορτοφόλι.\n- Το panda θα μοιάζει με το δημοφιλές σχέδιο panda του Takashi Murakami, όπως αναφέρεται στις εικόνες που έδωσα.\n- Στην κοιλιά του panda, γράψε τα αρχικά γράμματα του ονομάστε \"NF\" χρησιμοποιώντας μια κομψή γραμματοσειρά και μαύρο χρώμα. \n- Κύρια χρώματα: Μαύρο και άσπρο\n- Χρώματα για τις λεπτομέρειες: Ροζ, κίτρινο, καφέ, ανοιχτό πράσινο και γαλάζιο."
+    }
+  },
+  "shippingInfo": {
+    "title": "Πληροφορίες Αποστολής",
+    "name": {
+      "label": "ΠΛΗΡΕΣ ΟΝΟΜΑ",
+      "placeholder": "Εισάγετε πλήρες όνομα"
+    },
+    "phone": {
+      "label": "ΑΡΙΘΜΟΣ ΤΗΛΕΦΩΝΟΥ",
+      "placeholder": "Εισάγετε τον αριθμό τηλεφώνου σας"
+    },
+    "email": {
+      "label": "EMAIL",
+      "placeholder": "Εισάγετε email"
+    },
+    "confirmEmail": {
+      "label": "ΕΠΑΛΗΘΕΥΣΗ EMAIL",
+      "placeholder": "Εισάγετε email"
+    },
+    "address": {
+      "label": "ΔΙΕΥΘΥΝΣΗ ΑΠΟΣΤΟΛΗΣ",
+      "placeholder": "Εισάγετε διεύθυνση αποστολής"
+    },
+    "country": {
+      "label": "ΧΩΡΑ",
+      "placeholder": "Διαλέξτε χώρα"
+    },
+    "town": {
+      "label": "ΠΟΛΗ",
+      "placeholder": "Εισάγετε πόλη"
+    },
+    "postcode": {
+      "label": "Τ.Κ.",
+      "placeholder": "Εισάγετε ταχυδρομικό κωδικό"
+    },
+    "shipnotes": {
+      "label": "ΣΗΜΕΙΩΣΗ ΑΠΟΣΤΟΛΗΣ",
+      "placeholder": "Εισάγετε σημείωση αποστολής"
+    },
+    "terms": {
+      "text": "Δέχομαι τους",
+      "link": "Όρους και προϋποθέσεις"
+    },
+    "btn": {
+      "process": "Επεξεργασια...",
+      "continue": "Συνέχεια προς Πληρωμή"
     }
   }
 }

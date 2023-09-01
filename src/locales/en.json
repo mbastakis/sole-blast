@@ -196,5 +196,52 @@
       "label": "DESIGN DESCRIPTION",
       "placeholder": "E.g. I want you to paint a panda figure on the wallet.\n- The panda shall look like Takashi Murakami's popular panda design, as referenced in the pictures i provided.\n- In the belly of the panda, write the initial letters of my name 'NF' using an elegant font and black color. \n- Main colors: Black and white\n- Colors for the details: Pink, yellow, brown, light green and light blue."
     }
+  },
+  "shippingInfo": {
+    "title": "Shipping Information",
+    "name": {
+      "label": "FULL NAME",
+      "placeholder": "Enter full name"
+    },
+    "phone": {
+      "label": "PHONE NUMBER",
+      "placeholder": "Enter phone number"
+    },
+    "email": {
+      "label": "EMAIL",
+      "placeholder": "Enter email"
+    },
+    "confirmEmail": {
+      "label": "CONFIRM EMAIL",
+      "placeholder": "Confirm email"
+    },
+    "address": {
+      "label": "STREET ADDRESS",
+      "placeholder": "Enter street address"
+    },
+    "country": {
+      "label": "COUNTRY",
+      "placeholder": "Select country"
+    },
+    "town": {
+      "label": "TOWN/CITY",
+      "placeholder": "Enter town or city"
+    },
+    "postcode": {
+      "label": "POSTCODE",
+      "placeholder": "Enter postcode"
+    },
+    "shipnotes": {
+      "label": "SHIPPING NOTES",
+      "placeholder": "Enter any shipping notes"
+    },
+    "terms": {
+      "text": "I accept the",
+      "link": "Terms & Conditions"
+    },
+    "btn": {
+      "process": "Processing...",
+      "continue": "Continue to Payment"
+    }
   }
 }
