@@ -40,24 +40,19 @@ export default {
   data() {
     return {
       payment: {
-        title: 'Payment Methods',
+        title: this.$t('payment.title'),
         items: [
           {
-            question: 'IBAN',
-            answer:
-              'You can pay for your orders via IBAN transfer. If you just completed an order there will be an email sent to your email. Please use the unique order code sent to your email as the payment description. Our IBAN number is:<br><br> <span style="display: flex; justify-content: center; align-items: center"><strong style="margin-right: var(--space-s);">GR3302 6017 1000 0600 2006 48005</strong> <br> \
-              <div class="btn" style="border: 1px solid var(--secondary); border-radius: 25%; padding: var(--space-3xs) var(--space-2xs); z-index: 10;">Copy</div></span>\
-              <br>\
-              <div>Copyright © 2023 Soleblast. All rights reserved.</div>\
-              '
+            question: this.$t('payment.items.0.question'),
+            answer: this.$t('payment.items.0.answer')
           },
           {
-            question: 'Credit Card',
-            answer: 'Comming soon. We are working on it.'
+            question: this.$t('payment.items.1.question'),
+            answer: this.$t('payment.items.1.answer')
           },
           {
-            question: 'PayPal',
-            answer: 'Comming soon. We are working on it.'
+            question: this.$t('payment.items.2.question'),
+            answer: this.$t('payment.items.2.answer')
           }
         ]
       }

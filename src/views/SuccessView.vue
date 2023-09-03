@@ -3,8 +3,8 @@
     <div class="success-container">
       <successSVG class="svg" />
       <div class="message">
-        <h1>Success!</h1>
-        <p>Please check your email for the order information. Thank you for your purchase!</p>
+        <h1>{{ $t('success.h1') }}</h1>
+        <p>{{ $t('success.p') }}</p>
       </div>
     </div>
   </div>
