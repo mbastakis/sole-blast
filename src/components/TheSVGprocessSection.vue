@@ -188,7 +188,6 @@ export default {
 
         path.value = calculatePath()
         setTimeout(() => {
-          console.log('timeout')
           const rect = infographicContainer.value.getBoundingClientRect()
           containerWidth.value = rect.width / devicePixelRatio.value
           containerHeight.value = rect.height / devicePixelRatio.value

@@ -2,9 +2,9 @@
   <div id="notFound">
     <div class="text-container">
       <div class="header">404</div>
-      <div class="text">Uh-oh! This page appears to have been abducted by aliens...</div>
+      <div class="text">{{ $t('notFound.text') }}</div>
       <router-link class="router-link" to="/">
-        <div class="btn">Warp back Home!</div>
+        <div class="btn">{{ $t('notFound.btn') }}</div>
       </router-link>
     </div>
     <alienSpaceShipSVG class="svg" />

@@ -132,7 +132,7 @@
                 clearable
               />
             </n-form-item>
-            <div class="btn" @click="submitForm2">Continue</div>
+            <div class="btn" @click="submitForm2">{{ $t('orderInfo.btn') }}</div>
           </n-form>
         </div>
       </n-tab-pane>
@@ -208,40 +208,109 @@ export default defineComponent({
     })
 
     const shoeModels = ref([
-      { label: 'Nike Air Force 1 Low', value: 'Nike Air Force 1 Low'},
-      { label: 'Nike Air Force 1 High', value: 'Nike Air Force 1 High'},
-      { label: 'Nike Dunk Low', value: 'Nike Dunk Low'},
-      { label: 'Vans Slip-On', value: 'Vans Slip-On'},
-      { label: 'Vans Old Skool', value: 'Vans Old Skool'},
-      { label: 'Vans Classic', value: 'Vans Classic'},
-      { label: 'Dr. Martens 1460', value: 'Dr. Martens 1460'},
+      { label: 'Nike Air Force 1 Low', value: 'Nike Air Force 1 Low' },
+      { label: 'Nike Air Force 1 High', value: 'Nike Air Force 1 High' },
+      { label: 'Nike Dunk Low', value: 'Nike Dunk Low' },
+      { label: 'Vans Slip-On', value: 'Vans Slip-On' },
+      { label: 'Vans Old Skool', value: 'Vans Old Skool' },
+      { label: 'Vans Classic', value: 'Vans Classic' },
+      { label: 'Dr. Martens 1460', value: 'Dr. Martens 1460' },
       { label: 'Air Jordan 1 Mid', value: 'Air Jordan 1 Mid' }
     ])
 
     const shoeSizes = ref([
-      { label: "EU 35.5 - US Men's 4 - US Women's 5.5", value: "EU 35.5 - US Men's 4 - US Women's 5.5",},
-      { label: "EU 36 - US Men's 4.5 - US Women's 6", value: "EU 36 - US Men's 4.5 - US Women's 6"},
-      { label: "EU 36.5 - US Men's 5 - US Women's 6.5", value: "EU 36.5 - US Men's 5 - US Women's 6.5"},
-      { label: "EU 37 - US Men's 5 - US Women's 6.5", value: "EU 37 - US Men's 5 - US Women's 6.5"},
-      { label: "EU 37.5 - US Men's 5.5 - US Women's 7", value: "EU 37.5 - US Men's 5.5 - US Women's 7"},
-      { label: "EU 38 - US Men's 6 - US Women's 7.5", value: "EU 38 - US Men's 6 - US Women's 7.5"},
-      { label: "EU 38.5 - US Men's 6 - US Women's 7.5", value: "EU 38.5 - US Men's 6 - US Women's 7.5"},
-      { label: "EU 39 - US Men's 6.5 - US Women's 8", value: "EU 39 - US Men's 6.5 - US Women's 8"},
-      { label: "EU 40 - US Men's 7.5 - US Women's 9", value: "EU 40 - US Men's 7.5 - US Women's 9"},
-      { label: "EU 40.5 - US Men's 8 - US Women's 9.5", value: "EU 40.5 - US Men's 8 - US Women's 9.5"},
-      { label: "EU 41 - US Men's 8.5 - US Women's 10", value: "EU 41 - US Men's 8.5 - US Women's 10"},
-      { label: "EU 42 - US Men's 9 - US Women's 10.5", value: "EU 42 - US Men's 9 - US Women's 10.5"},
-      { label: "EU 42.5 - US Men's 9.5 - US Women's 11", value: "EU 42.5 - US Men's 9.5 - US Women's 11"},
-      { label: "EU 43 - US Men's 10 - US Women's 11.5", value: "EU 43 - US Men's 10 - US Women's 11.5"},
-      { label: "EU 44 - US Men's 10.5 - US Women's 12", value: "EU 44 - US Men's 10.5 - US Women's 12"},
-      { label: "EU 44.5 - US Men's 11 - US Women's 12.5", value: "EU 44.5 - US Men's 11 - US Women's 12.5"},
-      { label: "EU 45 - US Men's 11.5 - US Women's 13", value: "EU 45 - US Men's 11.5 - US Women's 13"},
-      { label: "EU 45.5 - US Men's 12 - US Women's 13.5", value: "EU 45.5 - US Men's 12 - US Women's 13.5"},
-      { label: "EU 46 - US Men's 12.5 - US Women's 14", value: "EU 46 - US Men's 12.5 - US Women's 14"},
-      { label: "EU 47 - US Men's 13 - US Women's 14.5", value: "EU 47 - US Men's 13 - US Women's 14.5"},
-      { label: "EU 47.5 - US Men's 13.5 - US Women's 15", value: "EU 47.5 - US Men's 13.5 - US Women's 15"},
-      { label: "EU 48.5 - US Men's 14 - US Women's 15.5", value: "EU 48.5 - US Men's 14 - US Women's 15.5"},
-      { label: "EU 49.5 - US Men's 15 - US Women's 16.5", value: "EU 49.5 - US Men's 15 - US Women's 16.5"}
+      {
+        label: "EU 35.5 - US Men's 4 - US Women's 5.5",
+        value: "EU 35.5 - US Men's 4 - US Women's 5.5"
+      },
+      {
+        label: "EU 36 - US Men's 4.5 - US Women's 6",
+        value: "EU 36 - US Men's 4.5 - US Women's 6"
+      },
+      {
+        label: "EU 36.5 - US Men's 5 - US Women's 6.5",
+        value: "EU 36.5 - US Men's 5 - US Women's 6.5"
+      },
+      {
+        label: "EU 37 - US Men's 5 - US Women's 6.5",
+        value: "EU 37 - US Men's 5 - US Women's 6.5"
+      },
+      {
+        label: "EU 37.5 - US Men's 5.5 - US Women's 7",
+        value: "EU 37.5 - US Men's 5.5 - US Women's 7"
+      },
+      {
+        label: "EU 38 - US Men's 6 - US Women's 7.5",
+        value: "EU 38 - US Men's 6 - US Women's 7.5"
+      },
+      {
+        label: "EU 38.5 - US Men's 6 - US Women's 7.5",
+        value: "EU 38.5 - US Men's 6 - US Women's 7.5"
+      },
+      {
+        label: "EU 39 - US Men's 6.5 - US Women's 8",
+        value: "EU 39 - US Men's 6.5 - US Women's 8"
+      },
+      {
+        label: "EU 40 - US Men's 7.5 - US Women's 9",
+        value: "EU 40 - US Men's 7.5 - US Women's 9"
+      },
+      {
+        label: "EU 40.5 - US Men's 8 - US Women's 9.5",
+        value: "EU 40.5 - US Men's 8 - US Women's 9.5"
+      },
+      {
+        label: "EU 41 - US Men's 8.5 - US Women's 10",
+        value: "EU 41 - US Men's 8.5 - US Women's 10"
+      },
+      {
+        label: "EU 42 - US Men's 9 - US Women's 10.5",
+        value: "EU 42 - US Men's 9 - US Women's 10.5"
+      },
+      {
+        label: "EU 42.5 - US Men's 9.5 - US Women's 11",
+        value: "EU 42.5 - US Men's 9.5 - US Women's 11"
+      },
+      {
+        label: "EU 43 - US Men's 10 - US Women's 11.5",
+        value: "EU 43 - US Men's 10 - US Women's 11.5"
+      },
+      {
+        label: "EU 44 - US Men's 10.5 - US Women's 12",
+        value: "EU 44 - US Men's 10.5 - US Women's 12"
+      },
+      {
+        label: "EU 44.5 - US Men's 11 - US Women's 12.5",
+        value: "EU 44.5 - US Men's 11 - US Women's 12.5"
+      },
+      {
+        label: "EU 45 - US Men's 11.5 - US Women's 13",
+        value: "EU 45 - US Men's 11.5 - US Women's 13"
+      },
+      {
+        label: "EU 45.5 - US Men's 12 - US Women's 13.5",
+        value: "EU 45.5 - US Men's 12 - US Women's 13.5"
+      },
+      {
+        label: "EU 46 - US Men's 12.5 - US Women's 14",
+        value: "EU 46 - US Men's 12.5 - US Women's 14"
+      },
+      {
+        label: "EU 47 - US Men's 13 - US Women's 14.5",
+        value: "EU 47 - US Men's 13 - US Women's 14.5"
+      },
+      {
+        label: "EU 47.5 - US Men's 13.5 - US Women's 15",
+        value: "EU 47.5 - US Men's 13.5 - US Women's 15"
+      },
+      {
+        label: "EU 48.5 - US Men's 14 - US Women's 15.5",
+        value: "EU 48.5 - US Men's 14 - US Women's 15.5"
+      },
+      {
+        label: "EU 49.5 - US Men's 15 - US Women's 16.5",
+        value: "EU 49.5 - US Men's 15 - US Women's 16.5"
+      }
     ])
 
     onMounted(() => {

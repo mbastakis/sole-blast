@@ -16,20 +16,11 @@ const handler = async function (event) {
     townCity,
     postcode,
     country,
-    shippingNotes
+    shippingNotes,
+    orderCode
   } = shippingForm
 
   // Note: it is assumed here that either shoeModel or itemname will be present in orderForm
-
-  // Generate unique order code
-
-  // Get the current timestamp and convert it to a string
-  let timestamp = new Date().getTime().toString()
-  // Reverse the timestamp string to ensure we are getting the most unique part (the milliseconds)
-  let reversedTimestamp = timestamp.split('').reverse().join('')
-
-  // Convert reversed timestamp to base 36 (numbers + letters) and slice the first 10 characters
-  let orderCode = parseInt(reversedTimestamp, 10).toString(36).toUpperCase().slice(0, 10)
 
   try {
     const response = await fetch(`${process.env.URL}/.netlify/functions/emails/design`, {

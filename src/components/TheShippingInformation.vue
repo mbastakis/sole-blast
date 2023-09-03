@@ -1,60 +1,102 @@
 <template>
   <div id="shippingInfo">
     <div class="info-container">
-      <div class="header">Shipping Information</div>
+      <div class="header">{{ $t('shippingInfo.title') }}</div>
     </div>
 
     <n-form class="shipping-form" ref="formRef" :model="form" :rules="rules" label-placement="top">
       <div class="resp-flex-row">
-        <n-form-item class="resp-flex-row-item" label="FULL NAME" path="fullName">
-          <n-input v-model:value="form.fullName" placeholder="Enter full name" />
+        <n-form-item
+          class="resp-flex-row-item"
+          :label="$t('shippingInfo.name.label')"
+          path="fullName"
+        >
+          <n-input
+            v-model:value="form.fullName"
+            :placeholder="$t('shippingInfo.name.placeholder')"
+          />
         </n-form-item>
 
-        <n-form-item class="resp-flex-row-item" label="PHONE NUMBER" path="phoneNumber">
-          <n-input v-model:value="form.phoneNumber" placeholder="Enter phone number" />
+        <n-form-item
+          class="resp-flex-row-item"
+          :label="$t('shippingInfo.phone.label')"
+          path="phoneNumber"
+        >
+          <n-input
+            v-model:value="form.phoneNumber"
+            :placeholder="$t('shippingInfo.phone.placeholder')"
+          />
         </n-form-item>
       </div>
 
       <div class="flex-row">
-        <n-form-item class="flex-row-item" label="EMAIL" path="email">
-          <n-input v-model:value="form.email" placeholder="Enter email" />
+        <n-form-item class="flex-row-item" :label="$t('shippingInfo.email.label')" path="email">
+          <n-input v-model:value="form.email" :placeholder="$t('shippingInfo.email.placeholder')" />
         </n-form-item>
 
-        <n-form-item class="flex-row-item" label="CONFIRM EMAIL" path="confirmEmail">
-          <n-input v-model:value="form.confirmEmail" placeholder="Confirm email" />
+        <n-form-item
+          class="flex-row-item"
+          :label="$t('shippingInfo.confirmEmail.label')"
+          path="confirmEmail"
+        >
+          <n-input
+            v-model:value="form.confirmEmail"
+            :placeholder="$t('shippingInfo.confirmEmail.placeholder')"
+          />
         </n-form-item>
       </div>
 
       <div class="space"></div>
 
       <div class="resp-flex-row">
-        <n-form-item class="resp-flex-row-item" label="STREET ADDRESS" path="streetAddress">
-          <n-input v-model:value="form.streetAddress" placeholder="Enter street address" />
+        <n-form-item
+          class="resp-flex-row-item"
+          :label="$t('shippingInfo.address.label')"
+          path="streetAddress"
+        >
+          <n-input
+            v-model:value="form.streetAddress"
+            :placeholder="$t('shippingInfo.address.placeholder')"
+          />
         </n-form-item>
 
-        <n-form-item class="resp-flex-row-item" label="COUNTRY" path="country">
+        <n-form-item
+          class="resp-flex-row-item"
+          :label="$t('shippingInfo.country.label')"
+          path="country"
+        >
           <n-select
             v-model:value="form.country"
-            placeholder="Select country"
+            :placeholder="$t('shippingInfo.country.placeholder')"
             :options="countries"
           />
         </n-form-item>
       </div>
 
       <div class="flex-row">
-        <n-form-item class="flex-row-item" label="TOWN/CITY" path="townCity">
-          <n-input v-model:value="form.townCity" placeholder="Enter town or city" />
+        <n-form-item class="flex-row-item" :label="$t('shippingInfo.town.label')" path="townCity">
+          <n-input
+            v-model:value="form.townCity"
+            :placeholder="$t('shippingInfo.town.placeholder')"
+          />
         </n-form-item>
 
-        <n-form-item class="flex-row-item" label="POSTCODE" path="postcode">
-          <n-input v-model:value="form.postcode" placeholder="Enter postcode" />
+        <n-form-item
+          class="flex-row-item"
+          :label="$t('shippingInfo.postcode.label')"
+          path="postcode"
+        >
+          <n-input
+            v-model:value="form.postcode"
+            :placeholder="$t('shippingInfo.postcode.placeholder')"
+          />
         </n-form-item>
       </div>
 
-      <n-form-item label="SHIPPING NOTES" path="shippingNotes">
+      <n-form-item :label="$t('shippingInfo.shipnotes.label')" path="shippingNotes">
         <n-input
           v-model:value="form.shippingNotes"
-          placeholder="Enter any shipping notes"
+          :placeholder="$t('shippingInfo.shipnotes.placeholder')"
           type="textarea"
         />
       </n-form-item>
@@ -62,13 +104,13 @@
       <n-form-item label="" path="checkbox" class="checkbox">
         <n-checkbox v-model:checked="form.checkbox" />
         <div class="text">
-          I accept the
-          <router-link to="/policies" class="link">Terms & Conditions</router-link>
+          {{ $t('shippingInfo.terms.text') }}
+          <router-link to="/policies" class="link">{{ $t('shippingInfo.terms.link') }}</router-link>
         </div>
       </n-form-item>
 
       <div class="btn" @click="submitForm" :class="{ 'is-loading': loading }">
-        {{ loading ? 'Processing...' : 'Continue to Payment' }}
+        {{ loading ? $t('shippingInfo.btn.process') : $t('shippingInfo.btn.continue') }}
       </div>
     </n-form>
   </div>
