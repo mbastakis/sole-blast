@@ -14,7 +14,7 @@ const i18n = createI18n({
   globalInjection: true,
   fallbackLocale: 'en',
   availableLocales: ['en', 'gr'],
-  messages: messages
+  messages: messages,
 })
 
 const app = createApp(App)

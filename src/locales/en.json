@@ -258,7 +258,7 @@
         },
         {
           "question": "What do we offer?",
-          "answer": "\tOur workshop excels in creating custom painted shoes tailored to your individual style. We provide a range of options, including unique designs inspired by your ideas and an exclusive selection of <a href='/shop'>Sole-Blast originals</a> to choose from. \n\n\tIn addition to shoes, our expertise extends to customizing a diverse array of items such as bags, wallets, skateboards, snowboards, and more. If you're seeking a special customization, simply fill out <a href='/yourdesign'>Your Design form</a>, and let us bring your vision to life!"
+          "answer": "\tOur workshop excels in creating custom painted shoes tailored to your individual style. We provide a range of options, including unique designs inspired by your ideas and an exclusive selection of <a href='/shop'>Sole-Blast originals</a> to choose from. </br>In addition to shoes, our expertise extends to customizing a diverse array of items such as bags, wallets, skateboards, snowboards, and more. If you're seeking a special customization, simply fill out <a href='/yourdesign'>Your Design form</a>, and let us bring your vision to life!"
         }
       ]
     },
@@ -267,7 +267,7 @@
       "items": [
         {
           "question": "How can I order a custom pair of shoes?",
-          "answer": "<div>To order a custom pair of shoes, follow the instructions listed in <a href='/yourdesign'>Your Design page</a>. You can also <a href='/shop'>browse our store</a> and select one of our suggested captivating designs. \n\nGet ready to pursue new adventures wearing a head-turning unique pair of shoes!</div>"
+          "answer": "<div>To order a custom pair of shoes, follow the instructions listed in <a href='/yourdesign'>Your Design page</a>. You can also <a href='/shop'>browse our store</a> and select one of our suggested captivating designs. </br>Get ready to pursue new adventures wearing a head-turning unique pair of shoes!</div>"
         },
         {
           "question": "How long will it take to prepare a custom pair?",
@@ -296,7 +296,7 @@
         },
         {
           "question": "Are there any special offers or discounts for bulk orders or group purchases?",
-          "answer": "Please contact us in <a href = 'mailto: soleblastofficial@gmail.com'>soleblastofficial@gmail.com</a> to discuss bulk orders or group purchase discounts."
+          "answer": "Please contact us in soleblastofficial[at]gmail.com to discuss bulk orders or group purchase discounts."
         }
       ]
     },
@@ -313,7 +313,7 @@
         },
         {
           "question": "What shoe brands and models can I choose from?",
-          "answer": "Popular options include Nike Air Force 1's, Vans slip-on's and Vans Old Skool due to their popularity and large painting surface.\nOther choices include Vans Classic, Dr. Martens, Nike Air Max, Nike Dunk Low and Air Jordan 1.\nYou can also send us your own pair of shoes if they're in brand new condition."
+          "answer": "Popular options include Nike Air Force 1's, Vans slip-on's and Vans Old Skool due to their popularity and large painting surface.</br>Other choices include Vans Classic, Dr. Martens, Nike Air Max, Nike Dunk Low and Air Jordan 1.</br>#You can also send us your own pair of shoes if they're in brand new condition."
         },
         {
           "question": "How durable is the artwork?",
