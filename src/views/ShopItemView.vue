@@ -398,6 +398,7 @@ export default {
           })
         })
       },
+      generateReferenceData,
       async submitPayment() {
         const shoeModel = document.querySelector('.name').innerHTML
         const price = document.querySelector('.price').innerHTML
@@ -414,6 +415,7 @@ export default {
           price: price,
           orderCode: generateReferenceData()
         }
+        console.log(generateReferenceData())
 
         // Send a POST request to your Netlify function
         const response = await fetch('https://sole-blast.com/.netlify/functions/submitDesign', {
@@ -434,8 +436,7 @@ export default {
             router.push('/success')
           }, 500)
         }
-      },
-      generateReferenceData
+      }
     }
   },
   methods: {
