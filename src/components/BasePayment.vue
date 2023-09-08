@@ -3,7 +3,7 @@
     <iframe
       ref="iframe"
       name="my-hosted-form"
-      data-sc-key="sbpb_YzYxOWMwNTItYTRlMi00MTM4LTllZmMtYTI3NzFkYjdjMDky"
+      data-sc-key="lvpb_ODY5MzMxZTgtMjE1ZS00ZThiLWFiMmEtM2JlOTk3YTc0OGM1"
       :data-name="name"
       :data-description="description"
       :data-reference="reference"
@@ -48,8 +48,7 @@ onMounted(() => {
   document.body.appendChild(script)
 
   SimplifyCommerce.hostedPayments(function (response) {
-    console.log(response)
-    if (response.paymentStatus == 'APPROVED') {
+    if (response.data.paymentStatus == 'APPROVED') {
       // emit paymentSuccess event
       emits('paymentSuccess')
     }

@@ -5,7 +5,7 @@ const handler = async function (event) {
     return { statusCode: 405, body: 'Method Not Allowed' }
   }
 
-  const { shoeModel, shoeSize, shippingForm, price } = JSON.parse(event.body)
+  const { shoeModel, shoeSize, shippingForm, price, orderCode } = JSON.parse(event.body)
 
   const {
     fullName,
@@ -16,8 +16,7 @@ const handler = async function (event) {
     townCity,
     postcode,
     country,
-    shippingNotes,
-    orderCode
+    shippingNotes
   } = shippingForm
 
   // Note: it is assumed here that either shoeModel or itemname will be present in orderForm

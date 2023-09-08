@@ -383,7 +383,6 @@ export default defineComponent({
       })
     }
     const customRequest = async (options) => {
-      console.log('hello im here')
       // Allow only the new image to pass
       for (let i = 0; i < uploadedFiles.value.length; i++) {
         if (uploadedFiles.value[i].id === options.file.id) {
@@ -467,7 +466,6 @@ export default defineComponent({
                 console.error(errors)
                 message.value.error('Invalid')
               } else if (shoeModelValidationStatus.value === 'error') {
-                console.error('Invalid shoe model')
                 message.value.error('Invalid')
               } else {
                 message.value.success('Valid')

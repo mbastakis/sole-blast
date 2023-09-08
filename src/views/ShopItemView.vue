@@ -342,7 +342,7 @@ export default {
 
     function generateReferenceData() {
       if (generatedRef.value) {
-        return generatedRef
+        return generatedRef.value
       } else {
         // Get the current timestamp and convert it to a string
         let timestamp = new Date().getTime().toString()
@@ -351,7 +351,6 @@ export default {
 
         // Convert reversed timestamp to base 36 (numbers + letters) and slice the first 10 characters
         let orderCode = parseInt(reversedTimestamp, 10).toString(36).toUpperCase().slice(0, 10)
-        console.log('generated ', orderCode)
         generatedRef.value = orderCode
         return orderCode
       }
@@ -374,7 +373,6 @@ export default {
             message.error('Please complete the form')
             return false
           } else {
-            console.log('submit!')
             isShippingInformationVisible.value = true
             nextTick(() => {
               const shippingInfoElement = document.querySelector('.section')
@@ -398,12 +396,12 @@ export default {
           })
         })
       },
+      generateReferenceData,
       async submitPayment() {
         const shoeModel = document.querySelector('.name').innerHTML
         const price = document.querySelector('.price').innerHTML
 
         const shippingForm = shippingFormRef.value
-        console.log(shippingForm)
         const shoeSize = form.value.shoeSize
 
         // Include orderForm and shippingForm in the request
@@ -434,8 +432,7 @@ export default {
             router.push('/success')
           }, 500)
         }
-      },
-      generateReferenceData
+      }
     }
   },
   methods: {
@@ -512,7 +509,6 @@ export default {
           ...shoe,
           images: highResImageURLs
         }
-        console.log(this.item)
       }
     }
   }
