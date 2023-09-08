@@ -7,7 +7,7 @@
       :data-name="name"
       :data-description="description"
       :data-reference="reference"
-      :data-amount="amount"
+      :data-amount="100"
       data-color="#282e5c"
     >
     </iframe>
