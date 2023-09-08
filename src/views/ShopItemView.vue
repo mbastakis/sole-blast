@@ -351,7 +351,7 @@ export default {
 
         // Convert reversed timestamp to base 36 (numbers + letters) and slice the first 10 characters
         let orderCode = parseInt(reversedTimestamp, 10).toString(36).toUpperCase().slice(0, 10)
-
+        console.log('generated ', orderCode)
         generatedRef.value = orderCode
         return orderCode
       }
