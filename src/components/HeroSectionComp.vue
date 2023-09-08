@@ -34,7 +34,6 @@ export default {
       const windowHeight = window.innerHeight
 
       const heroSectionHeight = windowHeight - navbarHeight
-      console.log(navbarHeight)
       heroSection.style.height = `${heroSectionHeight}px`
     }, 100)
   }

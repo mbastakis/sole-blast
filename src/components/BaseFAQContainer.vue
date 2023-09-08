@@ -58,7 +58,6 @@ export default {
           link.addEventListener('click', (e) => {
             e.preventDefault()
             const href = e.target.getAttribute('href')
-            console.log(href)
             router.push(href)
           })
         })

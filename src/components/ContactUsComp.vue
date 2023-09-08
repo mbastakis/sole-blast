@@ -123,7 +123,6 @@ export default defineComponent({
               return res.json()
             })
             .then((json) => {
-              console.log(json)
               message.success('Email sent successfully!')
               form.value = {
                 fullName: '',

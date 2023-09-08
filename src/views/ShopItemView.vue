@@ -351,7 +351,6 @@ export default {
 
         // Convert reversed timestamp to base 36 (numbers + letters) and slice the first 10 characters
         let orderCode = parseInt(reversedTimestamp, 10).toString(36).toUpperCase().slice(0, 10)
-        console.log('generated ', orderCode)
         generatedRef.value = orderCode
         return orderCode
       }
@@ -374,7 +373,6 @@ export default {
             message.error('Please complete the form')
             return false
           } else {
-            console.log('submit!')
             isShippingInformationVisible.value = true
             nextTick(() => {
               const shippingInfoElement = document.querySelector('.section')
@@ -404,7 +402,6 @@ export default {
         const price = document.querySelector('.price').innerHTML
 
         const shippingForm = shippingFormRef.value
-        console.log(shippingForm)
         const shoeSize = form.value.shoeSize
 
         // Include orderForm and shippingForm in the request
@@ -415,7 +412,6 @@ export default {
           price: price,
           orderCode: generateReferenceData()
         }
-        console.log(generateReferenceData())
 
         // Send a POST request to your Netlify function
         const response = await fetch('https://sole-blast.com/.netlify/functions/submitDesign', {
@@ -513,7 +509,6 @@ export default {
           ...shoe,
           images: highResImageURLs
         }
-        console.log(this.item)
       }
     }
   }

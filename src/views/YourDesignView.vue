@@ -86,7 +86,6 @@ export default {
         method: 'POST',
         body: JSON.stringify(requestData)
       }).then((res) => {
-        console.log('im back')
         if (res.status === 200) {
           window.$message.success('Your design was submitted successfully!')
           setTimeout(() => {

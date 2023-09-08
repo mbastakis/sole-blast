@@ -383,7 +383,6 @@ export default defineComponent({
       })
     }
     const customRequest = async (options) => {
-      console.log('hello im here')
       // Allow only the new image to pass
       for (let i = 0; i < uploadedFiles.value.length; i++) {
         if (uploadedFiles.value[i].id === options.file.id) {
