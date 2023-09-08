@@ -21,19 +21,19 @@ import { ref, onMounted, defineEmits, defineProps } from 'vue'
 const props = defineProps({
   name: {
     type: String,
-    default: 'Jasmine Green Tea'
+    required: true
   },
   description: {
     type: String,
-    default: 'Smooth tea with a rich jasmine bouquet'
+    required: true
   },
   reference: {
     type: String,
-    default: '99991'
+    required: true
   },
   amount: {
     type: String,
-    default: '100'
+    required: true
   }
 })
 
