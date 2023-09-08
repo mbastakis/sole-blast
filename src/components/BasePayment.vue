@@ -48,8 +48,7 @@ onMounted(() => {
   document.body.appendChild(script)
 
   SimplifyCommerce.hostedPayments(function (response) {
-    console.log(response)
-    if (response.paymentStatus == 'APPROVED') {
+    if (response.data.paymentStatus == 'APPROVED') {
       // emit paymentSuccess event
       emits('paymentSuccess')
     }

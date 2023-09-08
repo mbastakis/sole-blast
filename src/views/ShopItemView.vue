@@ -342,7 +342,7 @@ export default {
 
     function generateReferenceData() {
       if (generatedRef.value) {
-        return generatedRef
+        return generatedRef.value
       } else {
         // Get the current timestamp and convert it to a string
         let timestamp = new Date().getTime().toString()
