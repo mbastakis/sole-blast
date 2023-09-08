@@ -3,11 +3,11 @@
     <iframe
       ref="iframe"
       name="my-hosted-form"
-      data-sc-key="sbpb_YzYxOWMwNTItYTRlMi00MTM4LTllZmMtYTI3NzFkYjdjMDky"
+      data-sc-key="lvpb_ODY5MzMxZTgtMjE1ZS00ZThiLWFiMmEtM2JlOTk3YTc0OGM1"
       :data-name="name"
       :data-description="description"
       :data-reference="reference"
-      :data-amount="amount"
+      :data-amount="100"
       data-color="#282e5c"
     >
     </iframe>
