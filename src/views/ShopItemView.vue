@@ -340,9 +340,9 @@ export default {
       }
     })
 
-    const generateReferenceData = () => {
-      if (this.generatedRef) {
-        return this.generatedRef
+    function generateReferenceData() {
+      if (generatedRef.value) {
+        return generatedRef
       } else {
         // Get the current timestamp and convert it to a string
         let timestamp = new Date().getTime().toString()
@@ -352,7 +352,7 @@ export default {
         // Convert reversed timestamp to base 36 (numbers + letters) and slice the first 10 characters
         let orderCode = parseInt(reversedTimestamp, 10).toString(36).toUpperCase().slice(0, 10)
 
-        this.generatedRef = orderCode
+        generatedRef.value = orderCode
         return orderCode
       }
     }
