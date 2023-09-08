@@ -85,7 +85,9 @@
           </NTabPane>
           <NTabPane name="IBAN" tab="IBAN" class="iban-section">
             {{ $t('shopItem.paymentInfo.iban') }}
-            <div class="btn" @click="submitPayment">Complete Order</div>
+            <div class="btn" :class="isLoading ? 'loading' : ''" @click="submitPayment">
+              Complete Order
+            </div>
           </NTabPane>
         </NTabs>
       </div>
@@ -227,6 +229,8 @@ export default {
 
     const generatedRef = ref(null)
 
+    let isLoading = ref(false)
+
     const state = reactive({
       loading: false
     })
@@ -363,6 +367,7 @@ export default {
       form,
       shoeSizes,
       generatedRef,
+      isLoading,
       ...toRefs(state),
       rules: {
         shoeSize: { required: true, message: 'Please select a shoe size', trigger: 'change' }
@@ -398,6 +403,7 @@ export default {
       },
       generateReferenceData,
       async submitPayment() {
+        isLoading.value = true
         const shoeModel = document.querySelector('.name').innerHTML
         const price = document.querySelector('.price').innerHTML
 
@@ -425,12 +431,14 @@ export default {
         if (!response.ok) {
           state.loading = false
           message.error('Something went wrong please try again later!')
+          isLoading.value = false
         } else {
           state.loading = false
           message.success('Your order has been submitted!')
           setTimeout(() => {
             router.push('/success')
           }, 500)
+          isLoading.value = false
         }
       }
     }
@@ -564,7 +572,9 @@ img {
   flex-direction: column;
   gap: var(--space-2xs);
 }
-
+.loading {
+  animation: slide 2s ease-in-out infinite;
+}
 .price {
   font-size: var(--step-2);
   font-weight: 800;
