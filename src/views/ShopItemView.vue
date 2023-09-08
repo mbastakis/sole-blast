@@ -340,6 +340,23 @@ export default {
       }
     })
 
+    const generateReferenceData = () => {
+      if (this.generatedRef) {
+        return this.generatedRef
+      } else {
+        // Get the current timestamp and convert it to a string
+        let timestamp = new Date().getTime().toString()
+        // Reverse the timestamp string to ensure we are getting the most unique part (the milliseconds)
+        let reversedTimestamp = timestamp.split('').reverse().join('')
+
+        // Convert reversed timestamp to base 36 (numbers + letters) and slice the first 10 characters
+        let orderCode = parseInt(reversedTimestamp, 10).toString(36).toUpperCase().slice(0, 10)
+
+        this.generatedRef = orderCode
+        return orderCode
+      }
+    }
+
     return {
       isPaymentVisible,
       isShippingInformationVisible,
@@ -395,7 +412,7 @@ export default {
           shoeModel: shoeModel,
           shoeSize: shoeSize,
           price: price,
-          orderCode: this.generateReferenceData()
+          orderCode: generateReferenceData()
         }
 
         // Send a POST request to your Netlify function
@@ -417,7 +434,8 @@ export default {
             router.push('/success')
           }, 500)
         }
-      }
+      },
+      generateReferenceData
     }
   },
   methods: {
@@ -456,22 +474,6 @@ export default {
       }
 
       this.lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop // For mobile or negative scrolling
-    },
-    generateReferenceData() {
-      if (this.generatedRef) {
-        return this.generatedRef
-      } else {
-        // Get the current timestamp and convert it to a string
-        let timestamp = new Date().getTime().toString()
-        // Reverse the timestamp string to ensure we are getting the most unique part (the milliseconds)
-        let reversedTimestamp = timestamp.split('').reverse().join('')
-
-        // Convert reversed timestamp to base 36 (numbers + letters) and slice the first 10 characters
-        let orderCode = parseInt(reversedTimestamp, 10).toString(36).toUpperCase().slice(0, 10)
-
-        this.generatedRef = orderCode
-        return orderCode
-      }
     }
   },
   mounted() {
