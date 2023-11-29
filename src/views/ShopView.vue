@@ -76,6 +76,10 @@ export default {
     this.items = (
       await Promise.all(
         shoeDetailsData.map(async (shoeDetail) => {
+          if (shoeDetail.disabled) {
+            return null
+          }
+
           const matchingImage = lowResImagesData.find((image) => image.id === shoeDetail.id)
 
           const gsReferenceDefault = ref(storage, matchingImage?.default)

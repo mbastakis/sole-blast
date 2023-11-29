@@ -24,5 +24,8 @@ export default defineConfig({
     host: true,
     // Set a specific port (optional, only if you want to override the default port)
     port: 3000,
+    watch: {
+      usePolling: true,
+    },
   }
 })
