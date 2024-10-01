@@ -1,7 +1,6 @@
 # Project Name
 
-[![Website Status](https://img.shields.io/website-up-down-green-red/http/yourwebsite.com.svg)](https://production--soleblast.netlify.app) 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/yourusername/yourrepository/build.yml)](https://github.com/mbastakis/sole-blast/actions)
+[![Website Status](https://img.shields.io/website.svg?down_color=red&down_message=down&up_color=green&up_message=up&url=https://production--soleblast.netlify.app)](https://production--soleblast.netlify.app) 
 [![License](https://img.shields.io/github/license/mbastakis/sole-blast)](./LICENSE)
 [![Vue Version](https://img.shields.io/badge/vue-3.x-brightgreen.svg)](https://vuejs.org/)
 
