@@ -3,7 +3,7 @@
     <iframe
       ref="iframe"
       name="my-hosted-form"
-      data-sc-key="lvpb_ODY5MzMxZTgtMjE1ZS00ZThiLWFiMmEtM2JlOTk3YTc0OGM1"
+      data-sc-key="`process.env.FIREBASE_API`"
       :data-name="name"
       :data-description="description"
       :data-reference="reference"

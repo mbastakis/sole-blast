@@ -4,7 +4,7 @@ import { getFirestore } from 'firebase/firestore' // Add this line
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyC0GYSfa-vR7zfXE4fLuT8q3UlAhb_nqbU',
+  apiKey: '`process.env.FIREBASE_API`',
   authDomain: 'sole-blast.firebaseapp.com',
   projectId: 'sole-blast',
   storageBucket: 'sole-blast.appspot.com',
