@@ -44,7 +44,7 @@ To get started with the project locally, follow these steps:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/sole-blast.git
+git clone https://github.com/mbastakis/sole-blast.git
 ```
 
 ### 2. Navigate to the project directory
@@ -62,7 +62,7 @@ npm install
 yarn install
 ```
 
-### 4. Create environment variables (Optional)
+### 4. Create environment variables
 Create a .env file in the root directory and configure the necessary environment variables. Here’s an example .env file:
 ```bash
 VUE_APP_API_URL=https://api.example.com
